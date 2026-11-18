@@ -1,0 +1,201 @@
+{
+  "name": "Rhean Jungle",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": -214,
+      "z": -37,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 49.5,
+      "z": -216.11,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": -43,
+      "z": 218,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": -206,
+      "z": 178,
+      "team": "blue",
+      "faction": "sob"
+    },
+    {
+      "x": -183,
+      "z": -191,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": 211,
+      "z": -18,
+      "team": "red",
+      "faction": "tau"
+    },
+    {
+      "x": 203.04,
+      "z": 172.66,
+      "team": "red",
+      "faction": "chaos"
+    },
+    {
+      "x": 184.84,
+      "z": -182.62,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 156,
+      "z": -240,
+      "kind": "point"
+    },
+    {
+      "x": 240,
+      "z": -158,
+      "kind": "point"
+    },
+    {
+      "x": 124,
+      "z": -138,
+      "kind": "point"
+    },
+    {
+      "x": -16,
+      "z": -238,
+      "kind": "point"
+    },
+    {
+      "x": 96,
+      "z": -204,
+      "kind": "point"
+    },
+    {
+      "x": 12,
+      "z": -134,
+      "kind": "point"
+    },
+    {
+      "x": -248,
+      "z": -166,
+      "kind": "point"
+    },
+    {
+      "x": -134,
+      "z": -214,
+      "kind": "point"
+    },
+    {
+      "x": -154,
+      "z": -100,
+      "kind": "point"
+    },
+    {
+      "x": -216,
+      "z": -64,
+      "kind": "point"
+    },
+    {
+      "x": -214,
+      "z": 70,
+      "kind": "point"
+    },
+    {
+      "x": -136,
+      "z": 106,
+      "kind": "point"
+    },
+    {
+      "x": -178,
+      "z": 246,
+      "kind": "point"
+    },
+    {
+      "x": -216,
+      "z": 134,
+      "kind": "point"
+    },
+    {
+      "x": -92,
+      "z": 200,
+      "kind": "point"
+    },
+    {
+      "x": 28,
+      "z": 230,
+      "kind": "point"
+    },
+    {
+      "x": -8,
+      "z": 122,
+      "kind": "point"
+    },
+    {
+      "x": 240,
+      "z": -38,
+      "kind": "point"
+    },
+    {
+      "x": 224,
+      "z": 40,
+      "kind": "point"
+    },
+    {
+      "x": 92,
+      "z": 4,
+      "kind": "point"
+    },
+    {
+      "x": 152,
+      "z": 240,
+      "kind": "point"
+    },
+    {
+      "x": 236,
+      "z": 148,
+      "kind": "point"
+    },
+    {
+      "x": 124,
+      "z": 130,
+      "kind": "point"
+    },
+    {
+      "x": -78,
+      "z": -142,
+      "kind": "relic"
+    },
+    {
+      "x": 30,
+      "z": -6,
+      "kind": "relic"
+    },
+    {
+      "x": -174,
+      "z": -4,
+      "kind": "point"
+    },
+    {
+      "x": -8,
+      "z": 54,
+      "kind": "relic"
+    },
+    {
+      "x": -52,
+      "z": -54,
+      "kind": "point"
+    },
+    {
+      "x": -94,
+      "z": 22,
+      "kind": "relic"
+    }
+  ]
+}

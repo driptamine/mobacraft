@@ -1,0 +1,169 @@
+{
+  "name": "Parmenie",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 101.86,
+      "z": -9.02,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 101.48,
+      "z": 68.03,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 100,
+      "z": -69,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": -98,
+      "z": 60,
+      "team": "red",
+      "faction": "dark eldar"
+    },
+    {
+      "x": -102,
+      "z": 0,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": -100,
+      "z": -66,
+      "team": "red",
+      "faction": "tau"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 4,
+      "z": 0,
+      "kind": "objective"
+    },
+    {
+      "x": 78,
+      "z": -98,
+      "kind": "point"
+    },
+    {
+      "x": 126,
+      "z": -98,
+      "kind": "point"
+    },
+    {
+      "x": 72,
+      "z": -40,
+      "kind": "point"
+    },
+    {
+      "x": 72,
+      "z": 88,
+      "kind": "point"
+    },
+    {
+      "x": 76,
+      "z": 44,
+      "kind": "point"
+    },
+    {
+      "x": 112,
+      "z": 96,
+      "kind": "point"
+    },
+    {
+      "x": 120,
+      "z": 20,
+      "kind": "point"
+    },
+    {
+      "x": 122,
+      "z": -28,
+      "kind": "point"
+    },
+    {
+      "x": 66,
+      "z": -2,
+      "kind": "point"
+    },
+    {
+      "x": -120,
+      "z": 22,
+      "kind": "point"
+    },
+    {
+      "x": -120,
+      "z": -22,
+      "kind": "point"
+    },
+    {
+      "x": -56,
+      "z": -2,
+      "kind": "point"
+    },
+    {
+      "x": -62,
+      "z": 40,
+      "kind": "point"
+    },
+    {
+      "x": -76,
+      "z": 96,
+      "kind": "point"
+    },
+    {
+      "x": -122,
+      "z": 98,
+      "kind": "point"
+    },
+    {
+      "x": -126,
+      "z": -90,
+      "kind": "point"
+    },
+    {
+      "x": -76,
+      "z": -90,
+      "kind": "point"
+    },
+    {
+      "x": -64,
+      "z": -48,
+      "kind": "point"
+    },
+    {
+      "x": 34,
+      "z": 68,
+      "kind": "relic"
+    },
+    {
+      "x": 34,
+      "z": -58,
+      "kind": "relic"
+    },
+    {
+      "x": -24,
+      "z": -58,
+      "kind": "relic"
+    },
+    {
+      "x": -26,
+      "z": 70,
+      "kind": "relic"
+    },
+    {
+      "x": 8,
+      "z": -108,
+      "kind": "objective"
+    },
+    {
+      "x": 0,
+      "z": 104,
+      "kind": "objective"
+    }
+  ]
+}

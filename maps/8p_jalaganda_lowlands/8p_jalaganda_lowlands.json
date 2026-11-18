@@ -1,0 +1,226 @@
+{
+  "name": "Jalaganda Lowlands",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": 216,
+      "z": 214,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 142,
+      "z": 193,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 147,
+      "z": -208,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": 214,
+      "z": -214,
+      "team": "blue",
+      "faction": "sob"
+    },
+    {
+      "x": -94,
+      "z": 219,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": -198,
+      "z": 214,
+      "team": "red",
+      "faction": "tau"
+    },
+    {
+      "x": -224,
+      "z": -222,
+      "team": "red",
+      "faction": "chaos"
+    },
+    {
+      "x": -128,
+      "z": -220,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -48,
+      "z": -2,
+      "kind": "point"
+    },
+    {
+      "x": -220,
+      "z": 182,
+      "kind": "point"
+    },
+    {
+      "x": -172,
+      "z": 182,
+      "kind": "point"
+    },
+    {
+      "x": -118,
+      "z": 182,
+      "kind": "point"
+    },
+    {
+      "x": -100,
+      "z": -192,
+      "kind": "point"
+    },
+    {
+      "x": -248,
+      "z": -182,
+      "kind": "point"
+    },
+    {
+      "x": -204,
+      "z": -182,
+      "kind": "point"
+    },
+    {
+      "x": -102,
+      "z": 112,
+      "kind": "point"
+    },
+    {
+      "x": -102,
+      "z": -112,
+      "kind": "point"
+    },
+    {
+      "x": -218,
+      "z": -112,
+      "kind": "point"
+    },
+    {
+      "x": -218,
+      "z": 112,
+      "kind": "point"
+    },
+    {
+      "x": -120,
+      "z": 72,
+      "kind": "relic"
+    },
+    {
+      "x": -202,
+      "z": -72,
+      "kind": "relic"
+    },
+    {
+      "x": -74,
+      "z": 182,
+      "kind": "point"
+    },
+    {
+      "x": -150,
+      "z": -192,
+      "kind": "point"
+    },
+    {
+      "x": 114,
+      "z": 190,
+      "kind": "point"
+    },
+    {
+      "x": 144,
+      "z": 136,
+      "kind": "point"
+    },
+    {
+      "x": 188,
+      "z": 172,
+      "kind": "point"
+    },
+    {
+      "x": 244,
+      "z": 170,
+      "kind": "point"
+    },
+    {
+      "x": 184,
+      "z": -176,
+      "kind": "point"
+    },
+    {
+      "x": 242,
+      "z": -176,
+      "kind": "point"
+    },
+    {
+      "x": 114,
+      "z": -198,
+      "kind": "point"
+    },
+    {
+      "x": 140,
+      "z": -144,
+      "kind": "point"
+    },
+    {
+      "x": 230,
+      "z": 66,
+      "kind": "point"
+    },
+    {
+      "x": 232,
+      "z": -80,
+      "kind": "point"
+    },
+    {
+      "x": 116,
+      "z": -78,
+      "kind": "point"
+    },
+    {
+      "x": 116,
+      "z": 72,
+      "kind": "point"
+    },
+    {
+      "x": 64,
+      "z": 204,
+      "kind": "relic"
+    },
+    {
+      "x": 70,
+      "z": -210,
+      "kind": "relic"
+    },
+    {
+      "x": 78,
+      "z": 0,
+      "kind": "point"
+    },
+    {
+      "x": 10,
+      "z": 0,
+      "kind": "relic"
+    },
+    {
+      "x": 12,
+      "z": 160,
+      "kind": "objective"
+    },
+    {
+      "x": 12,
+      "z": -154,
+      "kind": "objective"
+    },
+    {
+      "x": -238,
+      "z": -2,
+      "kind": "objective"
+    }
+  ]
+}

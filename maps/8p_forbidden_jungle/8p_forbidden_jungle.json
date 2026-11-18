@@ -1,0 +1,261 @@
+{
+  "name": "Forbidden Jungle",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": -180,
+      "z": 85,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -45,
+      "z": -199,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 180,
+      "z": -86,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": 47,
+      "z": 198,
+      "team": "blue",
+      "faction": "sob"
+    },
+    {
+      "x": -180,
+      "z": -86,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": 46,
+      "z": -198,
+      "team": "red",
+      "faction": "tau"
+    },
+    {
+      "x": 180,
+      "z": 87,
+      "team": "red",
+      "faction": "chaos"
+    },
+    {
+      "x": -47,
+      "z": 197,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 184,
+      "z": 222,
+      "kind": "relic"
+    },
+    {
+      "x": -184,
+      "z": 222,
+      "kind": "relic"
+    },
+    {
+      "x": -184,
+      "z": -220,
+      "kind": "relic"
+    },
+    {
+      "x": 184,
+      "z": -222,
+      "kind": "relic"
+    },
+    {
+      "x": -8,
+      "z": -8,
+      "kind": "relic"
+    },
+    {
+      "x": 26,
+      "z": -8,
+      "kind": "point"
+    },
+    {
+      "x": -8,
+      "z": -42,
+      "kind": "point"
+    },
+    {
+      "x": -42,
+      "z": -8,
+      "kind": "point"
+    },
+    {
+      "x": -8,
+      "z": 26,
+      "kind": "point"
+    },
+    {
+      "x": 134,
+      "z": 236,
+      "kind": "point"
+    },
+    {
+      "x": 222,
+      "z": 176,
+      "kind": "point"
+    },
+    {
+      "x": 222,
+      "z": -184,
+      "kind": "point"
+    },
+    {
+      "x": 132,
+      "z": -232,
+      "kind": "point"
+    },
+    {
+      "x": -134,
+      "z": 228,
+      "kind": "point"
+    },
+    {
+      "x": -222,
+      "z": 176,
+      "kind": "point"
+    },
+    {
+      "x": -132,
+      "z": -230,
+      "kind": "point"
+    },
+    {
+      "x": -222,
+      "z": -184,
+      "kind": "point"
+    },
+    {
+      "x": 136,
+      "z": 74,
+      "kind": "point"
+    },
+    {
+      "x": 212,
+      "z": 56,
+      "kind": "point"
+    },
+    {
+      "x": 182,
+      "z": 134,
+      "kind": "point"
+    },
+    {
+      "x": 136,
+      "z": -74,
+      "kind": "point"
+    },
+    {
+      "x": 212,
+      "z": -54,
+      "kind": "point"
+    },
+    {
+      "x": 182,
+      "z": -134,
+      "kind": "point"
+    },
+    {
+      "x": 46,
+      "z": -150,
+      "kind": "point"
+    },
+    {
+      "x": 28,
+      "z": -234,
+      "kind": "point"
+    },
+    {
+      "x": 92,
+      "z": -192,
+      "kind": "point"
+    },
+    {
+      "x": -44,
+      "z": -150,
+      "kind": "point"
+    },
+    {
+      "x": -92,
+      "z": -188,
+      "kind": "point"
+    },
+    {
+      "x": -136,
+      "z": -74,
+      "kind": "point"
+    },
+    {
+      "x": -212,
+      "z": -54,
+      "kind": "point"
+    },
+    {
+      "x": -182,
+      "z": -134,
+      "kind": "point"
+    },
+    {
+      "x": -136,
+      "z": 74,
+      "kind": "point"
+    },
+    {
+      "x": -212,
+      "z": 56,
+      "kind": "point"
+    },
+    {
+      "x": -182,
+      "z": 134,
+      "kind": "point"
+    },
+    {
+      "x": -48,
+      "z": 150,
+      "kind": "point"
+    },
+    {
+      "x": -24,
+      "z": 236,
+      "kind": "point"
+    },
+    {
+      "x": 48,
+      "z": 150,
+      "kind": "point"
+    },
+    {
+      "x": 26,
+      "z": 234,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": 188,
+      "kind": "point"
+    },
+    {
+      "x": -22,
+      "z": -236,
+      "kind": "point"
+    },
+    {
+      "x": -90,
+      "z": 190,
+      "kind": "point"
+    }
+  ]
+}

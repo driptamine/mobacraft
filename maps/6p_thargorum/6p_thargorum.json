@@ -1,0 +1,159 @@
+{
+  "name": "Thargorum",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": -66.2,
+      "z": 90.78,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -107.44,
+      "z": -0.98,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": -65.97,
+      "z": -92.79,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": 66.01,
+      "z": -90.4,
+      "team": "red",
+      "faction": "dark eldar"
+    },
+    {
+      "x": 106.74,
+      "z": 1.14,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": 66.47,
+      "z": 92.91,
+      "team": "red",
+      "faction": "tau"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 0,
+      "z": 0,
+      "kind": "objective"
+    },
+    {
+      "x": 0,
+      "z": -114,
+      "kind": "objective"
+    },
+    {
+      "x": 0,
+      "z": 114,
+      "kind": "objective"
+    },
+    {
+      "x": 42,
+      "z": -48,
+      "kind": "relic"
+    },
+    {
+      "x": -42,
+      "z": 48,
+      "kind": "relic"
+    },
+    {
+      "x": 106,
+      "z": 72,
+      "kind": "point"
+    },
+    {
+      "x": 104,
+      "z": 120,
+      "kind": "point"
+    },
+    {
+      "x": 26,
+      "z": 114,
+      "kind": "point"
+    },
+    {
+      "x": -28,
+      "z": -114,
+      "kind": "point"
+    },
+    {
+      "x": -104,
+      "z": -120,
+      "kind": "point"
+    },
+    {
+      "x": -104,
+      "z": -72,
+      "kind": "point"
+    },
+    {
+      "x": -28,
+      "z": 118,
+      "kind": "point"
+    },
+    {
+      "x": -26,
+      "z": 68,
+      "kind": "point"
+    },
+    {
+      "x": -104,
+      "z": 112,
+      "kind": "point"
+    },
+    {
+      "x": -108,
+      "z": 42,
+      "kind": "point"
+    },
+    {
+      "x": -108,
+      "z": -46,
+      "kind": "point"
+    },
+    {
+      "x": -66,
+      "z": -2,
+      "kind": "point"
+    },
+    {
+      "x": 26,
+      "z": -70,
+      "kind": "point"
+    },
+    {
+      "x": 28,
+      "z": -118,
+      "kind": "point"
+    },
+    {
+      "x": 106,
+      "z": -112,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": -44,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": 44,
+      "kind": "point"
+    },
+    {
+      "x": 64,
+      "z": 0,
+      "kind": "point"
+    }
+  ]
+}

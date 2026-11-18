@@ -1,0 +1,85 @@
+{
+  "name": "Blood River",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 94.06,
+      "z": -30.94,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -97.65,
+      "z": 8.82,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -32,
+      "z": -100,
+      "kind": "relic"
+    },
+    {
+      "x": 14,
+      "z": 80,
+      "kind": "relic"
+    },
+    {
+      "x": 24,
+      "z": -58,
+      "kind": "point"
+    },
+    {
+      "x": -80,
+      "z": 36,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": 2,
+      "kind": "point"
+    },
+    {
+      "x": 74,
+      "z": -58,
+      "kind": "point"
+    },
+    {
+      "x": -106,
+      "z": -24,
+      "kind": "point"
+    },
+    {
+      "x": -36,
+      "z": 30,
+      "kind": "point"
+    },
+    {
+      "x": -2,
+      "z": -18,
+      "kind": "objective"
+    },
+    {
+      "x": 114,
+      "z": 108,
+      "kind": "objective"
+    },
+    {
+      "x": -112,
+      "z": -116,
+      "kind": "objective"
+    },
+    {
+      "x": 58,
+      "z": -8,
+      "kind": "point"
+    },
+    {
+      "x": -64,
+      "z": -10,
+      "kind": "point"
+    }
+  ]
+}

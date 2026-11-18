@@ -1,0 +1,175 @@
+{
+  "name": "Western Barrens",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": -97,
+      "z": -186,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 13,
+      "z": -221,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 90,
+      "z": -145,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": 80,
+      "z": 148,
+      "team": "blue",
+      "faction": "sob"
+    },
+    {
+      "x": -105,
+      "z": 158,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": 0,
+      "z": -49,
+      "team": "red",
+      "faction": "tau"
+    },
+    {
+      "x": -6,
+      "z": -47,
+      "team": "red",
+      "faction": "chaos"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -26,
+      "z": -212,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": -240,
+      "kind": "point"
+    },
+    {
+      "x": 26,
+      "z": -170,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": -170,
+      "kind": "point"
+    },
+    {
+      "x": 72,
+      "z": -104,
+      "kind": "point"
+    },
+    {
+      "x": 114,
+      "z": -74,
+      "kind": "point"
+    },
+    {
+      "x": -10,
+      "z": -68,
+      "kind": "point"
+    },
+    {
+      "x": 30,
+      "z": -16,
+      "kind": "point"
+    },
+    {
+      "x": -54,
+      "z": -24,
+      "kind": "point"
+    },
+    {
+      "x": -64,
+      "z": 56,
+      "kind": "point"
+    },
+    {
+      "x": -120,
+      "z": -230,
+      "kind": "point"
+    },
+    {
+      "x": -72,
+      "z": -152,
+      "kind": "point"
+    },
+    {
+      "x": -118,
+      "z": -120,
+      "kind": "point"
+    },
+    {
+      "x": 116,
+      "z": 6,
+      "kind": "relic"
+    },
+    {
+      "x": -2,
+      "z": 108,
+      "kind": "relic"
+    },
+    {
+      "x": 4,
+      "z": 56,
+      "kind": "objective"
+    },
+    {
+      "x": -120,
+      "z": 210,
+      "kind": "point"
+    },
+    {
+      "x": -62,
+      "z": 242,
+      "kind": "point"
+    },
+    {
+      "x": -68,
+      "z": 180,
+      "kind": "point"
+    },
+    {
+      "x": -96,
+      "z": -54,
+      "kind": "relic"
+    },
+    {
+      "x": -112,
+      "z": 44,
+      "kind": "objective"
+    },
+    {
+      "x": 18,
+      "z": -118,
+      "kind": "objective"
+    },
+    {
+      "x": 60,
+      "z": 236,
+      "kind": "point"
+    },
+    {
+      "x": 112,
+      "z": 208,
+      "kind": "point"
+    },
+    {
+      "x": 112,
+      "z": 124,
+      "kind": "point"
+    }
+  ]
+}

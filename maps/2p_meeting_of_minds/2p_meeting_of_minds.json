@@ -1,0 +1,95 @@
+{
+  "name": "Meeting Of Minds",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 88,
+      "z": 83,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -91,
+      "z": -84,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 98,
+      "z": 110,
+      "kind": "point"
+    },
+    {
+      "x": 78,
+      "z": 30,
+      "kind": "point"
+    },
+    {
+      "x": 54,
+      "z": 82,
+      "kind": "point"
+    },
+    {
+      "x": 0,
+      "z": 90,
+      "kind": "point"
+    },
+    {
+      "x": -10,
+      "z": -90,
+      "kind": "point"
+    },
+    {
+      "x": -56,
+      "z": -84,
+      "kind": "point"
+    },
+    {
+      "x": -110,
+      "z": -56,
+      "kind": "point"
+    },
+    {
+      "x": 112,
+      "z": 54,
+      "kind": "point"
+    },
+    {
+      "x": -76,
+      "z": -30,
+      "kind": "point"
+    },
+    {
+      "x": -98,
+      "z": -112,
+      "kind": "point"
+    },
+    {
+      "x": -2,
+      "z": -2,
+      "kind": "objective"
+    },
+    {
+      "x": 76,
+      "z": -92,
+      "kind": "objective"
+    },
+    {
+      "x": -84,
+      "z": 90,
+      "kind": "objective"
+    },
+    {
+      "x": -70,
+      "z": 4,
+      "kind": "relic"
+    },
+    {
+      "x": 68,
+      "z": -4,
+      "kind": "relic"
+    }
+  ]
+}

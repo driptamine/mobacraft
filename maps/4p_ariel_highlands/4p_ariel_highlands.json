@@ -1,0 +1,247 @@
+{
+  "name": "Ariel Highlands",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": 203,
+      "z": -210,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -218,
+      "z": -137,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": -222,
+      "z": 120,
+      "team": "red",
+      "faction": "necrons"
+    },
+    {
+      "x": 204,
+      "z": 193,
+      "team": "red",
+      "faction": "dark eldar"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 174,
+      "z": 128,
+      "kind": "point"
+    },
+    {
+      "x": 174,
+      "z": 116,
+      "kind": "point"
+    },
+    {
+      "x": 22,
+      "z": 146,
+      "kind": "point"
+    },
+    {
+      "x": 10,
+      "z": 146,
+      "kind": "point"
+    },
+    {
+      "x": 16,
+      "z": -98,
+      "kind": "relic"
+    },
+    {
+      "x": -194,
+      "z": -6,
+      "kind": "point"
+    },
+    {
+      "x": -194,
+      "z": -18,
+      "kind": "point"
+    },
+    {
+      "x": 222,
+      "z": -24,
+      "kind": "point"
+    },
+    {
+      "x": 222,
+      "z": -12,
+      "kind": "point"
+    },
+    {
+      "x": 14,
+      "z": 8,
+      "kind": "relic"
+    },
+    {
+      "x": -208,
+      "z": 140,
+      "kind": "point"
+    },
+    {
+      "x": 72,
+      "z": -240,
+      "kind": "point"
+    },
+    {
+      "x": 64,
+      "z": -240,
+      "kind": "point"
+    },
+    {
+      "x": 66,
+      "z": 236,
+      "kind": "point"
+    },
+    {
+      "x": 76,
+      "z": 236,
+      "kind": "point"
+    },
+    {
+      "x": -70,
+      "z": 224,
+      "kind": "point"
+    },
+    {
+      "x": -58,
+      "z": 222,
+      "kind": "point"
+    },
+    {
+      "x": 176,
+      "z": -76,
+      "kind": "point"
+    },
+    {
+      "x": 186,
+      "z": -76,
+      "kind": "point"
+    },
+    {
+      "x": 180,
+      "z": 52,
+      "kind": "point"
+    },
+    {
+      "x": 180,
+      "z": 44,
+      "kind": "point"
+    },
+    {
+      "x": 20,
+      "z": 84,
+      "kind": "point"
+    },
+    {
+      "x": 10,
+      "z": 84,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": -10,
+      "kind": "point"
+    },
+    {
+      "x": 102,
+      "z": -24,
+      "kind": "point"
+    },
+    {
+      "x": -4,
+      "z": -170,
+      "kind": "point"
+    },
+    {
+      "x": 6,
+      "z": -170,
+      "kind": "point"
+    },
+    {
+      "x": -156,
+      "z": 142,
+      "kind": "point"
+    },
+    {
+      "x": -150,
+      "z": 154,
+      "kind": "point"
+    },
+    {
+      "x": -88,
+      "z": -148,
+      "kind": "point"
+    },
+    {
+      "x": -88,
+      "z": -158,
+      "kind": "point"
+    },
+    {
+      "x": 136,
+      "z": -146,
+      "kind": "point"
+    },
+    {
+      "x": 142,
+      "z": -138,
+      "kind": "point"
+    },
+    {
+      "x": -128,
+      "z": 6,
+      "kind": "point"
+    },
+    {
+      "x": -128,
+      "z": -4,
+      "kind": "point"
+    },
+    {
+      "x": -202,
+      "z": -228,
+      "kind": "point"
+    },
+    {
+      "x": -202,
+      "z": -220,
+      "kind": "point"
+    },
+    {
+      "x": 164,
+      "z": 214,
+      "kind": "point"
+    },
+    {
+      "x": 204,
+      "z": -186,
+      "kind": "point"
+    },
+    {
+      "x": -190,
+      "z": -166,
+      "kind": "point"
+    },
+    {
+      "x": -48,
+      "z": 20,
+      "kind": "objective"
+    },
+    {
+      "x": -38,
+      "z": -116,
+      "kind": "objective"
+    },
+    {
+      "x": 234,
+      "z": -118,
+      "kind": "objective"
+    }
+  ]
+}

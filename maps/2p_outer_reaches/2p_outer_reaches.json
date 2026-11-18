@@ -1,0 +1,90 @@
+{
+  "name": "Outer Reaches",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 101,
+      "z": -13,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 13,
+      "z": -101,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 46,
+      "z": -46,
+      "kind": "objective"
+    },
+    {
+      "x": -100,
+      "z": 100,
+      "kind": "objective"
+    },
+    {
+      "x": 4,
+      "z": 106,
+      "kind": "relic"
+    },
+    {
+      "x": -106,
+      "z": -4,
+      "kind": "relic"
+    },
+    {
+      "x": 96,
+      "z": 106,
+      "kind": "point"
+    },
+    {
+      "x": -106,
+      "z": -96,
+      "kind": "point"
+    },
+    {
+      "x": 82,
+      "z": 14,
+      "kind": "point"
+    },
+    {
+      "x": -14,
+      "z": -82,
+      "kind": "point"
+    },
+    {
+      "x": -60,
+      "z": 108,
+      "kind": "point"
+    },
+    {
+      "x": -108,
+      "z": 60,
+      "kind": "point"
+    },
+    {
+      "x": -4,
+      "z": 4,
+      "kind": "point"
+    },
+    {
+      "x": -68,
+      "z": -40,
+      "kind": "point"
+    },
+    {
+      "x": 40,
+      "z": 68,
+      "kind": "point"
+    },
+    {
+      "x": -40,
+      "z": 40,
+      "kind": "objective"
+    }
+  ]
+}

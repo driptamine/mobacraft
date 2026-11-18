@@ -1,0 +1,241 @@
+{
+  "name": "Morriah Coast",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": 18,
+      "z": 134,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -67,
+      "z": -199,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": -218,
+      "z": -27,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": -209,
+      "z": 190,
+      "team": "blue",
+      "faction": "sob"
+    },
+    {
+      "x": 143,
+      "z": 153,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": 193,
+      "z": 30,
+      "team": "red",
+      "faction": "tau"
+    },
+    {
+      "x": 206,
+      "z": -222,
+      "team": "red",
+      "faction": "chaos"
+    },
+    {
+      "x": 37,
+      "z": -154.89,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 204,
+      "z": -192,
+      "kind": "point"
+    },
+    {
+      "x": 234,
+      "z": -102,
+      "kind": "point"
+    },
+    {
+      "x": 188,
+      "z": 72,
+      "kind": "point"
+    },
+    {
+      "x": 222,
+      "z": -16,
+      "kind": "point"
+    },
+    {
+      "x": 122,
+      "z": 168,
+      "kind": "point"
+    },
+    {
+      "x": 204,
+      "z": 234,
+      "kind": "point"
+    },
+    {
+      "x": 56,
+      "z": 130,
+      "kind": "point"
+    },
+    {
+      "x": 20,
+      "z": 198,
+      "kind": "point"
+    },
+    {
+      "x": -242,
+      "z": 178,
+      "kind": "point"
+    },
+    {
+      "x": -238,
+      "z": 100,
+      "kind": "point"
+    },
+    {
+      "x": -218,
+      "z": 18,
+      "kind": "point"
+    },
+    {
+      "x": -192,
+      "z": -86,
+      "kind": "point"
+    },
+    {
+      "x": -16,
+      "z": -234,
+      "kind": "point"
+    },
+    {
+      "x": -106,
+      "z": -196,
+      "kind": "point"
+    },
+    {
+      "x": 82,
+      "z": -168,
+      "kind": "point"
+    },
+    {
+      "x": 66,
+      "z": -220,
+      "kind": "point"
+    },
+    {
+      "x": 130,
+      "z": -166,
+      "kind": "relic"
+    },
+    {
+      "x": 180,
+      "z": -98,
+      "kind": "point"
+    },
+    {
+      "x": -132,
+      "z": -90,
+      "kind": "point"
+    },
+    {
+      "x": 44,
+      "z": -42,
+      "kind": "point"
+    },
+    {
+      "x": -104,
+      "z": 140,
+      "kind": "point"
+    },
+    {
+      "x": -78,
+      "z": -30,
+      "kind": "relic"
+    },
+    {
+      "x": 48,
+      "z": 46,
+      "kind": "relic"
+    },
+    {
+      "x": 96,
+      "z": 126,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": -94,
+      "kind": "objective"
+    },
+    {
+      "x": -34,
+      "z": -94,
+      "kind": "objective"
+    },
+    {
+      "x": -98,
+      "z": 68,
+      "kind": "objective"
+    },
+    {
+      "x": 234,
+      "z": -160,
+      "kind": "point"
+    },
+    {
+      "x": 122,
+      "z": -228,
+      "kind": "point"
+    },
+    {
+      "x": -66,
+      "z": -238,
+      "kind": "point"
+    },
+    {
+      "x": -162,
+      "z": -144,
+      "kind": "point"
+    },
+    {
+      "x": -160,
+      "z": 236,
+      "kind": "point"
+    },
+    {
+      "x": -82,
+      "z": 190,
+      "kind": "point"
+    },
+    {
+      "x": 136,
+      "z": 232,
+      "kind": "point"
+    },
+    {
+      "x": 234,
+      "z": 90,
+      "kind": "point"
+    },
+    {
+      "x": 134,
+      "z": 44,
+      "kind": "point"
+    },
+    {
+      "x": -140,
+      "z": 174,
+      "kind": "relic"
+    }
+  ]
+}

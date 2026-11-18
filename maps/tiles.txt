@@ -1,0 +1,852 @@
+# tiles.txt — art paths referenced by SGB of the recent maps
+# Maps: 23 (alvarus, mortalis, burial_grounds, oasis_of_sharr, doom_spiral excluded)
+# Paths have no file extension, exactly as stored in the SGB chunks
+#   FOLDTERR/DATADSHD (detail textures) + FOLDDECL (placed decals)
+
+
+[2p_blood_river]
+
+  textures/ (3)
+    art/scenarios/textures/detail/chaos_taint_02
+    art/scenarios/textures/detail/charred_ground_01
+    art/scenarios/textures/detail/quarry_01
+
+  decals/ (6)
+    art/decals/jungle/stone_cliff_05
+    art/decals/jungle/stone_pile_01
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_outerring_directional_01
+    art/decals/z_all/force_weapon_crack
+    art/decals/z_all/terrain_dust_01
+
+[2p_fallen_city]
+
+  textures/ (5)
+    art/scenarios/textures/detail/charred_ground_01
+    art/scenarios/textures/detail/concrete_01
+    art/scenarios/textures/detail/concrete_02
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+    art/scenarios/textures/detail/urban_rubble_01
+
+  decals/ (36)
+    art/decals/all/all_crater
+    art/decals/jungle/jungle_brick_wall_01
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_river_01
+    art/decals/jungle/jungle_rubble01
+    art/decals/jungle/stone_cliff_02
+    art/decals/urban/sidewalk_01
+    art/decals/urban/traffic_circle_45
+    art/decals/urban/traffic_line_long
+    art/decals/urban/traffic_line_long_worn_01
+    art/decals/urban/urban_chfloor
+    art/decals/urban/urban_cobble_corner
+    art/decals/urban/urban_cobble_edge
+    art/decals/urban/urban_cobble_edge_long
+    art/decals/urban/urban_cobble_median
+    art/decals/urban/urban_cobble_round
+    art/decals/urban/urban_gravel01
+    art/decals/urban/urban_litter01
+    art/decals/urban/urban_litter02
+    art/decals/urban/urban_litter03
+    art/decals/urban/urban_pavers03
+    art/decals/urban/urban_rail_01
+    art/decals/urban/urban_rubble00a
+    art/decals/urban/urban_rubble01_dusty
+    art/decals/urban/urban_rubble03
+    art/decals/urban/urban_rubble03_dusty
+    art/decals/urban/urban_soot
+    art/decals/urban/urban_street_arrow01
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_02
+    art/decals/z_all/crater_03
+    art/decals/z_all/crater_04
+    art/decals/z_all/crater_05
+    art/decals/z_all/crater_dust_01
+    art/decals/z_all/crater_outerring_directional_01
+    art/decals/z_all/stain_blood
+
+[2p_fata_morgana]
+
+  textures/ (2)
+    art/scenarios/textures/detail/rock_30
+    art/scenarios/textures/detail/sand_05
+
+  decals/ (20)
+    art/decals/desert/aterrain_dust_02
+    art/decals/desert/cliffside_05
+    art/decals/desert/cliffside_06
+    art/decals/desert/desert_loose_dirt_04
+    art/decals/desert/desert_loose_dirt_06
+    art/decals/desert/grassland_01
+    art/decals/desert/rock_35
+    art/decals/desert/sand05_rock30_t
+    art/decals/desert/sand_06
+    art/decals/desert/sand_07
+    art/decals/jungle/jungle_ground_09
+    art/decals/jungle/jungle_ground_09b
+    art/decals/jungle/jungle_river_02
+    art/decals/jungle/sand_05ripples
+    art/decals/jungle/stone_cliff_04b
+    art/decals/urban/urban_pavers_slabs
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_02d
+    art/decals/z_all/debris_boulders
+    art/decals/z_all/scattered_pebbles_01
+
+[2p_meeting_of_minds]
+
+  textures/ (2)
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_01
+
+  decals/ (15)
+    art/decals/footsteps/squiggoth_stomp
+    art/decals/jungle/ground_fill_01
+    art/decals/jungle/jungle_brick_wall_01
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_02a
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/jungle_mud_01
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/urban/urban_pavers01
+    art/decals/z_all/crater_02
+    art/decals/z_all/crater_mud_01
+    art/decals/z_all/jungle_dust_01
+
+[2p_outer_reaches]
+
+  textures/ (5)
+    art/scenarios/textures/detail/chaos_taint_01
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_cliff_01
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+
+  decals/ (11)
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_debris_01
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/urban/urban_pavers01
+    art/decals/z_all/crater_jungle_01
+    art/decals/z_all/crater_mud_01
+
+[2p_shrine_of_excellion]
+
+  textures/ (4)
+    art/scenarios/textures/detail/coble_stone_03
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+
+  decals/ (17)
+    art/decals/death/splat_1_dirtsand
+    art/decals/death/splat_2_dirtsand
+    art/decals/jungle/ground_fill_01
+    art/decals/jungle/jungle_canopy_02a
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_03
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/jungle_ground_rock_02
+    art/decals/jungle/jungle_mud_01
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_pile_01
+    art/decals/urban/urban_rubble03_red_dust
+    art/decals/z_all/crater_02
+    art/decals/z_all/crater_jungle_01
+    art/decals/z_all/debris_boulders
+    art/decals/z_all/jungle_dust_01
+    art/decals/z_all/terrain_dust_01
+
+[2p_titan_fall]
+
+  textures/ (14)
+    art/scenarios/textures/detail/cement_ground01
+    art/scenarios/textures/detail/charred_ground_01
+    art/scenarios/textures/detail/circular_tiles_03
+    art/scenarios/textures/detail/coble_stone_03
+    art/scenarios/textures/detail/concrete_01
+    art/scenarios/textures/detail/concrete_02
+    art/scenarios/textures/detail/concrete_03
+    art/scenarios/textures/detail/desert_loose_dirt_04_detail
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_01
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+    art/scenarios/textures/detail/random_stone_floor
+    art/scenarios/textures/detail/urban_chfloor
+    art/scenarios/textures/detail/urban_rubble_01
+
+  decals/ (37)
+    art/decals/death/splat_1_dirtsand
+    art/decals/death/splat_1_rock
+    art/decals/death/splat_2_dirtsand
+    art/decals/death/splat_3_dirtsand
+    art/decals/death/unit_splat_1_rock
+    art/decals/jungle/earthbank
+    art/decals/jungle/earthpile
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_02a
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_ground_01_dried
+    art/decals/jungle/jungle_ground_03_dried
+    art/decals/jungle/jungle_ground_04
+    art/decals/jungle/jungle_ground_rock_05
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/snow_slush/crater_charred_snow_01
+    art/decals/snow_slush/crater_orbital_snow_01
+    art/decals/urban/concrete_rubble
+    art/decals/urban/urban_chfloor
+    art/decals/urban/urban_cobble_corner
+    art/decals/urban/urban_cobble_edge
+    art/decals/urban/urban_cobble_edge_long
+    art/decals/urban/urban_litter01
+    art/decals/urban/urban_litter04
+    art/decals/urban/urban_pavement_02
+    art/decals/urban/urban_pavers
+    art/decals/urban/urban_rubble00a
+    art/decals/urban/urban_rubble01
+    art/decals/urban/urban_rubble03
+    art/decals/urban/urban_rubble03_dark
+    art/decals/urban/urban_rubble03_dusty
+    art/decals/urban/urban_rubble04
+    art/decals/urban/urban_rubble05
+    art/decals/urban/urban_rubble05_brownish
+    art/decals/urban/urban_rubble07
+    art/decals/urban/urban_storm_sewer
+
+[4p_ariel_highlands]
+
+  textures/ (3)
+    art/scenarios/textures/detail/rocky_ground
+    art/scenarios/textures/detail/snow_02
+    art/scenarios/textures/detail/snowy_field
+
+  decals/ (18)
+    art/decals/jungle/jungle_debris_01b
+    art/decals/jungle/jungle_ground_rock_05
+    art/decals/jungle/stone_cliff_04c
+    art/decals/jungle/stones_01
+    art/decals/jungle/stones_02
+    art/decals/snow_slush/slush_tracks_02
+    art/decals/snow_slush/snow_01b
+    art/decals/snow_slush/snow_02
+    art/decals/snow_slush/snow_02b
+    art/decals/snow_slush/snow_05
+    art/decals/snow_slush/snow_06
+    art/decals/snow_slush/snow_06b
+    art/decals/snow_slush/snow_06c
+    art/decals/snow_slush/snow_07
+    art/decals/snow_slush/snow_08
+    art/decals/snow_slush/snow_09
+    art/decals/z_all/crater_02b
+    art/decals/z_all/scattered_pebbles_01b
+
+[4p_biffys_peril]
+
+  textures/ (5)
+    art/scenarios/textures/detail/coble_stone_03
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/urban_chfloor
+    art/scenarios/textures/detail/urban_rubble_01
+
+  decals/ (13)
+    art/decals/jungle/ground_fill_01
+    art/decals/jungle/jungle_brick_wall_01
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_mud_01
+    art/decals/jungle/stone_pile_01
+    art/decals/urban/urban_rubble03
+    art/decals/urban/urban_rubble03_dusty
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_02
+    art/decals/z_all/crater_04
+    art/decals/z_all/crater_06
+    art/decals/z_all/crater_mud_01
+    art/decals/z_all/jungle_dust_01
+
+[4p_gurmuns_pass]
+
+  textures/ (3)
+    art/scenarios/textures/detail/jungle_cliff_01
+    art/scenarios/textures/detail/jungle_ground_02
+    art/scenarios/textures/detail/jungle_ground_03
+
+  decals/ (12)
+    art/decals/chaos/chaos_muck_01
+    art/decals/chaos/chaos_muck_03
+    art/decals/jungle/jungle_ground_06
+    art/decals/jungle/jungle_mud_01
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/z_all/chaos_muck_01
+    art/decals/z_all/chaos_muck_03
+    art/decals/z_all/chaos_vein_04
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_02
+    art/decals/z_all/scattered_pebbles_01
+
+[4p_into_the_breach]
+
+  textures/ (4)
+    art/scenarios/textures/detail/rocky_ground
+    art/scenarios/textures/detail/snow_01
+    art/scenarios/textures/detail/snow_02
+    art/scenarios/textures/detail/snow_rock_01
+
+  decals/ (13)
+    art/decals/jungle/stone_pile_02
+    art/decals/snow_slush/snow_01b
+    art/decals/snow_slush/snow_02
+    art/decals/snow_slush/snow_06b
+    art/decals/snow_slush/snow_07
+    art/decals/snow_slush/snow_08
+    art/decals/snow_slush/snow_08b
+    art/decals/snow_slush/snowy_dirt_04
+    art/decals/snow_slush/stone_cliff_00 snowy
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_outerring_grenade_blast
+    art/decals/z_all/force_weapon_crack_02
+    art/decals/z_all/small_round_hole
+
+[4p_panrea_lowlands]
+
+  textures/ (3)
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/jungle_ground_09_detail
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+
+  decals/ (48)
+    art/decals/desert/desert_loose_dirt_02
+    art/decals/desert/desert_loose_dirt_04
+    art/decals/desert/grassland_01
+    art/decals/desert/grassland_01b
+    art/decals/jungle/dirt_cracked
+    art/decals/jungle/earthbank
+    art/decals/jungle/flowers_02
+    art/decals/jungle/footpath
+    art/decals/jungle/footpath_02
+    art/decals/jungle/jungle_debris_02
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_edge_weeds_01
+    art/decals/jungle/jungle_edge_weeds_02
+    art/decals/jungle/jungle_ground_07
+    art/decals/jungle/jungle_ground_08
+    art/decals/jungle/jungle_ground_09
+    art/decals/jungle/jungle_ground_09b
+    art/decals/jungle/jungle_ground_21
+    art/decals/jungle/jungle_ground_rock_03
+    art/decals/jungle/jungle_ground_rock_05
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_cliff_04c
+    art/decals/jungle/stone_cliff_11
+    art/decals/jungle/stone_cliff_12
+    art/decals/jungle/stone_cliff_12b
+    art/decals/jungle/stone_pile_01
+    art/decals/jungle/stone_pile_02
+    art/decals/jungle/stonepile_03
+    art/decals/jungle/stones_01
+    art/decals/jungle/stones_02
+    art/decals/jungle/undercut_02
+    art/decals/jungle/undercut_02_short
+    art/decals/jungle/undercut_short
+    art/decals/snow_slush/snowdirt_06
+    art/decals/urban/urban_bricks_old_02
+    art/decals/urban/urban_drainagetunnel_01
+    art/decals/urban/urban_pavers_slabs
+    art/decals/urban/urban_pavers_snowy
+    art/decals/urban/urban_pavers_snowy02
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_06b
+    art/decals/z_all/crater_charred_01
+    art/decals/z_all/crater_outerring_grenade_blast
+    art/decals/z_all/scattered_pebbles_01
+    art/decals/z_all/scattered_pebbles_02
+    art/decals/z_all/small_soft hole
+
+[6p_kasyr_lutien]
+
+  textures/ (12)
+    art/scenarios/textures/detail/coble_stone
+    art/scenarios/textures/detail/concrete
+    art/scenarios/textures/detail/concrete_01
+    art/scenarios/textures/detail/concrete_02
+    art/scenarios/textures/detail/concrete_03
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_01
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+    art/scenarios/textures/detail/urban_chfloor
+    art/scenarios/textures/detail/urban_roof-gravel_01
+    art/scenarios/textures/detail/urban_rubble_01
+
+  decals/ (30)
+    art/decals/jungle/ground_fill_01
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_debris_01
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/jungle_mud_01
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/urban/sidewalk_01
+    art/decals/urban/sidewalk_02
+    art/decals/urban/traffic_circle_45
+    art/decals/urban/traffic_line_long
+    art/decals/urban/urban_cobble_corner
+    art/decals/urban/urban_cobble_edge
+    art/decals/urban/urban_cobble_edge_long
+    art/decals/urban/urban_cobble_median
+    art/decals/urban/urban_cobble_round
+    art/decals/urban/urban_pavers01
+    art/decals/urban/urban_road_edge_01
+    art/decals/urban/urban_road_edge_long_01
+    art/decals/urban/urban_rubble01_dusty
+    art/decals/urban/urban_rubble03_dark
+    art/decals/urban/urban_rubble03_dusty
+    art/decals/urban/urban_rubble03_red_dust
+    art/decals/urban/urban_street_arrow01
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_04
+    art/decals/z_all/crater_dust_01
+    art/decals/z_all/crater_jungle_01
+
+[6p_parmenie]
+
+  textures/ (2)
+    art/scenarios/textures/detail/desert_loose_dirt_04_detail
+    art/scenarios/textures/detail/meadow_ground_03
+
+  decals/ (14)
+    art/decals/chaos/chaos_blister_01
+    art/decals/chaos/chaos_cliff_infected_01
+    art/decals/chaos/chaos_greengoop_01
+    art/decals/chaos/chaos_muck_01
+    art/decals/chaos/chaos_muck_02
+    art/decals/chaos/chaos_muck_03
+    art/decals/chaos/chaos_vein_01
+    art/decals/chaos/chaos_vein_02
+    art/decals/chaos/chaos_vein_04
+    art/decals/jungle/dirt_cracked
+    art/decals/jungle/jungle_ground_07
+    art/decals/jungle/jungle_ground_08
+    art/decals/jungle/stone_cliff_00
+    art/decals/z_all/crater_06
+
+[6p_paynes_retribution]
+
+  textures/ (8)
+    art/scenarios/textures/detail/jungle_mud_01
+    art/scenarios/textures/detail/snow_01
+    art/scenarios/textures/detail/snow_02
+    art/scenarios/textures/detail/snow_packed
+    art/scenarios/textures/detail/snow_packed02 copy
+    art/scenarios/textures/detail/snow_rock_01
+    art/scenarios/textures/detail/snow_snowpile_detail
+    art/scenarios/textures/detail/snowy_field
+
+  decals/ (19)
+    art/decals/death/splat_1_dirtsand
+    art/decals/death/splat_2_dirtsand
+    art/decals/jungle/stone_cliff_10
+    art/decals/snow_slush/crater_snow_01
+    art/decals/snow_slush/crater_snow_02
+    art/decals/snow_slush/snow_06b
+    art/decals/snow_slush/snow_07
+    art/decals/snow_slush/snow_08
+    art/decals/snow_slush/snow_rock_01
+    art/decals/snow_slush/snow_snowpile
+    art/decals/snow_slush/snow_snowy_cliffside_01
+    art/decals/snow_slush/snowdirt_06
+    art/decals/snow_slush/snowy_dirt_01
+    art/decals/snow_slush/snowy_dirt_01b
+    art/decals/snow_slush/snowy_dirt_04
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_orbital_outer_debris
+    art/decals/z_all/crater_outerring_01
+    art/decals/z_all/crater_outerring_grenade_blast
+
+[6p_thargorum]
+
+  textures/ (1)
+    art/scenarios/textures/detail/rocky_ground
+
+  decals/ (17)
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/stone_cliff_08
+    art/decals/jungle/stone_pile_01
+    art/decals/jungle/stone_pile_02
+    art/decals/shadows/shadow_dir_blob-dreadnought
+    art/decals/snow_slush/snowdirt_06
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_orbital_outer_debris
+    art/decals/z_all/crater_outerring_01
+    art/decals/z_all/crater_outerring_directional_01
+    art/decals/z_all/crater_outerring_grenade_blast
+    art/decals/z_all/crater_outerring_grenade_blast2
+    art/decals/z_all/debris_boulders
+    art/decals/z_all/dirt_path
+    art/decals/z_all/scorch_plasma_miss_small
+    art/decals/z_all/small_square_hole
+
+[6p_vandea_coast]
+
+  textures/ (2)
+    art/scenarios/textures/detail/jungle_dry_earth_01
+    art/scenarios/textures/detail/jungle_ground_09_detail
+
+  decals/ (37)
+    art/decals/desert/aterrain_dust_02
+    art/decals/desert/desert_loose_dirt_01
+    art/decals/desert/desert_loose_dirt_02
+    art/decals/desert/desert_loose_dirt_04
+    art/decals/desert/grassland_01
+    art/decals/desert/grassland_01b
+    art/decals/jungle/dry_veg_01
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_01_dried
+    art/decals/jungle/jungle_ground_02_dried
+    art/decals/jungle/jungle_ground_03_dried
+    art/decals/jungle/jungle_ground_07
+    art/decals/jungle/jungle_ground_08
+    art/decals/jungle/jungle_ground_09
+    art/decals/jungle/jungle_ground_09b
+    art/decals/jungle/jungle_ground_rock_03
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_cliff_04b
+    art/decals/jungle/stone_cliff_11
+    art/decals/jungle/stone_cliff_13
+    art/decals/jungle/stone_cliff_13b
+    art/decals/jungle/stone_pile_02
+    art/decals/jungle/stonepile_03
+    art/decals/jungle/stones_01
+    art/decals/jungle/stones_02
+    art/decals/snow_slush/snow_02c
+    art/decals/vandea_coast/vc_slag_deposit
+    art/decals/vandea_coast/vc_strategic_objective
+    art/decals/z_all/chaos_taint_02_tile
+    art/decals/z_all/chaos_taint_03_tile
+    art/decals/z_all/crater_06b
+    art/decals/z_all/necron_edge_dust_01c
+    art/decals/z_all/scattered_pebbles_01
+    art/decals/z_all/scattered_pebbles_02
+    art/decals/z_all/stain_blood
+    art/decals/z_all/terrain_wet sand_01
+
+[6p_western_barrens]
+
+  textures/ (3)
+    art/scenarios/textures/detail/desert_loose_dirt_04_detail
+    art/scenarios/textures/detail/sand_noripples
+    art/scenarios/textures/detail/urban_rubble_01
+
+  decals/ (29)
+    art/decals/desert/desert_loose_dirt_03
+    art/decals/desert/desert_loose_dirt_04
+    art/decals/desert/desert_veg_05
+    art/decals/desert/grassland_01
+    art/decals/desert/sand_07
+    art/decals/jungle/dirt_cracked
+    art/decals/jungle/dry_veg_01
+    art/decals/jungle/earthbank
+    art/decals/jungle/earthpile
+    art/decals/jungle/footpath
+    art/decals/jungle/jungle_debris_01b
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_02_dried
+    art/decals/jungle/jungle_ground_03
+    art/decals/jungle/jungle_ground_rock_05
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_cliff_04b
+    art/decals/jungle/stone_cliff_04c
+    art/decals/jungle/stones_01
+    art/decals/jungle/stones_02
+    art/decals/urban/urban_pavers_slabs
+    art/decals/urban/urban_rubble05
+    art/decals/urban/urban_rubble05_brownish
+    art/decals/urban/urban_rubble06
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_outerring_grenade_blast
+    art/decals/z_all/force_weapon_crack_02
+    art/decals/z_all/scattered_pebbles_01
+
+[8p_demes_northlands]
+
+  textures/ (3)
+    art/scenarios/textures/detail/snow_02
+    art/scenarios/textures/detail/snow_packed
+    art/scenarios/textures/detail/snow_packed02 copy
+
+  decals/ (32)
+    art/decals/jungle/stone_cliff_10
+    art/decals/shadows/shadow_dir_blob
+    art/decals/snow_slush/snow_01b
+    art/decals/snow_slush/snow_02b
+    art/decals/snow_slush/snow_02c
+    art/decals/snow_slush/snow_06
+    art/decals/snow_slush/snow_06b
+    art/decals/snow_slush/snow_07
+    art/decals/snow_slush/snow_08
+    art/decals/snow_slush/snow_drifts_01
+    art/decals/snow_slush/snow_drifts_02
+    art/decals/snow_slush/snow_drifts_03
+    art/decals/snow_slush/snow_glacier_03
+    art/decals/snow_slush/snow_glacier_04
+    art/decals/snow_slush/snow_glacier_05
+    art/decals/snow_slush/snow_glacier_06
+    art/decals/snow_slush/snow_icy_hillside_01
+    art/decals/snow_slush/snow_icy_hillside_01b
+    art/decals/snow_slush/snow_icy_hillside_02
+    art/decals/snow_slush/snow_icy_hillside_02b
+    art/decals/snow_slush/snow_pack_ice_01
+    art/decals/snow_slush/snow_rock_01
+    art/decals/snow_slush/snow_rock_02
+    art/decals/snow_slush/snow_snowbank_short_01
+    art/decals/snow_slush/snow_snowpile
+    art/decals/snow_slush/snow_snowy_cliffside_01
+    art/decals/snow_slush/snow_snowy_cliffside_03
+    art/decals/snow_slush/snow_snowy_cliffside_03b
+    art/decals/snow_slush/snow_snowy_cliffside_04
+    art/decals/snow_slush/snow_snowy_cliffside_04b
+    art/decals/snow_slush/snowdirt_08
+    art/decals/z_all/crater_02b
+
+[8p_forbidden_jungle]
+
+  textures/ (4)
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_04
+    art/scenarios/textures/detail/meadow_ground_02
+    art/scenarios/textures/detail/snowy_field
+
+  decals/ (31)
+    art/decals/jungle/ground_fill_01
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_02a
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_debris_01
+    art/decals/jungle/jungle_debris_02
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_03
+    art/decals/jungle/jungle_ground_04
+    art/decals/jungle/jungle_ground_05
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/jungle_ground_rock_02
+    art/decals/jungle/jungle_mud_02
+    art/decals/jungle/jungle_river_02
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_cliff_09b
+    art/decals/jungle/stone_cliff_foilage_02
+    art/decals/jungle/stone_pile_02
+    art/decals/snow_slush/snow_06b
+    art/decals/snow_slush/snowdirt_06
+    art/decals/snow_slush/snowy_dirt_01
+    art/decals/snow_slush/snowy_dirt_01b
+    art/decals/snow_slush/snowy_dirt_04
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_orbital_outer_debris
+    art/decals/z_all/crater_outerring_grenade_blast
+    art/decals/z_all/debris_boulders
+    art/decals/z_all/dirt_path
+    art/decals/z_all/jungle_dust_01
+
+[8p_jalaganda_lowlands]
+
+  textures/ (5)
+    art/scenarios/textures/detail/cement_ground01
+    art/scenarios/textures/detail/concrete_01
+    art/scenarios/textures/detail/concrete_03
+    art/scenarios/textures/detail/jungle_ground_02
+    art/scenarios/textures/detail/jungle_ground_04
+
+  decals/ (54)
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_01_dried
+    art/decals/jungle/jungle_ground_02_dried
+    art/decals/jungle/jungle_ground_04
+    art/decals/jungle/jungle_ground_04_dried
+    art/decals/jungle/jungle_ground_05_dried
+    art/decals/jungle/jungle_ground_06
+    art/decals/jungle/jungle_ground_07
+    art/decals/jungle/jungle_ground_09
+    art/decals/jungle/stone_cliff_07
+    art/decals/jungle/stone_cliff_08b
+    art/decals/jungle/stone_cliff_14c
+    art/decals/jungle/stone_cliff_14d
+    art/decals/jungle/tank_tread
+    art/decals/jungle/undercut_02
+    art/decals/urban/concrete_rubble
+    art/decals/urban/sidewalk_02
+    art/decals/urban/traffic_circle
+    art/decals/urban/traffic_line_long
+    art/decals/urban/traffic_line_long_worn_01
+    art/decals/urban/traffic_line_long_worn_02
+    art/decals/urban/urban_cobble_corner
+    art/decals/urban/urban_cobble_edge
+    art/decals/urban/urban_cobble_edge_long
+    art/decals/urban/urban_cobble_median
+    art/decals/urban/urban_cobble_round
+    art/decals/urban/urban_furrowed_soil
+    art/decals/urban/urban_pavers_slabs
+    art/decals/urban/urban_rubble00a
+    art/decals/urban/urban_rubble01
+    art/decals/urban/urban_rubble01_dusty
+    art/decals/urban/urban_rubble03
+    art/decals/urban/urban_rubble03_dark
+    art/decals/urban/urban_rubble03_dusty
+    art/decals/urban/urban_rubble03_red_dust
+    art/decals/urban/urban_rubble04
+    art/decals/urban/urban_rubble05
+    art/decals/urban/urban_rubble05_brownish
+    art/decals/urban/urban_rubble05_dusty
+    art/decals/urban/urban_rubble06
+    art/decals/urban/urban_rubble06b
+    art/decals/urban/urban_street_arrow01
+    art/decals/urban/urban_street_end
+    art/decals/urban/urban_symble01
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_01
+    art/decals/z_all/crater_02
+    art/decals/z_all/crater_06b
+    art/decals/z_all/crater_charred_01
+    art/decals/z_all/crater_mud_01
+    art/decals/z_all/grime_spot
+    art/decals/z_all/scattered_pebbles_01
+
+[8p_morriah_coast]
+
+  textures/ (4)
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_cliff_01
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/meadow_ground
+
+  decals/ (52)
+    art/decals/jungle/dirt_cracked
+    art/decals/jungle/earthbank
+    art/decals/jungle/earthpile
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_02a
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_debris_01b
+    art/decals/jungle/jungle_debris_02
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_01_dried
+    art/decals/jungle/jungle_ground_03
+    art/decals/jungle/jungle_ground_04
+    art/decals/jungle/jungle_ground_05
+    art/decals/jungle/jungle_ground_06
+    art/decals/jungle/jungle_ground_09
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/jungle_ground_rock_02
+    art/decals/jungle/jungle_ground_rock_03
+    art/decals/jungle/jungle_ground_rock_05
+    art/decals/jungle/jungle_river_02
+    art/decals/jungle/jungle_sand_02
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_cliff_04b
+    art/decals/jungle/stone_cliff_10
+    art/decals/jungle/stone_cliff_13
+    art/decals/jungle/stone_cliff_14
+    art/decals/jungle/stone_cliff_14b
+    art/decals/jungle/stone_cliff_foilage_02
+    art/decals/jungle/stone_pile_01
+    art/decals/jungle/stone_pile_02
+    art/decals/jungle/stonepile_03
+    art/decals/jungle/stones_01
+    art/decals/jungle/stones_02
+    art/decals/shadows/shadow_dir_blob
+    art/decals/shadows/shadow_dir_blob-dot
+    art/decals/snow_slush/slush_tracks_07
+    art/decals/snow_slush/slush_tracks_08
+    art/decals/snow_slush/slush_tracks_09
+    art/decals/snow_slush/snowdirt_06
+    art/decals/urban/urban_rubble06
+    art/decals/urban/urban_soot
+    art/decals/z_all/chaos_taint_02_tile
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_stick_bomb
+    art/decals/z_all/dirt_path
+    art/decals/z_all/gouge
+    art/decals/z_all/scattered_pebbles_01
+    art/decals/z_all/scattered_pebbles_02
+    art/decals/z_all/stain_blood
+    art/decals/z_all/terrain_dust_01
+
+[8p_rhean_jungle]
+
+  textures/ (10)
+    art/scenarios/textures/detail/cement_ground01
+    art/scenarios/textures/detail/jungle_canopy_01
+    art/scenarios/textures/detail/jungle_ground_01
+    art/scenarios/textures/detail/jungle_ground_02
+    art/scenarios/textures/detail/jungle_ground_03
+    art/scenarios/textures/detail/jungle_ground_04
+    art/scenarios/textures/detail/jungle_ground_foilage_01
+    art/scenarios/textures/detail/meadow_ground
+    art/scenarios/textures/detail/meadow_ground_02
+    art/scenarios/textures/detail/rocky_ground
+
+  decals/ (41)
+    art/decals/desert/grassland_01
+    art/decals/jungle/jungle_canopy_01
+    art/decals/jungle/jungle_canopy_02a
+    art/decals/jungle/jungle_canopy_03
+    art/decals/jungle/jungle_debris_01
+    art/decals/jungle/jungle_debris_01b
+    art/decals/jungle/jungle_debris_02
+    art/decals/jungle/jungle_debris_03
+    art/decals/jungle/jungle_ground_01
+    art/decals/jungle/jungle_ground_01_dried
+    art/decals/jungle/jungle_ground_02_dried
+    art/decals/jungle/jungle_ground_03
+    art/decals/jungle/jungle_ground_03_dried
+    art/decals/jungle/jungle_ground_04
+    art/decals/jungle/jungle_ground_04_dried
+    art/decals/jungle/jungle_ground_05
+    art/decals/jungle/jungle_ground_05_dried
+    art/decals/jungle/jungle_ground_06
+    art/decals/jungle/jungle_ground_rock_01
+    art/decals/jungle/jungle_mud_02
+    art/decals/jungle/jungle_sand_02
+    art/decals/jungle/stone_cliff_00
+    art/decals/jungle/stone_cliff_04
+    art/decals/jungle/stone_cliff_04b
+    art/decals/jungle/stone_cliff_10
+    art/decals/jungle/stone_cliff_foilage_02
+    art/decals/jungle/stone_pile_02
+    art/decals/snow_slush/snowdirt_06
+    art/decals/z_all/chaos_taint_02_tile
+    art/decals/z_all/crater_00
+    art/decals/z_all/crater_02b
+    art/decals/z_all/crater_04
+    art/decals/z_all/crater_06b
+    art/decals/z_all/crater_charred_01
+    art/decals/z_all/crater_orbital_outer_debris
+    art/decals/z_all/crater_outerring_01
+    art/decals/z_all/crater_outerring_grenade_blast
+    art/decals/z_all/crater_outerring_grenade_blast2
+    art/decals/z_all/debris_boulders
+    art/decals/z_all/dirt_path
+    art/decals/z_all/terrain_dust_01

@@ -1,0 +1,8397 @@
+{
+  "map": "2p_outer_reaches.sgb",
+  "source": {
+    "file": "2p_outer_reaches.sgb",
+    "coordinates": "SGB terrain-local X/Z; the game applies its map root rotation and mirror once."
+  },
+  "metadata": {
+    "num_players": 2,
+    "map_size": 257,
+    "mod_name": "dxp2",
+    "map_name": "$100004",
+    "scenario_name": "$100005"
+  },
+  "terrain": {
+    "heightmap_file": "2p_outer_reaches_heightmap.png",
+    "size": [
+      257,
+      257
+    ],
+    "encoding": "8-bit gray; rows are local z, columns are local x; height = byte * height_scale",
+    "world_half_extent": 256,
+    "height_scale": 0.25,
+    "cell_size": 2,
+    "num_cells": [
+      256,
+      256
+    ],
+    "center_cell_idx": [
+      129,
+      129
+    ],
+    "num_tile_cells": 16,
+    "tile_texture_repeat": 4,
+    "local_origin": [
+      -257,
+      -257
+    ],
+    "ground_texture": "art/scenarios/textures/detail/jungle_canopy_01",
+    "detail_textures": [
+      {
+        "index": 0,
+        "path": "art/scenarios/textures/detail/chaos_taint_01",
+        "file": "textures/chaos_taint_01.png",
+        "tile_count": 58
+      },
+      {
+        "index": 60,
+        "path": "art/scenarios/textures/detail/jungle_canopy_01",
+        "file": "textures/jungle_canopy_01.png",
+        "tile_count": 74
+      },
+      {
+        "index": 49,
+        "path": "art/scenarios/textures/detail/jungle_cliff_01",
+        "file": "textures/jungle_cliff_01.png",
+        "tile_count": 63
+      },
+      {
+        "index": 63,
+        "path": "art/scenarios/textures/detail/jungle_ground_03",
+        "file": "textures/jungle_ground_03.png",
+        "tile_count": 25
+      },
+      {
+        "index": 37,
+        "path": "art/scenarios/textures/detail/jungle_ground_foilage_01",
+        "file": "textures/jungle_ground_foilage_01.png",
+        "tile_count": 36
+      }
+    ],
+    "texture_indices": {
+      "size": [
+        16,
+        16
+      ],
+      "order": "rows[z][x], DATADETT row-major",
+      "rows": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          60,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          49,
+          49,
+          49,
+          49,
+          0
+        ],
+        [
+          0,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          49,
+          49,
+          49,
+          49,
+          0
+        ],
+        [
+          0,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          49,
+          49,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          60,
+          60,
+          60,
+          37,
+          37,
+          37,
+          37,
+          37,
+          37,
+          49,
+          49,
+          49,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          63,
+          63,
+          37,
+          37,
+          63,
+          63,
+          49,
+          49,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          63,
+          63,
+          63,
+          37,
+          37,
+          63,
+          37,
+          37,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          37,
+          37,
+          63,
+          63,
+          37,
+          37,
+          63,
+          37,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          37,
+          63,
+          63,
+          63,
+          63,
+          37,
+          37,
+          37,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          63,
+          63,
+          37,
+          37,
+          63,
+          63,
+          37,
+          37,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          63,
+          37,
+          37,
+          37,
+          63,
+          37,
+          37,
+          37,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          63,
+          63,
+          63,
+          37,
+          37,
+          63,
+          37,
+          37,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          60,
+          60,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          60,
+          60,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          60,
+          60,
+          60,
+          60,
+          60,
+          0
+        ],
+        [
+          0,
+          0,
+          37,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "decals": [
+    {
+      "id": 1,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -118.97817993164062,
+      "z": 20.696678161621094,
+      "size_raw": 0.0791548490524292,
+      "rotation_rad": -2.415515422821045
+    },
+    {
+      "id": 3,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -126.25587463378906,
+      "z": -7.996736526489258,
+      "size_raw": 0.05538904666900635,
+      "rotation_rad": -1.549767017364502
+    },
+    {
+      "id": 5,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -120.57308959960938,
+      "z": -24.557302474975586,
+      "size_raw": 0.05538904666900635,
+      "rotation_rad": -1.0769855976104736
+    },
+    {
+      "id": 7,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -121.36626434326172,
+      "z": -42.582481384277344,
+      "size_raw": 0.05538904666900635,
+      "rotation_rad": -1.999049425125122
+    },
+    {
+      "id": 9,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -128.43431091308594,
+      "z": -63.949554443359375,
+      "size_raw": 0.047465961426496506,
+      "rotation_rad": -1.8813947439193726
+    },
+    {
+      "id": 11,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -129.52691650390625,
+      "z": -82.8003158569336,
+      "size_raw": 0.047465961426496506,
+      "rotation_rad": -1.4493948221206665
+    },
+    {
+      "id": 13,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -128.22779846191406,
+      "z": -101.81291961669922,
+      "size_raw": 0.047465961426496506,
+      "rotation_rad": -1.3781766891479492
+    },
+    {
+      "id": 15,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -126.89039611816406,
+      "z": 42.7587890625,
+      "size_raw": 0.03749999776482582,
+      "rotation_rad": -1.4297610521316528
+    },
+    {
+      "id": 17,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -128.2537384033203,
+      "z": 59.291419982910156,
+      "size_raw": 0.03749999776482582,
+      "rotation_rad": -1.7575008869171143
+    },
+    {
+      "id": 19,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -126.14562225341797,
+      "z": 72.64231872558594,
+      "size_raw": 0.03749999776482582,
+      "rotation_rad": -1.603523850440979
+    },
+    {
+      "id": 21,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -126.71752166748047,
+      "z": 86.9012451171875,
+      "size_raw": 0.03749999776482582,
+      "rotation_rad": -1.444035291671753
+    },
+    {
+      "id": 23,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -124.99296569824219,
+      "z": 104.40894317626953,
+      "size_raw": 0.03749999776482582,
+      "rotation_rad": -1.9555011987686157
+    },
+    {
+      "id": 25,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -62.99973678588867,
+      "z": -13.24825668334961,
+      "size_raw": 0.03749999776482582,
+      "rotation_rad": -5.44278621673584
+    },
+    {
+      "id": 27,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -60.402015686035156,
+      "z": 2.796480178833008,
+      "size_raw": 0.048090141266584396,
+      "rotation_rad": 4.452829360961914
+    },
+    {
+      "id": 29,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -53.417388916015625,
+      "z": -11.570528984069824,
+      "size_raw": 0.03840944543480873,
+      "rotation_rad": -2.1900107860565186
+    },
+    {
+      "id": 31,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -41.4631233215332,
+      "z": 3.9145584106445312,
+      "size_raw": 0.04981283098459244,
+      "rotation_rad": -5.480815887451172
+    },
+    {
+      "id": 33,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -3.824848175048828,
+      "z": 42.80779266357422,
+      "size_raw": 0.05805119499564171,
+      "rotation_rad": -2.5738751888275146
+    },
+    {
+      "id": 35,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 11.298240661621094,
+      "z": 56.918113708496094,
+      "size_raw": 0.05436542630195618,
+      "rotation_rad": -2.549329996109009
+    },
+    {
+      "id": 37,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -8.561655044555664,
+      "z": 58.723167419433594,
+      "size_raw": 0.054547060281038284,
+      "rotation_rad": -6.272834777832031
+    },
+    {
+      "id": 39,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -116.60343170166016,
+      "z": 118.04219055175781,
+      "size_raw": 0.0608927384018898,
+      "rotation_rad": -5.594601154327393
+    },
+    {
+      "id": 41,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -97.91248321533203,
+      "z": 128.1501922607422,
+      "size_raw": 0.048692673444747925,
+      "rotation_rad": -6.201443195343018
+    },
+    {
+      "id": 43,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -80.17106628417969,
+      "z": 126.54890441894531,
+      "size_raw": 0.038349054753780365,
+      "rotation_rad": -3.2509782314300537
+    },
+    {
+      "id": 45,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -64.5704116821289,
+      "z": 127.48347473144531,
+      "size_raw": 0.038349054753780365,
+      "rotation_rad": -3.005507469177246
+    },
+    {
+      "id": 47,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -48.075767517089844,
+      "z": 127.27415466308594,
+      "size_raw": 0.038349054753780365,
+      "rotation_rad": -3.268954038619995
+    },
+    {
+      "id": 49,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -80.56037139892578,
+      "z": -71.28884887695312,
+      "size_raw": 0.05441316217184067,
+      "rotation_rad": -3.7213950157165527
+    },
+    {
+      "id": 51,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -59.805206298828125,
+      "z": -75.64704895019531,
+      "size_raw": 0.0723503977060318,
+      "rotation_rad": -3.3286571502685547
+    },
+    {
+      "id": 53,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -32.10222625732422,
+      "z": 120.76483917236328,
+      "size_raw": 0.05194621533155441,
+      "rotation_rad": -4.0952019691467285
+    },
+    {
+      "id": 55,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -22.19077491760254,
+      "z": 109.05032348632812,
+      "size_raw": 0.042916953563690186,
+      "rotation_rad": -3.2971339225769043
+    },
+    {
+      "id": 57,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -13.046730041503906,
+      "z": 124.59593200683594,
+      "size_raw": 0.042916953563690186,
+      "rotation_rad": -2.5999832153320312
+    },
+    {
+      "id": 59,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 6.117459297180176,
+      "z": 128.65440368652344,
+      "size_raw": 0.042916953563690186,
+      "rotation_rad": -3.2911970615386963
+    },
+    {
+      "id": 61,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 23.54144287109375,
+      "z": 120.68145751953125,
+      "size_raw": 0.042916953563690186,
+      "rotation_rad": -3.6863672733306885
+    },
+    {
+      "id": 63,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 38.46727752685547,
+      "z": 120.18518829345703,
+      "size_raw": 0.042916953563690186,
+      "rotation_rad": -2.8586437702178955
+    },
+    {
+      "id": 65,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 53.792198181152344,
+      "z": 123.95661926269531,
+      "size_raw": 0.03327469527721405,
+      "rotation_rad": -2.8586437702178955
+    },
+    {
+      "id": 75,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 65.36688232421875,
+      "z": 90.25839233398438,
+      "size_raw": 0.044114332646131516,
+      "rotation_rad": -1.035080909729004
+    },
+    {
+      "id": 77,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 76.60137176513672,
+      "z": 71.50886535644531,
+      "size_raw": 0.05481208115816116,
+      "rotation_rad": -4.42456579208374
+    },
+    {
+      "id": 79,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 83.48939514160156,
+      "z": 53.42344665527344,
+      "size_raw": 0.040445830672979355,
+      "rotation_rad": -4.355876445770264
+    },
+    {
+      "id": 81,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 62.834476470947266,
+      "z": 72.59784698486328,
+      "size_raw": 0.033919043838977814,
+      "rotation_rad": -5.012931823730469
+    },
+    {
+      "id": 83,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 61.794803619384766,
+      "z": 60.352603912353516,
+      "size_raw": 0.033919043838977814,
+      "rotation_rad": -4.275370121002197
+    },
+    {
+      "id": 85,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 70.51924133300781,
+      "z": 53.51085662841797,
+      "size_raw": 0.033919043838977814,
+      "rotation_rad": -3.5138068199157715
+    },
+    {
+      "id": 87,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 0.5637226104736328,
+      "z": -13.912217140197754,
+      "size_raw": 0.052437424659729004,
+      "rotation_rad": -5.9462409019470215
+    },
+    {
+      "id": 89,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 14.185334205627441,
+      "z": 0.5807294845581055,
+      "size_raw": 0.05336994677782059,
+      "rotation_rad": -4.994614601135254
+    },
+    {
+      "id": 91,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 16.079702377319336,
+      "z": -13.637868881225586,
+      "size_raw": 0.03756114840507507,
+      "rotation_rad": -5.480815887451172
+    },
+    {
+      "id": 93,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 75.47244262695312,
+      "z": -54.26359558105469,
+      "size_raw": 0.05481208115816116,
+      "rotation_rad": -3.723323106765747
+    },
+    {
+      "id": 95,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 96.68673706054688,
+      "z": -56.179656982421875,
+      "size_raw": 0.05481208115816116,
+      "rotation_rad": -2.9170711040496826
+    },
+    {
+      "id": 97,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 115.02222442626953,
+      "z": -44.986976623535156,
+      "size_raw": 0.05192406848073006,
+      "rotation_rad": -2.6130709648132324
+    },
+    {
+      "id": 99,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 58.09636688232422,
+      "z": -73.5899887084961,
+      "size_raw": 0.06345903873443604,
+      "rotation_rad": -4.320471286773682
+    },
+    {
+      "id": 101,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 58.612449645996094,
+      "z": -101.85924530029297,
+      "size_raw": 0.06345903873443604,
+      "rotation_rad": -5.03178071975708
+    },
+    {
+      "id": 105,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": 59.131805419921875,
+      "z": -48.199710845947266,
+      "size_raw": 0.07506958395242691,
+      "rotation_rad": -0.5612977147102356
+    },
+    {
+      "id": 107,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": 52.2758903503418,
+      "z": -56.52652359008789,
+      "size_raw": 0.050154149532318115,
+      "rotation_rad": -3.9210143089294434
+    },
+    {
+      "id": 131,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -116.09941101074219,
+      "z": 47.71917724609375,
+      "size_raw": 0.06275423616170883,
+      "rotation_rad": -2.7116832733154297
+    },
+    {
+      "id": 133,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -114.63771057128906,
+      "z": 78.47834777832031,
+      "size_raw": 0.06275423616170883,
+      "rotation_rad": -2.7116832733154297
+    },
+    {
+      "id": 135,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -48.67240524291992,
+      "z": 113.35697174072266,
+      "size_raw": 0.06275423616170883,
+      "rotation_rad": -1.560464859008789
+    },
+    {
+      "id": 141,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 36.28600311279297,
+      "z": -67.11679077148438,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -0.2748338580131531
+    },
+    {
+      "id": 143,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 26.665714263916016,
+      "z": -61.88044738769531,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -0.5047187805175781
+    },
+    {
+      "id": 145,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 17.641544342041016,
+      "z": -60.137516021728516,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -3.357085704803467
+    },
+    {
+      "id": 147,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 7.0150556564331055,
+      "z": -57.48287582397461,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -0.251064658164978
+    },
+    {
+      "id": 149,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -1.2193087339401245,
+      "z": -57.02052307128906,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -0.22002916038036346
+    },
+    {
+      "id": 151,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -11.11198902130127,
+      "z": -52.319026947021484,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -0.44991424679756165
+    },
+    {
+      "id": 153,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -20.218080520629883,
+      "z": -51.07305145263672,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -6.249561786651611
+    },
+    {
+      "id": 155,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -26.528335571289062,
+      "z": -46.45294189453125,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -0.6696831583976746
+    },
+    {
+      "id": 159,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 51.78728103637695,
+      "z": 19.535945892333984,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -4.416717529296875
+    },
+    {
+      "id": 163,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 55.387088775634766,
+      "z": 8.468958854675293,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -1.3252601623535156
+    },
+    {
+      "id": 165,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 58.048404693603516,
+      "z": -2.807699203491211,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -1.3778074979782104
+    },
+    {
+      "id": 167,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 59.26860046386719,
+      "z": -13.340255737304688,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -4.469040393829346
+    },
+    {
+      "id": 169,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 61.4207763671875,
+      "z": -23.758594512939453,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -4.311800003051758
+    },
+    {
+      "id": 171,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 65.8524169921875,
+      "z": -32.63114929199219,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -4.169732570648193
+    },
+    {
+      "id": 173,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 69.51231384277344,
+      "z": -39.43773651123047,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -4.171570301055908
+    },
+    {
+      "id": 179,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -20.27873420715332,
+      "z": 30.12096405029297,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.4619879722595215
+    },
+    {
+      "id": 181,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -99.3389663696289,
+      "z": 86.79978942871094,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 6.011898994445801
+    },
+    {
+      "id": 183,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -89.30594635009766,
+      "z": 62.26995849609375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.6861081123352051
+    },
+    {
+      "id": 185,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -70.77619171142578,
+      "z": 59.63716125488281,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.950572967529297
+    },
+    {
+      "id": 187,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -67.32379150390625,
+      "z": 67.21806335449219,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.4531164169311523
+    },
+    {
+      "id": 189,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -65.9692153930664,
+      "z": 99.8880615234375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.7688018083572388
+    },
+    {
+      "id": 191,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -78.54656219482422,
+      "z": 103.54150390625,
+      "size_raw": 0.054317623376846313,
+      "rotation_rad": 4.86025333404541
+    },
+    {
+      "id": 193,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -45.48246383666992,
+      "z": 98.3764419555664,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.727028489112854
+    },
+    {
+      "id": 195,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -35.104942321777344,
+      "z": 98.60645294189453,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.650355815887451
+    },
+    {
+      "id": 203,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 45.44940948486328,
+      "z": 61.293479919433594,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.230669975280762
+    },
+    {
+      "id": 209,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 43.33917999267578,
+      "z": 35.40744400024414,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.029024124145508
+    },
+    {
+      "id": 211,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 33.839290618896484,
+      "z": 34.7154541015625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.935014247894287
+    },
+    {
+      "id": 219,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -3.67333984375,
+      "z": -30.496688842773438,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.35173335671424866
+    },
+    {
+      "id": 221,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -15.828985214233398,
+      "z": -31.79698944091797,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.2181172370910645
+    },
+    {
+      "id": 223,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -26.237485885620117,
+      "z": -31.45352554321289,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.460967540740967
+    },
+    {
+      "id": 225,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -32.16767120361328,
+      "z": -37.230560302734375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.9332687854766846
+    },
+    {
+      "id": 227,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -32.74575424194336,
+      "z": -55.785255432128906,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.19240140914917
+    },
+    {
+      "id": 229,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -36.87015151977539,
+      "z": -63.460357666015625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.925054907798767
+    },
+    {
+      "id": 237,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -101.33389282226562,
+      "z": -33.69562911987305,
+      "size_raw": 0.05289744585752487,
+      "rotation_rad": 5.83985710144043
+    },
+    {
+      "id": 239,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -69.34988403320312,
+      "z": -93.38147735595703,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.1598825454711914
+    },
+    {
+      "id": 251,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -116.9732894897461,
+      "z": 94.42618560791016,
+      "size_raw": 0.06275423616170883,
+      "rotation_rad": -3.4704370498657227
+    },
+    {
+      "id": 253,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -89.73387145996094,
+      "z": 113.99369049072266,
+      "size_raw": 0.06275423616170883,
+      "rotation_rad": -0.29148218035697937
+    },
+    {
+      "id": 255,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 66.90977478027344,
+      "z": 125.74633026123047,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.045685648918151855
+    },
+    {
+      "id": 257,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 76.59378051757812,
+      "z": 125.10680389404297,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.045685648918151855
+    },
+    {
+      "id": 259,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 85.9350814819336,
+      "z": 125.14218139648438,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -6.197744369506836
+    },
+    {
+      "id": 261,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 95.61958312988281,
+      "z": 125.77434539794922,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -6.197744369506836
+    },
+    {
+      "id": 263,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 99.8469009399414,
+      "z": 122.22855377197266,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.6381872296333313
+    },
+    {
+      "id": 265,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 107.52312469482422,
+      "z": 116.29016876220703,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.6381872296333313
+    },
+    {
+      "id": 267,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 112.8453598022461,
+      "z": 109.9224853515625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.542688250541687
+    },
+    {
+      "id": 269,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 112.92161560058594,
+      "z": 100.21768188476562,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.542688250541687
+    },
+    {
+      "id": 271,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 113.04403686523438,
+      "z": 90.6648941040039,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5778144598007202
+    },
+    {
+      "id": 273,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 112.7794189453125,
+      "z": 80.9634017944336,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5778144598007202
+    },
+    {
+      "id": 275,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 111.85828399658203,
+      "z": 71.62448120117188,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5817221403121948
+    },
+    {
+      "id": 277,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 111.55575561523438,
+      "z": 61.92407989501953,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5817221403121948
+    },
+    {
+      "id": 279,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 111.30531311035156,
+      "z": 52.3737907409668,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.616848349571228
+    },
+    {
+      "id": 281,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 110.16373443603516,
+      "z": 44.01996994018555,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.8539503812789917
+    },
+    {
+      "id": 283,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 107.34693145751953,
+      "z": 37.575042724609375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.142960548400879
+    },
+    {
+      "id": 285,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 103.07437896728516,
+      "z": 29.87013816833496,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.0188679695129395
+    },
+    {
+      "id": 287,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 101.88761138916016,
+      "z": 22.373525619506836,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.4553289413452148
+    },
+    {
+      "id": 289,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 105.07373809814453,
+      "z": 15.642237663269043,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.5093098282814026
+    },
+    {
+      "id": 291,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 113.57874298095703,
+      "z": 10.29207992553711,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.5871946215629578
+    },
+    {
+      "id": 293,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 121.5978012084961,
+      "z": 4.5013837814331055,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.653539776802063
+    },
+    {
+      "id": 295,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 124.63323211669922,
+      "z": -1.4340205192565918,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.4704521894454956
+    },
+    {
+      "id": 297,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 125.2472915649414,
+      "z": -11.306208610534668,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.536797046661377
+    },
+    {
+      "id": 299,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 125.35869598388672,
+      "z": -20.92780113220215,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.7059909105300903
+    },
+    {
+      "id": 301,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 123.65196990966797,
+      "z": -30.67070960998535,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.7723357677459717
+    },
+    {
+      "id": 399,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 117.35368347167969,
+      "z": 126.19476318359375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.141940116882324
+    },
+    {
+      "id": 401,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 126.82168579101562,
+      "z": 111.3431167602539,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.060907572507858276
+    },
+    {
+      "id": 403,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 126.806396484375,
+      "z": 91.77191162109375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5836658477783203
+    },
+    {
+      "id": 405,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 125.96959686279297,
+      "z": 71.27941131591797,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.05445357412099838
+    },
+    {
+      "id": 407,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 125.63031768798828,
+      "z": 52.389034271240234,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.6376243829727173
+    },
+    {
+      "id": 409,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 122.94554138183594,
+      "z": 33.566471099853516,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.6162197589874268
+    },
+    {
+      "id": 411,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 123.56598663330078,
+      "z": 21.285572052001953,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.640068292617798
+    },
+    {
+      "id": 413,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 135.08958435058594,
+      "z": 6.0659098625183105,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.838566303253174
+    },
+    {
+      "id": 415,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 125.61427307128906,
+      "z": -60.09370040893555,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 6.011903285980225
+    },
+    {
+      "id": 417,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 121.51661682128906,
+      "z": -77.90299987792969,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5854675769805908
+    },
+    {
+      "id": 419,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 125.42904663085938,
+      "z": -91.37931060791016,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.377623558044434
+    },
+    {
+      "id": 421,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 138.4549102783203,
+      "z": -102.35777282714844,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.6399886012077332
+    },
+    {
+      "id": 423,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 152.12197875976562,
+      "z": -115.7625961303711,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.9829630255699158
+    },
+    {
+      "id": 425,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 161.8798370361328,
+      "z": -133.18202209472656,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.211423873901367
+    },
+    {
+      "id": 427,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 157.94979858398438,
+      "z": -99.041015625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.71932852268219
+    },
+    {
+      "id": 429,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 40.27928161621094,
+      "z": -111.87785339355469,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.62180233001709
+    },
+    {
+      "id": 431,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 31.512962341308594,
+      "z": -116.45915985107422,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.6881470680236816
+    },
+    {
+      "id": 433,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 22.84986114501953,
+      "z": -121.5960693359375,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.6657097339630127
+    },
+    {
+      "id": 437,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 15.125434875488281,
+      "z": -123.87556457519531,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.1420745849609375
+    },
+    {
+      "id": 439,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": 5.6558403968811035,
+      "z": -123.15991973876953,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.3204193115234375
+    },
+    {
+      "id": 441,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -3.1799893379211426,
+      "z": -120.2910385131836,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.5614287853240967
+    },
+    {
+      "id": 443,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -11.002999305725098,
+      "z": -115.32646179199219,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.7155892848968506
+    },
+    {
+      "id": 445,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -18.053442001342773,
+      "z": -109.2771987915039,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.9565987586975098
+    },
+    {
+      "id": 447,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -25.000219345092773,
+      "z": -106.01006317138672,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.1566965579986572
+    },
+    {
+      "id": 449,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -35.174381256103516,
+      "z": -106.52416229248047,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.1766035556793213
+    },
+    {
+      "id": 451,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -45.641483306884766,
+      "z": -106.58655548095703,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.07480788230896
+    },
+    {
+      "id": 453,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -55.90549850463867,
+      "z": -108.01290893554688,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.8558218479156494
+    },
+    {
+      "id": 455,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -65.81900024414062,
+      "z": -111.37248229980469,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.754026174545288
+    },
+    {
+      "id": 457,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -74.70499420166016,
+      "z": -113.99934387207031,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.994579315185547
+    },
+    {
+      "id": 459,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -84.98792266845703,
+      "z": -115.95548248291016,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.8927836418151855
+    },
+    {
+      "id": 461,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -93.41312408447266,
+      "z": -115.31906127929688,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.0988075733184814
+    },
+    {
+      "id": 463,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -103.22286224365234,
+      "z": -115.55284118652344,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.289332628250122
+    },
+    {
+      "id": 465,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -108.43099212646484,
+      "z": -112.74455261230469,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.919489860534668
+    },
+    {
+      "id": 467,
+      "ref": "art/decals/jungle/jungle_canopy_03",
+      "x": -117.05050659179688,
+      "z": -106.5792007446289,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.5019266605377197
+    },
+    {
+      "id": 501,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -120.90666198730469,
+      "z": -121.50126647949219,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.054056167602539
+    },
+    {
+      "id": 503,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -102.09242248535156,
+      "z": -130.66041564941406,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.369560718536377
+    },
+    {
+      "id": 505,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -83.71785736083984,
+      "z": -129.24078369140625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.1416057348251343
+    },
+    {
+      "id": 507,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -62.790489196777344,
+      "z": -124.26473999023438,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.8404903411865234
+    },
+    {
+      "id": 509,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -45.029815673828125,
+      "z": -121.0884017944336,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.5359067916870117
+    },
+    {
+      "id": 511,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -26.170368194580078,
+      "z": -122.0693588256836,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.503981351852417
+    },
+    {
+      "id": 513,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -5.690757751464844,
+      "z": -127.06550598144531,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.26022428274154663
+    },
+    {
+      "id": 515,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 34.143680572509766,
+      "z": -129.49850463867188,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.068205833435059
+    },
+    {
+      "id": 517,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 48.69670867919922,
+      "z": -123.18753814697266,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.5841885805130005
+    },
+    {
+      "id": 519,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 66.3809585571289,
+      "z": -128.0909423828125,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -1.7713934183120728
+    },
+    {
+      "id": 521,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 78.29076385498047,
+      "z": -132.21435546875,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -0.5987781286239624
+    },
+    {
+      "id": 523,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": 99.07518005371094,
+      "z": -129.85018920898438,
+      "size_raw": 0.06345903873443604,
+      "rotation_rad": -4.320471286773682
+    },
+    {
+      "id": 525,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 89.1956787109375,
+      "z": -150.51785278320312,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.9839417934417725
+    },
+    {
+      "id": 527,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 91.93360137939453,
+      "z": -168.43759155273438,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.1365392208099365
+    },
+    {
+      "id": 529,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 91.72650909423828,
+      "z": -185.46434020996094,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -2.9839417934417725
+    },
+    {
+      "id": 531,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 94.46443176269531,
+      "z": -203.3840789794922,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.1365392208099365
+    },
+    {
+      "id": 535,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 95.70413970947266,
+      "z": -221.99160766601562,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.1365392208099365
+    },
+    {
+      "id": 537,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -151.42520141601562,
+      "z": -100.32674407958984,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.821581840515137
+    },
+    {
+      "id": 539,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -170.69479370117188,
+      "z": -97.9300308227539,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.773582935333252
+    },
+    {
+      "id": 541,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -187.84945678710938,
+      "z": -95.92957305908203,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.821581840515137
+    },
+    {
+      "id": 543,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": -207.11904907226562,
+      "z": -93.5328598022461,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.773582935333252
+    },
+    {
+      "id": 545,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -53.4370002746582,
+      "z": 18.534889221191406,
+      "size_raw": 0.05486161634325981,
+      "rotation_rad": -4.709808349609375
+    },
+    {
+      "id": 547,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -7.1672563552856445,
+      "z": 25.561124801635742,
+      "size_raw": 0.05486161634325981,
+      "rotation_rad": -1.857237696647644
+    },
+    {
+      "id": 551,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -22.782489776611328,
+      "z": 96.37141418457031,
+      "size_raw": 0.06976333260536194,
+      "rotation_rad": -1.565558671951294
+    },
+    {
+      "id": 553,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": 34.1942138671875,
+      "z": 106.30824279785156,
+      "size_raw": 0.06976333260536194,
+      "rotation_rad": -1.565558671951294
+    },
+    {
+      "id": 557,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -24.004892349243164,
+      "z": 70.44654846191406,
+      "size_raw": 0.058578841388225555,
+      "rotation_rad": -3.5320205688476562
+    },
+    {
+      "id": 559,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -32.72266387939453,
+      "z": 73.62271118164062,
+      "size_raw": 0.047630663961172104,
+      "rotation_rad": -3.2888941764831543
+    },
+    {
+      "id": 561,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -40.763755798339844,
+      "z": 74.50788116455078,
+      "size_raw": 0.03528142347931862,
+      "rotation_rad": -3.283054828643799
+    },
+    {
+      "id": 563,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -46.90391159057617,
+      "z": 74.5491943359375,
+      "size_raw": 0.03528142347931862,
+      "rotation_rad": -3.0573062896728516
+    },
+    {
+      "id": 565,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -76.18963623046875,
+      "z": 39.35556411743164,
+      "size_raw": 0.046763673424720764,
+      "rotation_rad": -1.5420728921890259
+    },
+    {
+      "id": 567,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -74.37467956542969,
+      "z": 31.312509536743164,
+      "size_raw": 0.047630663961172104,
+      "rotation_rad": -1.140878438949585
+    },
+    {
+      "id": 569,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -70.67862701416016,
+      "z": 23.4885196685791,
+      "size_raw": 0.04222114011645317,
+      "rotation_rad": -1.2031327486038208
+    },
+    {
+      "id": 571,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -65.8142318725586,
+      "z": 16.84001350402832,
+      "size_raw": 0.04446869343519211,
+      "rotation_rad": -1.0212923288345337
+    },
+    {
+      "id": 573,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": -75.25164031982422,
+      "z": 48.27699279785156,
+      "size_raw": 0.048305999487638474,
+      "rotation_rad": -1.7440487146377563
+    },
+    {
+      "id": 761,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": 43.901851654052734,
+      "z": -15.321948051452637,
+      "size_raw": 0.051840461790561676,
+      "rotation_rad": 0.2268090695142746
+    },
+    {
+      "id": 763,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": 63.668487548828125,
+      "z": 33.12196731567383,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.664670467376709
+    },
+    {
+      "id": 765,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": 29.861900329589844,
+      "z": 67.41403198242188,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.850092649459839
+    },
+    {
+      "id": 767,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": 76.96605682373047,
+      "z": 111.72613525390625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.398045778274536
+    },
+    {
+      "id": 769,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": -9.780898094177246,
+      "z": 86.06116485595703,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.502206802368164
+    },
+    {
+      "id": 771,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": -56.739234924316406,
+      "z": 68.02202606201172,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.9132344722747803
+    },
+    {
+      "id": 777,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": -22.802547454833984,
+      "z": -65.69713592529297,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.1107676029205322
+    },
+    {
+      "id": 783,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": -91.0916748046875,
+      "z": -91.11511993408203,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.7580645084381104
+    },
+    {
+      "id": 785,
+      "ref": "art/decals/z_all/crater_jungle_01",
+      "x": -52.572227478027344,
+      "z": -55.95350646972656,
+      "size_raw": 0.04041247069835663,
+      "rotation_rad": 1.4375017881393433
+    },
+    {
+      "id": 787,
+      "ref": "art/decals/z_all/crater_jungle_01",
+      "x": 13.408878326416016,
+      "z": -32.972557067871094,
+      "size_raw": 0.03534240648150444,
+      "rotation_rad": 2.628533363342285
+    },
+    {
+      "id": 789,
+      "ref": "art/decals/z_all/crater_jungle_01",
+      "x": 29.309921264648438,
+      "z": -77.68961334228516,
+      "size_raw": 0.033664438873529434,
+      "rotation_rad": 2.05102801322937
+    },
+    {
+      "id": 791,
+      "ref": "art/decals/z_all/crater_jungle_01",
+      "x": -96.2626953125,
+      "z": 11.680645942687988,
+      "size_raw": 0.030036766082048416,
+      "rotation_rad": 0.31169402599334717
+    },
+    {
+      "id": 793,
+      "ref": "art/decals/z_all/crater_jungle_01",
+      "x": 33.51019287109375,
+      "z": 18.507081985473633,
+      "size_raw": 0.044294510036706924,
+      "rotation_rad": 2.7156553268432617
+    },
+    {
+      "id": 795,
+      "ref": "art/decals/z_all/crater_jungle_01",
+      "x": 76.600341796875,
+      "z": -8.81460189819336,
+      "size_raw": 0.0356026254594326,
+      "rotation_rad": 3.872351884841919
+    },
+    {
+      "id": 797,
+      "ref": "art/decals/urban/urban_pavers01",
+      "x": -99.98444366455078,
+      "z": 99.9646224975586,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.4130189418792725
+    },
+    {
+      "id": 799,
+      "ref": "art/decals/urban/urban_pavers01",
+      "x": -40.21297073364258,
+      "z": 39.90052795410156,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.3229397535324097
+    },
+    {
+      "id": 801,
+      "ref": "art/decals/urban/urban_pavers01",
+      "x": 45.94617462158203,
+      "z": -46.06562423706055,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.5720319747924805
+    },
+    {
+      "id": 803,
+      "ref": "art/decals/urban/urban_pavers01",
+      "x": -106.08772277832031,
+      "z": -3.9711666107177734,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.5407212376594543
+    },
+    {
+      "id": 805,
+      "ref": "art/decals/urban/urban_pavers01",
+      "x": 4.021759033203125,
+      "z": 105.88117980957031,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.52259635925293
+    },
+    {
+      "id": 873,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 63.88998794555664,
+      "z": 141.32470703125,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.351916790008545
+    },
+    {
+      "id": 875,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 60.29434585571289,
+      "z": 157.51527404785156,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.648147106170654
+    },
+    {
+      "id": 877,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 58.42906951904297,
+      "z": 175.19956970214844,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.566950798034668
+    },
+    {
+      "id": 879,
+      "ref": "art/decals/jungle/jungle_canopy_01",
+      "x": 58.37097930908203,
+      "z": 191.78451538085938,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -4.863182067871094
+    },
+    {
+      "id": 1089,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 80.0464096069336,
+      "z": -31.141719818115234,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.487870931625366
+    },
+    {
+      "id": 1091,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 89.06809997558594,
+      "z": -30.547147750854492,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.5421838760375977
+    },
+    {
+      "id": 1093,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 95.46929931640625,
+      "z": -28.886260986328125,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.237070083618164
+    },
+    {
+      "id": 1095,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 94.1507797241211,
+      "z": -21.581436157226562,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.014140605926514
+    },
+    {
+      "id": 1097,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 95.74437713623047,
+      "z": -12.313041687011719,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.467808485031128
+    },
+    {
+      "id": 1099,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 95.45275115966797,
+      "z": -3.2637691497802734,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.4906206130981445
+    },
+    {
+      "id": 1101,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 86.85160827636719,
+      "z": -1.0939083099365234,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.5700013637542725
+    },
+    {
+      "id": 1103,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 29.6845760345459,
+      "z": 82.68186950683594,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 6.165069580078125
+    },
+    {
+      "id": 1105,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 28.19912338256836,
+      "z": 91.6187973022461,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.440416157245636
+    },
+    {
+      "id": 1107,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 7.515712738037109,
+      "z": 94.19316101074219,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.080610990524292
+    },
+    {
+      "id": 1109,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 2.8113365173339844,
+      "z": 74.61116790771484,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.4040846824646
+    },
+    {
+      "id": 1111,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 18.47585678100586,
+      "z": 95.95901489257812,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.375153541564941
+    },
+    {
+      "id": 1113,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -63.45487594604492,
+      "z": 36.76493835449219,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.9324493408203125
+    },
+    {
+      "id": 1115,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -57.37158966064453,
+      "z": 31.42749786376953,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.9598033428192139
+    },
+    {
+      "id": 1117,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -64.69293212890625,
+      "z": 47.566707611083984,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.223727703094482
+    },
+    {
+      "id": 1123,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -87.3276138305664,
+      "z": 98.96868133544922,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.084655284881592
+    },
+    {
+      "id": 1125,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -95.54827117919922,
+      "z": 94.09416961669922,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.050086498260498
+    },
+    {
+      "id": 1127,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -95.30267333984375,
+      "z": 0.09190177917480469,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.1392769813537598
+    },
+    {
+      "id": 1129,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -85.54248046875,
+      "z": -0.24147987365722656,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.105207920074463
+    },
+    {
+      "id": 1131,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -76.21251678466797,
+      "z": 0.8467006683349609,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.630744695663452
+    },
+    {
+      "id": 1143,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 2.4241485595703125,
+      "z": -94.12161254882812,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.3775882124900818
+    },
+    {
+      "id": 1145,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 0.9446163177490234,
+      "z": -84.44203186035156,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.029653787612915
+    },
+    {
+      "id": 1147,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 1.0140113830566406,
+      "z": -74.31770324707031,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.24365854263305664
+    },
+    {
+      "id": 1149,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 1.2408638000488281,
+      "z": -66.77980041503906,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.6198675632476807
+    },
+    {
+      "id": 1151,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 11.190570831298828,
+      "z": -95.48143768310547,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.324633598327637
+    },
+    {
+      "id": 1153,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 20.17363739013672,
+      "z": -95.96589660644531,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.721836566925049
+    },
+    {
+      "id": 1155,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 28.621889114379883,
+      "z": -96.82614135742188,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.6008455753326416
+    },
+    {
+      "id": 1157,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 37.09912109375,
+      "z": -95.51168823242188,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.8577805757522583
+    },
+    {
+      "id": 1159,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 43.6817741394043,
+      "z": -96.67367553710938,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.739738941192627
+    },
+    {
+      "id": 1161,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 31.27503204345703,
+      "z": -57.18680953979492,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.029653787612915
+    },
+    {
+      "id": 1163,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 55.565887451171875,
+      "z": -34.09786605834961,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.029653787612915
+    },
+    {
+      "id": 1165,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": 44.34122848510742,
+      "z": 99.11156463623047,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.440416157245636
+    },
+    {
+      "id": 1243,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 80.99523162841797,
+      "z": 95.96973419189453,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.918025493621826
+    },
+    {
+      "id": 1245,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 61.01345443725586,
+      "z": 112.19026947021484,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.7616615295410156
+    },
+    {
+      "id": 1247,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 79.53031921386719,
+      "z": 30.954988479614258,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.043168544769287
+    },
+    {
+      "id": 1249,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 63.857452392578125,
+      "z": 16.946063995361328,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.6556956768035889
+    },
+    {
+      "id": 1251,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 74.22344970703125,
+      "z": 19.763511657714844,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.0903280973434448
+    },
+    {
+      "id": 1255,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 32.685787200927734,
+      "z": 3.6345014572143555,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.0087295770645142
+    },
+    {
+      "id": 1257,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 30.170324325561523,
+      "z": -21.344772338867188,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.862874746322632
+    },
+    {
+      "id": 1259,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -42.644737243652344,
+      "z": -27.129070281982422,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.7634308338165283
+    },
+    {
+      "id": 1265,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -86.21333312988281,
+      "z": -19.99033546447754,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.664670467376709
+    },
+    {
+      "id": 1273,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -99.00273132324219,
+      "z": -79.3694076538086,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.2089307308197021
+    },
+    {
+      "id": 1275,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -107.378173828125,
+      "z": -89.2229232788086,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 4.629753589630127
+    },
+    {
+      "id": 1277,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -91.51394653320312,
+      "z": -105.02203369140625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.9839785695075989
+    },
+    {
+      "id": 1279,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 19.777814865112305,
+      "z": 78.07252502441406,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 1.721754550933838
+    },
+    {
+      "id": 1281,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 30.063114166259766,
+      "z": 49.98980712890625,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.805700778961182
+    },
+    {
+      "id": 1283,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": 3.8605823516845703,
+      "z": 87.13914489746094,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.042734146118164
+    },
+    {
+      "id": 1285,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -24.56388282775879,
+      "z": 86.07856750488281,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 0.3490373194217682
+    },
+    {
+      "id": 1287,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -54.818477630615234,
+      "z": 82.36331176757812,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.257413864135742
+    },
+    {
+      "id": 1289,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -43.421573638916016,
+      "z": 68.08068084716797,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 3.3537003993988037
+    },
+    {
+      "id": 1291,
+      "ref": "art/decals/jungle/jungle_debris_03",
+      "x": 17.35751724243164,
+      "z": 33.853515625,
+      "size_raw": 0.024222807958722115,
+      "rotation_rad": 5.8147783279418945
+    },
+    {
+      "id": 1301,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": -75.46800231933594,
+      "z": -31.024280548095703,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.696556091308594
+    },
+    {
+      "id": 1303,
+      "ref": "art/decals/z_all/crater_mud_01",
+      "x": -59.69355392456055,
+      "z": -33.24262237548828,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 2.03121018409729
+    },
+    {
+      "id": 1313,
+      "ref": "art/decals/jungle/jungle_debris_01",
+      "x": -91.32955932617188,
+      "z": -38.20335388183594,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": -3.591721773147583
+    },
+    {
+      "id": 1315,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -89.9305191040039,
+      "z": 25.05550765991211,
+      "size_raw": 0.06275423616170883,
+      "rotation_rad": -2.7116832733154297
+    },
+    {
+      "id": 1317,
+      "ref": "art/decals/jungle/jungle_ground_01",
+      "x": -30.90914535522461,
+      "z": 29.813947677612305,
+      "size_raw": 0.044999998062849045,
+      "rotation_rad": 5.4619879722595215
+    },
+    {
+      "id": 1319,
+      "ref": "art/decals/jungle/stone_cliff_00",
+      "x": 48.15935516357422,
+      "z": 28.145784378051758,
+      "size_raw": 0.0425817146897316,
+      "rotation_rad": -4.112717628479004
+    },
+    {
+      "id": 1321,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -22.204017639160156,
+      "z": 5.931717872619629,
+      "size_raw": 0.05486161634325981,
+      "rotation_rad": -5.971048355102539
+    },
+    {
+      "id": 1323,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": 14.615362167358398,
+      "z": 16.42383575439453,
+      "size_raw": 0.07425664365291595,
+      "rotation_rad": -1.71168053150177
+    },
+    {
+      "id": 1325,
+      "ref": "art/decals/jungle/jungle_ground_rock_01",
+      "x": -16.582685470581055,
+      "z": -9.1062650680542,
+      "size_raw": 0.065938301384449,
+      "rotation_rad": -0.17394818365573883
+    },
+    {
+      "id": 1337,
+      "ref": "art/decals/jungle/stone_cliff_04",
+      "x": -92.48059844970703,
+      "z": -63.12682342529297,
+      "size_raw": 0.0331033319234848,
+      "rotation_rad": -3.729032039642334
+    }
+  ],
+  "entities": [
+    {
+      "id": 1074,
+      "blueprint": "starting_position",
+      "x": 13,
+      "y": 10,
+      "z": -101,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1075,
+      "blueprint": "starting_position",
+      "x": 101,
+      "y": 10,
+      "z": -13,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1145,
+      "blueprint": "strategic_objective_struct",
+      "x": 46,
+      "y": 18,
+      "z": -46,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1146,
+      "blueprint": "strategic_objective_struct",
+      "x": -100,
+      "y": 14,
+      "z": 100,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1147,
+      "blueprint": "relic_struct",
+      "x": -106,
+      "y": 10,
+      "z": -4,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1148,
+      "blueprint": "relic_struct",
+      "x": 4,
+      "y": 10,
+      "z": 106,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1151,
+      "blueprint": "strategic_point_flag",
+      "x": -106,
+      "y": 13,
+      "z": -96,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1152,
+      "blueprint": "strategic_point_flag",
+      "x": 96,
+      "y": 13,
+      "z": 106,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1153,
+      "blueprint": "strategic_point_flag",
+      "x": -14,
+      "y": 10,
+      "z": -82,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1154,
+      "blueprint": "strategic_point_flag",
+      "x": 82,
+      "y": 10,
+      "z": 14,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1157,
+      "blueprint": "strategic_point_flag",
+      "x": -108,
+      "y": 12,
+      "z": 60,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1158,
+      "blueprint": "strategic_point_flag",
+      "x": -60,
+      "y": 12,
+      "z": 108,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1159,
+      "blueprint": "strategic_point_flag",
+      "x": -4,
+      "y": 10,
+      "z": 4,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1303,
+      "blueprint": "citysteps_2m_corner01",
+      "x": 35,
+      "y": 16,
+      "z": -35,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1304,
+      "blueprint": "citysteps_2m_straight01",
+      "x": 47,
+      "y": 16,
+      "z": -35,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1305,
+      "blueprint": "citysteps_2m_straight01",
+      "x": 35,
+      "y": 16,
+      "z": -47,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1306,
+      "blueprint": "citysteps_2m_corner01",
+      "x": -73,
+      "y": 10.012096405029297,
+      "z": 73,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1307,
+      "blueprint": "citysteps_2m_corner01",
+      "x": -79,
+      "y": 12.017592430114746,
+      "z": 79,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1308,
+      "blueprint": "citysteps_2m_corner02",
+      "x": -73,
+      "y": 10.029685974121094,
+      "z": 97,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1313,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -73,
+      "y": 10.00715446472168,
+      "z": 85,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1314,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -61,
+      "y": 10.040122032165527,
+      "z": 97,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1315,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -49,
+      "y": 10.045616149902344,
+      "z": 109,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1316,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -79,
+      "y": 12.029131889343262,
+      "z": 91,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1317,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -79,
+      "y": 12.05660343170166,
+      "z": 109,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1319,
+      "blueprint": "citysteps_2m_corner01",
+      "x": -49,
+      "y": 10.056047439575195,
+      "z": 97,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1320,
+      "blueprint": "citysteps_2m_corner01",
+      "x": -97,
+      "y": 9.989567756652832,
+      "z": 49,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1321,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -85,
+      "y": 9.980250358581543,
+      "z": 73,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1322,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -91,
+      "y": 12.001106262207031,
+      "z": 79,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1323,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -97,
+      "y": 9.984625816345215,
+      "z": 61,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1324,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -109,
+      "y": 9.99944019317627,
+      "z": 49,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1325,
+      "blueprint": "citysteps_2m_straight01",
+      "x": -109,
+      "y": 12.006604194641113,
+      "z": 79,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1326,
+      "blueprint": "citysteps_2m_corner02",
+      "x": -97,
+      "y": 9.985174179077148,
+      "z": 73,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1329,
+      "blueprint": "strategic_point_flag",
+      "x": 40,
+      "y": 10,
+      "z": 68,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1330,
+      "blueprint": "strategic_point_flag",
+      "x": -68,
+      "y": 10,
+      "z": -40,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1331,
+      "blueprint": "strategic_objective_struct",
+      "x": -40,
+      "y": 11,
+      "z": 40,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1334,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -43,
+      "y": 11.027884483337402,
+      "z": 31,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1335,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -37,
+      "y": 11.032818794250488,
+      "z": 31,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1336,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -31,
+      "y": 11.027876853942871,
+      "z": 37,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1337,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -31,
+      "y": 11.016339302062988,
+      "z": 43,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1338,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -37,
+      "y": 11.021824836730957,
+      "z": 49,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1339,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -43,
+      "y": 11.01633358001709,
+      "z": 49,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1340,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -49,
+      "y": 10.988873481750488,
+      "z": 43,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1341,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -49,
+      "y": 10.994362831115723,
+      "z": 37,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1342,
+      "blueprint": "citysteps_2m_corner02",
+      "x": -31,
+      "y": 11.016339302062988,
+      "z": 49,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1343,
+      "blueprint": "citysteps_2m_corner02",
+      "x": -49,
+      "y": 10.991883277893066,
+      "z": 49,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1344,
+      "blueprint": "citysteps_2m_corner02",
+      "x": -49,
+      "y": 11.005345344543457,
+      "z": 31,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1345,
+      "blueprint": "citysteps_2m_corner02",
+      "x": -31,
+      "y": 11.041899681091309,
+      "z": 31,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1380,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -49,
+      "y": 10.056601524353027,
+      "z": 121,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1381,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -121,
+      "y": 10.006603240966797,
+      "z": 49,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1382,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -79,
+      "y": 12.070919036865234,
+      "z": 121,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1383,
+      "blueprint": "citysteps_2m_straight03",
+      "x": -121,
+      "y": 12.015427589416504,
+      "z": 79,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1484,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 111,
+      "y": 11.935918807983398,
+      "z": 75,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1485,
+      "blueprint": "canopy_02",
+      "x": 102.58360290527344,
+      "y": 22.478212356567383,
+      "z": 127.24209594726562,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1486,
+      "blueprint": "canopy_02",
+      "x": 112.47314453125,
+      "y": 23.496538162231445,
+      "z": 118.04271697998047,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1487,
+      "blueprint": "canopy_02",
+      "x": 117.99285888671875,
+      "y": 22.49732208251953,
+      "z": 105.39659881591797,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1488,
+      "blueprint": "canopy_02",
+      "x": 116.84026336669922,
+      "y": 22.06509780883789,
+      "z": 94.32350158691406,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1489,
+      "blueprint": "canopy_02",
+      "x": 116.86943054199219,
+      "y": 21.79339599609375,
+      "z": 82.76693725585938,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1490,
+      "blueprint": "canopy_02",
+      "x": 116.06021881103516,
+      "y": 21.224281311035156,
+      "z": 70.50054931640625,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1491,
+      "blueprint": "canopy_02",
+      "x": 114.4629898071289,
+      "y": 22.173622131347656,
+      "z": 60.652076721191406,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1492,
+      "blueprint": "canopy_02",
+      "x": 115.07172393798828,
+      "y": 21.645828247070312,
+      "z": 48.73628616333008,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1493,
+      "blueprint": "canopy_02",
+      "x": 110.42998504638672,
+      "y": 19.779033660888672,
+      "z": 35.685890197753906,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1494,
+      "blueprint": "canopy_02",
+      "x": 106.40209197998047,
+      "y": 20.205575942993164,
+      "z": 25.579790115356445,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1495,
+      "blueprint": "canopy_02",
+      "x": 113.1479721069336,
+      "y": 20.073986053466797,
+      "z": 14.187821388244629,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1496,
+      "blueprint": "canopy_02",
+      "x": 121.54818725585938,
+      "y": 20.88576889038086,
+      "z": 8.368867874145508,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1497,
+      "blueprint": "canopy_02",
+      "x": 128.63941955566406,
+      "y": 19.434349060058594,
+      "z": -0.5252132415771484,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1498,
+      "blueprint": "canopy_02",
+      "x": 129.95571899414062,
+      "y": 19.029420852661133,
+      "z": -11.512428283691406,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1499,
+      "blueprint": "canopy_02",
+      "x": 129.33140563964844,
+      "y": 20.529451370239258,
+      "z": -23.109527587890625,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1500,
+      "blueprint": "canopy_02",
+      "x": 127.1561279296875,
+      "y": 21.94774055480957,
+      "z": -36.97412109375,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1501,
+      "blueprint": "canopy_02",
+      "x": 41.50239944458008,
+      "y": 20.3526611328125,
+      "z": -114.20075988769531,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1502,
+      "blueprint": "canopy_02",
+      "x": 30.25612449645996,
+      "y": 20.38007354736328,
+      "z": -120.67042541503906,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1503,
+      "blueprint": "canopy_02",
+      "x": 19.13050079345703,
+      "y": 19.22242546081543,
+      "z": -126.73189544677734,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1504,
+      "blueprint": "canopy_02",
+      "x": 7.466007232666016,
+      "y": 20.212989807128906,
+      "z": -127.80117797851562,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1505,
+      "blueprint": "canopy_02",
+      "x": -2.836398124694824,
+      "y": 20.30695343017578,
+      "z": -125.29098510742188,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1506,
+      "blueprint": "canopy_02",
+      "x": -13.030559539794922,
+      "y": 19.530559539794922,
+      "z": -118.03135681152344,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1507,
+      "blueprint": "canopy_02",
+      "x": -24.035938262939453,
+      "y": 19.840850830078125,
+      "z": -110.54535675048828,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1508,
+      "blueprint": "canopy_02",
+      "x": -35.36433792114258,
+      "y": 19.791484832763672,
+      "z": -109.64717864990234,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1509,
+      "blueprint": "canopy_02",
+      "x": -48.33413314819336,
+      "y": 19.988998413085938,
+      "z": -110.81587219238281,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1510,
+      "blueprint": "canopy_02",
+      "x": -60.13707733154297,
+      "y": 19.166580200195312,
+      "z": -112.867431640625,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1511,
+      "blueprint": "canopy_02",
+      "x": -69.29747009277344,
+      "y": 19.889726638793945,
+      "z": -115.55191040039062,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1512,
+      "blueprint": "canopy_02",
+      "x": -80.76921081542969,
+      "y": 19.772294998168945,
+      "z": -117.02188873291016,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1513,
+      "blueprint": "canopy_02",
+      "x": -92.57377624511719,
+      "y": 21.471851348876953,
+      "z": -117.18943786621094,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1514,
+      "blueprint": "canopy_02",
+      "x": -105.02423095703125,
+      "y": 21.16292953491211,
+      "z": -118.36355590820312,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1515,
+      "blueprint": "canopy_02",
+      "x": -116.73920440673828,
+      "y": 19.95990753173828,
+      "z": -110.83963012695312,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1534,
+      "blueprint": "jungle_tree_group_01",
+      "x": 99.10639953613281,
+      "y": 9.955257415771484,
+      "z": 15.570220947265625,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1535,
+      "blueprint": "jungle_tree_group_01",
+      "x": 106.83362579345703,
+      "y": 12.780924797058105,
+      "z": 85.08101654052734,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1536,
+      "blueprint": "jungle_tree_group_01",
+      "x": -22.82625389099121,
+      "y": 10.25,
+      "z": -98.44725036621094,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1537,
+      "blueprint": "jungle_tree_group_01",
+      "x": 28.899742126464844,
+      "y": 10.055890083312988,
+      "z": -111.54737854003906,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1538,
+      "blueprint": "jungle_tree_03",
+      "x": 118.85802459716797,
+      "y": 10,
+      "z": -20.900901794433594,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1540,
+      "blueprint": "jungle_tree_03",
+      "x": 115.99424743652344,
+      "y": 10,
+      "z": -24.06414794921875,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1541,
+      "blueprint": "jungle_tree_03",
+      "x": 75.20149230957031,
+      "y": 10,
+      "z": -31.542266845703125,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1542,
+      "blueprint": "jungle_tree_03",
+      "x": 70.96703338623047,
+      "y": 10,
+      "z": -23.424972534179688,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1543,
+      "blueprint": "jungle_tree_03",
+      "x": 95.46144104003906,
+      "y": 10.044407844543457,
+      "z": 31.283809661865234,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1544,
+      "blueprint": "jungle_tree_03",
+      "x": 89,
+      "y": 9.865805625915527,
+      "z": 44,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1546,
+      "blueprint": "jungle_tree_03",
+      "x": -69.62116241455078,
+      "y": 12.386874198913574,
+      "z": -92.9050064086914,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1547,
+      "blueprint": "jungle_tree_03",
+      "x": -115.69105529785156,
+      "y": 13,
+      "z": -95.4234390258789,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1548,
+      "blueprint": "jungle_tree_03",
+      "x": -117.15670776367188,
+      "y": 12.5,
+      "z": -85.24140930175781,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1551,
+      "blueprint": "jungle_tree_group_01",
+      "x": -73,
+      "y": 10,
+      "z": -6,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1553,
+      "blueprint": "jungle_tree_06",
+      "x": -71,
+      "y": 10.140118598937988,
+      "z": 8,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1555,
+      "blueprint": "jungle_tree_06",
+      "x": -113.45842742919922,
+      "y": 12.62178897857666,
+      "z": -90.4327392578125,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1556,
+      "blueprint": "jungle_tree_06",
+      "x": -10.692096710205078,
+      "y": 10.086511611938477,
+      "z": -105.90943908691406,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1557,
+      "blueprint": "jungle_tree_06",
+      "x": -33.34343719482422,
+      "y": 10.083418846130371,
+      "z": -98.66735076904297,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1558,
+      "blueprint": "jungle_tree_06",
+      "x": 30.292404174804688,
+      "y": 10,
+      "z": -106.12370300292969,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1559,
+      "blueprint": "jungle_tree_06",
+      "x": 107.07267761230469,
+      "y": 10,
+      "z": 6.619724273681641,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1560,
+      "blueprint": "jungle_tree_06",
+      "x": 92.79631042480469,
+      "y": 10,
+      "z": 25.66521453857422,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1561,
+      "blueprint": "jungle_tree_06",
+      "x": 118.04975891113281,
+      "y": 10,
+      "z": -14.147701263427734,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1562,
+      "blueprint": "jungle_tree_06",
+      "x": 120.4129409790039,
+      "y": 10.03554916381836,
+      "z": -9.871456146240234,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1564,
+      "blueprint": "jungle_tree_06",
+      "x": 104.29291534423828,
+      "y": 12.5,
+      "z": 74.46200561523438,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1565,
+      "blueprint": "jungle_tree_06",
+      "x": 105.73212432861328,
+      "y": 13,
+      "z": 98.75100708007812,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1566,
+      "blueprint": "jungle_tree_06",
+      "x": 94.74446868896484,
+      "y": 12.795835494995117,
+      "z": 118.18334197998047,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1567,
+      "blueprint": "canopy_02",
+      "x": 87.4187240600586,
+      "y": 22.35366439819336,
+      "z": 129.28514099121094,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1568,
+      "blueprint": "canopy_02",
+      "x": 75.82929229736328,
+      "y": 22.271467208862305,
+      "z": 128.6300506591797,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1569,
+      "blueprint": "canopy_02",
+      "x": 62.84294509887695,
+      "y": 22.247777938842773,
+      "z": 129.22854614257812,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1570,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 80.6475830078125,
+      "y": 12.558405876159668,
+      "z": 96.66771697998047,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1571,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 62.611228942871094,
+      "y": 10.076403617858887,
+      "z": 113.80042266845703,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1572,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 90.64327239990234,
+      "y": 11.592483520507812,
+      "z": 115.73385620117188,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1573,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 62.919227600097656,
+      "y": 10,
+      "z": 18.892555236816406,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1574,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 63.58143615722656,
+      "y": 9.780461311340332,
+      "z": 10.488899230957031,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1575,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 78.58699798583984,
+      "y": 10,
+      "z": 31.79391098022461,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1576,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 71.1698226928711,
+      "y": 9.81692123413086,
+      "z": 45.4871826171875,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1577,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 45.415794372558594,
+      "y": 16,
+      "z": -2.5016164779663086,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1578,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 33.3436279296875,
+      "y": 16,
+      "z": -3.038670539855957,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1579,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 29.138042449951172,
+      "y": 16,
+      "z": -17.477069854736328,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1581,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -30.058382034301758,
+      "y": 10,
+      "z": -53.90277099609375,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1582,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -10.70150375366211,
+      "y": 10,
+      "z": -61.99033737182617,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1583,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -13.57989501953125,
+      "y": 8.248575210571289,
+      "z": -69.436279296875,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1584,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 2.0937042236328125,
+      "y": 10,
+      "z": -65.0914535522461,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1585,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -94.7784194946289,
+      "y": 13,
+      "z": -79.26289367675781,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1586,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -75.42889404296875,
+      "y": 12.5,
+      "z": -92.05291748046875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1587,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -94.07930755615234,
+      "y": 13,
+      "z": -102.76554870605469,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1588,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -103.92364501953125,
+      "y": 13,
+      "z": -87.98040008544922,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1589,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -79.03367614746094,
+      "y": 10,
+      "z": -16.099079132080078,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1590,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -85.20806121826172,
+      "y": 10,
+      "z": -21.98546600341797,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1591,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -80.02103424072266,
+      "y": 10,
+      "z": -39.72258758544922,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1592,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -57.564247131347656,
+      "y": 10,
+      "z": -41.212860107421875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1593,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -44.13790512084961,
+      "y": 10,
+      "z": -26.409610748291016,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1594,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -6.99822998046875,
+      "y": 10,
+      "z": 98.3748550415039,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1595,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 7,
+      "y": 10,
+      "z": 87,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1596,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -24,
+      "y": 10,
+      "z": 88,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1597,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -43,
+      "y": 11.45345687866211,
+      "z": 67,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1598,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -51.891475677490234,
+      "y": 10,
+      "z": 79.94729614257812,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1599,
+      "blueprint": "jungle_lashed_group_01",
+      "x": -63,
+      "y": 9.506038665771484,
+      "z": 80,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1601,
+      "blueprint": "jungle_lashed_02",
+      "x": 49.81700897216797,
+      "y": 16,
+      "z": -1.1767253875732422,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1602,
+      "blueprint": "jungle_lashed_02",
+      "x": 63.09147262573242,
+      "y": 10,
+      "z": 7.501214981079102,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1603,
+      "blueprint": "jungle_lashed_02",
+      "x": 76.58326721191406,
+      "y": 10,
+      "z": 41.0322380065918,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1604,
+      "blueprint": "jungle_lashed_02",
+      "x": -41.26229476928711,
+      "y": 10,
+      "z": -67.48220825195312,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1605,
+      "blueprint": "jungle_lashed_02",
+      "x": -9.211248397827148,
+      "y": 10,
+      "z": -61.92740249633789,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1606,
+      "blueprint": "jungle_lashed_02",
+      "x": -95.23529052734375,
+      "y": 13,
+      "z": -78.38036346435547,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1607,
+      "blueprint": "jungle_lashed_02",
+      "x": -77.52396392822266,
+      "y": 12.874268531799316,
+      "z": -88.52981567382812,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1608,
+      "blueprint": "jungle_lashed_02",
+      "x": -95.69374084472656,
+      "y": 12.809061050415039,
+      "z": -109.52751159667969,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1609,
+      "blueprint": "jungle_lashed_02",
+      "x": -79.82106018066406,
+      "y": 10,
+      "z": -17.44427490234375,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1611,
+      "blueprint": "jungle_lashed_02",
+      "x": -44.539772033691406,
+      "y": 13.184650421142578,
+      "z": 69.82573699951172,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1612,
+      "blueprint": "jungle_lashed_02",
+      "x": -51.11445617675781,
+      "y": 10,
+      "z": 78.02566528320312,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1613,
+      "blueprint": "jungle_lashed_02",
+      "x": -20.963090896606445,
+      "y": 10,
+      "z": 89.5618667602539,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1614,
+      "blueprint": "jungle_lashed_02",
+      "x": -12.882760047912598,
+      "y": 10,
+      "z": 97.56593322753906,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1617,
+      "blueprint": "jungle_lashed_04",
+      "x": -6.518777847290039,
+      "y": 10,
+      "z": 102.95476531982422,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1618,
+      "blueprint": "jungle_lashed_04",
+      "x": -48.20998764038086,
+      "y": 10,
+      "z": 82.02397918701172,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1619,
+      "blueprint": "jungle_lashed_04",
+      "x": -47.7813720703125,
+      "y": 10.100597381591797,
+      "z": -22.976594924926758,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1621,
+      "blueprint": "jungle_lashed_04",
+      "x": -39.38037872314453,
+      "y": 10,
+      "z": -28.09108543395996,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1622,
+      "blueprint": "jungle_lashed_04",
+      "x": -91.95374298095703,
+      "y": 13,
+      "z": -107.49821472167969,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1623,
+      "blueprint": "jungle_lashed_04",
+      "x": 26.150836944580078,
+      "y": 16,
+      "z": -16.32518768310547,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1625,
+      "blueprint": "jungle_tree_03_down",
+      "x": 47.36219787597656,
+      "y": 16,
+      "z": -1.8364359140396118,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1626,
+      "blueprint": "jungle_tree_03_down",
+      "x": 61.680152893066406,
+      "y": 10,
+      "z": 18.09581756591797,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1627,
+      "blueprint": "jungle_tree_03_down",
+      "x": 72.74515533447266,
+      "y": 10,
+      "z": 40.91122817993164,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1628,
+      "blueprint": "jungle_tree_03_down",
+      "x": 21.034934997558594,
+      "y": 10,
+      "z": 75.65394592285156,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1630,
+      "blueprint": "jungle_tree_03_down",
+      "x": -8.742473602294922,
+      "y": 9.898822784423828,
+      "z": 96.44811248779297,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1631,
+      "blueprint": "jungle_tree_03_down",
+      "x": 65.45240020751953,
+      "y": 10.993556022644043,
+      "z": 117.2480239868164,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1636,
+      "blueprint": "jungle_tree_03_down",
+      "x": 87.84358215332031,
+      "y": 12.44134521484375,
+      "z": 111.98504638671875,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1637,
+      "blueprint": "jungle_tree_03_down",
+      "x": -59.71986770629883,
+      "y": 10,
+      "z": 80.38177490234375,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1638,
+      "blueprint": "jungle_tree_03_down",
+      "x": -81.41173553466797,
+      "y": 10,
+      "z": -19.069244384765625,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1639,
+      "blueprint": "jungle_tree_03_down",
+      "x": -56.5894660949707,
+      "y": 10,
+      "z": -41.95859146118164,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1640,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 22.879528045654297,
+      "y": 10,
+      "z": -88.42584991455078,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1641,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 13.908817291259766,
+      "y": 10,
+      "z": -79.37281036376953,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1642,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 12.8455810546875,
+      "y": 10,
+      "z": -70.47406005859375,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1643,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 5.000389099121094,
+      "y": 10,
+      "z": -72.92213439941406,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1644,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -3.964855194091797,
+      "y": 10,
+      "z": -71.900634765625,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1645,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -10.339736938476562,
+      "y": 10,
+      "z": -81.06564331054688,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1646,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -29.15583038330078,
+      "y": 10,
+      "z": -88.06072235107422,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1647,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -33.761749267578125,
+      "y": 10,
+      "z": -78.82342529296875,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1648,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -37.897117614746094,
+      "y": 10,
+      "z": -72.98214721679688,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1649,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -42.48442459106445,
+      "y": 10.060552597045898,
+      "z": -91.1465835571289,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1650,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -52.152584075927734,
+      "y": 10.620758056640625,
+      "z": -99.18651580810547,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1651,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -64.19784545898438,
+      "y": 11.524730682373047,
+      "z": -100.031494140625,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1652,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -73.99990844726562,
+      "y": 12.319807052612305,
+      "z": -95.44145202636719,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1653,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -82.88589477539062,
+      "y": 12.919095039367676,
+      "z": -105.3527603149414,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1654,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -102.35920715332031,
+      "y": 13,
+      "z": -105.06319427490234,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1655,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -113.13656616210938,
+      "y": 13,
+      "z": -98.98320007324219,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1656,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -110.26639556884766,
+      "y": 13,
+      "z": -92.3890380859375,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1657,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -115.89916229248047,
+      "y": 12.452646255493164,
+      "z": -83.62117004394531,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1658,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -114.01752471923828,
+      "y": 12.157767295837402,
+      "z": -79.2796630859375,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1659,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -91.81246948242188,
+      "y": 10,
+      "z": -31.099151611328125,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1660,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -96.69683074951172,
+      "y": 10,
+      "z": -23.216999053955078,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1661,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -91.67467498779297,
+      "y": 10,
+      "z": -15.577865600585938,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1662,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -89.60993194580078,
+      "y": 10,
+      "z": -7.106348037719727,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1663,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -80.93589782714844,
+      "y": 10,
+      "z": -8.315359115600586,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1664,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -81.01202392578125,
+      "y": 10,
+      "z": 5.731655120849609,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1665,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -77.35311889648438,
+      "y": 10,
+      "z": 8.931624412536621,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1666,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -93.79320526123047,
+      "y": 10,
+      "z": 33.91123580932617,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1667,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -65.76944732666016,
+      "y": 13.138650894165039,
+      "z": 48.66023635864258,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1668,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -67.25006866455078,
+      "y": 13.25,
+      "z": 37.255558013916016,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1669,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -61.66201400756836,
+      "y": 13.25,
+      "z": 30.848386764526367,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1670,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -60.94947052001953,
+      "y": 13.25,
+      "z": 20.864887237548828,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1671,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -54.909706115722656,
+      "y": 13.113713264465332,
+      "z": 21.718181610107422,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1672,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -26.368915557861328,
+      "y": 13.25,
+      "z": 57.5374755859375,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1673,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -32.643341064453125,
+      "y": 13.25,
+      "z": 64.21560668945312,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1674,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -22.029891967773438,
+      "y": 13,
+      "z": 49.43354797363281,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1675,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -24.195465087890625,
+      "y": 13,
+      "z": 39.485870361328125,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1676,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -36.14967346191406,
+      "y": 11.351487159729004,
+      "z": 46.48078536987305,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1677,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -46.3927001953125,
+      "y": 11.353407859802246,
+      "z": 35.95813751220703,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1678,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -49.11314392089844,
+      "y": 13,
+      "z": 24.313919067382812,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1679,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -52.94837188720703,
+      "y": 13,
+      "z": 49.57809066772461,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1680,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -27.39440155029297,
+      "y": 10,
+      "z": 80.7556381225586,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1681,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -36.823184967041016,
+      "y": 10,
+      "z": 81.96356201171875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1682,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -37.559608459472656,
+      "y": 10,
+      "z": 90.93781280517578,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1683,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -48.01008987426758,
+      "y": 10,
+      "z": 83.90689849853516,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1684,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -5.881660461425781,
+      "y": 10,
+      "z": 103.35624694824219,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1685,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -3.4776058197021484,
+      "y": 10,
+      "z": 111.14472961425781,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1686,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 13.918277740478516,
+      "y": 10,
+      "z": 102.37405395507812,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1687,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 3,
+      "y": 10,
+      "z": 93,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1688,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 15.073688507080078,
+      "y": 10,
+      "z": 88.98787689208984,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1689,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 22.143718719482422,
+      "y": 10,
+      "z": 94.70450592041016,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1690,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 26.576858520507812,
+      "y": 10,
+      "z": 88.33673095703125,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1691,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 33.98107147216797,
+      "y": 10,
+      "z": 91.49356842041016,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1692,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 47.36296844482422,
+      "y": 10,
+      "z": 85.2640609741211,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1693,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 51.620704650878906,
+      "y": 10,
+      "z": 86.41527557373047,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1694,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 59.94911193847656,
+      "y": 9.99363899230957,
+      "z": 113.62997436523438,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1695,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 88.02660369873047,
+      "y": 13,
+      "z": 101.0933837890625,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1696,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 92.15306091308594,
+      "y": 12.717698097229004,
+      "z": 116.4114761352539,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1697,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 101.67137145996094,
+      "y": 13,
+      "z": 109.01966094970703,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1698,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 104.94285583496094,
+      "y": 13,
+      "z": 103.8433837890625,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1699,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 95.88253784179688,
+      "y": 13,
+      "z": 94.43708801269531,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1700,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 97.97727966308594,
+      "y": 12.75,
+      "z": 82.85379791259766,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1701,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 100.50442504882812,
+      "y": 12.313053131103516,
+      "z": 75.58566284179688,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1702,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 99.60603332519531,
+      "y": 10.949417114257812,
+      "z": 57.5953369140625,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1703,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 101.15939331054688,
+      "y": 10,
+      "z": 44.21834182739258,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1704,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 89.81190490722656,
+      "y": 10,
+      "z": 19.90764617919922,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1705,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 73.50253295898438,
+      "y": 10,
+      "z": 15.863314628601074,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1706,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 69.72786712646484,
+      "y": 10,
+      "z": 14.095538139343262,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1707,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 69.27379608154297,
+      "y": 10,
+      "z": 4.721887111663818,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1708,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 79.38888549804688,
+      "y": 10,
+      "z": 6.601311683654785,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1709,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 83.34446716308594,
+      "y": 10,
+      "z": -13.342050552368164,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1710,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 95.56233215332031,
+      "y": 10,
+      "z": -2.8327279090881348,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1711,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 99.10987854003906,
+      "y": 10,
+      "z": -1.1304677724838257,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1712,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 110.79397583007812,
+      "y": 10,
+      "z": -7.976461887359619,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1713,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 110.78549194335938,
+      "y": 10,
+      "z": -23.927480697631836,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1714,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 91.87240600585938,
+      "y": 10,
+      "z": -23.828575134277344,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1715,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 91.1471939086914,
+      "y": 10,
+      "z": -29.718021392822266,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1716,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 100.30061340332031,
+      "y": 10,
+      "z": -34.19656753540039,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1717,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 91.72794342041016,
+      "y": 10,
+      "z": -38.5704231262207,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1718,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 25.741804122924805,
+      "y": 16,
+      "z": -42.273136138916016,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1719,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 18.528940200805664,
+      "y": 16,
+      "z": -47.191383361816406,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1720,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 9.330395698547363,
+      "y": 16,
+      "z": -42.40134811401367,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1721,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -6.652198791503906,
+      "y": 16,
+      "z": -41.971946716308594,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1722,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 28.09337615966797,
+      "y": 16,
+      "z": -14.202367782592773,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1723,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 27.834774017333984,
+      "y": 16,
+      "z": -34.127193450927734,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1724,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 36.062408447265625,
+      "y": 16,
+      "z": 5.842079162597656,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1725,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 2.7627010345458984,
+      "y": 10.232952117919922,
+      "z": -116.93180847167969,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1726,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 29.411266326904297,
+      "y": 10,
+      "z": -102.63670349121094,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1727,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 40.29533004760742,
+      "y": 10,
+      "z": -82.08484649658203,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1728,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 47.1180419921875,
+      "y": 10,
+      "z": 72.90250396728516,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1732,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 92.77156829833984,
+      "y": 12.84644603729248,
+      "z": 114.97024536132812,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1733,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 104.34629821777344,
+      "y": 13,
+      "z": 93.81632995605469,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1734,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 101.56208038330078,
+      "y": 12.504730224609375,
+      "z": 78.037841796875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1735,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 94.89484405517578,
+      "y": 10,
+      "z": 11.023836135864258,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1736,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 101.69351196289062,
+      "y": 10,
+      "z": 6.365322113037109,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1737,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 111.36841583251953,
+      "y": 10,
+      "z": -19.524028778076172,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1738,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": 113.43509674072266,
+      "y": 10,
+      "z": -29.673595428466797,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1739,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": -77.94676971435547,
+      "y": 10,
+      "z": -6.250457763671875,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1740,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": -74.78901672363281,
+      "y": 10,
+      "z": 3.6198806762695312,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1743,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": -113.17057800292969,
+      "y": 12.576566696166992,
+      "z": -87.78311920166016,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1744,
+      "blueprint": "jungle_dressing_plant_set2",
+      "x": -112.89714050292969,
+      "y": 13,
+      "z": -96.181884765625,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1745,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 3.1567630767822266,
+      "y": 10,
+      "z": 17.637325286865234,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1746,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 15.97333812713623,
+      "y": 10.427178382873535,
+      "z": 30.555912017822266,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1747,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 10.428601264953613,
+      "y": 10.05357551574707,
+      "z": 23.260589599609375,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1748,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -34.21379470825195,
+      "y": 10,
+      "z": -15.152566909790039,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1749,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -21.397220611572266,
+      "y": 10,
+      "z": -2.2339839935302734,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1750,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -26.941957473754883,
+      "y": 10,
+      "z": -9.529303550720215,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1751,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -42.74215316772461,
+      "y": 10,
+      "z": -36.75415802001953,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1752,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -41.61741638183594,
+      "y": 10,
+      "z": -18.591341018676758,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1753,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -40.979331970214844,
+      "y": 10,
+      "z": -27.73238182067871,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1754,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -87.01972961425781,
+      "y": 14,
+      "z": 97.62173461914062,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1755,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -94.5116195678711,
+      "y": 14,
+      "z": 90.77721405029297,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1756,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -69.34539031982422,
+      "y": 12,
+      "z": 104.08027648925781,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1757,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -80.8637924194336,
+      "y": 10,
+      "z": 66.69256591796875,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1758,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -89.96601104736328,
+      "y": 10,
+      "z": 61.22468566894531,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1759,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -59.840267181396484,
+      "y": 10,
+      "z": 91.47697448730469,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1760,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -66.9098129272461,
+      "y": 10,
+      "z": 86.54649353027344,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1761,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -90.79769134521484,
+      "y": 10,
+      "z": 40.375431060791016,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1762,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -85.06884002685547,
+      "y": 10,
+      "z": 48.91249084472656,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1763,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 34.700721740722656,
+      "y": 10,
+      "z": 99.47667694091797,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1780,
+      "blueprint": "jungle_tree_group_01",
+      "x": -4.677812576293945,
+      "y": 10,
+      "z": -115.71650695800781,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1781,
+      "blueprint": "jungle_tree_group_01",
+      "x": 15.596494674682617,
+      "y": 9.771416664123535,
+      "z": -120.23770141601562,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1782,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -8.106693267822266,
+      "y": 10,
+      "z": -102.37179565429688,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1783,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": -5.07298469543457,
+      "y": 10,
+      "z": -107.18405151367188,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1784,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 2.095266342163086,
+      "y": 10,
+      "z": -113.4702377319336,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1785,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 10.385339736938477,
+      "y": 10,
+      "z": -112.2574691772461,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1786,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 14.141629219055176,
+      "y": 10,
+      "z": -112.9384765625,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1787,
+      "blueprint": "jungle_dressing_plant_set4",
+      "x": 20.311817169189453,
+      "y": 10,
+      "z": -111.48306274414062,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1789,
+      "blueprint": "dressing_vine_01_35",
+      "x": 3.650972366333008,
+      "y": 10,
+      "z": -114.65090942382812,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1790,
+      "blueprint": "dressing_vine_01_35",
+      "x": -27.84644889831543,
+      "y": 9.445718765258789,
+      "z": -99.46919250488281,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1793,
+      "blueprint": "dressing_vine_01",
+      "x": 30.1427001953125,
+      "y": 10,
+      "z": -114.18548583984375,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1794,
+      "blueprint": "jungle_tree_02",
+      "x": -3.993021011352539,
+      "y": 10,
+      "z": -123.74198913574219,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1795,
+      "blueprint": "jungle_tree_02",
+      "x": 33.68087387084961,
+      "y": 10,
+      "z": -126.01565551757812,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1797,
+      "blueprint": "canopy_tree_02",
+      "x": 104.51311492919922,
+      "y": 13,
+      "z": 115.03783416748047,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1798,
+      "blueprint": "canopy_02",
+      "x": 102.88188934326172,
+      "y": 28.07376480102539,
+      "z": 113.72065734863281,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1799,
+      "blueprint": "canopy_02",
+      "x": 102.26227569580078,
+      "y": 24.894149780273438,
+      "z": 17.344879150390625,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1800,
+      "blueprint": "canopy_tree_02",
+      "x": 102.45358276367188,
+      "y": 10,
+      "z": 16.64068031311035,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1801,
+      "blueprint": "canopy_tree_02",
+      "x": -111.2187271118164,
+      "y": 13,
+      "z": -108.42908477783203,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1802,
+      "blueprint": "canopy_02",
+      "x": -111.05641174316406,
+      "y": 30.408472061157227,
+      "z": -108.24971008300781,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1803,
+      "blueprint": "canopy_tree_02",
+      "x": 66.96694946289062,
+      "y": 11.639415740966797,
+      "z": 122.0539321899414,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1804,
+      "blueprint": "canopy_02",
+      "x": 67.87065887451172,
+      "y": 28.48120880126953,
+      "z": 121.8201904296875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1809,
+      "blueprint": "temple_pillarset_01",
+      "x": -117,
+      "y": 12,
+      "z": 62,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1811,
+      "blueprint": "temple_pillarset_01",
+      "x": -62,
+      "y": 12,
+      "z": 118,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1812,
+      "blueprint": "temple_pillarset_01",
+      "x": -93,
+      "y": 14,
+      "z": 118,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1813,
+      "blueprint": "temple_pillarset_01",
+      "x": -118,
+      "y": 14,
+      "z": 93,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1817,
+      "blueprint": "temple_pillar_rubble02",
+      "x": -100,
+      "y": 14.25,
+      "z": 113,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1819,
+      "blueprint": "temple_pillar_rubble01",
+      "x": -56,
+      "y": 12,
+      "z": 116,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1820,
+      "blueprint": "temple_pillar_rubble01",
+      "x": -114,
+      "y": 12,
+      "z": 69,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1821,
+      "blueprint": "temple_pillarset_01",
+      "x": 60,
+      "y": 18,
+      "z": -45,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1822,
+      "blueprint": "temple_pillarset_01",
+      "x": 43,
+      "y": 18,
+      "z": -60,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1823,
+      "blueprint": "temple_pillar_rubble02",
+      "x": 60,
+      "y": 18,
+      "z": -43,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1824,
+      "blueprint": "temple_pillar_rubble02",
+      "x": 37,
+      "y": 18,
+      "z": -57,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1825,
+      "blueprint": "temple_pillar_rubble02",
+      "x": 28,
+      "y": 15.665810585021973,
+      "z": -52,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1838,
+      "blueprint": "temple_pillar_rubble01",
+      "x": -109,
+      "y": 10,
+      "z": 41,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1841,
+      "blueprint": "temple_pillar_rubble02",
+      "x": -42,
+      "y": 9.551156044006348,
+      "z": 110,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1842,
+      "blueprint": "jungle_lashed_group_01",
+      "x": 29,
+      "y": 9.131617546081543,
+      "z": 58,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1843,
+      "blueprint": "dressing_vine_01_35",
+      "x": 102,
+      "y": 10,
+      "z": 22,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1844,
+      "blueprint": "dressing_vine_01_35",
+      "x": 106,
+      "y": 13,
+      "z": 94,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1845,
+      "blueprint": "dressing_vine_01_35",
+      "x": 109,
+      "y": 12.898764610290527,
+      "z": 82,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

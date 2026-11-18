@@ -5,7 +5,7 @@ node_modules/
 batches/
 models/
 assets/
-maps/
+/maps/all_tiles/
 
 # Build output
 dist/

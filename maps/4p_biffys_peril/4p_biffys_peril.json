@@ -1,0 +1,157 @@
+{
+  "name": "Biffys Peril",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": -98.47,
+      "z": -98.11,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -99.8,
+      "z": 96.94,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 98.47,
+      "z": 99.51,
+      "team": "red",
+      "faction": "necrons"
+    },
+    {
+      "x": 97.94,
+      "z": -99.86,
+      "team": "red",
+      "faction": "dark eldar"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 0,
+      "z": -2,
+      "kind": "objective"
+    },
+    {
+      "x": -54,
+      "z": 2,
+      "kind": "relic"
+    },
+    {
+      "x": 0,
+      "z": 50,
+      "kind": "relic"
+    },
+    {
+      "x": 52,
+      "z": -4,
+      "kind": "relic"
+    },
+    {
+      "x": -2,
+      "z": -52,
+      "kind": "relic"
+    },
+    {
+      "x": -26,
+      "z": -80,
+      "kind": "point"
+    },
+    {
+      "x": -48,
+      "z": -50,
+      "kind": "point"
+    },
+    {
+      "x": -58,
+      "z": -90,
+      "kind": "point"
+    },
+    {
+      "x": -94,
+      "z": -56,
+      "kind": "point"
+    },
+    {
+      "x": -76,
+      "z": 28,
+      "kind": "point"
+    },
+    {
+      "x": -16,
+      "z": 92,
+      "kind": "point"
+    },
+    {
+      "x": -56,
+      "z": 94,
+      "kind": "point"
+    },
+    {
+      "x": -90,
+      "z": 60,
+      "kind": "point"
+    },
+    {
+      "x": 58,
+      "z": 90,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": 54,
+      "kind": "point"
+    },
+    {
+      "x": 78,
+      "z": 24,
+      "kind": "point"
+    },
+    {
+      "x": 82,
+      "z": -22,
+      "kind": "point"
+    },
+    {
+      "x": 28,
+      "z": -76,
+      "kind": "point"
+    },
+    {
+      "x": 54,
+      "z": -94,
+      "kind": "point"
+    },
+    {
+      "x": 92,
+      "z": -60,
+      "kind": "point"
+    },
+    {
+      "x": -84,
+      "z": -24,
+      "kind": "point"
+    },
+    {
+      "x": 24,
+      "z": 82,
+      "kind": "point"
+    },
+    {
+      "x": 46,
+      "z": -46,
+      "kind": "point"
+    },
+    {
+      "x": 46,
+      "z": 44,
+      "kind": "point"
+    },
+    {
+      "x": -46,
+      "z": 44,
+      "kind": "point"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "path": "/maps/2p_blood_river/2p_blood_river.sgb",
+    "name": "2p blood river",
+    "players": 2,
+    "preview": "/maps/2p_blood_river/2p_blood_river_icon_custom.png"
+  },
+  {
+    "path": "/maps/2p_fallen_city/2p_fallen_city.sgb",
+    "name": "2p fallen city",
+    "players": 2,
+    "preview": "/maps/2p_fallen_city/2p_fallen_city_icon_custom.png"
+  },
+  {
+    "path": "/maps/2p_fata_morgana/2p_fata_morgana.sgb",
+    "name": "2p fata morgana",
+    "players": 2,
+    "preview": "/maps/2p_fata_morgana/2p_fata_morgana_icon_custom.png"
+  },
+  {
+    "path": "/maps/2p_meeting_of_minds/2p_meeting_of_minds.sgb",
+    "name": "2p meeting of minds",
+    "players": 2,
+    "preview": "/maps/2p_meeting_of_minds/2p_meeting_of_minds_icon_custom.png"
+  },
+  {
+    "path": "/maps/2p_outer_reaches/2p_outer_reaches.sgb",
+    "name": "2p outer reaches",
+    "players": 2,
+    "preview": "/maps/2p_outer_reaches/2p_outer_reaches_icon_custom.png"
+  },
+  {
+    "path": "/maps/2p_shrine_of_excellion/2p_shrine_of_excellion.sgb",
+    "name": "2p shrine of excellion",
+    "players": 2,
+    "preview": "/maps/2p_shrine_of_excellion/2p_shrine_of_excellion_icon_custom.png"
+  },
+  {
+    "path": "/maps/2p_titan_fall/2p_titan_fall.sgb",
+    "name": "2p titan fall",
+    "players": 2,
+    "preview": "/maps/2p_titan_fall/2p_titan_fall_icon_custom.png"
+  },
+  {
+    "path": "/maps/4p_ariel_highlands/4p_ariel_highlands.sgb",
+    "name": "4p ariel highlands",
+    "players": 4,
+    "preview": "/maps/4p_ariel_highlands/4p_ariel_highlands_icon_custom.png"
+  },
+  {
+    "path": "/maps/4p_biffys_peril/4p_biffys_peril.sgb",
+    "name": "4p biffys peril",
+    "players": 4,
+    "preview": "/maps/4p_biffys_peril/4p_biffys_peril_icon_custom.png"
+  },
+  {
+    "path": "/maps/4p_doom_spiral/4p_doom_spiral.sgb",
+    "name": "4p doom spiral",
+    "players": 4,
+    "preview": "/maps/4p_doom_spiral/4p_doom_spiral_icon_custom.png"
+  },
+  {
+    "path": "/maps/4p_gurmuns_pass/4p_gurmuns_pass.sgb",
+    "name": "4p gurmuns pass",
+    "players": 4,
+    "preview": "/maps/4p_gurmuns_pass/4p_gurmuns_pass_icon.png"
+  },
+  {
+    "path": "/maps/4p_into_the_breach/4p_into_the_breach.sgb",
+    "name": "4p into the breach",
+    "players": 4,
+    "preview": "/maps/4p_into_the_breach/4p_into_the_breach_icon_custom.png"
+  },
+  {
+    "path": "/maps/4p_panrea_lowlands/4p_panrea_lowlands.sgb",
+    "name": "4p panrea lowlands",
+    "players": 4,
+    "preview": "/maps/4p_panrea_lowlands/4p_panrea_lowlands_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_alvarus/6p_alvarus.sgb",
+    "name": "6p alvarus",
+    "players": 6,
+    "preview": "/maps/6p_alvarus/6p_alvarus_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_kasyr_lutien/6p_kasyr_lutien.sgb",
+    "name": "6p kasyr lutien",
+    "players": 6,
+    "preview": "/maps/6p_kasyr_lutien/6p_kasyr_lutien_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_mortalis/6p_mortalis.sgb",
+    "name": "6p mortalis",
+    "players": 6,
+    "preview": "/maps/6p_mortalis/6p_mortalis_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_parmenie/6p_parmenie.sgb",
+    "name": "6p parmenie",
+    "players": 6,
+    "preview": "/maps/6p_parmenie/6p_parmenie_icon.png"
+  },
+  {
+    "path": "/maps/6p_paynes_retribution/6p_paynes_retribution.sgb",
+    "name": "6p paynes retribution",
+    "players": 6,
+    "preview": "/maps/6p_paynes_retribution/6p_paynes_retribution_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_thargorum/6p_thargorum.sgb",
+    "name": "6p thargorum",
+    "players": 6,
+    "preview": "/maps/6p_thargorum/6p_thargorum_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_vandea_coast/6p_vandea_coast.sgb",
+    "name": "6p vandea coast",
+    "players": 6,
+    "preview": "/maps/6p_vandea_coast/6p_vandea_coast_icon_custom.png"
+  },
+  {
+    "path": "/maps/6p_western_barrens/6p_western_barrens.sgb",
+    "name": "6p western barrens",
+    "players": 6,
+    "preview": "/maps/6p_western_barrens/6p_western_barrens_icon_custom.png"
+  },
+  {
+    "path": "/maps/8p_burial_grounds/8p_burial_grounds.sgb",
+    "name": "8p burial grounds",
+    "players": 8,
+    "preview": "/maps/8p_burial_grounds/8p_burial_grounds_icon_custom.png"
+  },
+  {
+    "path": "/maps/8p_demes_northlands/8p_demes_northlands.sgb",
+    "name": "8p demes northlands",
+    "players": 8,
+    "preview": "/maps/8p_demes_northlands/8p_demes_northlands_icon_custom.png"
+  },
+  {
+    "path": "/maps/8p_forbidden_jungle/8p_forbidden_jungle.sgb",
+    "name": "8p forbidden jungle",
+    "players": 8,
+    "preview": "/maps/8p_forbidden_jungle/8p_forbidden_jungle_icon_custom.png"
+  },
+  {
+    "path": "/maps/8p_jalaganda_lowlands/8p_jalaganda_lowlands.sgb",
+    "name": "8p jalaganda lowlands",
+    "players": 8,
+    "preview": "/maps/8p_jalaganda_lowlands/8p_jalaganda_lowlands_icon.png"
+  },
+  {
+    "path": "/maps/8p_morriah_coast/8p_morriah_coast.sgb",
+    "name": "8p morriah coast",
+    "players": 8,
+    "preview": "/maps/8p_morriah_coast/8p_morriah_coast_icon_custom.png"
+  },
+  {
+    "path": "/maps/8p_oasis_of_sharr/8p_oasis_of_sharr.sgb",
+    "name": "8p oasis of sharr",
+    "players": 8,
+    "preview": null
+  },
+  {
+    "path": "/maps/8p_rhean_jungle/8p_rhean_jungle.sgb",
+    "name": "8p rhean jungle",
+    "players": 8,
+    "preview": "/maps/8p_rhean_jungle/8p_rhean_jungle_icon_custom.png"
+  }
+]

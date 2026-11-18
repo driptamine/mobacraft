@@ -1,0 +1,204 @@
+{
+  "name": "Paynes Retribution",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": 129.99,
+      "z": -31.4,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 103.54,
+      "z": -100.42,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 32.45,
+      "z": -126.9,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": -101.77,
+      "z": 96.49,
+      "team": "red",
+      "faction": "dark eldar"
+    },
+    {
+      "x": -33.63,
+      "z": 126.76,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": -130,
+      "z": 31,
+      "team": "red",
+      "faction": "tau"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 92,
+      "z": -120,
+      "kind": "point"
+    },
+    {
+      "x": 50,
+      "z": -138,
+      "kind": "point"
+    },
+    {
+      "x": 32,
+      "z": -104,
+      "kind": "point"
+    },
+    {
+      "x": 12,
+      "z": -138,
+      "kind": "point"
+    },
+    {
+      "x": 124,
+      "z": -94,
+      "kind": "point"
+    },
+    {
+      "x": 86,
+      "z": -82,
+      "kind": "point"
+    },
+    {
+      "x": 26,
+      "z": -4,
+      "kind": "point"
+    },
+    {
+      "x": 2,
+      "z": -26,
+      "kind": "point"
+    },
+    {
+      "x": -2,
+      "z": 26,
+      "kind": "point"
+    },
+    {
+      "x": -26,
+      "z": 2,
+      "kind": "point"
+    },
+    {
+      "x": -60,
+      "z": 54,
+      "kind": "relic"
+    },
+    {
+      "x": -52,
+      "z": -82,
+      "kind": "point"
+    },
+    {
+      "x": 50,
+      "z": 80,
+      "kind": "point"
+    },
+    {
+      "x": 14,
+      "z": 10,
+      "kind": "objective"
+    },
+    {
+      "x": -12,
+      "z": -14,
+      "kind": "objective"
+    },
+    {
+      "x": 116,
+      "z": 84,
+      "kind": "point"
+    },
+    {
+      "x": -122,
+      "z": -82,
+      "kind": "point"
+    },
+    {
+      "x": -142,
+      "z": -82,
+      "kind": "point"
+    },
+    {
+      "x": 138,
+      "z": 86,
+      "kind": "point"
+    },
+    {
+      "x": 60,
+      "z": -54,
+      "kind": "relic"
+    },
+    {
+      "x": 140,
+      "z": -8,
+      "kind": "point"
+    },
+    {
+      "x": 106,
+      "z": -28,
+      "kind": "point"
+    },
+    {
+      "x": 142,
+      "z": -48,
+      "kind": "point"
+    },
+    {
+      "x": -124,
+      "z": 94,
+      "kind": "point"
+    },
+    {
+      "x": -92,
+      "z": 120,
+      "kind": "point"
+    },
+    {
+      "x": -86,
+      "z": 82,
+      "kind": "point"
+    },
+    {
+      "x": -50,
+      "z": 138,
+      "kind": "point"
+    },
+    {
+      "x": -12,
+      "z": 138,
+      "kind": "point"
+    },
+    {
+      "x": -32,
+      "z": 104,
+      "kind": "point"
+    },
+    {
+      "x": -106,
+      "z": 28,
+      "kind": "point"
+    },
+    {
+      "x": -140,
+      "z": 8,
+      "kind": "point"
+    },
+    {
+      "x": -142,
+      "z": 48,
+      "kind": "point"
+    }
+  ]
+}

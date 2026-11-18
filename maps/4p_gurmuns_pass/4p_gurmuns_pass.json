@@ -1,0 +1,137 @@
+{
+  "name": "Gurmuns Pass",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 96.9,
+      "z": -103.29,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -103.1,
+      "z": -109.98,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": -95.36,
+      "z": 104.83,
+      "team": "red",
+      "faction": "necrons"
+    },
+    {
+      "x": 98.8,
+      "z": 100.09,
+      "team": "red",
+      "faction": "dark eldar"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -114,
+      "z": 38,
+      "kind": "point"
+    },
+    {
+      "x": 100,
+      "z": 14,
+      "kind": "point"
+    },
+    {
+      "x": -122,
+      "z": 116,
+      "kind": "point"
+    },
+    {
+      "x": -38,
+      "z": 112,
+      "kind": "point"
+    },
+    {
+      "x": 8,
+      "z": 100,
+      "kind": "point"
+    },
+    {
+      "x": 46,
+      "z": 116,
+      "kind": "point"
+    },
+    {
+      "x": 118,
+      "z": 118,
+      "kind": "point"
+    },
+    {
+      "x": -8,
+      "z": -98,
+      "kind": "point"
+    },
+    {
+      "x": -98,
+      "z": -66,
+      "kind": "point"
+    },
+    {
+      "x": -34,
+      "z": -118,
+      "kind": "point"
+    },
+    {
+      "x": -122,
+      "z": -126,
+      "kind": "point"
+    },
+    {
+      "x": -108,
+      "z": -18,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": 58,
+      "kind": "point"
+    },
+    {
+      "x": 90,
+      "z": -48,
+      "kind": "point"
+    },
+    {
+      "x": 118,
+      "z": -118,
+      "kind": "point"
+    },
+    {
+      "x": 38,
+      "z": -102,
+      "kind": "point"
+    },
+    {
+      "x": -12,
+      "z": 0,
+      "kind": "relic"
+    },
+    {
+      "x": 26,
+      "z": -44,
+      "kind": "objective"
+    },
+    {
+      "x": -48,
+      "z": 38,
+      "kind": "objective"
+    },
+    {
+      "x": -52,
+      "z": -38,
+      "kind": "objective"
+    },
+    {
+      "x": 28,
+      "z": 32,
+      "kind": "objective"
+    }
+  ]
+}

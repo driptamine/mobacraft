@@ -1,0 +1,122 @@
+{
+  "name": "Panrea Lowlands",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 107,
+      "z": 38,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -95,
+      "z": -10,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": -51,
+      "z": -110,
+      "team": "red",
+      "faction": "necrons"
+    },
+    {
+      "x": 38,
+      "z": 78,
+      "team": "red",
+      "faction": "dark eldar"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 108,
+      "z": -116,
+      "kind": "relic"
+    },
+    {
+      "x": 60,
+      "z": -54,
+      "kind": "point"
+    },
+    {
+      "x": 88,
+      "z": 22,
+      "kind": "point"
+    },
+    {
+      "x": 116,
+      "z": 82,
+      "kind": "point"
+    },
+    {
+      "x": 102,
+      "z": -34,
+      "kind": "point"
+    },
+    {
+      "x": 44,
+      "z": 110,
+      "kind": "point"
+    },
+    {
+      "x": 14,
+      "z": 64,
+      "kind": "point"
+    },
+    {
+      "x": -38,
+      "z": 86,
+      "kind": "point"
+    },
+    {
+      "x": -118,
+      "z": -8,
+      "kind": "point"
+    },
+    {
+      "x": -104,
+      "z": 30,
+      "kind": "point"
+    },
+    {
+      "x": -120,
+      "z": -84,
+      "kind": "point"
+    },
+    {
+      "x": -64,
+      "z": -122,
+      "kind": "point"
+    },
+    {
+      "x": -46,
+      "z": -78,
+      "kind": "point"
+    },
+    {
+      "x": 18,
+      "z": -108,
+      "kind": "point"
+    },
+    {
+      "x": -98,
+      "z": 116,
+      "kind": "relic"
+    },
+    {
+      "x": -118,
+      "z": 76,
+      "kind": "point"
+    },
+    {
+      "x": 26,
+      "z": 18,
+      "kind": "point"
+    },
+    {
+      "x": -42,
+      "z": -22,
+      "kind": "point"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Titan Fall",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": -101.27,
+      "z": 98.29,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 95.54,
+      "z": -105.07,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 60,
+      "z": -102,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": -72,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": 8,
+      "kind": "point"
+    },
+    {
+      "x": 40,
+      "z": 54,
+      "kind": "point"
+    },
+    {
+      "x": -92,
+      "z": 64,
+      "kind": "point"
+    },
+    {
+      "x": -62,
+      "z": 98,
+      "kind": "point"
+    },
+    {
+      "x": -112,
+      "z": -12,
+      "kind": "point"
+    },
+    {
+      "x": -44,
+      "z": -60,
+      "kind": "point"
+    },
+    {
+      "x": -2,
+      "z": -2,
+      "kind": "objective"
+    },
+    {
+      "x": 116,
+      "z": 116,
+      "kind": "objective"
+    },
+    {
+      "x": -118,
+      "z": -118,
+      "kind": "objective"
+    },
+    {
+      "x": -8,
+      "z": -120,
+      "kind": "relic"
+    },
+    {
+      "x": 8,
+      "z": 120,
+      "kind": "relic"
+    }
+  ]
+}

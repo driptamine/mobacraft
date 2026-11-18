@@ -1,0 +1,90 @@
+{
+  "name": "Fallen City",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 96,
+      "z": 101,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -89,
+      "z": -95,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -104,
+      "z": 2,
+      "kind": "objective"
+    },
+    {
+      "x": 104,
+      "z": 10,
+      "kind": "objective"
+    },
+    {
+      "x": 114,
+      "z": -96,
+      "kind": "relic"
+    },
+    {
+      "x": -70,
+      "z": 112,
+      "kind": "relic"
+    },
+    {
+      "x": 90,
+      "z": 56,
+      "kind": "point"
+    },
+    {
+      "x": -14,
+      "z": 100,
+      "kind": "point"
+    },
+    {
+      "x": -58,
+      "z": 50,
+      "kind": "point"
+    },
+    {
+      "x": 48,
+      "z": -52,
+      "kind": "point"
+    },
+    {
+      "x": -102,
+      "z": -48,
+      "kind": "point"
+    },
+    {
+      "x": 48,
+      "z": 100,
+      "kind": "point"
+    },
+    {
+      "x": -54,
+      "z": -96,
+      "kind": "point"
+    },
+    {
+      "x": 42,
+      "z": -104,
+      "kind": "point"
+    },
+    {
+      "x": 4,
+      "z": -40,
+      "kind": "objective"
+    },
+    {
+      "x": 8,
+      "z": 44,
+      "kind": "objective"
+    }
+  ]
+}

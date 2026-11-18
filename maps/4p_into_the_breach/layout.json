@@ -1,0 +1,5907 @@
+{
+  "map": "4p_into_the_breach.sgb",
+  "source": {
+    "file": "4p_into_the_breach.sgb",
+    "coordinates": "SGB terrain-local X/Z; the game applies its map root rotation and mirror once."
+  },
+  "metadata": {
+    "num_players": 4,
+    "map_size": 257,
+    "mod_name": "dxp2",
+    "map_name": "$719214",
+    "scenario_name": "$719215"
+  },
+  "terrain": {
+    "heightmap_file": "4p_into_the_breach_heightmap.png",
+    "size": [
+      257,
+      257
+    ],
+    "encoding": "8-bit gray; rows are local z, columns are local x; height = byte * height_scale",
+    "world_half_extent": 256,
+    "height_scale": 0.25,
+    "cell_size": 2,
+    "num_cells": [
+      256,
+      256
+    ],
+    "center_cell_idx": [
+      129,
+      129
+    ],
+    "num_tile_cells": 16,
+    "tile_texture_repeat": 4,
+    "local_origin": [
+      -257,
+      -257
+    ],
+    "ground_texture": "art/scenarios/textures/detail/snow_01",
+    "detail_textures": [
+      {
+        "index": 68,
+        "path": "art/scenarios/textures/detail/rocky_ground",
+        "file": "textures/rocky_ground.png",
+        "tile_count": 78
+      },
+      {
+        "index": 10,
+        "path": "art/scenarios/textures/detail/snow_01",
+        "file": "textures/snow_01.png",
+        "tile_count": 164
+      },
+      {
+        "index": 53,
+        "path": "art/scenarios/textures/detail/snow_02",
+        "file": "textures/snow_02.png",
+        "tile_count": 10
+      },
+      {
+        "index": 92,
+        "path": "art/scenarios/textures/detail/snow_rock_01",
+        "file": "textures/snow_rock_01.png",
+        "tile_count": 4
+      }
+    ],
+    "texture_indices": {
+      "size": [
+        16,
+        16
+      ],
+      "order": "rows[z][x], DATADETT row-major",
+      "rows": [
+        [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          92,
+          92,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          92,
+          92,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          10,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          68,
+          68,
+          10,
+          10,
+          10,
+          53,
+          53,
+          53,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          68,
+          68,
+          68,
+          10,
+          10,
+          53,
+          53,
+          53,
+          53,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          68,
+          68,
+          10,
+          10,
+          10,
+          53,
+          53,
+          53,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          10,
+          10,
+          68,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      ]
+    }
+  },
+  "decals": [
+    {
+      "id": 295,
+      "ref": "art/decals/jungle/stone_pile_02",
+      "x": 6.4498395919799805,
+      "z": -17.373779296875,
+      "size_raw": 0.05930056795477867,
+      "rotation_rad": -0.006671885494142771
+    },
+    {
+      "id": 297,
+      "ref": "art/decals/jungle/stone_pile_02",
+      "x": -5.241994857788086,
+      "z": -18.38751220703125,
+      "size_raw": 0.06277430802583694,
+      "rotation_rad": -6.1171345710754395
+    },
+    {
+      "id": 299,
+      "ref": "art/decals/jungle/stone_pile_02",
+      "x": 0.9127140045166016,
+      "z": -25.400577545166016,
+      "size_raw": 0.05563604459166527,
+      "rotation_rad": 0
+    },
+    {
+      "id": 559,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -81.5793228149414,
+      "z": -127.24296569824219,
+      "size_raw": 0.03616306558251381,
+      "rotation_rad": -3.5662717819213867
+    },
+    {
+      "id": 563,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -104.74202728271484,
+      "z": -116.86903381347656,
+      "size_raw": 0.041053444147109985,
+      "rotation_rad": -3.9126546382904053
+    },
+    {
+      "id": 565,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -67.07738494873047,
+      "z": -129.51071166992188,
+      "size_raw": 0.03616306558251381,
+      "rotation_rad": -0.0696651041507721
+    },
+    {
+      "id": 567,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -51.97074890136719,
+      "z": -126.47100067138672,
+      "size_raw": 0.03616306558251381,
+      "rotation_rad": -6.033889293670654
+    },
+    {
+      "id": 569,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -32.39878845214844,
+      "z": -124.37320709228516,
+      "size_raw": 0.06028853729367256,
+      "rotation_rad": -2.7703473567962646
+    },
+    {
+      "id": 571,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -92.33440399169922,
+      "z": -123.64059448242188,
+      "size_raw": 0.03616306558251381,
+      "rotation_rad": -3.2839691638946533
+    },
+    {
+      "id": 573,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -114.38509368896484,
+      "z": -104.1455078125,
+      "size_raw": 0.041053444147109985,
+      "rotation_rad": -1.0922975540161133
+    },
+    {
+      "id": 575,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -120.8613510131836,
+      "z": -89.67431640625,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -1.3307384252548218
+    },
+    {
+      "id": 587,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -123.85498046875,
+      "z": -72.22480773925781,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -1.4660134315490723
+    },
+    {
+      "id": 589,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -128.92483520507812,
+      "z": -60.480777740478516,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -1.1790547370910645
+    },
+    {
+      "id": 591,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -129.59417724609375,
+      "z": -44.48651123046875,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -1.7786625623703003
+    },
+    {
+      "id": 593,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -130.16722106933594,
+      "z": -29.18243408203125,
+      "size_raw": 0.05872064456343651,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 595,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -114.21012115478516,
+      "z": -14.608292579650879,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -5.810561180114746
+    },
+    {
+      "id": 597,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -102.46029663085938,
+      "z": -10.727323532104492,
+      "size_raw": 0.031056856736540794,
+      "rotation_rad": -2.536578893661499
+    },
+    {
+      "id": 601,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -84.58403778076172,
+      "z": -4.33909797668457,
+      "size_raw": 0.02956613153219223,
+      "rotation_rad": -5.677724361419678
+    },
+    {
+      "id": 603,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -82.27021026611328,
+      "z": -0.6401665806770325,
+      "size_raw": 0.02956613153219223,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 605,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -92.86848449707031,
+      "z": -9.109386444091797,
+      "size_raw": 0.024017002433538437,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 607,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -90.51261901855469,
+      "z": 8.242071151733398,
+      "size_raw": 0.024456610903143883,
+      "rotation_rad": -0.7853981852531433
+    },
+    {
+      "id": 609,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -103.05831146240234,
+      "z": 8.847538948059082,
+      "size_raw": 0.038297269493341446,
+      "rotation_rad": -3.4883456230163574
+    },
+    {
+      "id": 611,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -113.8775863647461,
+      "z": 20.2838077545166,
+      "size_raw": 0.04110128805041313,
+      "rotation_rad": -0.6303300261497498
+    },
+    {
+      "id": 613,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -124.84124755859375,
+      "z": 31.119081497192383,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -4.279965400695801
+    },
+    {
+      "id": 619,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -90.80022430419922,
+      "z": -137.64292907714844,
+      "size_raw": 0.06201925128698349,
+      "rotation_rad": -0.2080926150083542
+    },
+    {
+      "id": 621,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -68.6219711303711,
+      "z": -146.28941345214844,
+      "size_raw": 0.06201925128698349,
+      "rotation_rad": -3.2283222675323486
+    },
+    {
+      "id": 625,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -131.99166870117188,
+      "z": 48.11346435546875,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 637,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -77.77964782714844,
+      "z": 127.69580078125,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -5.984376907348633
+    },
+    {
+      "id": 639,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -60.86436080932617,
+      "z": 128.88775634765625,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -3.115492105484009
+    },
+    {
+      "id": 641,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -44.017677307128906,
+      "z": 130.01365661621094,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -0.3570537865161896
+    },
+    {
+      "id": 643,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -27.341753005981445,
+      "z": 122.68119812011719,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -0.5093681812286377
+    },
+    {
+      "id": 645,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -22.19459342956543,
+      "z": -138.51417541503906,
+      "size_raw": 0.08547086268663406,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 653,
+      "ref": "art/decals/snow_slush/snow_01b",
+      "x": 0.44987452030181885,
+      "z": -104.17363739013672,
+      "size_raw": 0.12287916243076324,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 671,
+      "ref": "art/decals/snow_slush/snow_01b",
+      "x": 10.23729133605957,
+      "z": -57.271610260009766,
+      "size_raw": 0.02944871224462986,
+      "rotation_rad": -1.5895861387252808
+    },
+    {
+      "id": 687,
+      "ref": "art/decals/snow_slush/snow_01b",
+      "x": 1.9415870904922485,
+      "z": -61.22446060180664,
+      "size_raw": 0.1179521456360817,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 701,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -138.79525756835938,
+      "z": -96.99432373046875,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 713,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -97.58114624023438,
+      "z": -177.32077026367188,
+      "size_raw": 0.125,
+      "rotation_rad": -3.1603872776031494
+    },
+    {
+      "id": 715,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -54.172691345214844,
+      "z": -179.49790954589844,
+      "size_raw": 0.125,
+      "rotation_rad": -3.1603872776031494
+    },
+    {
+      "id": 717,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -145.5743408203125,
+      "z": -161.54452514648438,
+      "size_raw": 0.125,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 719,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -143.48745727539062,
+      "z": -72.93456268310547,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 721,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -147.38719177246094,
+      "z": -45.38664627075195,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 723,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -170.9530792236328,
+      "z": 11.130990028381348,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -5.4977874755859375
+    },
+    {
+      "id": 727,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -145.65521240234375,
+      "z": 24.223506927490234,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -5.4977874755859375
+    },
+    {
+      "id": 763,
+      "ref": "art/decals/jungle/stone_pile_02",
+      "x": -5.199725151062012,
+      "z": 15.20346450805664,
+      "size_raw": 0.05930056795477867,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 765,
+      "ref": "art/decals/jungle/stone_pile_02",
+      "x": 4.855070114135742,
+      "z": 13.353076934814453,
+      "size_raw": 0.05930056795477867,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 767,
+      "ref": "art/decals/jungle/stone_pile_02",
+      "x": 2.251336097717285,
+      "z": 19.462688446044922,
+      "size_raw": 0.04459211975336075,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 773,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 65.41698455810547,
+      "z": 133.76904296875,
+      "size_raw": 0.05884694680571556,
+      "rotation_rad": -6.260173797607422
+    },
+    {
+      "id": 777,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 41.43010330200195,
+      "z": 131.44760131835938,
+      "size_raw": 0.06613536924123764,
+      "rotation_rad": -5.989669322967529
+    },
+    {
+      "id": 785,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 132.06492614746094,
+      "z": 80.93681335449219,
+      "size_raw": 0.07861129939556122,
+      "rotation_rad": -4.5888166427612305
+    },
+    {
+      "id": 787,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 130.67251586914062,
+      "z": 62.69611740112305,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -4.301856517791748
+    },
+    {
+      "id": 789,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 131.01678466796875,
+      "z": 47.00657272338867,
+      "size_raw": 0.045710545033216476,
+      "rotation_rad": -4.901463508605957
+    },
+    {
+      "id": 791,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 132.4567108154297,
+      "z": 33.1373291015625,
+      "size_raw": 0.04303865134716034,
+      "rotation_rad": -1.1391937732696533
+    },
+    {
+      "id": 799,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 93.78753662109375,
+      "z": 8.57563304901123,
+      "size_raw": 0.02956613153219223,
+      "rotation_rad": -2.912968158721924
+    },
+    {
+      "id": 801,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 83.47953796386719,
+      "z": 1.618840217590332,
+      "size_raw": 0.02956613153219223,
+      "rotation_rad": -1.8546823263168335
+    },
+    {
+      "id": 803,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 84.91364288330078,
+      "z": -4.3892669677734375,
+      "size_raw": 0.02956613153219223,
+      "rotation_rad": -3.959592342376709
+    },
+    {
+      "id": 805,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 93.4811782836914,
+      "z": -7.95911979675293,
+      "size_raw": 0.02956613153219223,
+      "rotation_rad": -0.553991436958313
+    },
+    {
+      "id": 807,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 105.22288513183594,
+      "z": -11.239307403564453,
+      "size_raw": 0.038297269493341446,
+      "rotation_rad": -0.4360705018043518
+    },
+    {
+      "id": 809,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 119.5391845703125,
+      "z": -20.16518783569336,
+      "size_raw": 0.05289657786488533,
+      "rotation_rad": -3.9762015342712402
+    },
+    {
+      "id": 817,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 84.7110824584961,
+      "z": 128.68243408203125,
+      "size_raw": 0.06201925128698349,
+      "rotation_rad": -3.330892562866211
+    },
+    {
+      "id": 823,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 134.06915283203125,
+      "z": -73.1330337524414,
+      "size_raw": 0.10163019597530365,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 827,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 124.0510482788086,
+      "z": -100.70561218261719,
+      "size_raw": 0.06383907794952393,
+      "rotation_rad": -2.079692840576172
+    },
+    {
+      "id": 831,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 104.0698013305664,
+      "z": -116.14155578613281,
+      "size_raw": 0.05895569175481796,
+      "rotation_rad": -2.458272695541382
+    },
+    {
+      "id": 833,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 83.0716323852539,
+      "z": -126.40830993652344,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -2.8239872455596924
+    },
+    {
+      "id": 835,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 66.18179321289062,
+      "z": -127.91773986816406,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -6.238292694091797
+    },
+    {
+      "id": 837,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 49.35918426513672,
+      "z": -129.36007690429688,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -3.479854106903076
+    },
+    {
+      "id": 839,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 32.548439025878906,
+      "z": -122.3422622680664,
+      "size_raw": 0.04547042027115822,
+      "rotation_rad": -3.632169008255005
+    },
+    {
+      "id": 841,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 7.89729118347168,
+      "z": 148.82501220703125,
+      "size_raw": 0.125,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 843,
+      "ref": "art/decals/snow_slush/snow_01b",
+      "x": 1.6819982528686523,
+      "z": 109.40943145751953,
+      "size_raw": 0.1230727806687355,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 847,
+      "ref": "art/decals/snow_slush/snow_01b",
+      "x": 0.3328399658203125,
+      "z": 62.71849822998047,
+      "size_raw": 0.1179521456360817,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 861,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 98.24968719482422,
+      "z": 168.9261474609375,
+      "size_raw": 0.125,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 863,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 48.24955368041992,
+      "z": 168.17083740234375,
+      "size_raw": 0.125,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 865,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 145.96627807617188,
+      "z": 164.125,
+      "size_raw": 0.125,
+      "rotation_rad": -0.6570586562156677
+    },
+    {
+      "id": 875,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 134.2823486328125,
+      "z": -38.12472915649414,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -1.2908655405044556
+    },
+    {
+      "id": 883,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 122.66800689697266,
+      "z": -126.29032135009766,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -2.4534530639648438
+    },
+    {
+      "id": 895,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 17.179174423217773,
+      "z": -142.61109924316406,
+      "size_raw": 0.08547086268663406,
+      "rotation_rad": 0
+    },
+    {
+      "id": 897,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -45.058685302734375,
+      "z": -144.28343200683594,
+      "size_raw": 0.06201925128698349,
+      "rotation_rad": -2.8115973472595215
+    },
+    {
+      "id": 933,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -38.78057098388672,
+      "z": -106.23638916015625,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 935,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -29.724138259887695,
+      "z": -97.544921875,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 937,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -40.339664459228516,
+      "z": -97.87435913085938,
+      "size_raw": 0.034806955605745316,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 939,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -97.97660064697266,
+      "z": -102.01535034179688,
+      "size_raw": 0.034806955605745316,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 943,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -36.77890396118164,
+      "z": -90.06344604492188,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 945,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -46.63457107543945,
+      "z": -106.86470794677734,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 947,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 25.795654296875,
+      "z": 31.87029266357422,
+      "size_raw": 0.08681554347276688,
+      "rotation_rad": 1.5707963705062866
+    },
+    {
+      "id": 949,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 29.361366271972656,
+      "z": -26.294696807861328,
+      "size_raw": 0.07411020994186401,
+      "rotation_rad": 1.5707963705062866
+    },
+    {
+      "id": 951,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 23.410873413085938,
+      "z": -68.97161865234375,
+      "size_raw": 0.1086403876543045,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 953,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -22.658233642578125,
+      "z": -28.799331665039062,
+      "size_raw": 0.08034706115722656,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 957,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -23.343059539794922,
+      "z": 30.199256896972656,
+      "size_raw": 0.10447253286838531,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 961,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -22.3698787689209,
+      "z": 72.02076721191406,
+      "size_raw": 0.09901662170886993,
+      "rotation_rad": 0
+    },
+    {
+      "id": 965,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -68.97187805175781,
+      "z": 119.6827392578125,
+      "size_raw": 0.12079427391290665,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 967,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -117.84583282470703,
+      "z": 79.57151794433594,
+      "size_raw": 0.125,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 971,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -101.30352020263672,
+      "z": 29.53810691833496,
+      "size_raw": 0.0731770396232605,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 973,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -104.10799407958984,
+      "z": -25.146263122558594,
+      "size_raw": 0.07851435989141464,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 975,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -105.21610260009766,
+      "z": -75.30107116699219,
+      "size_raw": 0.08185802400112152,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 977,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -65.32416534423828,
+      "z": -112.02867889404297,
+      "size_raw": 0.06822582334280014,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 979,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": -20.970260620117188,
+      "z": -71.21112823486328,
+      "size_raw": 0.06710286438465118,
+      "rotation_rad": 0
+    },
+    {
+      "id": 981,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -103.10224914550781,
+      "z": -99.8092269897461,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 983,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -89.54865264892578,
+      "z": -104.90576171875,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 985,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -98.0500717163086,
+      "z": -91.55714416503906,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 987,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -91.05439758300781,
+      "z": -87.97328186035156,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -0.7853981852531433
+    },
+    {
+      "id": 991,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -81.65953826904297,
+      "z": -103.56897735595703,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 993,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -53.76724624633789,
+      "z": -97.31449127197266,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": 0
+    },
+    {
+      "id": 995,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -66.20613098144531,
+      "z": -96.14036560058594,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 997,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -90.77043914794922,
+      "z": -80.8956069946289,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1005,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -29.614534378051758,
+      "z": -52.50656509399414,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1007,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -37.07676315307617,
+      "z": -82.65998077392578,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1009,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -30.836627960205078,
+      "z": -85.00418090820312,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1011,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -36.16869354248047,
+      "z": -75.33373260498047,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1013,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -37.28225326538086,
+      "z": -68.15093994140625,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1015,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -34.47467803955078,
+      "z": -60.18671417236328,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -5.4977874755859375
+    },
+    {
+      "id": 1017,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -85.674560546875,
+      "z": -81.55013275146484,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1019,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -87.182373046875,
+      "z": -73.55628967285156,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1021,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -117.54574584960938,
+      "z": -51.52447509765625,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1023,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -116.62396240234375,
+      "z": -58.0350456237793,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1025,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -110.5787353515625,
+      "z": -53.92333221435547,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1027,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -103.07636260986328,
+      "z": -55.320770263671875,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1031,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -77.5381088256836,
+      "z": -97.65177154541016,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1035,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -80.27152252197266,
+      "z": -20.269479751586914,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1037,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -71.64500427246094,
+      "z": -15.81087589263916,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -0.7853981852531433
+    },
+    {
+      "id": 1039,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -65.76126098632812,
+      "z": -6.999980449676514,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1041,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -66.18133544921875,
+      "z": 2.1554207801818848,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1043,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -72.08240509033203,
+      "z": 11.00182056427002,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -5.4977874755859375
+    },
+    {
+      "id": 1057,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -112.1924819946289,
+      "z": -46.0604248046875,
+      "size_raw": 0.024576017633080482,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1061,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -116.635009765625,
+      "z": -44.11713790893555,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1063,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -106.56105041503906,
+      "z": -43.40380096435547,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1065,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -20.82382583618164,
+      "z": 5.480493545532227,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1067,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -10.265937805175781,
+      "z": 7.698465347290039,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1081,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -40.8930549621582,
+      "z": -41.440650939941406,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1083,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -33.3597412109375,
+      "z": -45.21892166137695,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -2.356194496154785
+    },
+    {
+      "id": 1085,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -41.42169952392578,
+      "z": -31.59652328491211,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1087,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -41.95551681518555,
+      "z": -23.710350036621094,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1093,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -11.289861679077148,
+      "z": -8.264945983886719,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1095,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -111.18294525146484,
+      "z": 54.13468933105469,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1097,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -104.08953857421875,
+      "z": 57.29208755493164,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1099,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -111.6722183227539,
+      "z": 45.87740707397461,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1101,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -96.19979095458984,
+      "z": 42.21105194091797,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1103,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -87.55179595947266,
+      "z": 40.84263610839844,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1105,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -82.16107177734375,
+      "z": 32.011436462402344,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -6.26979398727417
+    },
+    {
+      "id": 1107,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -76.4761962890625,
+      "z": 18.970863342285156,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -5.4977874755859375
+    },
+    {
+      "id": 1109,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -81.30923461914062,
+      "z": 24.310405731201172,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -6.26979398727417
+    },
+    {
+      "id": 1111,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -102.66598510742188,
+      "z": 44.78521728515625,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1113,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -94.29149627685547,
+      "z": 59.085487365722656,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1115,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -89.34040832519531,
+      "z": 59.960243225097656,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -0.7853981852531433
+    },
+    {
+      "id": 1117,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -86.84307098388672,
+      "z": 69.76032257080078,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1119,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -87.98728942871094,
+      "z": 75.63811492919922,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1121,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -98.76058959960938,
+      "z": 98.6064453125,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1123,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -91.06314849853516,
+      "z": 105.61302947998047,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1127,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": -27.65882110595703,
+      "z": 93.36810302734375,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": 6.2831854820251465
+    },
+    {
+      "id": 1131,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": -28.168752670288086,
+      "z": 102.9920883178711,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1133,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": -28.746074676513672,
+      "z": 109.35252380371094,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1137,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -35.09589767456055,
+      "z": 96.17601776123047,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1139,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -36.01922607421875,
+      "z": 104.29512786865234,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1141,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -42.351661682128906,
+      "z": 104.69261932373047,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.673636436462402
+    },
+    {
+      "id": 1143,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -51.88304138183594,
+      "z": 100.34915924072266,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1145,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -39.93134689331055,
+      "z": 99.82878875732422,
+      "size_raw": 0.03219044208526611,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1153,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -39.70842361450195,
+      "z": 76.867919921875,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1155,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -42.916038513183594,
+      "z": 71.58320617675781,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1157,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -37.15459060668945,
+      "z": 88.07903289794922,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1159,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -41.401344299316406,
+      "z": 40.56416702270508,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1161,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -40.07499694824219,
+      "z": 32.4940299987793,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1169,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": -39.41437911987305,
+      "z": 63.82437515258789,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1171,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": -34.82688903808594,
+      "z": 57.570167541503906,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1173,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -37.65755081176758,
+      "z": 48.26784133911133,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1177,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -42.1307258605957,
+      "z": 55.930763244628906,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1179,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -46.29386520385742,
+      "z": 65.05229187011719,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1181,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -58.398460388183594,
+      "z": 105.97937774658203,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1183,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 41.46619415283203,
+      "z": 79.4598617553711,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1185,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 40.41036605834961,
+      "z": 71.86640167236328,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1187,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 40.77541732788086,
+      "z": 65.25409698486328,
+      "size_raw": 0.023720383644104004,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1189,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 37.75079345703125,
+      "z": 57.19472885131836,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -2.356194496154785
+    },
+    {
+      "id": 1197,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 40.84271240234375,
+      "z": 28.24249839782715,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1199,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 38.52051544189453,
+      "z": 19.822050094604492,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -0.7853981852531433
+    },
+    {
+      "id": 1219,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 26.988557815551758,
+      "z": 74.15941619873047,
+      "size_raw": 0.080518938601017,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1227,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 32.5530891418457,
+      "z": 53.67593002319336,
+      "size_raw": 0.028807373717427254,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1243,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 99.90657043457031,
+      "z": 103.70263671875,
+      "size_raw": 0.028462398797273636,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1251,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 104.14257049560547,
+      "z": 95.82664489746094,
+      "size_raw": 0.030312098562717438,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1257,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 116.44132995605469,
+      "z": 70.22044372558594,
+      "size_raw": 0.09901662170886993,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1259,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 98.70964050292969,
+      "z": 74.70492553710938,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1261,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 95.50201416015625,
+      "z": 69.42021179199219,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1263,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": 99.0036849975586,
+      "z": 61.66138458251953,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1265,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": 103.59117126464844,
+      "z": 55.40717315673828,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1267,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 92.12419891357422,
+      "z": 62.88929748535156,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1269,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 96.43335723876953,
+      "z": 54.02743911743164,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1271,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 107.05046081542969,
+      "z": 26.718263626098633,
+      "size_raw": 0.09544524550437927,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1273,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 94.78038024902344,
+      "z": 94.73905944824219,
+      "size_raw": 0.030798278748989105,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1279,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 31.05925750732422,
+      "z": 92.56342315673828,
+      "size_raw": 0.028151487931609154,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1281,
+      "ref": "art/decals/snow_slush/snow_07",
+      "x": 30.777523040771484,
+      "z": 104.98371124267578,
+      "size_raw": 0.029953179880976677,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1283,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 41.04874038696289,
+      "z": 87.09650421142578,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1285,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 41.899234771728516,
+      "z": 100.18086242675781,
+      "size_raw": 0.033434052020311356,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1289,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 14.006528854370117,
+      "z": 7.836641311645508,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1291,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 26.12163543701172,
+      "z": 9.617674827575684,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1293,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 37.64661407470703,
+      "z": 13.464279174804688,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -0.7853981852531433
+    },
+    {
+      "id": 1297,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 44.88717269897461,
+      "z": 26.68020248413086,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1299,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 46.42416763305664,
+      "z": 45.923274993896484,
+      "size_raw": 0.03364865481853485,
+      "rotation_rad": 6.2831854820251465
+    },
+    {
+      "id": 1301,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 44.896202087402344,
+      "z": 52.770565032958984,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1303,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 45.26704406738281,
+      "z": 38.83904266357422,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1305,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 14.279184341430664,
+      "z": -11.236589431762695,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1307,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 24.947940826416016,
+      "z": -13.175503730773926,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1309,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 38.681236267089844,
+      "z": -17.25214385986328,
+      "size_raw": 0.028148245066404343,
+      "rotation_rad": -5.4977874755859375
+    },
+    {
+      "id": 1401,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 96.63128662109375,
+      "z": -39.11192321777344,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.141472101211548
+    },
+    {
+      "id": 1419,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 109.64265441894531,
+      "z": -26.986459732055664,
+      "size_raw": 0.0731770396232605,
+      "rotation_rad": -3.141472101211548
+    },
+    {
+      "id": 1421,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 91.23961639404297,
+      "z": -30.281463623046875,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.141472101211548
+    },
+    {
+      "id": 1423,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 89.09989929199219,
+      "z": -24.069223403930664,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.141472101211548
+    },
+    {
+      "id": 1427,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 113.69412231445312,
+      "z": -72.28704833984375,
+      "size_raw": 0.1239350438117981,
+      "rotation_rad": -6.283064365386963
+    },
+    {
+      "id": 1433,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 95.7396011352539,
+      "z": -52.00441360473633,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 1435,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 103.98727416992188,
+      "z": -41.66885757446289,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1443,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 112.87435913085938,
+      "z": -42.667442321777344,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 1449,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 78.03623962402344,
+      "z": 19.67103385925293,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 1451,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 72.47924041748047,
+      "z": 11.865405082702637,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 1453,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 86.53398132324219,
+      "z": 24.766780853271484,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1455,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 70.10159301757812,
+      "z": -1.5907902717590332,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1457,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 75.6807861328125,
+      "z": -14.03518295288086,
+      "size_raw": 0.03008384071290493,
+      "rotation_rad": -2.356194496154785
+    },
+    {
+      "id": 1459,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": 84.20279693603516,
+      "z": -19.886577606201172,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -2.356194496154785
+    },
+    {
+      "id": 1463,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 35.5279426574707,
+      "z": -111.0873794555664,
+      "size_raw": 0.05800098180770874,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1467,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 37.991546630859375,
+      "z": -91.94026947021484,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1469,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 44.21912384033203,
+      "z": -92.52497100830078,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1471,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 64.87456512451172,
+      "z": -103.48377227783203,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1473,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 58.346675872802734,
+      "z": -103.01937103271484,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1479,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 77.63130950927734,
+      "z": -118.64048767089844,
+      "size_raw": 0.10125550627708435,
+      "rotation_rad": 0
+    },
+    {
+      "id": 1485,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 100.41593170166016,
+      "z": -95.09703063964844,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 1487,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 92.2455062866211,
+      "z": -102.01646423339844,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 1489,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 89.6014404296875,
+      "z": -82.00720977783203,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1491,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 88.54793548583984,
+      "z": -74.10694885253906,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 1493,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 91.92546844482422,
+      "z": -68.54974365234375,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 216600,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 6.087587356567383,
+      "z": 196.74412536621094,
+      "size_raw": 0.125,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216602,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -116.9937973022461,
+      "z": 49.27418518066406,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -3.245590925216675
+    },
+    {
+      "id": 216650,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": 32.32233810424805,
+      "z": -2.6969947814941406,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": 6.2831854820251465
+    },
+    {
+      "id": 216652,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -18.40158462524414,
+      "z": -3.417754650115967,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 216656,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -51.80990219116211,
+      "z": 3.9613122940063477,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216674,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": 49.2838020324707,
+      "z": -6.402889251708984,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": 6.2831854820251465
+    },
+    {
+      "id": 216682,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -151.96307373046875,
+      "z": -26.864055633544922,
+      "size_raw": 0.0723542794585228,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216684,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -179.31448364257812,
+      "z": -32.359336853027344,
+      "size_raw": 0.08840002864599228,
+      "rotation_rad": -0.013084673322737217
+    },
+    {
+      "id": 216686,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -205.22061157226562,
+      "z": -34.82366180419922,
+      "size_raw": 0.08840002864599228,
+      "rotation_rad": -0.013084673322737217
+    },
+    {
+      "id": 216688,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": -193.82618713378906,
+      "z": 6.293545722961426,
+      "size_raw": 0.09797201305627823,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216690,
+      "ref": "art/decals/z_all/small_round_hole",
+      "x": -87.00801086425781,
+      "z": -0.6522688865661621,
+      "size_raw": 0.23785212635993958,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216692,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -43.538089752197266,
+      "z": 159.2097625732422,
+      "size_raw": 0.125,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216696,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 71.55994415283203,
+      "z": -49.78010940551758,
+      "size_raw": 0.04004912078380585,
+      "rotation_rad": 4.71238899230957
+    },
+    {
+      "id": 216698,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 77.75373077392578,
+      "z": -41.905853271484375,
+      "size_raw": 0.04335412383079529,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216700,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 49.38013458251953,
+      "z": -15.358589172363281,
+      "size_raw": 0.03917214274406433,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216702,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 67.56336212158203,
+      "z": -41.82703399658203,
+      "size_raw": 0.07030001282691956,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216704,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 60.630062103271484,
+      "z": 69.4644546508789,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": 1.5707963705062866
+    },
+    {
+      "id": 216706,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 68.02906799316406,
+      "z": 53.37950134277344,
+      "size_raw": 0.03695248067378998,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216708,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 78.56814575195312,
+      "z": 73.43560028076172,
+      "size_raw": 0.021250000223517418,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216710,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": 76.13414001464844,
+      "z": 57.272064208984375,
+      "size_raw": 0.06065619736909866,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216712,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": 60.71269607543945,
+      "z": 84.49579620361328,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216714,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": 81.15621185302734,
+      "z": 76.76316833496094,
+      "size_raw": 0.06065619736909866,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216716,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 61.08848571777344,
+      "z": 55.751461029052734,
+      "size_raw": 0.07051744312047958,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216718,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -53.20154571533203,
+      "z": -16.863628387451172,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216720,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -66.6849594116211,
+      "z": -48.387386322021484,
+      "size_raw": 0.05617314577102661,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216722,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -64.933349609375,
+      "z": -61.38320541381836,
+      "size_raw": 0.0672585517168045,
+      "rotation_rad": -1.3744354248046875
+    },
+    {
+      "id": 216724,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -55.465721130371094,
+      "z": -86.60110473632812,
+      "size_raw": 0.05617314577102661,
+      "rotation_rad": -4.105628967285156
+    },
+    {
+      "id": 216726,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -67.22026062011719,
+      "z": -44.07993698120117,
+      "size_raw": 0.0672585517168045,
+      "rotation_rad": -2.5688464641571045
+    },
+    {
+      "id": 216728,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -50.213748931884766,
+      "z": 17.959394454956055,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -3.964747667312622
+    },
+    {
+      "id": 216730,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -61.4070930480957,
+      "z": 45.22303771972656,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -1.474668025970459
+    },
+    {
+      "id": 216732,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -57.236080169677734,
+      "z": 71.51891326904297,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -5.005860328674316
+    },
+    {
+      "id": 216734,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -71.30095672607422,
+      "z": -34.610633850097656,
+      "size_raw": 0.0772508978843689,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216736,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -77.69721984863281,
+      "z": -40.708011627197266,
+      "size_raw": 0.043382689356803894,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216738,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -55.698020935058594,
+      "z": -72.78810119628906,
+      "size_raw": 0.043382689356803894,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216740,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -53.919677734375,
+      "z": -75.19651794433594,
+      "size_raw": 0.020444680005311966,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216742,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -62.35382080078125,
+      "z": -88.37329864501953,
+      "size_raw": 0.05684666708111763,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216746,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -77.44929504394531,
+      "z": -46.927040100097656,
+      "size_raw": 0.025148402899503708,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216748,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -62.737831115722656,
+      "z": -21.444570541381836,
+      "size_raw": 0.010908562690019608,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216750,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -56.94967269897461,
+      "z": -51.60812759399414,
+      "size_raw": 0.05311281234025955,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216754,
+      "ref": "art/decals/z_all/crater_outerring_grenade_blast",
+      "x": 82.64328002929688,
+      "z": -81.70958709716797,
+      "size_raw": 0.08795961737632751,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216756,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 42.25719451904297,
+      "z": -98.09213256835938,
+      "size_raw": 0.030974602326750755,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216760,
+      "ref": "art/decals/z_all/crater_outerring_grenade_blast",
+      "x": 69.38243103027344,
+      "z": 30.750171661376953,
+      "size_raw": 0.11130678653717041,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216762,
+      "ref": "art/decals/z_all/crater_outerring_grenade_blast",
+      "x": 3.9676833152770996,
+      "z": -3.370182991027832,
+      "size_raw": 0.10122128576040268,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216764,
+      "ref": "art/decals/z_all/force_weapon_crack_02",
+      "x": -28.94415283203125,
+      "z": 1.0722312927246094,
+      "size_raw": 0.07852249592542648,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216766,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -18.458284378051758,
+      "z": -9.332291603088379,
+      "size_raw": 0.026026107370853424,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216768,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": -27.23834228515625,
+      "z": -10.95017147064209,
+      "size_raw": 0.026026107370853424,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216772,
+      "ref": "art/decals/snow_slush/snow_08b",
+      "x": -33.87020492553711,
+      "z": -14.6632080078125,
+      "size_raw": 0.02335183694958687,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216776,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 45.93010330200195,
+      "z": -45.872867584228516,
+      "size_raw": 0.03539419174194336,
+      "rotation_rad": 3.1415927410125732
+    },
+    {
+      "id": 216778,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 38.762882232666016,
+      "z": -45.96583938598633,
+      "size_raw": 0.02502221055328846,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 216780,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 46.359127044677734,
+      "z": -52.26169204711914,
+      "size_raw": 0.022439999505877495,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216782,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 50.94145584106445,
+      "z": -43.84296798706055,
+      "size_raw": 0.022439999505877495,
+      "rotation_rad": -6.2831854820251465
+    },
+    {
+      "id": 216786,
+      "ref": "art/decals/snow_slush/snow_02",
+      "x": 111.13408660888672,
+      "z": -53.541160583496094,
+      "size_raw": 0.040706817060709,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216792,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 126.56871032714844,
+      "z": 108.8985595703125,
+      "size_raw": 0.07861129939556122,
+      "rotation_rad": -0.9345834255218506
+    },
+    {
+      "id": 216794,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 104.85060119628906,
+      "z": 126.34274291992188,
+      "size_raw": 0.07861129939556122,
+      "rotation_rad": -0.5415446758270264
+    },
+    {
+      "id": 216800,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 92.70182037353516,
+      "z": 105.07170104980469,
+      "size_raw": 0.030798278748989105,
+      "rotation_rad": -3.1415927410125732
+    },
+    {
+      "id": 216802,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 71.30611419677734,
+      "z": 113.82852172851562,
+      "size_raw": 0.030798278748989105,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216804,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 59.851951599121094,
+      "z": 111.46833038330078,
+      "size_raw": 0.030798278748989105,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216806,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 39.898860931396484,
+      "z": 108.18968200683594,
+      "size_raw": 0.030798278748989105,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216808,
+      "ref": "art/decals/snow_slush/snow_08",
+      "x": 47.926692962646484,
+      "z": 111.748291015625,
+      "size_raw": 0.030798278748989105,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216810,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -102.27840423583984,
+      "z": 154.07814025878906,
+      "size_raw": 0.125,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216816,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 108.92259216308594,
+      "z": 8.104111671447754,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -3.1341655254364014
+    },
+    {
+      "id": 216820,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 123.75728607177734,
+      "z": 3.9208765029907227,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -3.337597608566284
+    },
+    {
+      "id": 216822,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 154.80502319335938,
+      "z": -1.3867645263671875,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -3.3943235874176025
+    },
+    {
+      "id": 216824,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 139.94834899902344,
+      "z": 0.4922513961791992,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -3.1824820041656494
+    },
+    {
+      "id": 216826,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 145.84832763671875,
+      "z": 28.350828170776367,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -0.48637330532073975
+    },
+    {
+      "id": 216828,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 161.76806640625,
+      "z": 28.368450164794922,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -0.0314139649271965
+    },
+    {
+      "id": 216830,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 174.4062042236328,
+      "z": 27.350645065307617,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -0.0314139649271965
+    },
+    {
+      "id": 216832,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 195.05860900878906,
+      "z": 27.28636360168457,
+      "size_raw": 0.06686728447675705,
+      "rotation_rad": -0.026014277711510658
+    },
+    {
+      "id": 216836,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 125.97320556640625,
+      "z": -6.709753036499023,
+      "size_raw": 0.05395554378628731,
+      "rotation_rad": -3.141472101211548
+    },
+    {
+      "id": 216838,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 170.91957092285156,
+      "z": 0.5632362365722656,
+      "size_raw": 0.041719406843185425,
+      "rotation_rad": -2.8753631114959717
+    },
+    {
+      "id": 216840,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 214.67068481445312,
+      "z": 25.214311599731445,
+      "size_raw": 0.06686728447675705,
+      "rotation_rad": -0.6221911311149597
+    },
+    {
+      "id": 216844,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -44.09208679199219,
+      "z": 45.87827682495117,
+      "size_raw": 0.030370324850082397,
+      "rotation_rad": -0.04477802664041519
+    },
+    {
+      "id": 216848,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -116.08908081054688,
+      "z": 136.05172729492188,
+      "size_raw": 0.125,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216850,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -147.6321258544922,
+      "z": 83.42311096191406,
+      "size_raw": 0.09880179911851883,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216860,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -144.3399658203125,
+      "z": 172.14630126953125,
+      "size_raw": 0.08875569701194763,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 216862,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -200.93914794921875,
+      "z": 160.59378051757812,
+      "size_raw": 0.125,
+      "rotation_rad": -4.284242153167725
+    },
+    {
+      "id": 216864,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -183.10630798339844,
+      "z": 118.08856964111328,
+      "size_raw": 0.125,
+      "rotation_rad": -4.1825270652771
+    },
+    {
+      "id": 216866,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -160.49388122558594,
+      "z": 56.48806381225586,
+      "size_raw": 0.125,
+      "rotation_rad": -4.71238899230957
+    },
+    {
+      "id": 216872,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -129.91334533691406,
+      "z": -135.90084838867188,
+      "size_raw": 0.125,
+      "rotation_rad": -3.9269909858703613
+    },
+    {
+      "id": 216874,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 107.57042694091797,
+      "z": -149.08265686035156,
+      "size_raw": 0.125,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216876,
+      "ref": "art/decals/snow_slush/snow_06b",
+      "x": 53.222999572753906,
+      "z": -114.65088653564453,
+      "size_raw": 0.059756506234407425,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216880,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": 53.684574127197266,
+      "z": -161.482421875,
+      "size_raw": 0.125,
+      "rotation_rad": 0
+    },
+    {
+      "id": 216884,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": -43.89772415161133,
+      "z": -43.94516372680664,
+      "size_raw": 0.039493758231401443,
+      "rotation_rad": 3.1415927410125732
+    },
+    {
+      "id": 216886,
+      "ref": "art/decals/z_all/crater_02b",
+      "x": 93.169921875,
+      "z": -0.3558330535888672,
+      "size_raw": 0.04656750708818436,
+      "rotation_rad": -1.5707963705062866
+    },
+    {
+      "id": 216892,
+      "ref": "art/decals/snow_slush/snowy_dirt_04",
+      "x": -124.6315689086914,
+      "z": -1.5454435348510742,
+      "size_raw": 0.07068197429180145,
+      "rotation_rad": -5.283475875854492
+    },
+    {
+      "id": 216894,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 187.93357849121094,
+      "z": 2.173013687133789,
+      "size_raw": 0.06686728447675705,
+      "rotation_rad": -0.6221911311149597
+    },
+    {
+      "id": 216896,
+      "ref": "art/decals/snow_slush/stone_cliff_00 snowy",
+      "x": 208.79188537597656,
+      "z": 3.1581897735595703,
+      "size_raw": 0.06686728447675705,
+      "rotation_rad": -0.6221911311149597
+    }
+  ],
+  "entities": [
+    {
+      "id": 1000,
+      "blueprint": "starting_position",
+      "x": -70,
+      "y": 10,
+      "z": -77,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1001,
+      "blueprint": "starting_position",
+      "x": -71,
+      "y": 10,
+      "z": 78,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1003,
+      "blueprint": "starting_position",
+      "x": 71,
+      "y": 10,
+      "z": 77,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1004,
+      "blueprint": "starting_position",
+      "x": 70,
+      "y": 10,
+      "z": -78,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1007,
+      "blueprint": "strategic_point_flag",
+      "x": 114,
+      "y": 10,
+      "z": -48,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1008,
+      "blueprint": "strategic_point_flag",
+      "x": 46,
+      "y": 10,
+      "z": -46,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1010,
+      "blueprint": "strategic_point_flag",
+      "x": 46,
+      "y": 10,
+      "z": 46,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1011,
+      "blueprint": "strategic_point_flag",
+      "x": 114,
+      "y": 10,
+      "z": 46,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1012,
+      "blueprint": "strategic_point_flag",
+      "x": -44,
+      "y": 10,
+      "z": 46,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1013,
+      "blueprint": "strategic_point_flag",
+      "x": -112,
+      "y": 10,
+      "z": 48,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1015,
+      "blueprint": "strategic_point_flag",
+      "x": -44,
+      "y": 10,
+      "z": -44,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1016,
+      "blueprint": "strategic_point_flag",
+      "x": -112,
+      "y": 10,
+      "z": -46,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1018,
+      "blueprint": "relic_struct",
+      "x": 100,
+      "y": 10,
+      "z": -102,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1019,
+      "blueprint": "relic_struct",
+      "x": -98,
+      "y": 10,
+      "z": -102,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1020,
+      "blueprint": "relic_struct",
+      "x": -98,
+      "y": 10,
+      "z": 104,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1021,
+      "blueprint": "relic_struct",
+      "x": 100,
+      "y": 10,
+      "z": 104,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1022,
+      "blueprint": "strategic_point_flag",
+      "x": -40,
+      "y": 10,
+      "z": -98,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1023,
+      "blueprint": "strategic_point_flag",
+      "x": 42,
+      "y": 10,
+      "z": -98,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1024,
+      "blueprint": "strategic_point_flag",
+      "x": 42,
+      "y": 10,
+      "z": 100,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1025,
+      "blueprint": "strategic_point_flag",
+      "x": -40,
+      "y": 10,
+      "z": 100,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1026,
+      "blueprint": "castle_wall_plain_01",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": 34,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1027,
+      "blueprint": "castle_wall_plain_01",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": 54,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1028,
+      "blueprint": "castle_wall_01_rubbl2",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": -22,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1030,
+      "blueprint": "castle_wall_01_rubble",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": 17,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1031,
+      "blueprint": "castle_wall_plain_01",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": 74,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1032,
+      "blueprint": "castle_wall_plain_01",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": -45,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1033,
+      "blueprint": "castle_wall_plain_01",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": -65,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1034,
+      "blueprint": "castle_wall_plain_01",
+      "x": -6,
+      "y": 2.753732204437256,
+      "z": -85,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1035,
+      "blueprint": "castle_wall_plain_01",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": -40,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1036,
+      "blueprint": "castle_wall_plain_01",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": -60,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1037,
+      "blueprint": "castle_wall_01_rubbl2",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": 12,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1038,
+      "blueprint": "castle_wall_01_rubble",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": -23,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1039,
+      "blueprint": "castle_wall_plain_01",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": -80,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1040,
+      "blueprint": "castle_wall_plain_01",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": 35,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1041,
+      "blueprint": "castle_wall_plain_01",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": 55,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1042,
+      "blueprint": "castle_wall_plain_01",
+      "x": 9,
+      "y": 2.753732204437256,
+      "z": 75,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1046,
+      "blueprint": "castle_rubble_02",
+      "x": 3.3695249557495117,
+      "y": 10,
+      "z": 21.95111083984375,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1047,
+      "blueprint": "castle_rubble_02",
+      "x": -1,
+      "y": 10,
+      "z": -28,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1048,
+      "blueprint": "castle_rubble_02",
+      "x": -4.350821495056152,
+      "y": 10,
+      "z": 21.533466339111328,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1049,
+      "blueprint": "castle_rubble_02",
+      "x": 0,
+      "y": 10,
+      "z": -26,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1050,
+      "blueprint": "castle_rubble_02",
+      "x": -4,
+      "y": 13.824103355407715,
+      "z": -30,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1062,
+      "blueprint": "spd_04_watchtower_01",
+      "x": 93.48397827148438,
+      "y": 8.65228271484375,
+      "z": -0.33469581604003906,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1068,
+      "blueprint": "watchtower_01",
+      "x": 1.1048831939697266,
+      "y": 18.13718605041504,
+      "z": -32.294654846191406,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1070,
+      "blueprint": "watchtower_01",
+      "x": 1.4463434219360352,
+      "y": 17.709348678588867,
+      "z": 27.285137176513672,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1074,
+      "blueprint": "bridge_side_01",
+      "x": -85.92864227294922,
+      "y": -0.0821046233177185,
+      "z": -0.7599042654037476,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1077,
+      "blueprint": "dressing_corrugated_board_45deg",
+      "x": 128.24615478515625,
+      "y": 10,
+      "z": 23.69583511352539,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1078,
+      "blueprint": "dressing_corrugated_board_01",
+      "x": 126.9658432006836,
+      "y": 10,
+      "z": 20.7868595123291,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1079,
+      "blueprint": "dressing_corrugated_board_45deg",
+      "x": 125.44546508789062,
+      "y": 10,
+      "z": 11.405884742736816,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1080,
+      "blueprint": "dressing_corrugated_board_02",
+      "x": 126.63572692871094,
+      "y": 10,
+      "z": 13.667381286621094,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1081,
+      "blueprint": "dressing_sandbags_04",
+      "x": 124.43456268310547,
+      "y": 10,
+      "z": 18.405303955078125,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1083,
+      "blueprint": "razorwire_02",
+      "x": 126.85908508300781,
+      "y": 10,
+      "z": 18.772178649902344,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1085,
+      "blueprint": "razorwire_02_45",
+      "x": 126.21768188476562,
+      "y": 10,
+      "z": 13.076557159423828,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1087,
+      "blueprint": "dressing_sandbags_04",
+      "x": -117.94631958007812,
+      "y": 13.473456382751465,
+      "z": 107.74905395507812,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1088,
+      "blueprint": "dressing_sandbags_03",
+      "x": -120.70349884033203,
+      "y": 13.283615112304688,
+      "z": 97.45492553710938,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1094,
+      "blueprint": "dressing_corrugated_board_45deg",
+      "x": -116.27322387695312,
+      "y": 11.059520721435547,
+      "z": 99.19429779052734,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1095,
+      "blueprint": "dressing_twistedmetal_01_45",
+      "x": -113.39241027832031,
+      "y": 11.4232177734375,
+      "z": 102.66387939453125,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1097,
+      "blueprint": "forest_tree_02_snow",
+      "x": -122.12708282470703,
+      "y": 13.171451568603516,
+      "z": 93.73639678955078,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1098,
+      "blueprint": "forest_tree_01_snow",
+      "x": -148.84725952148438,
+      "y": 17.635282516479492,
+      "z": 103.1356201171875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1099,
+      "blueprint": "forest_tree_01_snow",
+      "x": -146.68096923828125,
+      "y": 10.259591102600098,
+      "z": 126.68084716796875,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1100,
+      "blueprint": "forest_tree_01_snow",
+      "x": -149.18905639648438,
+      "y": 5.410015106201172,
+      "z": 127.06118774414062,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1101,
+      "blueprint": "forest_tree_01_snow",
+      "x": -148.34414672851562,
+      "y": 9.571563720703125,
+      "z": 100.80622863769531,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1102,
+      "blueprint": "forest_tree_01_snow",
+      "x": -120.59955596923828,
+      "y": 9.026925086975098,
+      "z": 112.3978042602539,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1103,
+      "blueprint": "forest_tree_01_snow",
+      "x": -135.70578002929688,
+      "y": 17.954072952270508,
+      "z": 76.25653076171875,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1104,
+      "blueprint": "forest_tree_01_snow",
+      "x": -134.78561401367188,
+      "y": 14.308279037475586,
+      "z": 80.91940307617188,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1105,
+      "blueprint": "forest_tree_01_snow",
+      "x": -159.00814819335938,
+      "y": 16.908275604248047,
+      "z": 122.32129669189453,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1107,
+      "blueprint": "forest_tree_02_snow",
+      "x": -66.46002960205078,
+      "y": 11.128524780273438,
+      "z": -125.22163391113281,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1108,
+      "blueprint": "forest_tree_02_snow",
+      "x": -118.48133087158203,
+      "y": 8.669867515563965,
+      "z": -80.01432037353516,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1109,
+      "blueprint": "forest_tree_02_snow",
+      "x": -116.93988800048828,
+      "y": 8.720192909240723,
+      "z": -78.90507507324219,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1110,
+      "blueprint": "forest_tree_02_snow",
+      "x": -118.11512756347656,
+      "y": 7.158356189727783,
+      "z": -78.19168853759766,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1111,
+      "blueprint": "forest_tree_01_snow",
+      "x": -64.11551666259766,
+      "y": 3.946913719177246,
+      "z": -124.72212219238281,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1112,
+      "blueprint": "forest_tree_01_snow",
+      "x": -21.21874237060547,
+      "y": 6.856777667999268,
+      "z": -93.491943359375,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1113,
+      "blueprint": "forest_tree_01_snow",
+      "x": -19.812828063964844,
+      "y": 2.684830665588379,
+      "z": -90.20976257324219,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1114,
+      "blueprint": "forest_tree_01_snow",
+      "x": -16.204553604125977,
+      "y": -0.16869640350341797,
+      "z": -95.14286804199219,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1116,
+      "blueprint": "forest_tree_02_snow",
+      "x": 18.707805633544922,
+      "y": 7.413067817687988,
+      "z": -75.01307678222656,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1117,
+      "blueprint": "forest_tree_02_snow",
+      "x": 18.08057403564453,
+      "y": 10.011320114135742,
+      "z": -76.28009796142578,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1118,
+      "blueprint": "forest_tree_01_snow",
+      "x": 17.24435806274414,
+      "y": 5.719517707824707,
+      "z": -86.2402572631836,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1119,
+      "blueprint": "forest_tree_01_snow",
+      "x": 17.587139129638672,
+      "y": 1.464822769165039,
+      "z": -89.36860656738281,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1120,
+      "blueprint": "forest_tree_01_snow",
+      "x": 17.022871017456055,
+      "y": -0.5201244354248047,
+      "z": -79.47879028320312,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1121,
+      "blueprint": "forest_tree_01_snow",
+      "x": -112.34423065185547,
+      "y": 4.347672939300537,
+      "z": -19.449569702148438,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1122,
+      "blueprint": "forest_tree_01_snow",
+      "x": -109.19590759277344,
+      "y": -3.8138742446899414,
+      "z": -14.849021911621094,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1123,
+      "blueprint": "forest_tree_01_snow",
+      "x": -114.09766387939453,
+      "y": 3.04105806350708,
+      "z": -21.34278106689453,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1124,
+      "blueprint": "forest_tree_01_snow",
+      "x": -95.8165054321289,
+      "y": -0.8618736267089844,
+      "z": -10.980507850646973,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1125,
+      "blueprint": "forest_tree_02_snow",
+      "x": -102.98139190673828,
+      "y": 7.25412654876709,
+      "z": -13.775724411010742,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1126,
+      "blueprint": "forest_tree_02_snow",
+      "x": -106.84452819824219,
+      "y": 6.5206732749938965,
+      "z": -17.254863739013672,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1127,
+      "blueprint": "forest_tree_02_snow",
+      "x": -96.13699340820312,
+      "y": 6.947731971740723,
+      "z": 12.001569747924805,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1128,
+      "blueprint": "forest_tree_02_snow",
+      "x": -104.07820129394531,
+      "y": 6.651205539703369,
+      "z": 17.325199127197266,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1129,
+      "blueprint": "forest_tree_02_snow",
+      "x": -102.32135772705078,
+      "y": 9.058385848999023,
+      "z": 15.484477996826172,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1130,
+      "blueprint": "forest_tree_02_snow",
+      "x": -123.54336547851562,
+      "y": 9.774968147277832,
+      "z": 34.60584259033203,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1131,
+      "blueprint": "forest_tree_01_snow",
+      "x": -143.23281860351562,
+      "y": 18.228910446166992,
+      "z": 48.04008865356445,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1132,
+      "blueprint": "forest_tree_01_snow",
+      "x": -129.14088439941406,
+      "y": 9.458015441894531,
+      "z": 59.47613525390625,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1133,
+      "blueprint": "forest_tree_01_snow",
+      "x": -129.39466857910156,
+      "y": 4.272470951080322,
+      "z": 55.23363494873047,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1134,
+      "blueprint": "forest_tree_01_snow",
+      "x": -127.74777221679688,
+      "y": -2.007674217224121,
+      "z": 58.27180480957031,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1135,
+      "blueprint": "forest_tree_01_snow",
+      "x": -21.366161346435547,
+      "y": 6.409584999084473,
+      "z": 106.36766815185547,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1136,
+      "blueprint": "forest_tree_01_snow",
+      "x": -26.67120361328125,
+      "y": 2.5900487899780273,
+      "z": 113.3819580078125,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1137,
+      "blueprint": "forest_tree_01_snow",
+      "x": -13.665376663208008,
+      "y": 7.814336776733398,
+      "z": 58.993690490722656,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1138,
+      "blueprint": "forest_tree_01_snow",
+      "x": -13.700098037719727,
+      "y": 12.125484466552734,
+      "z": 55.196407318115234,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1139,
+      "blueprint": "forest_tree_01_snow",
+      "x": -18.193660736083984,
+      "y": 0.6009750366210938,
+      "z": 52.44358444213867,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1140,
+      "blueprint": "forest_tree_01_snow",
+      "x": -15.766830444335938,
+      "y": 6.031011581420898,
+      "z": 52.72844696044922,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1142,
+      "blueprint": "forest_tree_01_snow",
+      "x": -15.070067405700684,
+      "y": 10.132328033447266,
+      "z": 102.90650939941406,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1143,
+      "blueprint": "forest_tree_01_snow",
+      "x": -17.40266227722168,
+      "y": 1.1605796813964844,
+      "z": 101.65708923339844,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1144,
+      "blueprint": "forest_tree_01_snow",
+      "x": -21.607511520385742,
+      "y": 4.69139289855957,
+      "z": 21.05515480041504,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1145,
+      "blueprint": "forest_tree_01_snow",
+      "x": -19.22463607788086,
+      "y": 9.600639343261719,
+      "z": 19.014652252197266,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1147,
+      "blueprint": "forest_tree_02_snow",
+      "x": -16.20004653930664,
+      "y": 9.447771072387695,
+      "z": 20.228836059570312,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1149,
+      "blueprint": "forest_tree_02_snow",
+      "x": -20.665950775146484,
+      "y": 9.946582794189453,
+      "z": 19.096073150634766,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1150,
+      "blueprint": "forest_tree_02_snow",
+      "x": 22.441768646240234,
+      "y": 8.722803115844727,
+      "z": -43.422569274902344,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1151,
+      "blueprint": "forest_tree_01_snow",
+      "x": 23.878646850585938,
+      "y": 7.39054536819458,
+      "z": -40.854591369628906,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1152,
+      "blueprint": "forest_tree_01_snow",
+      "x": 20.971670150756836,
+      "y": 3.832063674926758,
+      "z": -44.35533905029297,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1153,
+      "blueprint": "forest_tree_01_snow",
+      "x": 54.01894760131836,
+      "y": 5.617762565612793,
+      "z": -123.4773941040039,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1154,
+      "blueprint": "forest_tree_01_snow",
+      "x": 51.346343994140625,
+      "y": 7.758086681365967,
+      "z": -123.08050537109375,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1155,
+      "blueprint": "forest_tree_02_snow",
+      "x": 48.603206634521484,
+      "y": 11.043878555297852,
+      "z": -121.66036987304688,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1156,
+      "blueprint": "forest_tree_01_snow",
+      "x": 113.32611083984375,
+      "y": -1.2515554428100586,
+      "z": -93.62966918945312,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1157,
+      "blueprint": "forest_tree_01_snow",
+      "x": 113.97412872314453,
+      "y": 3.9142227172851562,
+      "z": -93.55915832519531,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1158,
+      "blueprint": "forest_tree_02_snow",
+      "x": 114.98172760009766,
+      "y": 7.436997890472412,
+      "z": -91.5439453125,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1159,
+      "blueprint": "forest_tree_02_snow",
+      "x": 119,
+      "y": 10.189997673034668,
+      "z": -29,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1160,
+      "blueprint": "forest_tree_02_snow",
+      "x": 109.19658660888672,
+      "y": 7.628604888916016,
+      "z": -100.55036163330078,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1161,
+      "blueprint": "forest_tree_02_snow",
+      "x": 113.25283813476562,
+      "y": 12.333037376403809,
+      "z": -101.20794677734375,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1162,
+      "blueprint": "forest_tree_02_snow",
+      "x": 109.05415344238281,
+      "y": 8.603425979614258,
+      "z": -103.20695495605469,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1163,
+      "blueprint": "forest_tree_01_snow",
+      "x": 112.8331069946289,
+      "y": -0.5101642608642578,
+      "z": -21.20488166809082,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1164,
+      "blueprint": "forest_tree_01_snow",
+      "x": 116.80716705322266,
+      "y": 0.6274967193603516,
+      "z": -23.587404251098633,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1165,
+      "blueprint": "forest_tree_01_snow",
+      "x": 103.15055847167969,
+      "y": 2.432713508605957,
+      "z": -13.962467193603516,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1166,
+      "blueprint": "forest_tree_01_snow",
+      "x": 114.77867126464844,
+      "y": 15.843511581420898,
+      "z": -3.521975517272949,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1167,
+      "blueprint": "forest_tree_02_snow",
+      "x": 96.64097595214844,
+      "y": 16.528352737426758,
+      "z": 2.8062829971313477,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1168,
+      "blueprint": "forest_tree_02_snow",
+      "x": 99.91739654541016,
+      "y": 18.666959762573242,
+      "z": -0.1401042938232422,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1169,
+      "blueprint": "forest_tree_02_snow",
+      "x": 114.26422882080078,
+      "y": 17.848800659179688,
+      "z": -4.782871246337891,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1170,
+      "blueprint": "forest_tree_02_snow",
+      "x": 116.88150787353516,
+      "y": 19.980607986450195,
+      "z": -4.493093490600586,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1171,
+      "blueprint": "forest_tree_02_snow",
+      "x": 137.81982421875,
+      "y": 7.011606693267822,
+      "z": 23.508644104003906,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1172,
+      "blueprint": "forest_tree_02_snow",
+      "x": 128.44813537597656,
+      "y": 10.395816802978516,
+      "z": 26.541635513305664,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1173,
+      "blueprint": "forest_tree_02_snow",
+      "x": 121.56121826171875,
+      "y": 7.982974529266357,
+      "z": 11.304903984069824,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1174,
+      "blueprint": "forest_tree_01_snow",
+      "x": 134.8453369140625,
+      "y": 4.7157745361328125,
+      "z": 8.631120681762695,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1175,
+      "blueprint": "forest_tree_01_snow",
+      "x": 154.77972412109375,
+      "y": 7.620670795440674,
+      "z": 17.983154296875,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1176,
+      "blueprint": "forest_tree_01_snow",
+      "x": 177.0765838623047,
+      "y": 6.176355838775635,
+      "z": 20.909128189086914,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1177,
+      "blueprint": "forest_tree_01_snow",
+      "x": 161.92320251464844,
+      "y": 5.580319881439209,
+      "z": 5.789389133453369,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1178,
+      "blueprint": "forest_tree_01_snow",
+      "x": 166.39553833007812,
+      "y": -0.7178497314453125,
+      "z": 5.384476661682129,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1179,
+      "blueprint": "forest_tree_01_snow",
+      "x": 139.0582275390625,
+      "y": 14.742212295532227,
+      "z": 38.747047424316406,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1180,
+      "blueprint": "forest_tree_01_snow",
+      "x": 140.73927307128906,
+      "y": 8.869461059570312,
+      "z": 38.62145233154297,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1181,
+      "blueprint": "forest_tree_01_snow",
+      "x": 136.98521423339844,
+      "y": 3.8651933670043945,
+      "z": 46.70799255371094,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1182,
+      "blueprint": "forest_tree_01_snow",
+      "x": 119.17274475097656,
+      "y": 5.938844203948975,
+      "z": 82.19355773925781,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1183,
+      "blueprint": "forest_tree_02_snow",
+      "x": 118.17560577392578,
+      "y": 8.727397918701172,
+      "z": 85.8187255859375,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1184,
+      "blueprint": "forest_tree_02_snow",
+      "x": -124.71894073486328,
+      "y": 14.572514533996582,
+      "z": 94.21094512939453,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1185,
+      "blueprint": "forest_tree_01_snow",
+      "x": -120.84154510498047,
+      "y": 3.43780517578125,
+      "z": 107.00117492675781,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1186,
+      "blueprint": "forest_tree_01_snow",
+      "x": -120.10353088378906,
+      "y": 7.799489974975586,
+      "z": 91.97246551513672,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1187,
+      "blueprint": "forest_tree_01_snow",
+      "x": -135.75143432617188,
+      "y": 10.246391296386719,
+      "z": 98.2055892944336,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1188,
+      "blueprint": "forest_tree_01_snow",
+      "x": -135.6971435546875,
+      "y": 3.2288742065429688,
+      "z": 100.61507415771484,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1189,
+      "blueprint": "forest_tree_01_snow",
+      "x": -125.94864654541016,
+      "y": 15.919391632080078,
+      "z": 112.05325317382812,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1190,
+      "blueprint": "forest_tree_01_snow",
+      "x": -48.68809127807617,
+      "y": 4.9879584312438965,
+      "z": 120.90359497070312,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1191,
+      "blueprint": "forest_tree_01_snow",
+      "x": -46.399234771728516,
+      "y": 0.5777473449707031,
+      "z": 122.09265899658203,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1192,
+      "blueprint": "forest_tree_01_snow",
+      "x": 26.874658584594727,
+      "y": 5.967008590698242,
+      "z": 113.52893829345703,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1193,
+      "blueprint": "forest_tree_01_snow",
+      "x": 28.274032592773438,
+      "y": 10.326534271240234,
+      "z": 116.06295776367188,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1194,
+      "blueprint": "forest_tree_01_snow",
+      "x": 26,
+      "y": -0.06289196014404297,
+      "z": 112,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1195,
+      "blueprint": "forest_tree_02_snow",
+      "x": 32.934226989746094,
+      "y": 9.119253158569336,
+      "z": 114.99797821044922,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1196,
+      "blueprint": "forest_tree_02_snow",
+      "x": 28.10963249206543,
+      "y": 9.620513916015625,
+      "z": 115.09532928466797,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1197,
+      "blueprint": "forest_tree_02_snow",
+      "x": 29.419885635375977,
+      "y": 6.862624168395996,
+      "z": 112.65084838867188,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1198,
+      "blueprint": "forest_tree_02_snow",
+      "x": 36.843017578125,
+      "y": 9.664506912231445,
+      "z": 119.02804565429688,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1199,
+      "blueprint": "forest_tree_02_snow",
+      "x": 48.06745529174805,
+      "y": 7.567534446716309,
+      "z": 120.4443359375,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1200,
+      "blueprint": "forest_tree_02_snow",
+      "x": 75.42930603027344,
+      "y": 7.963751316070557,
+      "z": 121.70491790771484,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1201,
+      "blueprint": "forest_tree_02_snow",
+      "x": 76.76840209960938,
+      "y": 11.120532989501953,
+      "z": 121.55899810791016,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1202,
+      "blueprint": "forest_tree_02_snow",
+      "x": 65.34033966064453,
+      "y": 7.165266036987305,
+      "z": 121.79176330566406,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1203,
+      "blueprint": "forest_tree_02_snow",
+      "x": 117.01480102539062,
+      "y": 8.980892181396484,
+      "z": 92.56610107421875,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1204,
+      "blueprint": "forest_tree_01_snow",
+      "x": 69.0325927734375,
+      "y": 0.22301864624023438,
+      "z": 121.97207641601562,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1205,
+      "blueprint": "forest_tree_01_snow",
+      "x": 104.34320831298828,
+      "y": 7.332068920135498,
+      "z": 111.10148620605469,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1206,
+      "blueprint": "forest_tree_01_snow",
+      "x": 106.14153289794922,
+      "y": -2.109384536743164,
+      "z": 108.91542053222656,
+      "rotation": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1207,
+      "blueprint": "forest_tree_01_snow",
+      "x": 121.33895874023438,
+      "y": -3.795553207397461,
+      "z": 68.83351135253906,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1208,
+      "blueprint": "forest_tree_01_snow",
+      "x": 123,
+      "y": 1.582472801208496,
+      "z": 66,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1211,
+      "blueprint": "russ_destroyed_bits_01",
+      "x": 130.09532165527344,
+      "y": 10,
+      "z": 22.440101623535156,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1212,
+      "blueprint": "russ_destroyed_bits_01",
+      "x": 125.27708435058594,
+      "y": 10,
+      "z": 13.526934623718262,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1213,
+      "blueprint": "russ_destroyed_bits_01",
+      "x": 26.716190338134766,
+      "y": 9.724018096923828,
+      "z": 61.1218147277832,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1214,
+      "blueprint": "russ_destroyed_bits_01",
+      "x": 43.05172348022461,
+      "y": 10,
+      "z": 75.10619354248047,
+      "rotation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1215,
+      "blueprint": "russ_destroyed_bits_01",
+      "x": -113.14080047607422,
+      "y": 10.646571159362793,
+      "z": 102.03176879882812,
+      "rotation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": 1216,
+      "blueprint": "russ_destroyed_bits_01",
+      "x": -116.07073211669922,
+      "y": 11.411218643188477,
+      "z": 95.07756042480469,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 1222,
+      "blueprint": "fx_snow_hvy_01",
+      "x": 1.6493244171142578,
+      "y": 8.5,
+      "z": -2.500856399536133,
+      "rotation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

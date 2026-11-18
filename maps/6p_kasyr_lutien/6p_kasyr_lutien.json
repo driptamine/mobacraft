@@ -1,0 +1,219 @@
+{
+  "name": "Kasyr Lutien",
+  "bounds": 512,
+  "positions": [
+    {
+      "x": 172,
+      "z": -147,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 174,
+      "z": 14,
+      "team": "blue",
+      "faction": "space marines"
+    },
+    {
+      "x": 173,
+      "z": 142,
+      "team": "blue",
+      "faction": "eldar"
+    },
+    {
+      "x": -171,
+      "z": 144,
+      "team": "red",
+      "faction": "dark eldar"
+    },
+    {
+      "x": -174,
+      "z": -45,
+      "team": "red",
+      "faction": "sob"
+    },
+    {
+      "x": -174,
+      "z": -170,
+      "team": "red",
+      "faction": "tau"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": 208,
+      "z": -156,
+      "kind": "point"
+    },
+    {
+      "x": 208,
+      "z": -2,
+      "kind": "point"
+    },
+    {
+      "x": 206,
+      "z": 146,
+      "kind": "point"
+    },
+    {
+      "x": -208,
+      "z": 148,
+      "kind": "point"
+    },
+    {
+      "x": -208,
+      "z": 10,
+      "kind": "point"
+    },
+    {
+      "x": -210,
+      "z": -162,
+      "kind": "point"
+    },
+    {
+      "x": 92,
+      "z": -146,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": 18,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": 146,
+      "kind": "point"
+    },
+    {
+      "x": -96,
+      "z": 146,
+      "kind": "point"
+    },
+    {
+      "x": -94,
+      "z": -48,
+      "kind": "point"
+    },
+    {
+      "x": -96,
+      "z": -178,
+      "kind": "point"
+    },
+    {
+      "x": 234,
+      "z": -154,
+      "kind": "relic"
+    },
+    {
+      "x": 236,
+      "z": 148,
+      "kind": "relic"
+    },
+    {
+      "x": -16,
+      "z": -24,
+      "kind": "objective"
+    },
+    {
+      "x": 2,
+      "z": 170,
+      "kind": "objective"
+    },
+    {
+      "x": -2,
+      "z": -150,
+      "kind": "objective"
+    },
+    {
+      "x": -234,
+      "z": 10,
+      "kind": "relic"
+    },
+    {
+      "x": -234,
+      "z": 154,
+      "kind": "relic"
+    },
+    {
+      "x": 236,
+      "z": -6,
+      "kind": "relic"
+    },
+    {
+      "x": -238,
+      "z": -156,
+      "kind": "relic"
+    },
+    {
+      "x": -178,
+      "z": -114,
+      "kind": "point"
+    },
+    {
+      "x": -176,
+      "z": -230,
+      "kind": "point"
+    },
+    {
+      "x": -176,
+      "z": 36,
+      "kind": "point"
+    },
+    {
+      "x": -176,
+      "z": 220,
+      "kind": "point"
+    },
+    {
+      "x": 176,
+      "z": 214,
+      "kind": "point"
+    },
+    {
+      "x": 176,
+      "z": 78,
+      "kind": "point"
+    },
+    {
+      "x": 176,
+      "z": -72,
+      "kind": "point"
+    },
+    {
+      "x": 178,
+      "z": -212,
+      "kind": "point"
+    },
+    {
+      "x": -154,
+      "z": -174,
+      "kind": "point"
+    },
+    {
+      "x": 148,
+      "z": -146,
+      "kind": "point"
+    },
+    {
+      "x": -154,
+      "z": -48,
+      "kind": "point"
+    },
+    {
+      "x": 154,
+      "z": 16,
+      "kind": "point"
+    },
+    {
+      "x": -152,
+      "z": 142,
+      "kind": "point"
+    },
+    {
+      "x": 148,
+      "z": 142,
+      "kind": "point"
+    }
+  ]
+}

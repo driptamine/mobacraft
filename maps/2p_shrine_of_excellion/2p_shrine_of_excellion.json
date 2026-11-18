@@ -1,0 +1,85 @@
+{
+  "name": "Shrine Of Excellion",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": 60.64,
+      "z": -63.76,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": -63.86,
+      "z": 61.46,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -76,
+      "z": 20,
+      "kind": "point"
+    },
+    {
+      "x": -24,
+      "z": 72,
+      "kind": "point"
+    },
+    {
+      "x": -90,
+      "z": 88,
+      "kind": "point"
+    },
+    {
+      "x": 88,
+      "z": -90,
+      "kind": "point"
+    },
+    {
+      "x": 24,
+      "z": -72,
+      "kind": "point"
+    },
+    {
+      "x": 68,
+      "z": -26,
+      "kind": "point"
+    },
+    {
+      "x": -4,
+      "z": -2,
+      "kind": "objective"
+    },
+    {
+      "x": -72,
+      "z": -72,
+      "kind": "relic"
+    },
+    {
+      "x": 68,
+      "z": 68,
+      "kind": "relic"
+    },
+    {
+      "x": -18,
+      "z": -82,
+      "kind": "point"
+    },
+    {
+      "x": 78,
+      "z": 14,
+      "kind": "point"
+    },
+    {
+      "x": 14,
+      "z": 78,
+      "kind": "point"
+    },
+    {
+      "x": -82,
+      "z": -16,
+      "kind": "point"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Fata Morgana",
+  "bounds": 256,
+  "positions": [
+    {
+      "x": -113,
+      "z": 63,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 111,
+      "z": -66,
+      "team": "red",
+      "faction": "orks"
+    }
+  ],
+  "strategicPoints": [
+    {
+      "x": -2,
+      "z": -4,
+      "kind": "objective"
+    },
+    {
+      "x": 110,
+      "z": -34,
+      "kind": "point"
+    },
+    {
+      "x": 104,
+      "z": -112,
+      "kind": "point"
+    },
+    {
+      "x": -112,
+      "z": 30,
+      "kind": "point"
+    },
+    {
+      "x": -108,
+      "z": 108,
+      "kind": "point"
+    },
+    {
+      "x": -50,
+      "z": 62,
+      "kind": "point"
+    },
+    {
+      "x": 50,
+      "z": -66,
+      "kind": "point"
+    },
+    {
+      "x": 108,
+      "z": 102,
+      "kind": "objective"
+    },
+    {
+      "x": -100,
+      "z": -102,
+      "kind": "objective"
+    },
+    {
+      "x": -16,
+      "z": 94,
+      "kind": "relic"
+    },
+    {
+      "x": 14,
+      "z": -98,
+      "kind": "relic"
+    },
+    {
+      "x": -98,
+      "z": -16,
+      "kind": "point"
+    },
+    {
+      "x": 94,
+      "z": 10,
+      "kind": "point"
+    }
+  ]
+}
