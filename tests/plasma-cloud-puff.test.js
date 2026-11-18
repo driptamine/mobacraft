@@ -329,7 +329,7 @@ describe('plasma cloud puff weapon icon', () => {
     const find = (panel) => panel.props.children.find((child) => child?.props?.label === 'PLASMA CLOUD PUFF');
     const button = find(render([f.squad, kasrkin, enemy]));
     assert.ok(button);
-    assert.equal(button.props.icon, '/bundled/plasma_cloud_puff.svg');
+    assert.equal(button.props.icon, 'assets/command_icons/plasma_cloud_puff.svg');
     button.props.onClick();
     assert.equal(f.world.get(f.squad, 'squad').projectileType, PLASMA_CLOUD_PUFF);
     assert.equal(f.world.get(kasrkin, 'squad').projectileType, 'beam');
