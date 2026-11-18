@@ -3,6 +3,9 @@ node_modules/
 
 # Large asset folders (3.0G / 1.1G / 88M / 18M / 10M)
 batches/
+# ...except the small build-needed animation index (used by unit stats)
+!animations/batches/
+!animations/batches/**
 models/
 assets/
 /maps/all_tiles/
