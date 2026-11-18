@@ -13,7 +13,6 @@ import {
 import { assetUrl } from '../../render/assets.js';
 import { R2Img } from '../bits.jsx';
 import { PLASMA_CLOUD_PUFF } from '../../fx/plasma-cloud-puff.js';
-import plasmaCloudPuffIcon from '../../../assets/command_icons/plasma_cloud_puff.svg?url';
 import { isPlasmaPuffPreviewOpen, togglePlasmaPuffPreview } from '../../ui/plasma-puff-preview.js';
 
 function SergeantSlotView({ data }: any): JSX.Element {
@@ -165,7 +164,7 @@ function AmmoSubPanel({ data }: any): JSX.Element | null {
         onClick={() => setProjectile('plasma-final')}
       />
       {puffSquads.length > 0 && <AmmoButton
-        icon={plasmaCloudPuffIcon}
+        icon="assets/command_icons/plasma_cloud_puff.svg"
         label="PLASMA CLOUD PUFF"
         disabled={false}
         tooltip="WEAPON: PLASMA CLOUD PUFF\nSeven small plasma clouds pierced by a blue beam\nThree lengths along the flight: 20%, 40%, 60% of soldier height"
