@@ -1,0 +1,370 @@
+// Startup main menu (right side): 200x200 art placeholder + section buttons.
+// Skirmish opens its own map-list panel; Multi-player opens the connect
+// overlay; the rest are stub screens until those sections exist. Only
+// zero-dependency leaf modules are imported statically (multiplayer stays
+// lazy to avoid an import cycle).
+import { serverIdFromPath } from '../net/server-route.js';
+import { lightingMode, setLightingMode, shadowsEnabled, setShadowsEnabled } from '../render/lighting.js';
+import { modelSource, setModelSource, MODEL_SOURCE_PROCEDURAL, MODEL_SOURCE_GLB } from '../render/model-source.js';
+
+export const MENU_ITEMS = [
+  { id: 'campaign', label: 'Campaign' },
+  { id: 'skirmish', label: 'Skirmish' },
+  { id: 'multiplayer', label: 'Multi-player' },
+  { id: 'army-painter', label: 'Army Painter' },
+  { id: 'balance', label: 'Balance Editor' },
+  { id: 'settings', label: 'Settings' },
+  { id: 'credits', label: 'Credits' },
+];
+
+export function screenFor(itemId: string): string {
+  if (itemId === 'skirmish') {
+    return 'skirmish';
+  }
+  if (itemId === 'multiplayer') {
+    return 'multiplayer';
+  }
+  return 'stub';
+}
+
+let _routeListener: (() => void) | null = null;
+
+let _showConnectOverlay: ((screen: string) => void) | null = null;
+let _hideConnectOverlay: (() => void) | null = null;
+let _showSkirmishPanel: (() => void) | null = null;
+let _hideSkirmishPanel: (() => void) | null = null;
+let _openingScreen: string | null = null;
+
+function _menuElement(): HTMLElement | null {
+  return document.getElementById('grimcraft-main-menu');
+}
+
+export function showMainMenu(): void {
+  if (_hideConnectOverlay) {
+    _hideConnectOverlay();
+  }
+  if (_hideSkirmishPanel) {
+    _hideSkirmishPanel();
+  }
+  renderMenuList();
+  const menu = _menuElement();
+  if (menu) {
+    menu.style.display = 'flex';
+  }
+}
+
+export function hideMainMenu(): void {
+  const menu = _menuElement();
+  if (menu) {
+    menu.style.display = 'none';
+  }
+  // Never trap the player behind the skeleton when leaving the menu.
+  dismissMenuSkeleton();
+}
+
+function _onItemClick(item: { id: string; label: string }): void {
+  if (item.id === 'balance') { window.location.assign('/balance');return; }
+  const screen = screenFor(item.id);
+  if (item.id === 'credits') {
+    renderCredits();
+    return;
+  }
+  if (item.id === 'settings') {
+    renderSettings();
+    return;
+  }
+  if (screen === 'stub') {
+    renderStub(item.label);
+    return;
+  }
+  // One click opens the panel: the menu stays put until the panel is ready,
+  // then swaps at once. Extra clicks while the chunk loads are ignored.
+  if (screen === 'skirmish') {
+    if (_showSkirmishPanel) {
+      hideMainMenu();
+      _showSkirmishPanel();
+      return;
+    }
+    if (_openingScreen) return;
+    _openingScreen = screen;
+    void _ensureMultiplayer().then(() => {
+      _openingScreen = null;
+      hideMainMenu();
+      _showSkirmishPanel?.();
+    }).catch((err) => {
+      _openingScreen = null;
+      console.error('[menu] skirmish chunk failed to load', err);
+    });
+    return;
+  }
+  if (_showConnectOverlay) {
+    hideMainMenu();
+    _showConnectOverlay(screen);
+    return;
+  }
+  if (_openingScreen) return;
+  _openingScreen = screen;
+  void _ensureMultiplayer().then(() => {
+    _openingScreen = null;
+    hideMainMenu();
+    _showConnectOverlay?.(screen);
+  }).catch((err) => {
+    _openingScreen = null;
+    console.error('[menu] multiplayer chunk failed to load', err);
+  });
+}
+
+// The multiplayer chunk (lobby, map layouts, netcode) is the heaviest part
+// of startup: the menu shell renders first, the chunk loads behind it.
+let _multiplayerReady: Promise<void> | null = null;
+function _ensureMultiplayer(): Promise<void> {
+  if (!_multiplayerReady) {
+    const pending = import('../net/multiplayer.js').then((multiplayer) => {
+      _showConnectOverlay = multiplayer.showConnectOverlay;
+      _hideConnectOverlay = multiplayer.hideConnectOverlay;
+      _showSkirmishPanel = multiplayer.showSkirmishPanel;
+      _hideSkirmishPanel = multiplayer.hideSkirmishPanel;
+      multiplayer._injectConnectUI();
+      _hideConnectOverlay();
+    });
+    _multiplayerReady = pending;
+    // Never cache a failure: a hiccup must not brick skirmish/multiplayer
+    // for the session — the next click retries the import from scratch.
+    void pending.catch(() => {
+      if (_multiplayerReady === pending) {
+        _multiplayerReady = null;
+      }
+    });
+  }
+  return _multiplayerReady;
+}
+
+function renderMenuList(): void {
+  const list = document.getElementById('main-menu-list');
+  if (!list) {
+    return;
+  }
+  list.innerHTML = '';
+  for (const item of MENU_ITEMS) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'main-menu-btn';
+    btn.textContent = item.label;
+    btn.addEventListener('click', () => _onItemClick(item));
+    list.appendChild(btn);
+  }
+  // Model source toggle: GLB files from models/ vs built-in procedural
+  // meshes. Persisted; takes effect on the next game start.
+  const modelsBtn = document.createElement('button');
+  modelsBtn.type = 'button';
+  modelsBtn.className = 'main-menu-btn';
+  const paintModelsBtn = (): void => {
+    modelsBtn.textContent = `MODELS: ${modelSource() === MODEL_SOURCE_PROCEDURAL ? 'PROCEDURAL' : 'GLB'}`;
+  };
+  paintModelsBtn();
+  modelsBtn.addEventListener('click', () => {
+    setModelSource(modelSource() === MODEL_SOURCE_PROCEDURAL ? MODEL_SOURCE_GLB : MODEL_SOURCE_PROCEDURAL);
+    paintModelsBtn();
+  });
+  list.appendChild(modelsBtn);
+  // Render quality button: LOW → MEDIUM → HIGH. Persisted; MSAA is a
+  // construction-time flag, so applying a level reloads the page.
+  const qualityBtn = document.createElement('button');
+  qualityBtn.type = 'button';
+  qualityBtn.className = 'main-menu-btn';
+  qualityBtn.textContent = 'QUALITY: …';
+  qualityBtn.classList.add('main-menu-btn--value-loading');
+  qualityBtn.setAttribute('aria-busy', 'true');
+  import('../core/scene.js').then((sceneModule) => {
+    qualityBtn.textContent = `QUALITY: ${String(sceneModule.qualityTier()).toUpperCase()}`;
+  }).catch(() => {
+    qualityBtn.textContent = 'QUALITY: HIGH';
+  }).finally(() => {
+    qualityBtn.classList.remove('main-menu-btn--value-loading');
+    qualityBtn.removeAttribute('aria-busy');
+    // The skeleton stays until the quality value (the readiness signal)
+    // lands or falls back — only then is boot truly visible.
+    dismissMenuSkeleton();
+  });
+  qualityBtn.addEventListener('click', () => {
+    import('../core/scene.js').then((sceneModule) => {
+      sceneModule.cycleQualityTier();
+      window.location.reload();
+    });
+  });
+  list.appendChild(qualityBtn);
+}
+
+export const wikiEntries = [
+  { label: "PLAYER'S GUIDE", path: 'settings/wiki/players_guide.html' },
+  { label: 'GUARDSMEN SQUAD', path: 'settings/wiki/guardsmen_squad/' },
+];
+
+function renderSettings(): void {
+  const list = document.getElementById('main-menu-list');
+  if (!list) {
+    return;
+  }
+  list.innerHTML = '';
+  const title = document.createElement('div');
+  title.className = 'main-menu-stub-title';
+  title.textContent = 'Settings';
+  list.appendChild(title);
+  const lightButton = document.createElement('button');
+  lightButton.type = 'button';lightButton.className = 'main-menu-btn';lightButton.id = 'lighting-mode';
+  const paintLight = () => {
+    lightButton.textContent = `СВЕТ: ${lightingMode() === 'definitive' ? 'DEFINITIVE EDITION' : 'CLASSIC'}`;
+    lightButton.setAttribute('aria-pressed', String(lightingMode() === 'definitive'));
+  };
+  lightButton.title = 'Освещение в духе Dawn of War: Definitive Edition: отражённый свет, контраст и объём.';
+  paintLight();
+  lightButton.addEventListener('click', () => { setLightingMode(lightingMode() === 'classic' ? 'definitive' : 'classic');paintLight(); });
+  list.appendChild(lightButton);
+  const shadowButton = document.createElement('button');
+  shadowButton.type = 'button';shadowButton.className = 'main-menu-btn main-menu-btn--value-loading';shadowButton.id = 'lighting-shadows';shadowButton.setAttribute('aria-busy', 'true');
+  void import('../core/scene.js').then(({ qualityTier }) => {
+    const paintShadows = () => {
+      const enabled = shadowsEnabled(qualityTier());
+      shadowButton.textContent = `ТЕНИ: ${enabled ? 'ВКЛ.' : 'ВЫКЛ.'}`;
+      shadowButton.setAttribute('aria-pressed', String(enabled));
+    };
+    paintShadows();
+    shadowButton.addEventListener('click', () => { setShadowsEnabled(!shadowsEnabled(qualityTier()));paintShadows(); });
+    shadowButton.classList.remove('main-menu-btn--value-loading');
+    shadowButton.removeAttribute('aria-busy');
+  }).catch(() => {
+    shadowButton.textContent = 'ТЕНИ: ВЫКЛ.';
+    shadowButton.classList.remove('main-menu-btn--value-loading');
+    shadowButton.removeAttribute('aria-busy');
+  });
+  list.appendChild(shadowButton);
+  const auraButton=document.createElement('button');auraButton.type='button';auraButton.className='main-menu-btn';auraButton.id='necron-aura-mode';
+  void import('../fx/necron-aurora.js').then(({necronGlowMode,setNecronGlowMode})=>{
+    const labels={new:'НОВАЯ',current:'ТЕКУЩАЯ',off:'ВЫКЛ.'};
+    const refresh=()=>{auraButton.textContent=`NECRON АУРА: ${labels[necronGlowMode()]}`};refresh();
+    auraButton.addEventListener('click',()=>{const modes=['new','current','off'] as const;setNecronGlowMode(modes[(modes.indexOf(necronGlowMode())+1)%modes.length]);refresh()});
+  });list.appendChild(auraButton);
+  const note = document.createElement('div');
+  note.className = 'main-menu-stub-note';
+  note.textContent = 'WIKI';
+  list.appendChild(note);
+  for (const entry of wikiEntries) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'main-menu-btn';
+    btn.textContent = entry.label;
+    btn.addEventListener('click', () => {
+      window.open(entry.path, '_blank');
+    });
+    list.appendChild(btn);
+  }
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.className = 'main-menu-btn';
+  back.textContent = '‹ BACK';
+  back.addEventListener('click', renderMenuList);
+  list.appendChild(back);
+}
+
+export const creditNames = ['Driptamine', 'Alexander Morgun', 'Snezhana Shevtsova'];
+
+function renderCredits(): void {
+  const list = document.getElementById('main-menu-list');
+  if (!list) {
+    return;
+  }
+  list.innerHTML = '';
+  const title = document.createElement('div');
+  title.className = 'main-menu-stub-title';
+  title.textContent = 'Credits';
+  list.appendChild(title);
+  for (const name of creditNames) {
+    const line = document.createElement('div');
+    line.className = 'main-menu-stub-note';
+    line.textContent = name;
+    list.appendChild(line);
+  }
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.className = 'main-menu-btn';
+  back.textContent = '‹ BACK';
+  back.addEventListener('click', renderMenuList);
+  list.appendChild(back);
+}
+
+function renderStub(label: string): void {
+  const list = document.getElementById('main-menu-list');
+  if (!list) {
+    return;
+  }
+  list.innerHTML = '';
+  const title = document.createElement('div');
+  title.className = 'main-menu-stub-title';
+  title.textContent = label;
+  list.appendChild(title);
+  const note = document.createElement('div');
+  note.className = 'main-menu-stub-note';
+  note.textContent = 'NOT IMPLEMENTED YET';
+  list.appendChild(note);
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.className = 'main-menu-btn';
+  back.textContent = '‹ BACK';
+  back.addEventListener('click', renderMenuList);
+  list.appendChild(back);
+}
+
+function dismissMenuSkeleton(): void {
+  document.getElementById('main-menu-skeleton')?.remove();
+}
+
+export async function injectMainMenu(): Promise<void> {
+  // Wire the heavy panels behind the menu; the shell below renders now.
+  void _ensureMultiplayer();
+
+  if (_menuElement()) {
+    showMainMenu();
+    if (serverIdFromPath(window.location.pathname)) {
+      void _ensureMultiplayer().then(() => _routeListener?.());
+    }
+    return;
+  }
+  const overlay = document.createElement('div');
+  overlay.id = 'grimcraft-main-menu';
+  overlay.innerHTML = [
+    '<div class="main-menu-side">',
+    '<div class="main-menu-title">GRIMCRAFT</div>',
+    '<div class="main-menu-art">200 × 200</div>',
+    '<div id="main-menu-list" class="main-menu-list"></div>',
+    '</div>',
+  ].join('');
+  const style = document.createElement('style');
+  style.textContent = [
+    '#grimcraft-main-menu { position:fixed; inset:0; z-index:10000; background:rgba(4,8,18,0.92); display:flex; align-items:center; justify-content:flex-end; }',
+    '.main-menu-side { width:280px; margin-right:6vw; display:flex; flex-direction:column; gap:14px; background:rgba(10,18,35,0.97); border:1px solid rgba(80,200,255,0.35); padding:24px; font-family:\'Courier New\',monospace; box-shadow:0 0 40px rgba(80,200,255,0.15); }',
+    '.main-menu-title { font-size:20px; letter-spacing:.3em; color:#50c8ff; text-align:center; }',
+    '.main-menu-art { width:200px; height:200px; margin:0 auto; border:1px solid rgba(80,200,255,0.4); background:#06101f; display:flex; align-items:center; justify-content:center; color:#50c8ff; font-size:11px; letter-spacing:.2em; }',
+    '.main-menu-list { display:flex; flex-direction:column; gap:8px; }',
+    '.main-menu-btn { padding:10px; background:rgba(80,200,255,0.08); border:1px solid rgba(80,200,255,0.35); color:#cfeaff; font-family:\'Courier New\',monospace; font-size:12px; letter-spacing:.15em; cursor:pointer; text-align:center; }',
+    '.main-menu-btn:hover { background:rgba(80,200,255,0.18); }',
+    '.main-menu-stub-title { font-size:14px; letter-spacing:.2em; color:#ffc850; text-align:center; margin-top:4px; }',
+    '.main-menu-stub-note { font-size:9px; letter-spacing:.2em; color:rgba(255,255,255,0.5); text-align:center; margin-bottom:6px; }',
+    '.main-menu-btn.main-menu-btn--value-loading { animation:mm-skel-pulse 1.2s ease-in-out infinite; }',
+    '@keyframes mm-skel-pulse { 0%,100% { opacity:.45; } 50% { opacity:1; } }',
+    '@media (prefers-reduced-motion: reduce) { .main-menu-btn.main-menu-btn--value-loading { animation:none; } }',
+  ].join(' ');
+  document.head.appendChild(style);
+  document.body.appendChild(overlay);
+  renderMenuList();
+
+  window.__grimcraftShowMainMenu = showMainMenu;
+  if (_routeListener) window.removeEventListener('popstate', _routeListener);
+  _routeListener = () => {
+    hideMainMenu();
+    _showConnectOverlay?.('multiplayer');
+  };
+  window.addEventListener('popstate', _routeListener);
+  if (serverIdFromPath(window.location.pathname)) {
+    void _ensureMultiplayer().then(() => _routeListener?.());
+  }
+}

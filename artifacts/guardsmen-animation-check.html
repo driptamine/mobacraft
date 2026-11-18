@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"></head><body><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {GLTFLoader} from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import {loadGltf} from '/src/render/gltf-models.ts';
+const loader=new GLTFLoader();
+const before=await loader.loadAsync('/models/guardsmen-before-timing.glb');
+const fixed=await loader.loadAsync('/models/guardsmen.glb');
+const loaded=await loadGltf('/models/guardsmen.glb');
+const stale=await loadGltf('/models/guardsmen.glb?old-timing=1');
+const classic=await loadGltf('/models/ig/infantry/guardsmen.glb');
+const durations=container=>Object.fromEntries(['idle_1','move_run_1','idle_firing_1','melee_attack_1','capture_strategic_point_1'].map(name=>[name,container.animations.find(clip=>clip.name===name)?.duration]));
+function playback(container){const mixer=new THREE.AnimationMixer(container.scene),action=mixer.clipAction(container.animations.find(clip=>clip.name==='melee_attack_1'));action.setLoop(THREE.LoopOnce,1);action.clampWhenFinished=true;let ended=false;mixer.addEventListener('finished',()=>ended=true);action.play();mixer.update(2.49);const beforeEnd=ended;mixer.update(.02);return {beforeEnd,ended};}
+window.__guardsmanTiming={ready:true,before:durations(before),fixed:durations(fixed),loaded:durations(loaded),stale:durations(stale),classic:durations(classic),playback:playback(loaded),stalePlayback:playback(stale),count:fixed.animations.length};
+</script></body></html>

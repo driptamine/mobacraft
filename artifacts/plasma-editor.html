@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{margin:0;overflow:hidden;background:#111b24;color:#8fa9bc;font:13px system-ui}#scene-label{position:absolute;top:22px;left:26px;pointer-events:none}#scene-label strong{color:#c3d7e5;letter-spacing:1px}</style></head><body><div id="scene-label"><strong>GRIMCRAFT</strong><p>Plasma Cloud Puff · предпросмотр</p></div><canvas id="renderCanvas"></canvas><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import * as core from '/src/core/scene.ts';
+import {setDefaultScene} from '/src/render/three-helpers.ts';
+import {World} from '/src/core/ecs.ts';
+import {togglePlasmaPuffPreview,isPlasmaPuffPreviewOpen} from '/src/ui/plasma-puff-preview.ts';
+import {plasmaCloudTuning} from '/src/fx/plasma-cloud-puff.ts';
+const renderer=new THREE.WebGLRenderer({canvas:document.querySelector('#renderCanvas'),antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#152029');scene.add(new THREE.HemisphereLight(0xe4efff,0x22251a,2));const sun=new THREE.DirectionalLight(0xffffff,2);sun.position.set(5,15,-4);scene.add(sun);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(60,60),new THREE.MeshStandardMaterial({color:0x2c3937,roughness:1}));floor.rotation.x=-Math.PI/2;scene.add(floor);scene._ground=floor;scene.add(new THREE.GridHelper(60,60,0x38505b,0x304341));scene._registerShadows=()=>{};
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,200);Object.assign(camera,{target:new THREE.Vector3(),alpha:-1.25,beta:.9,radius:12,lowerRadiusLimit:6,upperRadiusLimit:30});camera.position.set(9,12,-12);camera.lookAt(camera.target);
+core.__setSceneCameraForTests(scene,camera);setDefaultScene(scene);const world=new World();core.setWorld(world);
+const soldierId=world.createEntity([]),squadId=world.createEntity([]),soldier=new THREE.Mesh(new THREE.CylinderGeometry(.15,.2,1.2,8),new THREE.MeshStandardMaterial({color:0x617259}));soldier.position.set(0,.6,0);scene.add(soldier);world.add(soldierId,'soldier',{hp:100,squadId});world.add(soldierId,'mesh',{root:soldier});world.add(squadId,'squad',{team:'blue',faction:'ig',unitType:'guardsmen',soldiers:[soldierId],position:new THREE.Vector3(),facing:new THREE.Vector3(0,0,1)});core.setSelSquads([squadId]);togglePlasmaPuffPreview();
+let previous=performance.now();function frame(now){const dt=Math.min(.05,(now-previous)/1000);previous=now;core.runBeforeRender();camera.position.set(camera.target.x+camera.radius*Math.sin(camera.beta)*Math.cos(camera.alpha),camera.target.y+camera.radius*Math.cos(camera.beta),camera.target.z+camera.radius*Math.sin(camera.beta)*Math.sin(camera.alpha));camera.lookAt(camera.target);renderer.render(scene,camera);requestAnimationFrame(frame)}requestAnimationFrame(frame);
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+window.__plasmaEditor={ready:true,world,scene,camera,tuning:plasmaCloudTuning,isOpen:isPlasmaPuffPreviewOpen,toggle:togglePlasmaPuffPreview};
+</script></body></html>

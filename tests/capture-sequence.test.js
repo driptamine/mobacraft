@@ -1,0 +1,301 @@
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import { register } from 'node:module';
+import * as THREE from 'three';
+import fs from 'node:fs';
+
+register('./node-esm-hooks.mjs', import.meta.url);
+globalThis.window = {};
+globalThis.document = { getElementById: () => null };
+const systems = await import('../src/core/systems.js');
+const { FORMATION } = await import('../src/core/scene.js');
+
+const ONESHOT_TICKS = 30;
+const DT = 1 / 60;
+
+function makeWorld() {
+  const comps = new Map();
+  let nextId = 1;
+  return {
+    createEntity() {
+      const id = nextId++;
+      comps.set(id, new Map());
+      return id;
+    },
+    add(id, type, data) {
+      comps.get(id).set(type, data);
+    },
+    get(id, type) {
+      return comps.get(id)?.get(type);
+    },
+    has(id, type) {
+      const m = comps.get(id);
+      if (!m) return false;
+      return type === undefined ? true : m.has(type);
+    },
+    query(...types) {
+      const out = [];
+      for (const [id, m] of comps) {
+        if (types.every((t) => m.has(t))) out.push(id);
+      }
+      return out;
+    },
+    destroyEntity(id) {
+      comps.delete(id);
+    },
+  };
+}
+
+function stubRoot(entries, x, z) {
+  const root = new THREE.Group();
+  root.position.set(x, 0, z);
+  root._animGroups = { idle: {}, run: {}, shoot: {}, shootMove: {}, flagPlant1: {}, flagPlant2: {}, capture1: {}, capture2: {} };
+  root._currentAnim = 'idle';
+  root._pendingEnd = null;
+  root._playAnim = function (name, loop = true) {
+    if (root._currentAnim === name) return;
+    entries.push(name);
+    root._currentAnim = name;
+    root._pendingEnd = loop ? null : ONESHOT_TICKS;
+  };
+  return root;
+}
+
+function setupCapture() {
+  const world = makeWorld();
+  const spId = world.createEntity();
+  world.add(spId, 'strategicPoint', {
+    kind: 'point', position: new THREE.Vector3(0, 0, 0), owner: null, faction: null,
+    captureProgress: 0, captureRadius: 4.5, hasListeningPost: false, hasTowerBase: false,
+    lpTier: 0, researchQueue: [], reqTimer: 0, lpMesh: null,
+  });
+  world.add(spId, 'mesh', { root: new THREE.Group(), model: null });
+  const squadId = world.createEntity();
+  const soldiers = [null];
+  const entriesBySoldier = {};
+  for (let i = 1; i <= 5; i++) {
+    const sid = world.createEntity();
+    world.add(sid, 'soldier', {
+      squadId, formIdx: i, unitType: 'guardsmen', hp: 100, maxHp: 100,
+      attackCooldown: 0, attackRate: 2.4, walkTime: 0, flashTimer: 0, shootTimer: 0,
+      scatter: null, stagger: 0, isGrenadier: false, isSuperior: i === 1,
+      moveSpeed: 6, idlePhase: 0, idleYawOffset: 0, cloaked: false, revealTimer: 0, damageMult: 1,
+    });
+    const entries = [];
+    entriesBySoldier[sid] = entries;
+    const f = FORMATION[i];
+    world.add(sid, 'mesh', { root: stubRoot(entries, 30 + f.x, f.z) });
+    soldiers.push(sid);
+  }
+  world.add(squadId, 'squad', {
+    team: 'blue', faction: 'ig', unitType: 'guardsmen',
+    position: new THREE.Vector3(30, 0, 0),
+    facing: new THREE.Vector3(0, 0, 1), visualFacing: new THREE.Vector3(0, 0, 1),
+    speed: 6, attackRange: 22, detectionRange: 40,
+    grenadeCd: 0, grenadeReloadTime: 3, idleTime: 0,
+    reinforceQueue: [], reinforceProgress: 0, grenadeQueue: [], grenadeProgress: 0,
+    moveOrder: new THREE.Vector3(0, 0, 0), stopped: false, capturingSpId: null,
+    // Right-click orders set both: the move plus the explicit capture order.
+    captureOrderSpId: spId,
+    selected: false, autoChase: false, projectileType: 'beam',
+    soldiers, forcedTarget: null, forcedSoldierId: null, autoReinforce: false,
+  });
+  world.add(squadId, 'mesh', { hpBar: new THREE.Group(), reinBar: null, grenadeSetupBar: null });
+  return { world, spId, squadId, soldiers, entriesBySoldier };
+}
+
+function runCapture({ volleys = false } = {}) {
+  const { world, spId, squadId, soldiers, entriesBySoldier } = setupCapture();
+  const squad = world.get(squadId, 'squad');
+  const alive = soldiers.slice(1);
+  const planter = world.get(alive[0], 'soldier');
+  let lastStage = 'init';
+  let resetsWhileEngaged = 0;
+  let sawBanner = false;
+  for (let tick = 0; tick < 2400; tick++) {
+    for (const sid of alive) {
+      const root = world.get(sid, 'mesh').root;
+      if (root._pendingEnd !== null) {
+        root._pendingEnd -= 1;
+        if (root._pendingEnd <= 0) {
+          root._pendingEnd = null;
+          root._currentAnim = null;
+        }
+      }
+      const s = world.get(sid, 'soldier');
+      s.shootTimer = Math.max(0, s.shootTimer - DT);
+      if (volleys && tick >= 220 && tick <= 620 && tick % 40 === 0) {
+        s.shootTimer = 0.4;
+      }
+    }
+    systems.systemSquad(world, DT);
+    const stage = planter.captureStage;
+    if (lastStage !== 'init' && lastStage !== 0 && stage === 0 && squad.capturingSpId != null) {
+      resetsWhileEngaged++;
+    }
+    lastStage = stage;
+    if (planter._bannerShown === true && stage < 2) {
+      sawBanner = true;
+    }
+  }
+  return { world, spId, squadId, alive, entriesBySoldier, resetsWhileEngaged, sawBanner };
+}
+
+function countEntries(entries, name) {
+  return entries.filter((n) => n === name).length;
+}
+
+it('captures every Into the Breach point and relic on the actual raised SGB terrain', async () => {
+  const { createSgbParser } = await import('../src/maps/sgb-parser.js');
+  const { applySgbRootTransform } = await import('../src/maps/sgb-mirror.js');
+  const parser = createSgbParser();
+  parser.parse(fs.readFileSync(new URL('../maps/4p_into_the_breach/4p_into_the_breach.sgb', import.meta.url)));
+  const terrain = parser.createThreeMap();
+  terrain.position.y = -new THREE.Box3().setFromObject(terrain).min.y - 6;
+  applySgbRootTransform(terrain, 90, true);
+  const map = JSON.parse(fs.readFileSync(new URL('../maps/4p_into_the_breach/4p_into_the_breach.json', import.meta.url), 'utf8'));
+  const previous = { __sgbTerrainRoot: window.__sgbTerrainRoot, __sgbSampleHeight: window.__sgbSampleHeight, __sgbPassGrid: window.__sgbPassGrid };
+  window.__sgbTerrainRoot = terrain;
+  window.__sgbSampleHeight = (x, z) => parser.sampleHeight(x, z);
+  window.__sgbPassGrid = null;
+  try {
+    for (const point of map.strategicPoints) {
+      const { world, spId, squadId, soldiers } = setupCapture();
+      const strategicPoint = world.get(spId, 'strategicPoint');
+      strategicPoint.kind = point.kind;
+      strategicPoint.position.set(point.x, 0, point.z);
+      world.get(spId, 'mesh').root.position.copy(strategicPoint.position);
+      const squad = world.get(squadId, 'squad');
+      squad.position.set(point.x + 8, 0, point.z);
+      squad.moveOrder.copy(strategicPoint.position);
+      const alive = soldiers.filter(Boolean);
+      for (const [index, soldierId] of alive.entries()) {
+        world.get(soldierId, 'mesh').root.position.set(point.x + (index === 0 ? 3 : 10), 4, point.z);
+      }
+      for (let tick = 0; tick < 2400 && strategicPoint.owner == null; tick++) {
+        for (const soldierId of alive) {
+          const root = world.get(soldierId, 'mesh').root;
+          if (root._pendingEnd != null && --root._pendingEnd <= 0) {
+            root._pendingEnd = null;
+            root._currentAnim = null;
+          }
+        }
+        systems.systemSquad(world, DT);
+        systems.systemStrategicPoint(world, DT);
+      }
+      const planter = world.get(alive[0], 'soldier');
+      const planterRoot = world.get(alive[0], 'mesh').root;
+      assert.ok(planter.captureStage >= 2, 'the planter has seated the banner rod');
+      assert.ok(planterRoot.position.y > 3.5, 'the planter stands on the actual elevated terrain');
+      assert.equal(strategicPoint.owner, 'blue', `${point.kind} at ${point.x},${point.z}: capture must not depend on rendered Y`);
+      assert.equal(strategicPoint.captureProgress, 1);
+    }
+  } finally {
+    Object.assign(window, previous);
+  }
+});
+
+describe('capture sequence integration', () => {
+  it('plants once and keeps the planter capturing until the point is owned', () => {
+    const { world, spId, alive, entriesBySoldier, resetsWhileEngaged, sawBanner } = runCapture();
+    assert.equal(resetsWhileEngaged, 0);
+    const planterEntries = entriesBySoldier[alive[0]];
+    assert.equal(countEntries(planterEntries, 'flagPlant1'), 1);
+    assert.equal(countEntries(planterEntries, 'flagPlant2'), 1);
+    assert.equal(countEntries(planterEntries, 'capture1'), 1);
+    assert.equal(world.get(alive[0], 'soldier')._captureDone, true);
+    assert.equal(world.get(alive[0], 'mesh').root._currentAnim, 'idle');
+    assert.equal(sawBanner, true);
+    assert.equal(world.get(alive[0], 'soldier')._bannerShown, false);
+    const planterPos = world.get(alive[0], 'mesh').root.position;
+    const standOff = Math.hypot(planterPos.x, planterPos.z);
+    assert.ok(Math.abs(standOff - 4.0) < 0.15, `planter stands off at ${standOff}`);
+    assert.ok(standOff < 4.5, 'planter keeps boots on the point');
+    // Every guard plays capture1 once, then replays capture2 until the flip.
+    for (const idx of [1, 2, 3, 4]) {
+      assert.equal(countEntries(entriesBySoldier[alive[idx]], 'capture1'), 1);
+      assert.ok(countEntries(entriesBySoldier[alive[idx]], 'capture2') > 1, `guard ${idx} replays capture2`);
+      assert.equal(world.get(alive[idx], 'soldier')._captureDone, true);
+      assert.equal(world.get(alive[idx], 'mesh').root._currentAnim, 'idle');
+    }
+    const sp = world.get(spId, 'strategicPoint');
+    assert.equal(sp.captureProgress, 1);
+    assert.equal(sp.owner, 'blue');
+    assert.equal(typeof sp.raiseFrom, 'number');
+    assert.ok(sp.raiseFrom >= 0 && sp.raiseFrom < 1);
+  });
+
+  it('never restarts the sequence on combat interruptions', () => {
+    const { world, spId, alive, resetsWhileEngaged } = runCapture({ volleys: true });
+    assert.equal(resetsWhileEngaged, 0);
+    assert.equal(world.get(alive[0], 'soldier')._captureDone, true);
+    assert.equal(world.get(alive[1], 'soldier')._captureDone, true);
+    const sp = world.get(spId, 'strategicPoint');
+    assert.equal(sp.captureProgress, 1);
+    assert.equal(sp.owner, 'blue');
+  });
+});
+
+it('shows the point banner and rod as soon as flagPlant1 seats them, during flagPlant2', () => {
+  const { world, spId, soldiers } = setupCapture();
+  const planterId = soldiers[1];
+  const planter = world.get(planterId, 'soldier');
+  const root = world.get(planterId, 'mesh').root;
+  const banner = { visible: false };
+  const rod = { visible: false };
+  world.get(spId, 'mesh').model = { _flagNodes: { banners: { ig: [banner, rod] } } };
+  for (let tick = 0; tick < 1000; tick++) {
+    systems.systemSquad(world, DT);
+    if (root._currentAnim === 'flagPlant1') {
+      assert.equal(world.get(spId, 'strategicPoint').raiseFrom == null, true);
+      assert.equal(world.get(spId, 'strategicPoint').captureProgress, 0, 'progress waits for the rod');
+      for (let waiting = 0; waiting < 10; waiting++) {
+        systems.systemSquad(world, DT);
+        assert.equal(world.get(spId, 'strategicPoint').captureProgress, 0);
+      }
+      systems.systemStrategicPoint(world, DT);
+      assert.equal(rod.visible, false);
+      // Finish seating the carried rod, leaving the release clip unplayed.
+      root._currentAnim = null;
+      root._pendingEnd = null;
+      systems.systemSquad(world, DT);
+      assert.equal(planter.captureStage, 1);
+      assert.equal(root._currentAnim, 'flagPlant2');
+      assert.equal(planter._bannerShown, false);
+      assert.equal(typeof world.get(spId, 'strategicPoint').raiseFrom, 'number');
+      systems.systemStrategicPoint(world, DT);
+      assert.equal(banner.visible, true);
+      assert.equal(rod.visible, true);
+      systems.systemSquad(world, DT);
+      assert.ok(world.get(spId, 'strategicPoint').captureProgress > 0, 'progress starts during recovery after the rod is placed');
+      return;
+    }
+  }
+  assert.fail('planter never reached flagPlant1');
+});
+
+it('loops the planter final capture clip across its duration while progress is unfinished', () => {
+  const { world, spId, soldiers } = setupCapture();
+  const planterId = soldiers[1], planter = world.get(planterId, 'soldier'), root = world.get(planterId, 'mesh').root;
+  let loopTicks = 0;
+  for (let tick = 0; tick < 1800; tick++) {
+    for (const soldierId of soldiers.filter(Boolean)) {
+      const actorRoot = world.get(soldierId, 'mesh').root;
+      if (actorRoot._pendingEnd != null && --actorRoot._pendingEnd <= 0) { actorRoot._pendingEnd = null;actorRoot._currentAnim = null; }
+    }
+    systems.systemSquad(world, DT);
+    const point = world.get(spId, 'strategicPoint');
+    if (root._currentAnim === 'capture2' && point.owner == null) {
+      loopTicks++;
+      assert.equal(root._pendingEnd, null, 'capture2 runs as a looping clip');
+      assert.equal(planter._captureDone, false, 'finishing a clip does not finish capture');
+    }
+    if (point.owner === 'blue') {
+      assert.ok(loopTicks > ONESHOT_TICKS * 3, 'capture2 continues through multiple authored clip durations');
+      assert.equal(root._currentAnim, 'idle');
+      assert.equal(planter._captureDone, true);
+      return;
+    }
+  }
+  assert.fail('capture did not complete');
+});

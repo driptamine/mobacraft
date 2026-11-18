@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><link rel="stylesheet" href="/src/net/multiplayer-lobby-ui.css"><style>body{margin:0;background:#101610;color:#eee;font:14px Arial}#panel{position:relative;inset:auto;display:block;width:calc(100% - 32px);margin:16px;box-sizing:border-box}</style></head><body><div id="panel" class="webTransport-panel"><div id="webTransport-connect-form"><span id="webTransport-connect-status"></span></div><div id="webTransport-load-wrap"></div></div><script type="module">
+import {mountMultiplayerLobby} from '/src/net/multiplayer-lobby-ui.ts';
+window.__aiUI={};
+mountMultiplayerLobby(document.getElementById('panel'),{back(){},select(lobby){window.__aiUI.lobby=lobby},connect(){},startLocal(config){window.__aiUI.config=config},joinOnline:async()=>{},leaveOnline(){},startOnline(computers){window.__aiUI.computers=computers},factionOnline(){}});
+window.__aiUI.ready=true;
+</script></body></html>

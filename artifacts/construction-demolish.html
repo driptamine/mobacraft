@@ -1,0 +1,26 @@
+<!doctype html><html><head><style>#grimcraft-main-menu{display:none!important}</style><meta charset="utf-8"><link rel="icon" href="data:,"></head><body style="background:#111"><div id="actions"></div><script type="module">
+import React from '/node_modules/.vite/deps/react.js';
+import ReactDOMClient from '/node_modules/.vite/deps/react-dom_client.js';
+const { createRoot } = ReactDOMClient;
+import ReactDOM from '/node_modules/.vite/deps/react-dom.js';
+const { flushSync } = ReactDOM;
+import * as THREE from '/node_modules/.vite/deps/three.js';
+import * as state from '/src/core/scene.ts';
+import { World } from '/src/core/ecs.ts';
+import { FACTIONS } from '/src/factions.ts';
+import { ActionsGrid } from '/src/hud/components/ActionsGrid.tsx';
+import { __captureCommands } from '/src/net/multiplayer.ts';
+const world=new World();state.setWorld(world);state.__setSceneCameraForTests(new THREE.Scene(),null);
+const root=createRoot(document.getElementById('actions'));const commands=[];__captureCommands(command=>commands.push(command));
+const cases=Object.entries(FACTIONS).flatMap(([faction,config])=>(config.structures||[]).map(structure=>({type:structure.type,faction,kind:['plasma_generator','tactica_control','thermo_generator','turret','mines'].includes(structure.type)?'structure':'building'})));
+cases.push({type:'airfield',faction:'ig',kind:'airfield'});
+function render(){flushSync(()=>root.render(React.createElement(ActionsGrid)));}
+function select(entry,mode='local',pending=false){
+ window._multiplayerMode=mode==='multiplayer';commands.length=0;
+ const id=world.createEntity([]);const position=new THREE.Vector3();
+ world.add(id,entry.kind,{...entry,position,team:state.PLAYER,constructing:!pending,pendingWorker:pending,queue:[],researchQueue:[],addons:[],tier:1});
+ const mesh=new THREE.Group();mesh._ringMat=new THREE.MeshBasicMaterial();world.add(id,'mesh',{root:mesh});
+ state.setSelBuilder(null);state.setSelListeningPost(null);state.setSelBuildings([id]);state.setSelSquads([]);render();return id;
+}
+window.__demolish={ready:true,cases,select,world,state,render,commands};
+</script></body></html>

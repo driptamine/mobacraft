@@ -1,0 +1,91 @@
+{
+  "armoury": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    }
+  },
+  "barracks": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    }
+  },
+  "command_hq": {
+    "phases": {
+      "placement": "build_placement",
+      "phase_1": "build_1_plane_drop",
+      "phase_2": "build_2_landed",
+      "phase_3": "build_3_take_off",
+      "phase_4": "build_4_unfold",
+      "phase_5": "build_5_unfold_2"
+    },
+    "hide_from": {
+      "phase_4": ["sm_thunderhawk"]
+    }
+  },
+  "land_mine": {
+    "phases": {}
+  },
+  "listening_post": {
+    "phases": {
+      "placement": "build_placement",
+      "phase_1": "build"
+    }
+  },
+  "machine_cult": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    },
+    "vehicle_production": "PRODUCTION_1",
+    "hide_from": {
+      "delivery": ["sm_thunderhawk"]
+    }
+  },
+  "orbital_relay": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    }
+  },
+  "plasma_generator": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    }
+  },
+  "progenitor_temple": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    }
+  },
+  "thermo_plasma_generator": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "drop_in"
+      ],
+      "phase_1": "unfold"
+    }
+  }
+}

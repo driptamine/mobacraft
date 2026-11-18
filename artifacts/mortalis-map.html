@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{margin:0;background:#15221b;color:white;font:14px monospace}header{position:absolute;top:15px;left:15px;background:#000a;padding:12px}</style></head><body><span id="terrain-mesh-y-val" hidden></span><header id="label">Loading Mortalis…</header><canvas id="renderCanvas"></canvas><script type="module">
+import * as THREE from 'three';
+import * as core from '/src/core/scene.ts';
+import {setDefaultScene} from '/src/render/three-helpers.ts';
+import {selectMap} from '/src/ui/maps-menu.ts';
+import * as upload from '/src/maps/sgb-upload.ts';
+import {getPlacedDecalList} from '/src/maps/sgb-decals.ts';
+const scene=new THREE.Scene();scene.background=new THREE.Color('#15221b');
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,3000);camera.target=new THREE.Vector3();camera.upperRadiusLimit=3000;camera.alpha=0;camera.radius=700;
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('renderCanvas'),antialias:true,preserveDrawingBuffer:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;
+scene.add(new THREE.HemisphereLight(0xd8e8ff,0x505039,2.3));const sun=new THREE.DirectionalLight(0xffeed0,2.3);sun.position.set(-200,500,200);scene.add(sun);
+core.__setSceneCameraForTests(scene,camera);setDefaultScene(scene);
+function aim(){camera.position.set(0,560,380);camera.lookAt(0,8,0);camera.updateProjectionMatrix();}
+function report(){const root=upload._sgbRoot;const terrain=root?.children.filter(o=>o.isMesh)||[];return {terrainMeshes:terrain.length,textures:[...new Set(terrain.map(o=>o.material.map?.name))],decalCount:getPlacedDecalList().reduce((n,d)=>n+d.count,0),groups:getPlacedDecalList(),tiles:terrain.map(o=>({index:o.userData.detailTextureIndex,map:!!o.material.map,loaded:!!o.material.map?.image?.width})),sceneRoots:scene.children.filter(o=>o.name==='SGB_Map').length};}
+window.__map={async load(name){const path=`/maps/${name}/${name}.sgb`;await selectMap(path,path);aim();document.getElementById('label').innerText=name+' · '+report().textures.length+' ground textures · '+report().decalCount+' decals';return report();},report,scene,renderer,camera};
+await window.__map.load('6p_mortalis');window.__map.ready=true;
+renderer.setAnimationLoop(()=>renderer.render(scene,camera));
+</script></body></html>

@@ -1,0 +1,558 @@
+{
+  "adepta_sororitas_convent": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02"
+      ]
+    }
+  },
+  "adeptus_mechanicus_workshop": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02",
+        "build_air_drop_03"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02",
+        "build_arm_a_l_03"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02",
+        "build_arm_a_r_03"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02",
+        "build_arm_b_l_03"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02",
+        "build_arm_b_r_03"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02",
+        "build_arm_c_l_03"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02",
+        "build_arm_c_r_03"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02",
+        "build_arm_d_l_03"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02",
+        "build_arm_d_r_03"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02",
+        "build_arms_close_03"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02",
+        "build_arms_unfold_03"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02",
+        "build_sink_boxes_03"
+      ]
+    },
+    "vehicle_production": "research_dropoff"
+  },
+  "ecclesiarchal_chapel": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_02",
+        "build_air_drop_03"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_02",
+        "build_arm_a_l_03"
+      ],
+      "phase_2": [
+        "build_arm_a_r_02",
+        "build_arm_a_r_03"
+      ],
+      "phase_3": [
+        "build_arm_b_l_02",
+        "build_arm_b_l_03"
+      ],
+      "phase_4": [
+        "build_arm_b_r_02",
+        "build_arm_b_r_03"
+      ],
+      "phase_5": [
+        "build_arm_c_l_02",
+        "build_arm_c_l_03"
+      ],
+      "phase_6": [
+        "build_arm_c_r_02",
+        "build_arm_c_r_03"
+      ],
+      "phase_7": [
+        "build_arm_d_l_02",
+        "build_arm_d_l_03"
+      ],
+      "phase_8": [
+        "build_arm_d_r_02",
+        "build_arm_d_r_03"
+      ],
+      "phase_9": [
+        "build_arms_close_02",
+        "build_arms_close_03"
+      ],
+      "phase_10": [
+        "build_arms_unfold_02",
+        "build_arms_unfold_03"
+      ],
+      "phase_11": [
+        "build_sink_boxes_02",
+        "build_sink_boxes_03"
+      ]
+    }
+  },
+  "holy_reliquary_v2": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_02",
+        "build_air_drop_03"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_02",
+        "build_arm_a_l_03"
+      ],
+      "phase_2": [
+        "build_arm_a_r_02",
+        "build_arm_a_r_03"
+      ],
+      "phase_3": [
+        "build_arm_b_l_02",
+        "build_arm_b_l_03"
+      ],
+      "phase_4": [
+        "build_arm_b_r_02",
+        "build_arm_b_r_03"
+      ],
+      "phase_5": [
+        "build_arm_c_l_02",
+        "build_arm_c_l_03"
+      ],
+      "phase_6": [
+        "build_arm_c_r_02",
+        "build_arm_c_r_03"
+      ],
+      "phase_7": [
+        "build_arm_d_l_02",
+        "build_arm_d_l_03"
+      ],
+      "phase_8": [
+        "build_arm_d_r_02",
+        "build_arm_d_r_03"
+      ],
+      "phase_9": [
+        "build_arms_close_02",
+        "build_arms_close_03"
+      ],
+      "phase_10": [
+        "build_arms_unfold_02",
+        "build_arms_unfold_03"
+      ],
+      "phase_11": [
+        "build_sink_boxes_02",
+        "build_sink_boxes_03"
+      ]
+    }
+  },
+  "inferno_turret": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02"
+      ]
+    }
+  },
+  "listening_post": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02"
+      ]
+    }
+  },
+  "plasma_generator": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02"
+      ]
+    }
+  },
+  "pristine_sanctuary": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_02",
+        "build_air_drop_03"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_02",
+        "build_arm_a_l_03"
+      ],
+      "phase_2": [
+        "build_arm_a_r_02",
+        "build_arm_a_r_03"
+      ],
+      "phase_3": [
+        "build_arm_b_l_02",
+        "build_arm_b_l_03"
+      ],
+      "phase_4": [
+        "build_arm_b_r_02",
+        "build_arm_b_r_03"
+      ],
+      "phase_5": [
+        "build_arm_c_l_02",
+        "build_arm_c_l_03"
+      ],
+      "phase_6": [
+        "build_arm_c_r_02",
+        "build_arm_c_r_03"
+      ],
+      "phase_7": [
+        "build_arm_d_l_02",
+        "build_arm_d_l_03"
+      ],
+      "phase_8": [
+        "build_arm_d_r_02",
+        "build_arm_d_r_03"
+      ],
+      "phase_9": [
+        "build_arms_close_02",
+        "build_arms_close_03"
+      ],
+      "phase_10": [
+        "build_arms_unfold_02",
+        "build_arms_unfold_03"
+      ],
+      "phase_11": [
+        "build_sink_boxes_02",
+        "build_sink_boxes_03"
+      ]
+    }
+  },
+  "purgatus_mines": {
+    "phases": {}
+  },
+  "shrine_of_st_celestine": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02"
+      ]
+    }
+  },
+  "thermo_plasma_generator": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "build_air_drop_01",
+        "build_air_drop_02"
+      ],
+      "parallel": "build_bunker_rise",
+      "phase_1": [
+        "build_arm_a_l_01",
+        "build_arm_a_l_02"
+      ],
+      "phase_2": [
+        "build_arm_a_r_01",
+        "build_arm_a_r_02"
+      ],
+      "phase_3": [
+        "build_arm_b_l_01",
+        "build_arm_b_l_02"
+      ],
+      "phase_4": [
+        "build_arm_b_r_01",
+        "build_arm_b_r_02"
+      ],
+      "phase_5": [
+        "build_arm_c_l_01",
+        "build_arm_c_l_02"
+      ],
+      "phase_6": [
+        "build_arm_c_r_01",
+        "build_arm_c_r_02"
+      ],
+      "phase_7": [
+        "build_arm_d_l_01",
+        "build_arm_d_l_02"
+      ],
+      "phase_8": [
+        "build_arm_d_r_01",
+        "build_arm_d_r_02"
+      ],
+      "phase_9": [
+        "build_arms_close_01",
+        "build_arms_close_02"
+      ],
+      "phase_10": [
+        "build_arms_unfold_01",
+        "build_arms_unfold_02"
+      ],
+      "phase_11": [
+        "build_sink_boxes_01",
+        "build_sink_boxes_02"
+      ]
+    }
+  }
+}

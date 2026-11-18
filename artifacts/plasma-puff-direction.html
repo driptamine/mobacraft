@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{margin:0;background:#09111c;color:#dcecff;font:16px sans-serif}header{position:absolute;top:20px;left:24px}footer{position:absolute;bottom:20px;left:24px}</style></head><body><header>Plasma Puff · shooter → target</header><footer>Wide trail → narrow tip</footer><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {createPlasmaPuffPreview} from '/src/render/plasma-puff-preview.ts';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);document.body.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#09111c');
+const camera=new THREE.OrthographicCamera(-2,2,1.2,-1.2,.1,100);camera.position.set(-.7,1,5);camera.lookAt(-.7,0,0);
+const preview=createPlasmaPuffPreview(scene,new THREE.Vector3(),new THREE.Vector3(1,0,0));preview.update(.4);
+scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(-1.65,-.4,0),3.3,0x6c88b2,.12,.06));
+renderer.render(scene,camera);
+window.__puffDirection={ready:true,puffs:preview.root.children.map(puff=>({position:puff.position.toArray(),size:puff.children[0].scale.x}))};
+</script></body></html>

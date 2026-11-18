@@ -1,0 +1,222 @@
+import * as THREE from 'three';
+import {
+  JET_ATTACK_RANGE,
+  camera,
+  canCommand,
+  currentBounds,
+  selBuildings,
+  selSquads,
+  world,
+} from '../core/scene.js';
+import { disposeObj, mkTorus } from '../render/three-helpers.js';
+import { getCameraMode } from '../render/camera-fps.js';
+import { isCameraLocked } from '../render/camera-lock.js';
+
+
+// Hover ring around strategic points + relics (world units). Tweak freely:
+// 45% under the 'base' circle mesh inside strategic_point.glb (±3.49 XZ
+// at the in-game scale 1.0), so the ring sits well inside the platform.
+export const POINT_HOVER_RADIUS = 1.925;
+
+export const POINT_HOVER_SEGMENTS = 48;
+
+
+// ══════════════════════════════════════════════════════════════════════════════
+//  RANGE CIRCLES (A key)
+// ══════════════════════════════════════════════════════════════════════════════
+export let _rangeCirclesVisible = false;
+
+export const _rangeCircles: THREE.Mesh[] = [];
+
+
+export function _hideRangeCircles(): void {
+  _rangeCircles.forEach((circle) => {
+    if (circle.material) {
+      (circle.material as THREE.Material).dispose();
+    }
+    disposeObj(circle);
+  });
+  _rangeCircles.length = 0;
+}
+
+
+export function _showRangeCircles(): void {
+  _hideRangeCircles();
+  const addCircle = (position: { x: number; z: number }, radius: number, r: number, g: number, b: number): void => {
+    const ring = mkTorus('rangecircle', radius * 2, 0.18, 64);
+    ring.position.set(position.x, 0.12, position.z);
+    ring.userData.pickable = false;
+    const material = new THREE.MeshBasicMaterial();
+    material.color = new THREE.Color(r, g, b);
+    ring.material = material;
+    _rangeCircles.push(ring);
+  };
+
+  selSquads.forEach((sid: number) => {
+    const squad = world.get(sid, 'squad');
+    if (squad) {
+      addCircle(squad.position, squad.attackRange, 0.3, 0.8, 1);
+    }
+  });
+
+  selBuildings.forEach((id: number) => {
+    const structure = world.get(id, 'structure');
+    if (structure && structure.attackRange > 0) {
+      addCircle(structure.position, structure.attackRange, 1, 0.8, 0.2);
+    }
+  });
+
+  world.query('apc').forEach((id: number) => {
+    const apc = world.get(id, 'apc');
+    if (apc && apc.selected) {
+      addCircle(apc.position, apc.attackRange, 0.2, 1, 0.4);
+    }
+  });
+
+  world.query('jet').forEach((id: number) => {
+    const jet = world.get(id, 'jet');
+    if (jet && canCommand(jet.team) && jet.selected) {
+      addCircle(jet.position, JET_ATTACK_RANGE, 0.9, 0.5, 1.0);
+    }
+  });
+}
+
+
+// ══════════════════════════════════════════════════════════════════════════════
+//  CAMERA CONTROL
+// ══════════════════════════════════════════════════════════════════════════════
+export const keys: Record<string, boolean> = {};
+
+export let rightDown = false;
+
+export let rightDragStartPos = { x: 0, y: 0 };
+
+export let rightLastPos = { x: 0, y: 0 };
+
+export let isOrbiting = false;
+
+export let isSelecting = false;
+
+export let selStart = { x: 0, y: 0 };
+
+export let selEnd = { x: 0, y: 0 };
+
+export let altDown = false;
+
+export let altOrbitLast = { x: 0, y: 0 };
+
+export let isAltOrbiting = false;
+
+
+export let _mouseX = window.innerWidth / 2;
+
+export let _mouseY = window.innerHeight / 2;
+
+export let _mouseEntered = false;
+
+// True while the cursor sits over a HUD panel that captures pointer input
+// (minimap, action bars). Edge-pan must not fight clicks there: reaching the
+// minimap puts the cursor inside the screen-edge zone, so without this the
+// camera drifts away from the point being clicked.
+export let _hudHover = false;
+export function setHudHover(value: boolean): void { _hudHover = value; }
+
+export let _lastHoverPickT = 0;
+
+// Latest ground point under the cursor, cached by _updateCursorCoords so the
+// hover-cursor proximity scan reuses the same raycast (no second pick).
+export const _lastGroundPt = { x: 0, z: 0, valid: false };
+
+
+export const CAM_SPD = 64;
+
+export const EDGE_ZONE = 40;
+
+
+export function tickCamera(deltaTime: number): void {
+  if (isCameraLocked(camera)) return;
+  // First-person mode rides the soldier: edge pan and arrow keys stay on
+  // the orbit rig, look-around is ALT+drag (alpha/beta).
+  if (getCameraMode() === 'fps') {
+    return;
+  }
+  const theta = -camera.alpha - Math.PI / 2;
+  // three.js renders the same camera numbers as a left-right mirror of the old
+  // left-handed view (screen-right is -X here, +X there), so the horizontal
+  // pan axis is negated; the toward/away axis is unaffected by mirroring.
+  const rx = -Math.cos(theta);
+  const rz = Math.sin(theta);
+  const fx = Math.sin(theta);
+  const fz = Math.cos(theta);
+  const speed = CAM_SPD * deltaTime;
+  let dx = 0;
+  let dz = 0;
+
+  if (_mouseEntered && !_hudHover && !isSelecting && !isOrbiting && !isAltOrbiting && !rightDown && document.hasFocus()) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    if (_mouseX < EDGE_ZONE) {
+      const factor = 1 - (_mouseX / EDGE_ZONE);
+      dx -= rx * speed * factor;
+      dz -= rz * speed * factor;
+    } else if (_mouseX > width - EDGE_ZONE) {
+      const factor = 1 - ((width - _mouseX) / EDGE_ZONE);
+      dx += rx * speed * factor;
+      dz += rz * speed * factor;
+    }
+    if (_mouseY < EDGE_ZONE) {
+      const factor = 1 - (_mouseY / EDGE_ZONE);
+      dx += fx * speed * factor;
+      dz += fz * speed * factor;
+    } else if (_mouseY > height - EDGE_ZONE) {
+      const factor = 1 - ((height - _mouseY) / EDGE_ZONE);
+      dx -= fx * speed * factor;
+      dz -= fz * speed * factor;
+    }
+  }
+
+  if (!isSelecting && !isOrbiting && !isAltOrbiting && !rightDown && document.hasFocus()) {
+    if (keys['ArrowUp']) {
+      dx += fx * speed;
+      dz += fz * speed;
+    }
+    if (keys['ArrowDown']) {
+      dx -= fx * speed;
+      dz -= fz * speed;
+    }
+    if (keys['ArrowLeft']) {
+      dx -= rx * speed;
+      dz -= rz * speed;
+    }
+    if (keys['ArrowRight']) {
+      dx += rx * speed;
+      dz += rz * speed;
+    }
+  }
+
+  if (dx || dz) {
+    const panBound = currentBounds() / 2;
+    camera.target.x = Math.max(-panBound, Math.min(panBound, camera.target.x + dx));
+    camera.target.z = Math.max(-panBound, Math.min(panBound, camera.target.z + dz));
+    camera.target.y = 0;
+  }
+}
+
+// Mutators for the pointer/camera state above. Sibling input modules
+// must go through these: ESM imports are read-only bindings, so a direct
+// cross-module assignment is a build error (rollup rejects it).
+export function setRangeCirclesVisible(value: boolean): void { _rangeCirclesVisible = value; }
+export function setRightDown(value: boolean): void { rightDown = value; }
+export function setRightDragStartPos(value: { x: number; y: number }): void { rightDragStartPos = value; }
+export function setRightLastPos(value: { x: number; y: number }): void { rightLastPos = value; }
+export function setIsOrbiting(value: boolean): void { isOrbiting = value; }
+export function setIsSelecting(value: boolean): void { isSelecting = value; }
+export function setSelStart(value: { x: number; y: number }): void { selStart = value; }
+export function setSelEnd(value: { x: number; y: number }): void { selEnd = value; }
+export function setAltDown(value: boolean): void { altDown = value; }
+export function setAltOrbitLast(value: { x: number; y: number }): void { altOrbitLast = value; }
+export function setIsAltOrbiting(value: boolean): void { isAltOrbiting = value; }
+export function setMouseX(value: number): void { _mouseX = value; }
+export function setMouseY(value: number): void { _mouseY = value; }
+export function setMouseEntered(value: boolean): void { _mouseEntered = value; }
+export function setLastHoverPickT(value: number): void { _lastHoverPickT = value; }

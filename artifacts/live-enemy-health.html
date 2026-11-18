@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{background:#111;color:#ddd;font:14px sans-serif}#grimcraft-main-menu{display:none!important}#panels{display:flex;gap:20px;padding:30px}#controls{padding:20px}button{padding:10px}</style></head><body><div id="panels"><div id="portrait"></div><div id="info"></div></div><div id="controls"><button id="select">Выбрать Chaos Space Marine</button><button id="fight">Начать бой</button></div><script type="module">
+import React from '/node_modules/.vite/deps/react.js';
+import ReactDOMClient from '/node_modules/.vite/deps/react-dom_client.js';
+import ReactDOM from '/node_modules/.vite/deps/react-dom.js';
+import * as THREE from '/node_modules/.vite/deps/three.js';
+import * as state from '/src/core/scene.ts';
+import { World } from '/src/core/ecs.ts';
+import { Portrait } from '/src/hud/components/Portrait.tsx';
+import { InfoPanel } from '/src/hud/components/InfoPanel.tsx';
+import { _soldierTakeDamage } from '/src/systems/combat.ts';
+import { refreshSelectionHealth } from '/src/hud/selection-health.ts';
+import { updateHUD } from '/src/core/hud.ts';
+import { getTicker, hudDue } from '/src/hud/store.ts';
+const world=new World();state.setWorld(world);state.__setSceneCameraForTests(new THREE.Scene(),{target:new THREE.Vector3()});
+state.setSelSquads([]);state.setSelBuildings([]);state.setSelBuilder(null);state.setSelListeningPost(null);state.setHoveredEnemySquad(null);
+const enemy=world.createEntity([]),soldiers=[];
+for(let index=0;index<4;index++){const id=world.createEntity([]);world.add(id,'soldier',{squadId:enemy,hp:375,maxHp:375,unitType:'chaos_space_marine'});world.add(id,'mesh',{root:new THREE.Group()});soldiers.push(id)}
+world.add(enemy,'squad',{team:'red',faction:'chaos',unitType:'chaos_space_marine',maxSquadSize:10,soldiers});
+ReactDOM.flushSync(()=>{ReactDOMClient.createRoot(document.getElementById('portrait')).render(React.createElement(Portrait));ReactDOMClient.createRoot(document.getElementById('info')).render(React.createElement(InfoPanel))});
+let running=false,shots=0,elapsed=0,frame=0;
+world.addSystem((world,delta)=>{if(!running)return;elapsed+=delta;if(elapsed>=.1){elapsed-=.1;_soldierTakeDamage(world,soldiers[0],12.5);shots++;if(shots>=10)running=false}});
+document.getElementById('select').onclick=()=>{state.setHoveredEnemySquad(enemy);refreshSelectionHealth(world,{enemySquadId:enemy});updateHUD()};
+document.getElementById('fight').onclick=()=>{running=true};
+setInterval(()=>{world.tick(1/60);if(hudDue(frame++))refreshSelectionHealth(world,{enemySquadId:state.hoveredEnemySquad})},1000/60);
+window.__health={ready:true,world,enemy,soldiers,getTicker,get shots(){return shots}};
+</script></body></html>

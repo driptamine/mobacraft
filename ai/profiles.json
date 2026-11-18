@@ -1,0 +1,3130 @@
+{
+  "version": 1,
+  "sourceHash": "5671567149d7a7759b61e1ef5d18115e1c3b8a9467e0d6203c8348ea52325f09",
+  "sourceFiles": [
+    "cpu_manager.ai",
+    "debug_display.ai",
+    "default.ai",
+    "metamap/settings0.ai",
+    "metamap/settings1.ai",
+    "metamap/settings2.ai",
+    "plans/attackplan.ai",
+    "plans/buildaddonplan.ai",
+    "plans/buildbuildingplan.ai",
+    "plans/buildplan.ai",
+    "plans/buildresearchplan.ai",
+    "plans/buildunitplan.ai",
+    "plans/captureplan.ai",
+    "plans/defendchokepointplan.ai",
+    "plans/defendplan.ai",
+    "plans/plan.ai",
+    "plans/resourceplan.ai",
+    "strategies/advanced/attackstrategyinfo.ai",
+    "strategies/advanced/buildbasestrategyinfo.ai",
+    "strategies/advanced/buildorderstrategyinfo.ai",
+    "strategies/attackstrategy.ai",
+    "strategies/buildbasestrategy.ai",
+    "strategies/buildorderstrategy.ai",
+    "strategies/chaosbuildbasestrategy.ai",
+    "strategies/darkeldarbuildbasestrategy.ai",
+    "strategies/defendstrategy.ai",
+    "strategies/designerstrategy.ai",
+    "strategies/designerstrategyinfo.ai",
+    "strategies/easy/attackstrategyinfo.ai",
+    "strategies/easy/buildbasestrategyinfo.ai",
+    "strategies/easy/buildorderstrategyinfo.ai",
+    "strategies/eldarbuildbasestrategy.ai",
+    "strategies/guardbuildbasestrategy.ai",
+    "strategies/hard/attackstrategyinfo.ai",
+    "strategies/hard/buildbasestrategyinfo.ai",
+    "strategies/hard/buildorderstrategyinfo.ai",
+    "strategies/marinebuildbasestrategy.ai",
+    "strategies/necronbuildbasestrategy.ai",
+    "strategies/orkbuildbasestrategy.ai",
+    "strategies/sistersbuildbasestrategy.ai",
+    "strategies/standard/attackstrategyinfo.ai",
+    "strategies/standard/buildbasestrategyinfo.ai",
+    "strategies/standard/buildorderstrategyinfo.ai",
+    "strategies/strategy.ai",
+    "strategies/taubuildbasestrategy.ai",
+    "tactics/ability.ai",
+    "tactics/basetactic.ai",
+    "tactics/chaosmarines/bloodthirstertactic.ai",
+    "tactics/chaosmarines/chaoslordtactic.ai",
+    "tactics/chaosmarines/cultisttactic.ai",
+    "tactics/chaosmarines/daemonprincetactic.ai",
+    "tactics/chaosmarines/slavetactic.ai",
+    "tactics/darkeldar/darkeldarhqtactic.ai",
+    "tactics/darkeldar/darkeldarslavetactic.ai",
+    "tactics/darkeldar/haemonculustactic.ai",
+    "tactics/darkeldar/talostactic.ai",
+    "tactics/defaulttactic.ai",
+    "tactics/eldar/eldarharlequintactic.ai",
+    "tactics/engineertactic.ai",
+    "tactics/guard/commandsquadtactic.ai",
+    "tactics/guard/commissartactic.ai",
+    "tactics/guard/guardinfantrytactic.ai",
+    "tactics/guard/heavyweaponsteamtactic.ai",
+    "tactics/guard/priesttactic.ai",
+    "tactics/healertactic.ai",
+    "tactics/infantrytactic.ai",
+    "tactics/leadertactic.ai",
+    "tactics/necron/builderscarabtactic.ai",
+    "tactics/necron/necronlordtactic.ai",
+    "tactics/necron/nightbringertactic.ai",
+    "tactics/necron/tombspydertactic.ai",
+    "tactics/orks/grottactic.ai",
+    "tactics/sistersofbattle/canonesstactic.ai",
+    "tactics/sistersofbattle/missionarytactic.ai",
+    "tactics/sistersofbattle/repentiatactic.ai",
+    "tactics/sistersofbattle/servitortactic.ai",
+    "tactics/spellcastertactic.ai",
+    "tactics/supportvehicletactic.ai",
+    "tactics/tactic.ai",
+    "tactics/tau/broadsidebattlesuittactic.ai",
+    "tactics/tau/droneharbingertactic.ai",
+    "tactics/tau/harbingerdronestactic.ai",
+    "tactics/tau/taucommandertactic.ai",
+    "tactics/tau/tauetherealtactic.ai",
+    "tactics/vehicletactic.ai",
+    "unitstats.ai",
+    "utility.ai"
+  ],
+  "thinkInterval": 0.5,
+  "factions": {
+    "ig": {
+      "units": [
+        {
+          "type": "guardsmen",
+          "name": "Guardsmen",
+          "cost": 160,
+          "power": 0,
+          "time": 20,
+          "size": 5,
+          "maxSize": 9,
+          "hp": 160,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "guardsmen_sergeant",
+          "name": "sergeant",
+          "cost": 55,
+          "power": 0,
+          "time": 15,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 200,
+          "reinforceCost": 55,
+          "reinforceTime": 15
+        },
+        {
+          "type": "commissar",
+          "name": "commissar",
+          "cost": 150,
+          "power": 0,
+          "time": 6,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 250,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "sanctioned_psyker",
+          "name": "psyker",
+          "cost": 140,
+          "power": 0,
+          "time": 6,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 180,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "priest",
+          "name": "priest",
+          "cost": 140,
+          "power": 0,
+          "time": 6,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 180,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "vindicare_temple_assassin",
+          "name": "vindicare",
+          "cost": 160,
+          "power": 0,
+          "time": 7,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 200,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "heavy_weapon_platoon",
+          "name": "heavy_weapons_team",
+          "cost": 150,
+          "power": 0,
+          "time": 6,
+          "size": 3,
+          "maxSize": 3,
+          "hp": 130,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "kasrkin",
+          "name": "kasrkin",
+          "cost": 200,
+          "power": 0,
+          "time": 35,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 385,
+          "reinforceCost": 50,
+          "reinforceTime": 10
+        },
+        {
+          "type": "ogryn",
+          "name": "ogryn",
+          "cost": 160,
+          "power": 0,
+          "time": 7,
+          "size": 4,
+          "maxSize": 4,
+          "hp": 240,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "imperial_captain",
+          "name": "command_squad",
+          "cost": 200,
+          "power": 0,
+          "time": 8,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 170,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "axe",
+          "name": "axe",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 1000,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "juggernaut",
+          "name": "juggernaut",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 950,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "sven",
+          "name": "sven",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 1000,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "tidehunter",
+          "name": "tidehunter",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 1100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "pudge",
+          "name": "pudge",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 1100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "drow_base",
+          "name": "drow",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 700,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "lina",
+          "name": "lina",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 650,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "lion",
+          "name": "lion",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 650,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "crystal_maiden",
+          "name": "crystal_maiden",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 650,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "shadow_fiend",
+          "name": "shadow_fiend",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 750,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": [
+            "guardsmen",
+            "builder",
+            "commissar",
+            "psyker",
+            "priest",
+            "vindicare"
+          ]
+        },
+        {
+          "type": "infantry_command",
+          "cost": 150,
+          "time": 36,
+          "generator": false,
+          "production": [
+            "guardsmen",
+            "heavy_weapons_team",
+            "kasrkin",
+            "ogryn",
+            "command_squad"
+          ]
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 30,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "mars_pattern",
+          "cost": 150,
+          "time": 45,
+          "generator": false,
+          "production": [
+            "baneblade"
+          ]
+        },
+        {
+          "type": "mechanized",
+          "cost": 180,
+          "time": 45,
+          "generator": false,
+          "production": [
+            "chimera",
+            "sentinel",
+            "hellhound",
+            "basilisk",
+            "marauder_bomber",
+            "leman_russ_battle_tank"
+          ]
+        },
+        {
+          "type": "plasma_generator",
+          "cost": 80,
+          "time": 30,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "tactica_control",
+          "cost": 120,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "turret",
+          "cost": 100,
+          "time": 48,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "thermo_generator",
+          "cost": 80,
+          "time": 6,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "mines",
+          "cost": 50,
+          "time": 20,
+          "generator": false,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "infantry_command",
+        "mars_pattern",
+        "mechanized",
+        "plasma_generator",
+        "tactica_control",
+        "turret",
+        "thermo_generator",
+        "mines"
+      ]
+    },
+    "chaos": {
+      "units": [
+        {
+          "type": "chaos_space_marine",
+          "name": "Chaos Space Marine",
+          "cost": 190,
+          "power": 0,
+          "time": 26.4,
+          "size": 4,
+          "maxSize": 10,
+          "hp": 375,
+          "reinforceCost": 50,
+          "reinforceTime": 9
+        },
+        {
+          "type": "bloodthirster",
+          "name": "bloodthirster",
+          "cost": 400,
+          "power": 0,
+          "time": 12,
+          "size": 1,
+          "maxSize": 1,
+          "hp": 1500,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "cultist",
+          "name": "cultist",
+          "cost": 50,
+          "power": 0,
+          "time": 12.5,
+          "size": 4,
+          "maxSize": 4,
+          "hp": 90,
+          "reinforceCost": 10,
+          "reinforceTime": 6
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "armoury",
+          "cost": 150,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "chaos_icon",
+          "cost": 60,
+          "time": 5,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "chaos_temple",
+          "cost": 150,
+          "time": 57,
+          "generator": false,
+          "production": [
+            "cultist"
+          ]
+        },
+        {
+          "type": "desecrated_stronghold",
+          "cost": 300,
+          "time": 185,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "greater_sacrificial_circle",
+          "cost": 200,
+          "time": 12,
+          "generator": false,
+          "production": [
+            "bloodthirster"
+          ]
+        },
+        {
+          "type": "land_mine",
+          "cost": 40,
+          "time": 20,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 25,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "machine_pit",
+          "cost": 180,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "plasma_generator",
+          "cost": 80,
+          "time": 30,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "sacrificial_circle",
+          "cost": 120,
+          "time": 35,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "thermo_plasma_generator",
+          "cost": 120,
+          "time": 65,
+          "generator": true,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "chaos_temple",
+        "plasma_generator",
+        "armoury",
+        "machine_pit",
+        "sacrificial_circle",
+        "thermo_plasma_generator",
+        "land_mine",
+        "greater_sacrificial_circle"
+      ]
+    },
+    "space marines": {
+      "units": [
+        {
+          "type": "space_marine",
+          "name": "Space Marine",
+          "cost": 100,
+          "power": 0,
+          "time": 26.4,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "grey_knight",
+          "name": "grey_knight",
+          "cost": 150,
+          "power": 0,
+          "time": 5,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 250,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "scout",
+          "name": "scout",
+          "cost": 75,
+          "power": 0,
+          "time": 12,
+          "size": 4,
+          "maxSize": 4,
+          "hp": 100,
+          "reinforceCost": 15,
+          "reinforceTime": 6
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "armoury",
+          "cost": 150,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "barracks",
+          "cost": 150,
+          "time": 45,
+          "generator": false,
+          "production": [
+            "scout"
+          ]
+        },
+        {
+          "type": "command_hq",
+          "cost": 300,
+          "time": 150,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "land_mine",
+          "cost": 40,
+          "time": 20,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 30,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "machine_cult",
+          "cost": 180,
+          "time": 40,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "orbital_relay",
+          "cost": 200,
+          "time": 30,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "plasma_generator",
+          "cost": 80,
+          "time": 30,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "progenitor_temple",
+          "cost": 120,
+          "time": 30,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "thermo_plasma_generator",
+          "cost": 120,
+          "time": 60,
+          "generator": true,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "barracks",
+        "plasma_generator",
+        "armoury",
+        "machine_cult",
+        "progenitor_temple",
+        "thermo_plasma_generator",
+        "land_mine",
+        "orbital_relay"
+      ]
+    },
+    "orks": {
+      "units": [
+        {
+          "type": "boyz",
+          "name": "Boyz",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "boyz_shoota",
+          "name": "boyz_shoota",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "bigger_generator",
+          "cost": 120,
+          "time": 60,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "da_boyz_hut",
+          "cost": 150,
+          "time": 40,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "generator",
+          "cost": 80,
+          "time": 35,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "land_mine",
+          "cost": 40,
+          "time": 20,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 35,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "mek_shop",
+          "cost": 180,
+          "time": 12,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "pile_o_guns",
+          "cost": 120,
+          "time": 60,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "settlement",
+          "cost": 300,
+          "time": 169,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "waagh_banner",
+          "cost": 100,
+          "time": 40,
+          "generator": false,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "da_boyz_hut",
+        "generator",
+        "waagh_banner",
+        "pile_o_guns",
+        "mek_shop",
+        "bigger_generator",
+        "land_mine"
+      ]
+    },
+    "necrons": {
+      "units": [
+        {
+          "type": "necron_basic_warrior",
+          "name": "Necron Warrior",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "energy_core",
+          "cost": 80,
+          "time": 50,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "forbidden_archive",
+          "cost": 150,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "greater_summoning_core",
+          "cost": 300,
+          "time": 90,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 5,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "monolith",
+          "cost": 300,
+          "time": 100,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "obelisk",
+          "cost": 100,
+          "time": 25,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "plasma_generator",
+          "cost": 80,
+          "time": 45,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "summoning_core",
+          "cost": 150,
+          "time": 70,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "summoning_core_big",
+          "cost": 200,
+          "time": 90,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "thermoplasma_generator",
+          "cost": 120,
+          "time": 120,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "turret",
+          "cost": 100,
+          "time": 45,
+          "generator": false,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "obelisk",
+        "plasma_generator",
+        "thermoplasma_generator",
+        "summoning_core",
+        "forbidden_archive",
+        "greater_summoning_core",
+        "energy_core",
+        "turret"
+      ]
+    },
+    "eldar": {
+      "units": [
+        {
+          "type": "guardian",
+          "name": "Guardian",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        },
+        {
+          "type": "dark_reaper",
+          "name": "dark_reaper",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 450,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "advanced_warp_generator",
+          "cost": 120,
+          "time": 65,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "aspect_portal",
+          "cost": 150,
+          "time": 36,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "land_mine",
+          "cost": 40,
+          "time": 20,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 24,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "soul_shrine",
+          "cost": 120,
+          "time": 100,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "support_platform",
+          "cost": 100,
+          "time": 27,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "support_portal",
+          "cost": 180,
+          "time": 60,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "support_portal_ulthwe",
+          "cost": 180,
+          "time": 60,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "warp_generator",
+          "cost": 80,
+          "time": 30,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "webway_assembly",
+          "cost": 300,
+          "time": 120,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "webway_gate",
+          "cost": 200,
+          "time": 22,
+          "generator": false,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "aspect_portal",
+        "warp_generator",
+        "webway_gate",
+        "soul_shrine",
+        "support_portal",
+        "advanced_warp_generator",
+        "support_platform",
+        "land_mine"
+      ]
+    },
+    "dark eldar": {
+      "units": [
+        {
+          "type": "warrior",
+          "name": "Kabalite Warrior",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": []
+    },
+    "tau": {
+      "units": [
+        {
+          "type": "fire_warrior",
+          "name": "Fire Warrior",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_barracks",
+          "cost": 150,
+          "time": 35,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_build_crane",
+          "cost": 120,
+          "time": 8,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_hq",
+          "cost": 300,
+          "time": 120,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_kroot_nest",
+          "cost": 100,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_listening_post",
+          "cost": 60,
+          "time": 25,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_listening_post_sp",
+          "cost": 60,
+          "time": 25,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_plasma_generator",
+          "cost": 80,
+          "time": 30,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "tau_research",
+          "cost": 150,
+          "time": 100,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_shrine_of_kauyon",
+          "cost": 120,
+          "time": 145,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_shrine_of_mont_ka",
+          "cost": 120,
+          "time": 8,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_shrine_of_purpose",
+          "cost": 120,
+          "time": 50,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "tau_thermoplasma_generator",
+          "cost": 120,
+          "time": 45,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "tau_vehicle_building",
+          "cost": 180,
+          "time": 60,
+          "generator": false,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "tau_barracks",
+        "tau_plasma_generator",
+        "tau_kroot_nest",
+        "tau_research",
+        "tau_vehicle_building",
+        "tau_thermoplasma_generator",
+        "tau_shrine_of_mont_ka",
+        "tau_shrine_of_kauyon",
+        "tau_shrine_of_purpose"
+      ]
+    },
+    "sob": {
+      "units": [
+        {
+          "type": "battle_sister",
+          "name": "Battle Sister",
+          "cost": 100,
+          "power": 0,
+          "time": 3,
+          "size": 5,
+          "maxSize": 5,
+          "hp": 100,
+          "reinforceCost": 20,
+          "reinforceTime": 7
+        }
+      ],
+      "structures": [
+        {
+          "type": "hq",
+          "cost": 300,
+          "time": 15,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "adepta_sororitas_convent",
+          "cost": 300,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "adeptus_mechanicus_workshop",
+          "cost": 180,
+          "time": 40,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "ecclesiarchal_chapel",
+          "cost": 150,
+          "time": 150,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "holy_reliquary_v2",
+          "cost": 120,
+          "time": 30,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "inferno_turret",
+          "cost": 100,
+          "time": 40,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "listening_post",
+          "cost": 60,
+          "time": 30,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "plasma_generator",
+          "cost": 80,
+          "time": 30,
+          "generator": true,
+          "production": []
+        },
+        {
+          "type": "pristine_sanctuary",
+          "cost": 120,
+          "time": 45,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "purgatus_mines",
+          "cost": 40,
+          "time": 20,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "shrine_of_st_celestine",
+          "cost": 120,
+          "time": 8,
+          "generator": false,
+          "production": []
+        },
+        {
+          "type": "thermo_plasma_generator",
+          "cost": 120,
+          "time": 60,
+          "generator": true,
+          "production": []
+        }
+      ],
+      "workerCost": 80,
+      "workerTime": 2,
+      "techOrder": [
+        "adeptus_mechanicus_workshop",
+        "ecclesiarchal_chapel",
+        "holy_reliquary_v2",
+        "inferno_turret",
+        "plasma_generator",
+        "pristine_sanctuary",
+        "purgatus_mines",
+        "shrine_of_st_celestine",
+        "thermo_plasma_generator"
+      ]
+    }
+  },
+  "difficulties": {
+    "easy": {
+      "ig": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "chaos": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "space marines": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "orks": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "necrons": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          }
+        ],
+        "unsupported": []
+      },
+      "eldar": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "dark eldar": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "tau": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          }
+        ],
+        "unsupported": []
+      },
+      "sob": {
+        "capturers": 1,
+        "engineers": 2,
+        "pointLimit": 0.3,
+        "minAttackSquads": 2,
+        "armyBudget": 450,
+        "stopAttackRating": -2147483647,
+        "noResearch": true,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "ecclesiarchal_chapel"
+          },
+          {
+            "kind": "post_builder"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_canoness"
+          }
+        ]
+      }
+    },
+    "standard": {
+      "ig": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 3,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "infantry_command"
+          },
+          {
+            "kind": "train",
+            "type": "guardsmen"
+          },
+          {
+            "kind": "train",
+            "type": "guardsmen"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "commissar"
+          },
+          {
+            "kind": "train",
+            "type": "commissar"
+          },
+          {
+            "kind": "build",
+            "type": "tactica_control"
+          },
+          {
+            "kind": "train",
+            "type": "imperial_captain"
+          }
+        ],
+        "unsupported": []
+      },
+      "chaos": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 1,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "chaos_temple"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          }
+        ]
+      },
+      "space marines": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 1,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "barracks"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          }
+        ]
+      },
+      "orks": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 1,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "build",
+            "type": "waagh_banner"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "boyz"
+          },
+          {
+            "kind": "train",
+            "type": "boyz"
+          },
+          {
+            "kind": "build",
+            "type": "da_boyz_hut"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "build",
+            "type": "waagh_banner"
+          },
+          {
+            "kind": "build",
+            "type": "pile_o_guns"
+          },
+          {
+            "kind": "build",
+            "type": "mek_shop"
+          }
+        ],
+        "unsupported": []
+      },
+      "necrons": {
+        "capturers": 1,
+        "engineers": 3,
+        "pointLimit": 0.6,
+        "minAttackSquads": 3,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "necron_lord_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_flayed_one_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_scarab_squad"
+          }
+        ]
+      },
+      "eldar": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 1,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "build",
+            "type": "aspect_portal"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "post_builder"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_rangers"
+          },
+          {
+            "kind": "addon",
+            "blueprint": "eldar_aspect_stone_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_farseer"
+          }
+        ]
+      },
+      "dark eldar": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 2,
+        "armyBudget": 800,
+        "stopAttackRating": -2147483647,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "warrior"
+          },
+          {
+            "kind": "train",
+            "type": "warrior"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_mandrake"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_mandrake"
+          },
+          {
+            "kind": "building",
+            "blueprint": "dark_eldar_hall_of_blood"
+          }
+        ]
+      },
+      "tau": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 3,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "tau_barracks"
+          },
+          {
+            "kind": "train",
+            "type": "fire_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "tau_kroot_nest"
+          },
+          {
+            "kind": "post_builder"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "tau_stealth_team_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_stealth_team_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_kroot_carnivore_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_commander_squad"
+          }
+        ]
+      },
+      "sob": {
+        "capturers": 2,
+        "engineers": 2,
+        "pointLimit": 0.6,
+        "minAttackSquads": 1,
+        "armyBudget": 800,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": true,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "ecclesiarchal_chapel"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "battle_sister"
+          },
+          {
+            "kind": "train",
+            "type": "battle_sister"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_canoness"
+          }
+        ]
+      }
+    },
+    "advanced": {
+      "ig": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 4,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "infantry_command"
+          },
+          {
+            "kind": "train",
+            "type": "guardsmen"
+          },
+          {
+            "kind": "train",
+            "type": "guardsmen"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "commissar"
+          },
+          {
+            "kind": "train",
+            "type": "commissar"
+          },
+          {
+            "kind": "build",
+            "type": "tactica_control"
+          },
+          {
+            "kind": "train",
+            "type": "imperial_captain"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "building",
+            "blueprint": "guard_turret_heavy_bolter"
+          }
+        ]
+      },
+      "chaos": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 2,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "chaos_temple"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_lord"
+          }
+        ]
+      },
+      "space marines": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 2,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "barracks"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_force_commander"
+          }
+        ]
+      },
+      "orks": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 3,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "build",
+            "type": "waagh_banner"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "boyz"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "da_boyz_hut"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "build",
+            "type": "waagh_banner"
+          },
+          {
+            "kind": "build",
+            "type": "mek_shop"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "ork_squad_mek_boy"
+          }
+        ]
+      },
+      "necrons": {
+        "capturers": 1,
+        "engineers": 5,
+        "pointLimit": 1,
+        "minAttackSquads": 4,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "building",
+            "blueprint": "necron_turret"
+          },
+          {
+            "kind": "building",
+            "blueprint": "necron_turret"
+          },
+          {
+            "kind": "building",
+            "blueprint": "necron_turret"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_lord_squad"
+          },
+          {
+            "kind": "building",
+            "blueprint": "necron_turret"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_flayed_one_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_scarab_squad"
+          }
+        ]
+      },
+      "eldar": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 2,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "aspect_portal"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "post_builder"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_rangers"
+          },
+          {
+            "kind": "addon",
+            "blueprint": "eldar_aspect_stone_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_farseer"
+          },
+          {
+            "kind": "research",
+            "blueprint": "eldar_ranger_infiltration_research"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_dark_reapers"
+          }
+        ]
+      },
+      "dark eldar": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 2,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "warrior"
+          },
+          {
+            "kind": "train",
+            "type": "warrior"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_mandrake"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_mandrake"
+          },
+          {
+            "kind": "building",
+            "blueprint": "dark_eldar_hall_of_blood"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_archon"
+          },
+          {
+            "kind": "building",
+            "blueprint": "dark_eldar_haemonculus_laboratory"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_haemonculus"
+          },
+          {
+            "kind": "research",
+            "blueprint": "dark_eldar_infiltration_mandrake_research"
+          }
+        ]
+      },
+      "tau": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 4,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "build",
+            "type": "tau_barracks"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "fire_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "tau_kroot_nest"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "fire_warrior"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "tau_stealth_team_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_stealth_team_squad"
+          },
+          {
+            "kind": "building",
+            "blueprint": "guard_plasma_generator"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_kroot_carnivore_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_commander_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_kroot_carnivore_squad"
+          },
+          {
+            "kind": "building",
+            "blueprint": "guard_plasma_generator"
+          }
+        ]
+      },
+      "sob": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 2,
+        "armyBudget": 1500,
+        "stopAttackRating": -200,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "ecclesiarchal_chapel"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "battle_sister"
+          },
+          {
+            "kind": "train",
+            "type": "battle_sister"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_canoness"
+          },
+          {
+            "kind": "building",
+            "blueprint": "sisters_sanctuary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_seraphim"
+          }
+        ]
+      }
+    },
+    "hard": {
+      "ig": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 3,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "infantry_command"
+          },
+          {
+            "kind": "train",
+            "type": "guardsmen"
+          },
+          {
+            "kind": "train",
+            "type": "guardsmen"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "commissar"
+          },
+          {
+            "kind": "train",
+            "type": "commissar"
+          },
+          {
+            "kind": "build",
+            "type": "tactica_control"
+          },
+          {
+            "kind": "train",
+            "type": "imperial_captain"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "building",
+            "blueprint": "guard_turret_heavy_bolter"
+          }
+        ]
+      },
+      "chaos": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 1,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "chaos_temple"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "chaos_space_marine"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_cultist"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "chaos_squad_lord"
+          }
+        ]
+      },
+      "space marines": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 1,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "barracks"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          },
+          {
+            "kind": "train",
+            "type": "space_marine"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_scout"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "space_marine_squad_force_commander"
+          }
+        ]
+      },
+      "orks": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 1,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "waagh_banner"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "train",
+            "type": "boyz"
+          },
+          {
+            "kind": "build",
+            "type": "da_boyz_hut"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "build",
+            "type": "waagh_banner"
+          },
+          {
+            "kind": "build",
+            "type": "mek_shop"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "ork_squad_mek_boy"
+          }
+        ]
+      },
+      "necrons": {
+        "capturers": 1,
+        "engineers": 4,
+        "pointLimit": 1,
+        "minAttackSquads": 3,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          },
+          {
+            "kind": "train",
+            "type": "necron_basic_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "plasma_generator"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "building",
+            "blueprint": "necron_turret"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_lord_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_flayed_one_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "necron_scarab_squad"
+          }
+        ]
+      },
+      "eldar": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 1,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "build",
+            "type": "aspect_portal"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "guardian"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "post_builder"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_rangers"
+          },
+          {
+            "kind": "addon",
+            "blueprint": "eldar_aspect_stone_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_banshees"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_farseer"
+          },
+          {
+            "kind": "research",
+            "blueprint": "eldar_ranger_infiltration_research"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "eldar_squad_banshees"
+          }
+        ]
+      },
+      "dark eldar": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 1,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "warrior"
+          },
+          {
+            "kind": "train",
+            "type": "warrior"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_mandrake"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_mandrake"
+          },
+          {
+            "kind": "building",
+            "blueprint": "dark_eldar_hall_of_blood"
+          },
+          {
+            "kind": "research",
+            "blueprint": "dark_eldar_infiltration_mandrake_research"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "dark_eldar_squad_archon"
+          }
+        ]
+      },
+      "tau": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 3,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "build",
+            "type": "tau_barracks"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "fire_warrior"
+          },
+          {
+            "kind": "build",
+            "type": "tau_kroot_nest"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "fire_warrior"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "tau_stealth_team_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_stealth_team_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_kroot_carnivore_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_commander_squad"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "tau_kroot_carnivore_squad"
+          }
+        ]
+      },
+      "sob": {
+        "capturers": 2,
+        "engineers": 3,
+        "pointLimit": 1,
+        "minAttackSquads": 1,
+        "armyBudget": 1500,
+        "stopAttackRating": -100,
+        "noResearch": false,
+        "noSecondaryBuildings": false,
+        "opening": [
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "flag_capture"
+          },
+          {
+            "kind": "train",
+            "type": "builder"
+          },
+          {
+            "kind": "build",
+            "type": "ecclesiarchal_chapel"
+          },
+          {
+            "kind": "post_builder"
+          },
+          {
+            "kind": "train",
+            "type": "battle_sister"
+          },
+          {
+            "kind": "train",
+            "type": "battle_sister"
+          }
+        ],
+        "unsupported": [
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_missionary"
+          },
+          {
+            "kind": "squad",
+            "blueprint": "sisters_squad_canoness"
+          }
+        ]
+      }
+    }
+  }
+}

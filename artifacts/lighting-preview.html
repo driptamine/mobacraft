@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{margin:0;background:#18201b;color:#ddd;font:14px sans-serif}nav{position:absolute;top:12px;left:16px;z-index:2}button{padding:9px;background:#152128;border:1px solid #7cc1bd;color:white}</style></head><body><nav><button data-mode="classic">Classic</button><button data-mode="definitive">Definitive</button><button id="shadow-toggle">Shadows</button></nav><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import { attachGroundShadowOverlay } from '/src/render/ground-shadows.ts';
+import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
+import { bindLighting, setLightingMode, setShadowsEnabled, shadowsEnabled, applyObjectLighting } from '/src/render/lighting.ts';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);document.body.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x20282b);
+const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.1,300);camera.position.set(5,13,26);const orbit=new OrbitControls(camera,renderer.domElement);orbit.target.set(0,2,0);orbit.update();
+const ambient=new THREE.HemisphereLight(0xe0ebff,0x171a18,.55);ambient.name='amb';scene.add(ambient);
+for(const [name,color,strength,position]of [['sun',0xfff1d8,1.8,[6,10,4]],['fill',0xb8d1ff,.45,[-8,5,-6]],['rim',0xffd9a6,.28,[-4,3,-10]]]){const light=new THREE.DirectionalLight(color,strength);light.name=name;light.position.fromArray(position);scene.add(light);if(name==='sun'){Object.assign(light.shadow.camera,{left:-16,right:16,top:16,bottom:-16,near:.1,far:500});light.shadow.camera.updateProjectionMatrix()}}
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.MeshStandardMaterial({color:0x625747,roughness:.95}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);attachGroundShadowOverlay(floor);
+const loader=new GLTFLoader();const mixers=[];
+for(const [index,path]of ['infantry/necron_basic_warrior','structures/obelisk','structures/plasma_generator'].entries()){
+ const gltf=await loader.loadAsync('/models/necrons/'+path+'.glb'),root=new THREE.Group();root.add(gltf.scene);root.position.x=(index-1)*6;if(index===0)root.scale.setScalar(2);scene.add(root);
+ root.traverse(node=>{if(node.isMesh)node.castShadow=true});applyObjectLighting(root);
+ if(index===0){const mixer=new THREE.AnimationMixer(gltf.scene),idle=gltf.animations.find(clip=>clip.name==='idle_1');if(idle)mixer.clipAction(idle).play();mixers.push(mixer)}
+}
+setLightingMode('classic');setShadowsEnabled(true);bindLighting(scene,renderer,'high');
+document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>setLightingMode(button.dataset.mode));document.querySelector('#shadow-toggle').onclick=()=>setShadowsEnabled(!shadowsEnabled());
+window.__lightingPreview={scene,renderer,camera,ready:true};let previous=performance.now();function frame(now){mixers.forEach(mixer=>mixer.update(Math.min(.05,(now-previous)/1000)));previous=now;renderer.render(scene,camera);requestAnimationFrame(frame)}requestAnimationFrame(frame);
+</script></body></html>

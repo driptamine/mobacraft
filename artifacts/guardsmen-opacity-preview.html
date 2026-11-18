@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{margin:0;background:#151c23;color:#fff;font:15px sans-serif}.labels{position:absolute;bottom:20px;display:flex;width:100%;justify-content:space-around;pointer-events:none}</style></head><body><div class="labels"><span>До: BLEND</span><span>После: OPAQUE</span></div><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {GLTFLoader} from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import {OrbitControls} from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
+import {loadGltf} from '/src/render/gltf-models.ts';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);document.body.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x27333d);scene.add(new THREE.HemisphereLight(0xedf5ff,0x4c4635,2));const sun=new THREE.DirectionalLight(0xfff1d7,3);sun.position.set(3,8,5);scene.add(sun);
+const camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,.1,200);camera.position.set(1,4,10);const orbit=new OrbitControls(camera,renderer.domElement);orbit.target.set(0,1.7,0);orbit.update();
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshStandardMaterial({color:0x655647,roughness:.95}));floor.rotation.x=-Math.PI/2;scene.add(floor);
+const loader=new GLTFLoader(),mixers=[];const before=await loader.loadAsync('/models/guardsmen-before-opacity.glb'),after=await loader.loadAsync('/models/guardsmen.glb');
+let beforeBody,afterBody;
+for(const [index,gltf]of [before,after].entries()){
+ const root=gltf.scene;root.position.x=(index-.5)*3;root.scale.setScalar(2);scene.add(root);
+ root.traverse(node=>{if(node.name.startsWith('guardsmen_head')&&node.name!=='guardsmen_head01')node.visible=false;if(['guard_banner','guard_banner_rod','guardsmen_flamer','guardsmen_grenade_launcher','guardsmen_plasma_pistol'].includes(node.name))node.visible=false;if(node.isMesh&&node.material.name==='ig_guardsmen'){if(index===0)beforeBody=node.material;else afterBody=node.material}});
+ const mixer=new THREE.AnimationMixer(root);const idle=gltf.animations.find(clip=>clip.name==='idle_1')||gltf.animations.find(clip=>/idle/i.test(clip.name));if(idle)mixer.clipAction(idle).play();mixers.push(mixer);
+}
+const stale=await loadGltf('/models/guardsmen.glb?stale=1');let repairedBody,flag;
+stale.scene.traverse(node=>{if(node.isMesh&&node.material.name==='ig_guardsmen')repairedBody=node.material;if(node.isMesh&&node.material.name==='ig_strategicpflag')flag=node.material});
+const image=beforeBody.map.image,canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);const pixels=ctx.getImageData(0,0,canvas.width,canvas.height).data;let alphaMin=255,alphaMax=0,nonOpaque=0;for(let offset=3;offset<pixels.length;offset+=4){alphaMin=Math.min(alphaMin,pixels[offset]);alphaMax=Math.max(alphaMax,pixels[offset]);if(pixels[offset]<255)nonOpaque++}
+window.__guardsmenOpacity={ready:true,before:{transparent:beforeBody.transparent,depthWrite:beforeBody.depthWrite},after:{transparent:afterBody.transparent,depthWrite:afterBody.depthWrite},stale:{transparent:repairedBody.transparent,depthWrite:repairedBody.depthWrite},bannerTransparent:flag.transparent,alphaMin,alphaMax,nonOpaque,animations:after.animations.length};
+let previous=performance.now();function frame(now){const delta=Math.min(.05,(now-previous)/1000);previous=now;mixers.forEach(mixer=>mixer.update(delta));renderer.render(scene,camera);requestAnimationFrame(frame)}requestAnimationFrame(frame);
+</script></body></html>

@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>body{margin:0;background:#26332d;color:#e5f5dc;font:16px sans-serif}header{position:absolute;top:20px;left:24px}</style></head><body><header id="label"></header><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {loadGltf} from '/src/render/gltf-models.ts';
+import * as core from '/src/core/scene.ts';
+import {setDefaultScene} from '/src/render/three-helpers.ts';
+import {World} from '/src/core/ecs.ts';
+import {FACTIONS,factionContainers} from '/src/factions.ts';
+import {createBuildingEntity,_finishConstruction} from '/src/entities/entities.ts';
+import {systemBuilding} from '/src/systems/structures.ts';
+const type=new URLSearchParams(location.search).get('type')||'mars_pattern';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);document.body.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x2c3934);scene.add(new THREE.HemisphereLight(0xe4f0ff,0x463622,2));const sun=new THREE.DirectionalLight(0xfff2da,3);sun.position.set(25,35,-20);scene.add(sun);
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,300);camera.position.set(20,22,-27);camera.lookAt(0,3,0);
+scene._registerShadows=()=>{};core.__setSceneCameraForTests(scene,camera);setDefaultScene(scene);const world=new World();core.setWorld(world);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(120,120),new THREE.MeshStandardMaterial({color:0x5c5140,roughness:1}));floor.rotation.x=-Math.PI/2;scene.add(floor);
+const config=FACTIONS.ig.structures.find(entry=>entry.type===type),gltf=await loadGltf('/'+config.model);
+factionContainers.ig.structures[type]={scene:gltf.scene,animations:gltf.animations,meshes:[],_hiddenNodes:config.hiddenNodes,dispose(){}};
+const id=createBuildingEntity(world,type,new THREE.Vector3(),'blue','ig'),component=world.get(id,'building'),mesh=world.get(id,'mesh'),root=mesh.root;
+const animation=root._constructionAnimation;animation.seekConstruction(.45,1);
+const partial=root.getObjectByName('bunker_base').position.toArray();
+_finishConstruction(world,id,component,'building');
+const body=root.getObjectByName('bunker_base'),aircraft=root.getObjectByName('valkyrie');
+const baseline=body.position.toArray(),initialAircraft=aircraft.position.toArray();
+component.queue=[{type:type==='mars_pattern'?'baneblade':'chimera',progress:0,total:20}];
+systemBuilding(world,10);
+const model={ready:true,type,id,world,root,component,mesh,partial,baseline,body,aircraft,initialAircraft,config};
+window.__vehiclePreview=model;document.querySelector('#label').textContent=type+' · research_dropoff';
+root.updateMatrixWorld(true);renderer.render(scene,camera);
+window.__render=()=>{root.updateMatrixWorld(true);renderer.render(scene,camera)};
+</script></body></html>

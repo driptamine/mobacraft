@@ -1,0 +1,27 @@
+<!doctype html><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {loadGltf,instantiateGltf} from '/src/render/gltf-models.ts';
+import {buildConstructionTimeline,createConstructionAnimation} from '/src/render/construction-animation.ts';
+window.__measurements=[];
+const configs=await(await fetch('/animations/ig/structures/structures.json')).json();
+for(const type of ['mars_pattern']){
+ const gltf=await loadGltf('/models/ig/structures/'+(type==='mars_pattern'?'mars_pattern_command':type)+'.glb');
+ const instance=instantiateGltf({scene:gltf.scene,animations:gltf.animations,meshes:[],_hiddenNodes:null,dispose(){}}),root=instance.rootNodes[0];
+ if(type==='hq-anim')root.rotation.y=Math.PI/2;
+ const player=createConstructionAnimation(instance,buildConstructionTimeline(gltf.animations,configs[type].phases),()=>{});
+ const collect=(pattern)=>{
+  root.updateWorldMatrix(true,true);root.traverse(node=>{if(node.isSkinnedMesh)node.skeleton.update()});
+  const box=new THREE.Box3();root.traverse(node=>{
+   if(!node.isMesh||/shadow|placeholder/i.test(node.name)||!pattern.test(node.name))return;
+   if(node.isSkinnedMesh){node.computeBoundingBox();box.union(node.boundingBox.clone().applyMatrix4(node.matrixWorld))}
+   else{node.geometry.computeBoundingBox();box.union(node.geometry.boundingBox.clone().applyMatrix4(node.matrixWorld))}
+  });return box;
+ };
+ const construction=new THREE.Box3();for(const progress of [0,.1,.5,.9,1]){player.seekConstruction(progress,1);construction.union(collect(/^(crate_|scaffolding|fuel_tank|mech_arm_base|hq(?:_|$)|bunker|plasma_generator(?:_|$)|listening_post(?:_|$)|tactica_|barrierwall|landing_pad)/i))}
+ player.seekConstruction(1,1);
+ const completed=collect(/^(hq(?:_|$)|bunker|plasma_generator(?:_|$)|listening_post(?:_|$)|tactica_|barrierwall|landing_pad)/i);
+ const bounds=box=>({minX:box.min.x,maxX:box.max.x,minZ:box.min.z,maxZ:box.max.z,minY:box.min.y,maxY:box.max.y});
+ window.__measurements.push({type,construction:bounds(construction),completed:bounds(completed),selection:bounds(collect(/^(scaffolding|crate_)/i))});instance.dispose();
+}
+window.__measurementReady=true;
+</script>

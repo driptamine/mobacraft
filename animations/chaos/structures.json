@@ -1,0 +1,82 @@
+{
+  "armoury": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    }
+  },
+  "chaos_icon": {
+    "phases": {
+      "phase_1": "build"
+    }
+  },
+  "chaos_temple": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    }
+  },
+  "desecrated_stronghold": {
+    "phases": {
+      "placement": "build_placement",
+      "phase_1": "build_1",
+      "phase_2": "build_2_rise"
+    }
+  },
+  "greater_sacrificial_circle": {
+    "phases": {
+      "phase_1": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    }
+  },
+  "land_mine": {
+    "phases": {}
+  },
+  "listening_post": {
+    "phases": {}
+  },
+  "machine_pit": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    },
+    "vehicle_production": "PRODUCTION_1"
+  },
+  "plasma_generator": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    }
+  },
+  "sacrificial_circle": {
+    "phases": {
+      "phase_1": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    }
+  },
+  "thermo_plasma_generator": {
+    "phases": {
+      "placement": "build_placement",
+      "delivery": [
+        "warp_in_1",
+        "warp_in_2"
+      ]
+    }
+  }
+}

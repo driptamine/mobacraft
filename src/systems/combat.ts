@@ -1,0 +1,377 @@
+import * as THREE from 'three';
+import { infantryImmortal } from '../hud/store.js';
+import {
+  PLAYER,
+  TEAM_COLOR,
+  _allHitboxes,
+  kills,
+  particles,
+  selBuildings,
+  setKills,
+  setSelBuildings,
+  world,
+} from '../core/scene.js';
+import { childMeshes, disposeObj, mkSharedMesh } from '../render/three-helpers.js';
+import { isGuardsmanMesh } from '../fx/blood/blood-splat.js';
+import { spawnBloodLiquid } from '../fx/blood/blood-liquid-splat.js';
+import { worldFootprint } from '../core/structure-footprint.js';
+
+
+export function findClosestEnemySoldier(world: any, team: any, fromPos: any, squadIds: any = null) {
+  // Squared comparisons pick the same winner without a sqrt per soldier;
+  // the single sqrt runs once for the winner so `distance` stays exact.
+  // Callers may pass a precomputed squad list to skip the per-call query.
+  let winner: any = null;
+  let minDistSq = Infinity;
+  const ids = squadIds !== null ? squadIds : world.query('squad');
+  for (const squadEntityId of ids) {
+    const squadComponent = world.get(squadEntityId, 'squad');
+    if (!squadComponent || squadComponent.team === team) {
+      continue;
+    }
+    for (const soldierEntityId of squadComponent.soldiers) {
+      if (soldierEntityId === null) {
+        continue;
+      }
+      const soldierComponent = world.get(soldierEntityId, 'soldier');
+      if (!soldierComponent) {
+        continue;
+      }
+      if (soldierComponent.cloaked && soldierComponent.revealTimer <= 0) {
+        continue;
+      }
+      const meshComponent = world.get(soldierEntityId, 'mesh');
+      if (!meshComponent) {
+        continue;
+      }
+      const distSq = fromPos.distanceToSquared(meshComponent.root.position);
+      if (distSq < minDistSq) {
+        minDistSq = distSq;
+        winner = { soldierEntityId, squad: squadComponent, squadEntityId };
+      }
+    }
+  }
+  if (!winner) {
+    return null;
+  }
+  winner.distance = Math.sqrt(minDistSq);
+  return winner;
+}
+
+export function findClosestEnemyBuilding(world: any, team: any, fromPos: any, maxDist: number = Infinity) {
+  let winner: any = null;
+  let minDistSq = maxDist === Infinity ? Infinity : maxDist * maxDist;
+  for (const id of [...world.query('building'), ...world.query('structure')]) {
+    const comp = world.get(id, 'building') || world.get(id, 'structure');
+    if (!comp || comp.team === team || (comp.hp != null && comp.hp <= 0)) {
+      continue;
+    }
+    const meshComponent = world.get(id, 'mesh');
+    if (!meshComponent?.root) {
+      continue;
+    }
+    const distSq = fromPos.distanceToSquared(meshComponent.root.position);
+    if (distSq < minDistSq) {
+      minDistSq = distSq;
+      winner = { buildingEntityId: id, distance: 0, radius: buildingEngageRadius(world, id) };
+    }
+  }
+  if (!winner) {
+    return null;
+  }
+  winner.distance = Math.sqrt(minDistSq);
+  return winner;
+}
+
+/** Half-extent of a building used to stop at its walls, not its center. */
+export function buildingEngageRadius(world: any, id: number): number {
+  const comp = world.get(id, 'building') || world.get(id, 'structure');
+  const mesh = world.get(id, 'mesh');
+  if (!comp || !mesh?.root) return 4;
+  const bounds = worldFootprint({ type: comp.type, faction: comp.faction, position: mesh.root.position, constructing: false });
+  return Math.max((bounds.maxX - bounds.minX) / 2, (bounds.maxZ - bounds.minZ) / 2, 2);
+}
+
+export function damageBuilding(world: any, id: number, amount: number): void {
+  const comp = world.get(id, 'building') || world.get(id, 'structure');
+  if (!comp || (comp.hp != null && comp.hp <= 0)) {
+    return;
+  }
+  comp.hp = (comp.hp ?? comp.maxHp ?? 100) - amount;
+  if (comp.hp <= 0) {
+    destroyBuilding(world, id);
+  }
+}
+
+export function destroyBuilding(world: any, id: number): void {
+  for (const squadId of world.query('squad')) {
+    const squad = world.get(squadId, 'squad');
+    if (squad && squad.forcedTarget === id) {
+      squad.forcedTarget = null;
+      squad.forcedSoldierId = null;
+    }
+  }
+  for (const workerId of world.query('builder')) {
+    const worker = world.get(workerId, 'builder');
+    if (!worker) continue;
+    if (worker.buildTarget?.pendingEntityId === id) {
+      worker.buildTarget = null;
+      worker.isBuilding = false;
+    }
+    if (worker.repairTarget === id) worker.repairTarget = null;
+  }
+  const comp = world.get(id, 'building') || world.get(id, 'structure');
+  if (comp?.strategicPointId != null) {
+    const point = world.get(comp.strategicPointId, 'strategicPoint');
+    if (point && point.listeningPostEntityId === id) {
+      point.listeningPostEntityId = null;
+      point.hasListeningPost = false;
+      point.lpTier = 0;
+    }
+  }
+  if (Array.isArray(selBuildings) && selBuildings.includes(id)) {
+    setSelBuildings(selBuildings.filter((entry: number) => entry !== id));
+  }
+  const meshComponent = world.get(id, 'mesh');
+  if (meshComponent) disposeMeshComponent(meshComponent);
+  world.destroyEntity(id);
+}
+
+
+export function disposeMeshComponent(meshComponent: any) {
+  if (!meshComponent) {
+    return;
+  }
+  if (meshComponent.lightning) {
+    meshComponent.lightning.dispose();
+    return;
+  }
+  if (meshComponent.root) {
+    if (meshComponent.root._animGroups) {
+      Object.values(meshComponent.root._animGroups).forEach((ag: any) => {
+        try {
+          ag.stop();
+          ag.dispose();
+        } catch (e) {
+          // Intentionally empty
+        }
+      });
+      meshComponent.root._animGroups = {};
+    }
+    if (meshComponent.root._instanceData) {
+      try {
+        meshComponent.root._instanceData.dispose?.();
+        meshComponent.root._instanceData.animationGroups.forEach((ag: any) => {
+          try {
+            ag.stop();
+            ag.dispose();
+          } catch (e) {
+            // Intentionally empty
+          }
+        });
+        meshComponent.root._instanceData.rootNodes.forEach((n: any) => {
+          try {
+            childMeshes(n).forEach((m) => disposeObj(m));
+            disposeObj(n);
+          } catch (e) {
+            // Intentionally empty
+          }
+        });
+      } catch (e) {
+        // Intentionally empty
+      }
+      meshComponent.root._instanceData = null;
+    }
+    childMeshes(meshComponent.root).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.root);
+    for (let i = _allHitboxes.length - 1; i >= 0; i--) {
+      if (_allHitboxes[i].userData?.disposed) _allHitboxes.splice(i, 1);
+    }
+  }
+  if (meshComponent.hpBar) {
+    childMeshes(meshComponent.hpBar).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.hpBar);
+  }
+  if (meshComponent.prodBar) {
+    childMeshes(meshComponent.prodBar).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.prodBar);
+  }
+  if (meshComponent.selRing) {
+    if (meshComponent.selRing.material) {
+      meshComponent.selRing.material.dispose();
+    }
+    disposeObj(meshComponent.selRing);
+  }
+  if (meshComponent.reinBar) {
+    childMeshes(meshComponent.reinBar).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.reinBar);
+  }
+  if (meshComponent.grenadeSetupBar) {
+    childMeshes(meshComponent.grenadeSetupBar).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.grenadeSetupBar);
+  }
+  if (meshComponent.group) {
+    childMeshes(meshComponent.group).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.group);
+  }
+  if (meshComponent.capRing) {
+    disposeObj(meshComponent.capRing);
+  }
+  if (meshComponent.lpMesh) {
+    childMeshes(meshComponent.lpMesh).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.lpMesh);
+  }
+}
+
+
+// One shared box for every hit particle: spawnParticles runs per hit with
+// several particles each, so per-particle geometry churn is pure waste.
+const _particleGeo = new THREE.BoxGeometry(.1, .1, .1);
+_particleGeo.userData.shared = true;
+
+export function spawnParticles(position: any, color: any, count: number) {
+  for (let i = 0; i < count; i++) {
+    const particleMesh = mkSharedMesh(_particleGeo, 'pt');
+    particleMesh.position.copy(position);
+    const particleMaterial = new THREE.MeshBasicMaterial();
+    particleMaterial.color.copy(color);
+    particleMaterial.opacity = 1;
+    particleMesh.material = particleMaterial;
+    const vx = (Math.random() - .5) * 8;
+    const vy = Math.random() * 6 + 1;
+    const vz = (Math.random() - .5) * 8;
+    particles.push({
+      mesh: particleMesh,
+      material: particleMaterial,
+      vx,
+      vy,
+      vz,
+      life: .45 + Math.random() * .35,
+      age: 0,
+    });
+  }
+}
+
+
+export function _bulletDestroy(world: any, id: any, meshComponent: any) {
+  disposeObj(meshComponent.root);
+  world.destroyEntity(id);
+}
+
+
+export function _soldierTakeDamage(world: any, soldierId: any, damage: number) {
+  const soldierComponent = world.get(soldierId, 'soldier');
+  if (!soldierComponent) {
+    return;
+  }
+  if (infantryImmortal) {
+    const squadComponent = world.get(soldierComponent.squadId, 'squad');
+    if (squadComponent && squadComponent.team === PLAYER) {
+      return;
+    }
+  }
+  soldierComponent.hp -= damage;
+  soldierComponent.flashTimer = .12;
+  const hitMesh = world.get(soldierId, 'mesh');
+  if (hitMesh && hitMesh.root && isGuardsmanMesh(hitMesh.root)) {
+    const p = hitMesh.root.position;
+    spawnBloodLiquid({ x: p.x, y: p.y + 1.1, z: p.z }, soldierComponent.hp <= 0 ? 1.6 : 1);
+  }
+  if (soldierComponent.hp <= 0) {
+    _soldierDie(world, soldierId, true);
+  }
+}
+
+
+export function disposeSoldierHud(meshComponent: any) {
+  try {
+    childMeshes(meshComponent.hpBar).forEach((m) => disposeObj(m));
+    disposeObj(meshComponent.hpBar);
+  } catch (e) { /* ignore */ }
+  if (meshComponent.reloadBar) {
+    try {
+      childMeshes(meshComponent.reloadBar).forEach((m) => disposeObj(m));
+      disposeObj(meshComponent.reloadBar);
+    } catch (e) { /* ignore */ }
+  }
+  if (meshComponent.root) {
+    ['_selDisc', '_teamRing', '_selRing'].forEach((key) => {
+      const ring = meshComponent.root[key];
+      if (ring) {
+        try {
+          ring.visible = false;
+          ring.visible = false;
+          disposeObj(ring);
+        } catch (e) { /* ignore */ }
+      }
+    });
+    if (meshComponent.root._blobShadow) {
+      try {
+        meshComponent.root._blobShadow.visible = false;
+      } catch (e) { /* ignore */ }
+    }
+  }
+}
+
+
+export function disposeSoldierMeshes(meshComponent: any) {
+  disposeSoldierHud(meshComponent);
+  // Death needs the same complete rig/mixer teardown as a world reset.
+  disposeMeshComponent(meshComponent);
+}
+
+
+export function _soldierDie(world: any, soldierId: any, countKill?: boolean) {
+  const soldierComponent = world.get(soldierId, 'soldier');
+  const meshComponent = world.get(soldierId, 'mesh');
+  if (!soldierComponent) {
+    return;
+  }
+  if (countKill === undefined) {
+    countKill = false;
+  }
+  if (countKill) {
+    setKills(kills + 1);
+  }
+  const team = world.get(soldierComponent.squadId, 'squad')?.team || 'blue';
+  if (meshComponent) {
+    spawnParticles(meshComponent.root.position, TEAM_COLOR[team as keyof typeof TEAM_COLOR].projectile, 8);
+    disposeSoldierHud(meshComponent);
+    if (meshComponent.root._dieAnims && meshComponent.root._dieAnims.length) {
+      const ag = meshComponent.root._dieAnims[Math.floor(Math.random() * meshComponent.root._dieAnims.length)];
+      try {
+        Object.values(meshComponent.root._animGroups).forEach((g: any) => {
+          try {
+            g.stop();
+          } catch (e) { /* ignore */ }
+        });
+        ag.loopAnimation = false;
+        ag.onAnimationGroupEndObservable.clear();
+        ag.reset();
+        ag.start(false, 1.0);
+        let disposed = false;
+        const disposeAfter = () => {
+          if (disposed) {
+            return;
+          }
+          disposed = true;
+          disposeSoldierMeshes(meshComponent);
+        };
+        ag.onAnimationGroupEndObservable.addOnce(disposeAfter);
+        setTimeout(disposeAfter, (ag.getDuration() + 1) * 1000);
+      } catch (e) {
+        console.warn('die anim error', e);
+      }
+    } else {
+      disposeSoldierMeshes(meshComponent);
+    }
+  }
+  const squad = world.get(soldierComponent.squadId, 'squad');
+  if (squad) {
+    const idx = squad.soldiers.indexOf(soldierId);
+    if (idx >= 0) {
+      squad.soldiers[idx] = null;
+    }
+  }
+  world.destroyEntity(soldierId);
+}

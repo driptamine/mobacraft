@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"></head><body><div id="minimap"></div><script type="module">
+import React from 'react';import{createRoot}from'react-dom/client';import{flushSync}from'react-dom';import*as THREE from'three';import*as state from'/src/core/scene.ts';import{World}from'/src/core/ecs.ts';import{Minimap}from'/src/hud/components/Minimap.tsx';import{bump}from'/src/hud/store.ts';
+const world=new World();state.setWorld(world);state.setPlayerTeam('blue');window._currentMapKey='arena';
+const specs=[['building','blue',-150,150],['building','red',-50,150],['structure','red',50,150],['squad','red',150,150],['builder','blue',-150,50],['builder','red',-50,50],['apc','blue',50,50],['apc','red',150,50],['strategicPoint','blue',-100,-100],['strategicPoint','red',100,-100]];
+for(const[type,team,x,z]of specs){const id=world.createEntity([]),position=new THREE.Vector3(x,0,z);world.add(id,type,type==='strategicPoint'?{owner:team,position}:{team,faction:team==='red'?'chaos':'ig',position});const root=new THREE.Group();root.position.copy(position);world.add(id,'mesh',{root});}
+flushSync(()=>createRoot(document.getElementById('minimap')).render(React.createElement(Minimap)));
+window.__minimap={ready:true,setPlayer(team){state.setPlayerTeam(team);flushSync(()=>bump('minimap'));},sample(x,z){const canvas=document.querySelector('canvas');const half=state.currentBounds();const px=Math.round((half-x)/(half*2)*140),py=Math.round((half-z)/(half*2)*140);return [...canvas.getContext('2d').getImageData(px,py,1,1).data];}};
+</script></body></html>

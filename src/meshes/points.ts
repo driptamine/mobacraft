@@ -1,0 +1,557 @@
+import * as THREE from 'three';
+import { attachNecronStructureAurora } from '../fx/necron-aurora.js';
+import { useProceduralModels } from '../render/model-source.js';
+import { _instantiateFromContainer } from '../render/model-upload.js';
+import { PLAYER, scene } from '../core/scene.js';
+import {
+  findNodesByName,
+  mkBox,
+  mkCylinder,
+  mkGroup,
+  mkSphere,
+} from '../render/three-helpers.js';
+import { _factionBucket } from './common.js';
+import type { AnyGroup, MetaPayload } from './types.js';
+import type { GltfContainer } from '../render/gltf-models.js';
+
+
+export const SP_MODEL_PATHS = {
+  point: 'models/points/strategic_point.glb',
+  relic: 'models/points/relic.glb',
+  objective: 'models/points/strategic_objective.glb',
+};
+
+export const SP_MODEL_SCALES = { point: 1.0, relic: 0.8, objective: 1.0 };
+
+// Faction banners/flags/poles inside the point model stay hidden: the point
+// is neutral until captured (capture ring + gem show the owner instead).
+// ground_plane (the DoW blob-shadow quad over the hatch) stays VISIBLE: its
+// black look is wanted. It shares BLEND material 0 with base/doora/doorb, so
+// patchStrategicPointGroundPlane gives it a depthWrite-off clone + renderOrder
+// -1 instead: the quad draws first and blends under the doors.
+export const STRATEGIC_POINT_HIDDEN_NODES = [
+  'chaos_banner',
+  'chaos_banner_rod',
+  'dark_eldar_banner',
+  'dark_eldar_flag_pole',
+  'eldar_flag',
+  'eldar_flag_pole',
+  'guard_banner',
+  'guard_banner_rod',
+  'marine_sergeant_banner',
+  'marine_sergeant_banner_rod',
+  'necron_flag_east',
+  'necron_flag_north',
+  'necron_flag_south',
+  'necron_flag_west',
+  'ork_flag',
+  'ork_flag_pole',
+  'sisters_banner',
+  'sisters_flag_pole',
+  'tau_banner',
+  'tau_banner_rod',
+];
+
+
+export const STRATEGIC_POINT_GROUND_PLANE = 'ground_plane';
+
+export const STRATEGIC_POINT_GROUND_PLANE_RENDER_ORDER = -1;
+
+
+// Keeps the blob-shadow quad visible (black look untouched) while stopping it
+// from blacking out doora/doorb: the quad shares its BLEND material with the
+// doors, so it gets a per-instance clone with depth writes off and draws
+// first (renderOrder -1), letting the doors blend over it. Returns how many
+// meshes were patched. Name match mirrors _instantiateFromContainer.
+export function patchStrategicPointGroundPlane(model: THREE.Object3D | null | undefined): number {
+  if (!model || typeof model.traverse !== 'function') return 0;
+  let patched = 0;
+  model.traverse((child) => {
+    const mesh = child as THREE.Mesh;
+    if (!mesh.isMesh) return;
+    const name = String(child.name || '').toLowerCase().split('_inst_')[0];
+    if (name !== STRATEGIC_POINT_GROUND_PLANE && !name.startsWith(STRATEGIC_POINT_GROUND_PLANE)) return;
+    const isArray = Array.isArray(mesh.material);
+    const matOrMats = mesh.material;
+    const mats: THREE.Material[] = isArray ? matOrMats as THREE.Material[] : [matOrMats as THREE.Material];
+    const clones = mats.map((mat) => {
+      if (!mat || typeof mat.clone !== 'function') return mat;
+      const clone = mat.clone();
+      clone.depthWrite = false;
+      return clone;
+    });
+    mesh.material = isArray ? clones : clones[0] as THREE.Material;
+    mesh.renderOrder = STRATEGIC_POINT_GROUND_PLANE_RENDER_ORDER;
+    mesh.visible = true;
+    patched += 1;
+  });
+  return patched;
+}
+
+
+export const STRATEGIC_POINT_CENTERPOST = 'stratetgic_point_centerpost';
+
+
+// The raised centerpost renders ghostly: it shares the BLEND-flagged material
+// 0 with the rest of the point (conversion artifact — the post is solid
+// metal). Give it a per-instance opaque clone so it draws in the opaque pass
+// with depth writes and no sorting artifacts. RGB is untouched (verified
+// against the texture), only the blend flag changes. Returns patched count.
+export function patchStrategicPointCenterpost(model: THREE.Object3D | null | undefined): number {
+  if (!model || typeof model.traverse !== 'function') return 0;
+  let patched = 0;
+  model.traverse((child) => {
+    const mesh = child as THREE.Mesh;
+    if (!mesh.isMesh) return;
+    const name = String(child.name || '').toLowerCase().split('_inst_')[0];
+    if (name !== STRATEGIC_POINT_CENTERPOST && !name.startsWith(STRATEGIC_POINT_CENTERPOST)) return;
+    const isArray = Array.isArray(mesh.material);
+    const matOrMats = mesh.material;
+    const mats: THREE.Material[] = isArray ? matOrMats as THREE.Material[] : [matOrMats as THREE.Material];
+    const clones = mats.map((mat) => {
+      if (!mat || typeof mat.clone !== 'function') return mat;
+      const clone = mat.clone();
+      clone.transparent = false;
+      clone.opacity = 1;
+      clone.depthWrite = true;
+      clone.depthTest = true;
+      return clone;
+    });
+    mesh.material = isArray ? clones : clones[0] as THREE.Material;
+    patched += 1;
+  });
+  return patched;
+}
+
+
+// Listening Posts build only on player-owned points/relics without one.
+export function canPlaceListeningPost(sp: { owner?: unknown; hasListeningPost?: unknown; listeningPostEntityId?: unknown } | null | undefined, team: unknown): boolean {
+  return !!sp && sp.owner === team && !sp.hasListeningPost && sp.listeningPostEntityId == null;
+}
+
+
+// Capture flag: per-faction banner nodes shown for the capturing/owning
+// faction. The rise itself is clip-driven — captured_raise lifts the
+// centerpost/console/banner assembly (the banner meshes are skinned, so
+// node offsets would not move them); this only gates visibility.
+export const STRATEGIC_POINT_BANNERS = {
+  ig: ['guard_banner', 'guard_banner_rod'],
+  chaos: ['chaos_banner', 'chaos_banner_rod'],
+  'space marines': ['marine_sergeant_banner', 'marine_sergeant_banner_rod'],
+  orks: ['ork_flag', 'ork_flag_pole'],
+  eldar: ['eldar_flag', 'eldar_flag_pole'],
+  tau: ['tau_banner', 'tau_banner_rod'],
+  sob: ['sisters_banner', 'sisters_flag_pole'],
+  necrons: ['necron_flag_north', 'necron_flag_south', 'necron_flag_east', 'necron_flag_west'],
+  'dark eldar': ['dark_eldar_banner', 'dark_eldar_flag_pole'],
+};
+
+// The planter seats his banner+rod into the centerpost socket the moment
+// flag_plant_1 ends (seated): the point's own banner pair pops in on the
+// same tick his carried pair pops out. Progress can tick while he is still
+// walking/planting, so the unowned clauses wait for planted too; owned
+// points keep the old behavior.
+export function shouldShowCaptureFlag({ engaged, owner, progress, planted }: { engaged?: boolean; owner?: string | null; progress?: number; planted?: unknown }): boolean {
+  if (owner != null) {
+    return true;
+  }
+  return !!planted && (engaged || Math.abs(progress || 0) > 0.001);
+}
+
+
+export function _wirePointFlagNodes(model: AnyGroup): void {
+  const banners: Record<string, THREE.Object3D[]> = {};
+  for (const [faction, names] of Object.entries(STRATEGIC_POINT_BANNERS)) {
+    banners[faction] = [];
+    for (const name of names) {
+      for (const node of findNodesByName(model, [name])) {
+        if ((node as THREE.Mesh).isMesh) {
+          banners[faction].push(node);
+        }
+      }
+    }
+  }
+  model._flagNodes = { banners };
+}
+
+
+export function updatePointFlag(model: AnyGroup | null | undefined, { faction, show }: { faction?: string; show?: boolean }): void {
+  const wired = model ? model._flagNodes : null;
+  if (!wired) {
+    return;
+  }
+  for (const [key, nodes] of Object.entries(wired.banners)) {
+    const visible = show && key === faction;
+    for (const node of nodes as THREE.Object3D[]) {
+      node.visible = !!visible;
+    }
+  }
+}
+
+
+// Capture-state clips per point kind: neutral points loop `idle` (assembly
+// buried); on capture start `open` plays once, then the native `raise` clip
+// lifts the centerpost/console/banner assembly, then `captured` loops raised.
+export const STRATEGIC_POINT_CLIPS = {
+  point: { idle: 'uncaptured_idle', open: 'uncaptured_open', raise: 'captured_raise', captured: 'captured_idle' },
+  relic: { idle: 'ol_uncaptured_idle', open: 'ol_uncaptured_open', raise: 'ol_captured_raise', captured: 'ol_captured_idle' },
+};
+
+
+// Pre-plant hold: once uncaptured_open finishes, the post waits scrubbed at
+// 20% of captured_raise (socket at ~1.25, just past the 1.11 rod-butt height
+// at flag_plant_1 end) with no banner until the planter seats it. Post-plant
+// progress maps onto the remaining [0.2, 1] so the handoff never pops down.
+export const POINT_PRE_PLANT_RISE = 0.2;
+
+
+// Capture progress (-1..1, either side) mapped onto the raise clip from the
+// pre-plant hold to full capture, remapped so the rise spans from the plant
+// mark to 100%.
+export function raiseScrubProgress(progress: number, raiseFrom = 0): number {
+  const m = Math.min(1, Math.abs(progress || 0));
+  const from = Math.min(0.999, Math.max(0, raiseFrom || 0));
+  const raw = Math.min(1, Math.max(0, (m - from) / (1 - from)));
+  return POINT_PRE_PLANT_RISE + (1 - POINT_PRE_PLANT_RISE) * raw;
+}
+
+
+// A capture order opens the point right away, but only while the planter is
+// still on his way. If he never starts closing the distance within this
+// window, the point closes again instead of standing open forever.
+export const POINT_OPEN_GRACE_SEC = 1;
+
+// Minimum distance decrease that counts as "the planter is coming". Kept
+// small: the tracker stores the previous frame's distance, so even a slow
+// walk (well under one unit per second) clears it.
+export const POINT_APPROACH_EPSILON = 0.001;
+
+
+// Drives the open/close gate for an unowned point. `orderedCapture` is true
+// while any squad carries a capture order for this point; `planterDistance`
+// is the closest such squad's distance to the point. The point opens on the
+// order, stays open once the planter starts approaching (or his boots reach
+// the point), and closes after the grace window if no approach begins.
+export function nextPointOpenState({ owner, beingCaptured, orderedCapture, planterDistance, deltaTime, waited = 0, approaching = false, lastDistance = null }: {
+  owner?: string | null;
+  beingCaptured?: boolean;
+  orderedCapture?: boolean;
+  planterDistance?: number | null;
+  deltaTime: number;
+  waited?: number;
+  approaching?: boolean;
+  lastDistance?: number | null;
+}): { open: boolean; waited: number; approaching: boolean; lastDistance: number | null } {
+  const reset = { open: !!beingCaptured, waited: 0, approaching: false, lastDistance: null };
+  if (owner != null || !orderedCapture) {
+    return reset;
+  }
+  if (beingCaptured) {
+    return { open: true, waited: 0, approaching: true, lastDistance: planterDistance ?? null };
+  }
+  const movedCloser = planterDistance != null && lastDistance != null
+    && planterDistance < lastDistance - POINT_APPROACH_EPSILON;
+  const started = approaching || movedCloser;
+  const nextWaited = waited + deltaTime;
+  return {
+    open: started || nextWaited <= POINT_OPEN_GRACE_SEC,
+    waited: nextWaited,
+    approaching: started,
+    lastDistance: planterDistance ?? lastDistance,
+  };
+}
+
+
+// Capture-state machine for the point model. Returns { play, loop, state,
+// scrub }: 'idle' loops the idle clip, 'opening' plays the open clip once
+// then holds the 20% pre-rise while the planter works, 'raising' scrubs the
+// raise clip by capture progress (plant mark to 100%), 'raised' loops the
+// captured clip. Owned points go straight to the raised loop; a contested
+// raised point re-enters 'raising'.
+export function nextStrategicPointAnim({ owner, beingCaptured, animState, currentAnim, progress, planted, raiseFrom }: {
+  owner?: string | null;
+  beingCaptured?: boolean;
+  animState?: string | null;
+  currentAnim?: string | null;
+  progress?: number;
+  planted?: boolean;
+  raiseFrom?: number;
+}): { play: string | null; loop: boolean; state: string | null; scrub: number | null } {
+  if (owner != null && animState !== 'raised') {
+    return { play: 'captured', loop: true, state: 'raised', scrub: null };
+  }
+  if (owner != null) {
+    return { play: null, loop: false, state: 'raised', scrub: null };
+  }
+  if (beingCaptured && (animState == null || animState === 'idle')) {
+    return { play: 'open', loop: false, state: 'opening', scrub: null };
+  }
+  if (beingCaptured && !planted && animState === 'opening' && currentAnim == null) {
+    return { play: 'raise', loop: false, state: 'opening', scrub: POINT_PRE_PLANT_RISE };
+  }
+  if (beingCaptured && planted && animState === 'opening' && (currentAnim == null || currentAnim === 'raise')) {
+    return { play: 'raise', loop: false, state: 'raising', scrub: raiseScrubProgress(progress as number, raiseFrom) };
+  }
+  if (beingCaptured && planted && (animState === 'raising' || animState === 'raised')) {
+    return { play: 'raise', loop: false, state: 'raising', scrub: raiseScrubProgress(progress as number, raiseFrom) };
+  }
+  if (!beingCaptured && animState !== 'idle') {
+    return { play: 'idle', loop: true, state: 'idle', scrub: null };
+  }
+  return { play: null, loop: false, state: animState ?? null, scrub: null };
+}
+
+
+// Wire the capture-state clips onto an instantiated point model. Slots are
+// 'idle'/'captured' (looped), 'open' (one-shot), and 'raise' (scrubbed by
+// capture progress); one-shot end clears _currentAnim.
+export function _wirePointAnims(model: AnyGroup, kind: string): void {
+  const clips = STRATEGIC_POINT_CLIPS[kind as keyof typeof STRATEGIC_POINT_CLIPS] || STRATEGIC_POINT_CLIPS.point;
+  const groups = model._animationGroups || [];
+  const find = (wanted: string): { name?: unknown } | null => groups.find((g: { name?: unknown }) => String(g.name || '').toLowerCase() === wanted) || null;
+  model._animGroups = {};
+  const idle = find(clips.idle);
+  const open = find(clips.open);
+  const raise = find(clips.raise);
+  const captured = find(clips.captured);
+  if (idle) model._animGroups.idle = idle;
+  if (open) model._animGroups.open = open;
+  if (raise) model._animGroups.raise = raise;
+  if (captured) model._animGroups.captured = captured;
+  model._currentAnim = null;
+  model._scrubAnim = function (name: string, progress: number): void {
+    const ag = model._animGroups[name];
+    if (!ag || typeof ag.scrub !== 'function') {
+      return;
+    }
+    if (model._currentAnim !== name) {
+      (Object.values(model._animGroups) as { stop(): void }[]).forEach((other) => {
+        try { other.stop(); } catch (e) { /* ignore */ }
+      });
+      model._currentAnim = name;
+    }
+    try {
+      ag.scrub(progress);
+    } catch (e) {
+      console.warn('_scrubAnim error', name, e);
+    }
+  };
+  model._playAnim = function (name: string, loop?: boolean): void {
+    if (loop === undefined) loop = true;
+    if (model._currentAnim === name) {
+      return;
+    }
+    const ag = model._animGroups[name];
+    if (!ag) {
+      return;
+    }
+    (Object.values(model._animGroups) as { stop(): void }[]).forEach((other) => {
+      try { other.stop(); } catch (e) { /* ignore */ }
+    });
+    model._currentAnim = name;
+    try {
+      ag.loopAnimation = !!loop;
+      ag.onAnimationGroupEndObservable.clear();
+      ag.reset();
+      ag.start(!!loop, 1.0);
+      if (!loop) {
+        ag.onAnimationGroupEndObservable.addOnce(() => {
+          model._currentAnim = null;
+        });
+      }
+    } catch (e) {
+      console.warn('_playAnim error', name, e);
+    }
+  };
+}
+
+
+export const _strategicPointContainers: Record<string, GltfContainer | null> = { point: null, relic: null, objective: null };
+
+
+export async function _loadPointContainer(kind: string): Promise<GltfContainer | null> {
+  if (_strategicPointContainers[kind]) {
+    return _strategicPointContainers[kind];
+  }
+  try {
+    const [{ loadGltf }, { modelUrl }] = await Promise.all([
+      import('../render/gltf-models.js'),
+      import('../render/assets.js'),
+    ]);
+    const container = await loadGltf(modelUrl(SP_MODEL_PATHS[kind as keyof typeof SP_MODEL_PATHS]));
+    if (container) {
+      container._hiddenNodes = STRATEGIC_POINT_HIDDEN_NODES;
+      _strategicPointContainers[kind] = container;
+    }
+  } catch (err) {
+    console.warn(`[points] ${kind} model failed to load, using procedural fallback`, err);
+  }
+  return _strategicPointContainers[kind];
+}
+
+
+export async function preloadStrategicPointModel(): Promise<GltfContainer | null> {
+  return _loadPointContainer('point');
+}
+
+
+export async function preloadRelicModel(): Promise<GltfContainer | null> {
+  return _loadPointContainer('relic');
+}
+
+
+export async function preloadObjectiveModel(): Promise<GltfContainer | null> {
+  return _loadPointContainer('objective');
+}
+
+
+// The small gray circular rim belongs to the base mesh itself. Give only
+// its triangles a material slot; never tint the hatch, doors or support legs.
+export function wireStrategicPointOwnershipRim(model: AnyGroup): void {
+  const rims: { mesh: THREE.Mesh; slot: number; neutral: THREE.MeshStandardMaterial; green: THREE.MeshBasicMaterial }[] = [];
+  model.traverse((node) => {
+    const mesh = node as THREE.Mesh;
+    if (!mesh.isMesh || !/^base(?:_|$)/.test(mesh.name) || Array.isArray(mesh.material)) return;
+    const source = mesh.geometry;
+    const positions = source.getAttribute('position');
+    const index = source.index;
+    if (!positions || !index) return;
+    const isRimVertex = (i: number): boolean => {
+      const radius = Math.hypot(positions.getX(i), positions.getZ(i));
+      return radius > 1.70 && radius < 1.90 && positions.getY(i) < 0.12;
+    };
+    const rimTriangles: boolean[] = [];
+    for (let i = 0; i < index.count; i += 3) {
+      rimTriangles.push([0, 1, 2].every((offset) => isRimVertex(index.getX(i + offset))));
+    }
+    if (!rimTriangles.some(Boolean)) return;
+    const geometry = source.clone();
+    geometry.userData.shared = false;
+    geometry.clearGroups();
+    for (let i = 0; i < rimTriangles.length;) {
+      let end = i + 1;
+      while (end < rimTriangles.length && rimTriangles[end] === rimTriangles[i]) end++;
+      geometry.addGroup(i * 3, (end - i) * 3, rimTriangles[i] ? 1 : 0);
+      i = end;
+    }
+    const neutral = mesh.material as THREE.MeshStandardMaterial;
+    const green = new THREE.MeshBasicMaterial({ color: neutral.color, map: neutral.map,
+      transparent: neutral.transparent, opacity: neutral.opacity, side: neutral.side,
+      toneMapped: neutral.toneMapped });
+    mesh.geometry = geometry;
+    mesh.material = [neutral, green];
+    rims.push({ mesh, slot: 1, neutral, green });
+  });
+  model._ownershipRims = rims;
+}
+
+const OWNED_POINT_RIM_COLOR = new THREE.Color(0x44ff88);
+
+export function updateStrategicPointOwnershipRim(model: AnyGroup | null | undefined, owned: boolean): void {
+  for (const rim of model?._ownershipRims || []) {
+    const map = owned ? null : rim.neutral.map;
+    if (rim.green.map !== map) {
+      rim.green.map = map;
+      rim.green.needsUpdate = true;
+    }
+    rim.green.color.copy(owned ? OWNED_POINT_RIM_COLOR : rim.neutral.color);
+    rim.green.toneMapped = owned ? false : rim.neutral.toneMapped;
+  }
+}
+
+
+export interface StrategicPointMesh {
+  group: AnyGroup;
+  model: AnyGroup | null;
+  gem: null;
+  gemMat: null;
+  capRing: null;
+  capRingMat: null;
+  pillar: null;
+}
+
+export function makeStrategicPointMesh(x: number, z: number, kind = 'point'): StrategicPointMesh {
+  const position = new THREE.Vector3(x, 0, z);
+  const root = mkGroup('sp') as AnyGroup;
+  root.position.copy(position);
+  const container = useProceduralModels() ? null : (_strategicPointContainers[kind] || null);
+  const model = container ? _instantiateFromContainer(container, {}) : null;
+  if (model) {
+    const pointModel = model as AnyGroup;
+    _wirePointAnims(pointModel, kind);
+    _wirePointFlagNodes(pointModel);
+    patchStrategicPointGroundPlane(pointModel);
+    patchStrategicPointCenterpost(pointModel);
+    wireStrategicPointOwnershipRim(pointModel);
+    pointModel.scale.setScalar(SP_MODEL_SCALES[kind as keyof typeof SP_MODEL_SCALES] || SP_MODEL_SCALES.point);
+    root.add(pointModel);
+  } else {
+    const base = mkCylinder('spbase', 2.8, 2.8, 0.3, 16);
+    base.position.y = 0.15;
+    root.add(base);
+    const baseMaterial = new THREE.MeshStandardMaterial();
+    baseMaterial.color = new THREE.Color(0.2, 0.27, 0.2);
+    base.material = baseMaterial;
+  }
+
+  return {
+    group: root,
+    model: (model as AnyGroup | null) || null,
+    gem: null,
+    gemMat: null,
+    capRing: null,
+    capRingMat: null,
+    pillar: null,
+  };
+}
+
+
+export function buildListeningPostMesh(position: THREE.Vector3, teamKey: string = PLAYER, metaPayload: MetaPayload = {}): AnyGroup {
+  const faction = _factionBucket(teamKey, metaPayload);
+  const container = faction.structures.listening_post;
+
+  if (container) {
+    const root = _instantiateFromContainer(container, metaPayload) as AnyGroup;
+    root.position.copy(position);
+    if (scene._registerShadows) scene._registerShadows(root);
+    if(metaPayload.faction==='necrons')attachNecronStructureAurora(root,'listening_post');
+    return root;
+  }
+
+  const root = mkGroup('lp') as AnyGroup;
+  root.position.copy(position);
+  const addBox = function addBox(width: number, height: number, depth: number, color: number, emissiveColor: number, x: number, y: number, z: number): THREE.Mesh {
+    const box = mkBox('lb', width, height, depth);
+    box.position.set(x, y, z);
+    root.add(box);
+    box.userData = { ...metaPayload };
+    const boxMaterial = new THREE.MeshStandardMaterial();
+    boxMaterial.color = new THREE.Color('#' + color.toString(16).padStart(6, '0'));
+    if (emissiveColor) {
+      boxMaterial.emissive = new THREE.Color('#' + emissiveColor.toString(16).padStart(6, '0'));
+    }
+
+    box.material = boxMaterial;
+    return box;
+  };
+  addBox(1.2, 2.5, 1.2, 0x2244aa, 0x000033, 0, 1.25, 0);
+  const cap = mkCylinder('lpcap', 0, 1.6, 1, 8);
+  cap.position.set(0, 3, 0);
+  root.add(cap);
+  cap.userData = { ...metaPayload };
+  const capMaterial = new THREE.MeshStandardMaterial();
+  capMaterial.color = new THREE.Color(0.07, 0.2, 0.67);
+  cap.material = capMaterial;
+  addBox(0.08, 0.08, 2, 0x888888, 0, 0, 4.2, 0);
+  const dish = mkSphere('dish', 0.8, 4);
+  dish.position.set(0.6, 3.8, 0);
+  root.add(dish);
+  dish.userData = { ...metaPayload };
+  const dishMaterial = new THREE.MeshStandardMaterial();
+  dishMaterial.color = new THREE.Color(0.6, 0.6, 0.6);
+  dish.material = dishMaterial;
+  if (scene._registerShadows) {
+    scene._registerShadows(root);
+  }
+  return root;
+}

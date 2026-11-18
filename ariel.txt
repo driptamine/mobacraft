@@ -1,0 +1,59 @@
+ARIEL — пути к ресурсам из SGB
+Источник: maps/4p_ariel_highlands/4p_ariel_highlands.sgb
+SHA-256: 82928379e4f9eed7eb9b8b3ccb97dc18fcc418d9a93aaa3fe9b4e1db81dd7a71
+Всего уникальных путей: 34
+Пути сохранены как записаны в SGB; расширения и каталоги не добавлялись.
+
+ДЕРЕВЬЯ (6)
+data:attrib\ebps\environment\jungle\jungle_tree\jungle_tree_02.rgd
+data:attrib\ebps\environment\jungle\jungle_tree\jungle_tree_04.rgd
+data:attrib\ebps\environment\jungle\jungle_tree\jungle_tree_burn_02.rgd
+data:attrib\ebps\environment\jungle\jungle_tree\jungle_tree_burn_03.rgd
+data:attrib\ebps\environment\snow\forest_snow\forest_tree_01_snow.rgd
+data:attrib\ebps\environment\snow\forest_snow\forest_tree_02_snow.rgd
+
+КУСТЫ И ДРУГАЯ РАСТИТЕЛЬНОСТЬ (3)
+data:attrib\ebps\environment\desert\desertveg02.rgd
+data:attrib\ebps\environment\jungle\jungle_dressing\jungle_drybush_01.rgd
+data:attrib\ebps\environment\jungle\jungle_dressing\jungle_lashed_group_01.rgd
+
+ИГРОВЫЕ ОБЪЕКТЫ (4)
+data:attrib\ebps\environment\gameplay\relic_struct.rgd
+data:attrib\ebps\environment\gameplay\starting_position.rgd
+data:attrib\ebps\environment\gameplay\strategic_objective_struct.rgd
+data:attrib\ebps\environment\gameplay\strategic_point_flag.rgd
+
+ТЕКСТУРЫ РЕЛЬЕФА (3)
+art/scenarios/textures/detail/rocky_ground
+art/scenarios/textures/detail/snow_02
+art/scenarios/textures/detail/snowy_field
+
+ДЕКАЛИ (18)
+art/decals/jungle/jungle_debris_01b
+art/decals/jungle/jungle_ground_rock_05
+art/decals/jungle/stone_cliff_04c
+art/decals/jungle/stones_01
+art/decals/jungle/stones_02
+art/decals/snow_slush/slush_tracks_02
+art/decals/snow_slush/snow_01b
+art/decals/snow_slush/snow_02
+art/decals/snow_slush/snow_02b
+art/decals/snow_slush/snow_05
+art/decals/snow_slush/snow_06
+art/decals/snow_slush/snow_06b
+art/decals/snow_slush/snow_06c
+art/decals/snow_slush/snow_07
+art/decals/snow_slush/snow_08
+art/decals/snow_slush/snow_09
+art/decals/z_all/crater_02b
+art/decals/z_all/scattered_pebbles_01b
+
+ВОДА И НЕБО — ИМЕНА ИЗ SGB
+Вода/волны: GenericWaves
+Чанк: FOLDSCEN/FOLDWSTC/FOLDTERR/DATAEFFC
+Небо/горизонт: TGD_skies_colddusk_01
+Чанк: FOLDSCEN/FOLDWSTC/FOLDTERR/DATAHRZN
+
+Полного пути к файлу воды SGB не содержит: GenericWaves — имя эффекта.
+DATAWCLR содержит бинарные данные окраски воды, а не имена файлов.
+Модели деревьев здесь указаны через RGD-blueprints; прямых путей к файлам моделей в SGB нет.

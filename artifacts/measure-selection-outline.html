@@ -1,0 +1,27 @@
+<!doctype html><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {loadGltf,instantiateGltf} from '/src/render/gltf-models.ts';
+import {buildConstructionTimeline,createConstructionAnimation} from '/src/render/construction-animation.ts';
+window.__measurements=[];
+const configs=await(await fetch('/animations/ig/structures/structures.json')).json();
+for(const type of ['hq-anim','infantry_command','mechanized','listening_post','plasma_generator','tactica_control']){
+ const gltf=await loadGltf('/models/ig/structures/'+(type==='mechanized'?'mechanized_command':type)+'.glb');
+ const instance=instantiateGltf({scene:gltf.scene,animations:gltf.animations,meshes:[],_hiddenNodes:null,dispose(){}}),root=instance.rootNodes[0];
+ if(type==='hq-anim')root.rotation.y=Math.PI/2;
+ const player=createConstructionAnimation(instance,buildConstructionTimeline(gltf.animations,configs[type].phases),()=>{});
+ const collect=(pattern)=>{
+  root.updateWorldMatrix(true,true);root.traverse(node=>{if(node.isSkinnedMesh)node.skeleton.update()});
+  const box=new THREE.Box3();root.traverse(node=>{
+   if(!node.isMesh||/shadow|placeholder/i.test(node.name)||!pattern.test(node.name))return;
+   if(node.isSkinnedMesh){node.computeBoundingBox();box.union(node.boundingBox.clone().applyMatrix4(node.matrixWorld))}
+   else{node.geometry.computeBoundingBox();box.union(node.geometry.boundingBox.clone().applyMatrix4(node.matrixWorld))}
+  });return box;
+ };
+ player.seekConstruction(0,1);const construction=collect(/^(crate_|scaffolding)/i);
+ player.seekConstruction(1,1);
+ const completed=collect(/^(hq(?:_|$)|bunker(?:_\d+)?$|bunker_base|bunker_door|plasma_generator(?:_|$)|listening_post(?:_|$)|tactica_base|tactica_piston|tactica_rotor|tactica_tanks|landing_pad)/i);
+ const bounds=box=>({minX:box.min.x,maxX:box.max.x,minZ:box.min.z,maxZ:box.max.z,minY:box.min.y,maxY:box.max.y});
+ window.__measurements.push({type,construction:bounds(construction),completed:bounds(completed)});instance.dispose();
+}
+window.__measurementReady=true;
+</script>
