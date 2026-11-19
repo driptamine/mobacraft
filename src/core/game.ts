@@ -1,3 +1,5 @@
+import { clearHeroEffects } from '../heroes/hero-effects.js';
+import { clearHeroAbilityTarget } from '../input/hero-abilities.js';
 import * as THREE from 'three';
 import { startingResources } from './economy.js';
 import { updateSunShadowCamera } from '../render/lighting.js';
@@ -52,7 +54,7 @@ import {
   clearAirfieldRallyMarker, clearRallyMarker, keys,
 } from './input.js';
 import { syncTouchControls } from '../input/touch-controls.js';
-import { DEFAULT_CAMERA_ALPHA, DEFAULT_CAMERA_BETA, DEFAULT_CAMERA_RADIUS } from '../render/camera-zoom.js';
+import { DEFAULT_CAMERA_ALPHA, DEFAULT_CAMERA_BETA, DEFAULT_CAMERA_RADIUS, MAX_ZOOM_RADIUS, setInitialCameraAlpha } from '../render/camera-zoom.js';
 import { rebindDecalPointerActions } from '../maps/sgb-decals.js';
 import { nextBackend } from '../render/render-backend.js';
 import {
@@ -142,6 +144,8 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
   necronFootDust.clear();
   if (world) {
     stopDoomCreeps(world);
+    clearHeroEffects(world);
+    clearHeroAbilityTarget();
     const tags = ['squad', 'builder', 'building', 'structure', 'bullet', 'grenade', 'strategicPoint', 'apc', 'vehicle', 'laserBullet', 'plasmaBullet', 'airfield', 'jet', 'missile', 'soldier', 'replicaShot'];
     for (const tag of tags) {
       for (const id of world.query(tag)) {
@@ -209,7 +213,7 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
   const startAlpha = dotaMap ? dotaMapConfig.camera.alpha : doomSpiral ? 0 : DEFAULT_CAMERA_ALPHA;
   const startBeta = dotaMap ? dotaMapConfig.camera.beta : doomSpiral ? (50 * Math.PI) / 180 : DEFAULT_CAMERA_BETA;
   camera.lowerRadiusLimit = dotaMap ? 15.24 : 6;
-  camera.upperRadiusLimit = dotaMap ? dotaMapConfig.camera.radius : 800;
+  camera.upperRadiusLimit = MAX_ZOOM_RADIUS;
   camera.fov = dotaMap ? 60 : 45;
   camera.updateProjectionMatrix?.();
   if (laneMatch) {
@@ -225,7 +229,7 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
     const home = dotaMap ? bases.find(base => base.team === PLAYER) : layoutFor(mapKey).positions.find((point) => point.faction === (PLAYER === 'blue' ? 'space marines' : 'ig')) || bases[0];
     if (home) camera.target.set(home.x, dotaMap ? _groundAt(home.x, home.z) : 0, home.z);
     camera.radius = dotaMap ? dotaMapConfig.camera.radius : DEFAULT_CAMERA_RADIUS;
-    camera.alpha = startAlpha;
+    setInitialCameraAlpha(camera, startAlpha);
     camera.beta = startBeta;
     updateHUD();
     return;
@@ -245,7 +249,7 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
     const position = matchPositions.get(human.slot);
     if (position) camera.target.set(position.x, 0, position.z);
     camera.radius = DEFAULT_CAMERA_RADIUS;
-    camera.alpha = startAlpha;
+    setInitialCameraAlpha(camera, startAlpha);
     camera.beta = startBeta;
     updateHUD();
     return;
@@ -264,7 +268,7 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
     camera.target.set(igBase.x, 0, igBase.z);
   }
   camera.radius = DEFAULT_CAMERA_RADIUS;
-  camera.alpha = startAlpha;
+  setInitialCameraAlpha(camera, startAlpha);
   camera.beta = startBeta;
 
   updateHUD();
@@ -558,7 +562,6 @@ function bindGameUI(): void {
   window.assignAnimFromList = (idx, slot) => import('../render/model-upload.js').then((module) => module.assignAnimFromList(idx, slot));
   // Add other UI bindings as needed...
 
-  import('../ui/main-menu.js').then((module) => module.injectMainMenu());
 }
 if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', bindGameUI, { once: true });
 else bindGameUI();

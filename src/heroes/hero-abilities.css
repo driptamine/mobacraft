@@ -1,0 +1,34 @@
+.hero-abilities {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 12px;
+  width: min(352px, calc(100vw - 24px));
+  color: #e4eef4;
+  font: 11px 'Trebuchet MS', Arial, sans-serif;
+  pointer-events: auto;
+}
+.hero-ability-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+.hero-abilities p {
+  width: fit-content;
+  margin: 0 0 6px auto;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background: #10191eeb;
+}
+.hero-abilities button {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 5px 2px 4px;
+  color: inherit;
+  background: #101a22f0;
+  border: 1px solid #608ba2;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.hero-abilities button:hover, .hero-abilities button:focus-visible { background: #293c49; }
+.hero-abilities button:disabled { color: #a3b0b8; opacity: .7; cursor: default; }
+.hero-ability-icon { font-size: 23px; line-height: 1.1; color: #c5ecff; }
+.hero-ability-name { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+.hero-abilities kbd { position: absolute; top: 3px; right: 4px; font-size: 9px; color: #dccb92; }

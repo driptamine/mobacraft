@@ -9,6 +9,8 @@ import { InfoPanel } from './components/InfoPanel.jsx';
 import { ReinforceProgressPanel } from './components/ReinforcePanel.jsx';
 import { ReinforceButtonsPanel } from './components/ReinforceBtnPanel.jsx';
 import { ActionsGrid } from './components/ActionsGrid.jsx';
+import { HeroAbilities } from './components/HeroAbilities.jsx';
+import { HeroItems } from './components/HeroItems.jsx';
 import { CaptureBars } from './components/CaptureBars.jsx';
 
 function HUDApp(): JSX.Element {
@@ -20,6 +22,8 @@ function HUDApp(): JSX.Element {
       <InfoPanel />
       <ReinforceProgressPanel />
       <ReinforceButtonsPanel />
+      <HeroItems />
+      <HeroAbilities />
       <ActionsGrid />
     </HudContainer>
   );

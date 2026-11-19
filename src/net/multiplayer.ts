@@ -1,19 +1,25 @@
+import { setInitialCameraAlpha } from '../render/camera-zoom.js';
 import * as THREE from 'three';
 import { startingResources } from '../core/economy.js';
 import { applySkirmishSnapshot, initReplicaSystems } from './skirmish-state.js';
 import { setNetworkBalanceMod } from '../balance/runtime.js';
-import { fetchWebTransportConnection } from './lobby-api.js';
+import { fetchMultiplayerConnection, fetchWebTransportConnection, multiplayerWebSocketURL } from './lobby-api.js';
+import { resolveMultiplayerMap } from './multiplayer-maps.js';
 import { LOBBY_FACTIONS, makeLocalMatch, setLocalMatch, type LocalMatchConfig } from '../core/local-match.js';
 import { createLobby, lobbySlots, setLobbySlot, type Lobby } from './lobbies.js';
-import { isDotaMap } from '../maps/dota-map-layout.js';
+import { dotaMapConfig, isDotaMap } from '../maps/dota-map-layout.js';
 import { heroSlotButton } from '../ui/lobby-hero-picker.js';
+import { loadStartupModels } from '../core/startup-models.js';
+import { _groundAt } from '../systems/terrain.js';
+import { clearHeroEffects } from '../heroes/hero-effects.js';
+import { stopDoomCreeps } from '../systems/lane-creeps.js';
 import { loadDotaMatchHeroes } from '../core/match-heroes.js';
 import { layoutFor } from '../maps/map-layout.js';
 import { setPlayerFaction, playerFaction } from '../factions.js';
 import { setPlayerTeam } from '../core/scene.js';
 import { World } from '../core/ecs.js';
 import {
-  scene, world, setWorld, setStartTime, PLAYER, requisition, setRequisition, energy, setEnergy,
+  scene, camera, world, setWorld, setStartTime, PLAYER, requisition, setRequisition, energy, setEnergy,
   kills, setKills, gameOver, setGameOver, selSquads, selBuilder, setSelSquads, setSelBuilder, setSelBuildings, setSelListeningPost,
 } from '../core/scene.js';
 import { updateHUD } from '../core/hud.js';
@@ -107,10 +113,10 @@ class WTNet {
       await new Promise<void>((resolve, reject) => {
         const socket = new WebSocket(url); this._socket = socket;
         const timeout = setTimeout(() => { socket.close(); reject(new Error('Go server connection timed out')); }, 8000);
-        socket.onmessage = event => _handleServerBytes(this._encoder.encode(event.data));
-        socket.onopen = () => { clearTimeout(timeout); _netStatus = 'connected'; _updateNetHUD(); resolve(); };
-        socket.onerror = () => { clearTimeout(timeout); reject(new Error('Cannot connect to grimcraft-go on port 8080')); };
-        socket.onclose = () => { clearTimeout(timeout); _netStatus = 'disconnected'; _updateNetHUD(); _multiplayerLobbyUI?.status('Disconnected from Go server. Reopen the lobby to reconnect.'); reject(new Error('Connection closed')); };
+        socket.onmessage = event => { if (this._socket === socket) _handleServerBytes(this._encoder.encode(event.data)); };
+        socket.onopen = () => { clearTimeout(timeout); _netTransport = 'websocket'; _netStatus = 'connected'; _updateNetHUD(); resolve(); };
+        socket.onerror = () => { clearTimeout(timeout); reject(new Error('Cannot connect to mobacraft-go over WebSocket')); };
+        socket.onclose = () => { clearTimeout(timeout); _netStatus = 'disconnected'; _netTransport = null; _updateNetHUD(); _multiplayerLobbyUI?.status('Disconnected from Go server. Reopen the lobby to reconnect.'); reject(new Error('Connection closed')); };
       });
       _netTransport = 'websocket';
       return;
@@ -140,7 +146,7 @@ class WTNet {
           this._readDatagrams(transport);
         })(),
         new Promise<never>((_, reject) => {
-          timeout = setTimeout(() => reject(new Error('WebTransport connection timed out. Check grimcraft-go and UDP port 4433.')), 8000);
+          timeout = setTimeout(() => reject(new Error('WebTransport connection timed out. Check mobacraft-go and its UDP port.')), 8000);
         }),
       ]);
     } catch (error) {
@@ -271,19 +277,36 @@ async function _joinOnlineLobby(lobby: any, username: string): Promise<void> {
   _pendingSession = null; _pendingSnapshot = null; _pendingLobby = null;
   _lobbyOnly = true;
   try {
-    const info = await fetchWebTransportConnection();
+    const discovery = await fetchMultiplayerConnection();
     if (generation !== _joinGeneration) return;
-    const url = new URL(info.webtransport_url);
-    url.searchParams.set('lobby', lobby.id);
-    SERVER_URL = info.webtransport_url;
-    SERVER_CERT_HASH = info.certificate_hash;
-    const urlInput = document.getElementById('webTransport-url') as HTMLInputElement | null;
-    const certInput = document.getElementById('webTransport-cert') as HTMLInputElement | null;
-    if (urlInput) urlInput.value = SERVER_URL;
-    if (certInput) certInput.value = SERVER_CERT_HASH;
-    await _net.connect(url.toString(), info.certificate_hash);
-    if (generation !== _joinGeneration) return;
-    await _net.sendJoin(null, username, 'Imperial Guard');
+    const faction = 'Imperial Guard';
+    const fallback = multiplayerWebSocketURL(discovery, lobby.id, username, faction);
+    if (discovery.enabled && typeof WebTransport !== 'undefined') {
+      try {
+        const info = await fetchWebTransportConnection(discovery);
+        const url = new URL(info.webtransport_url);
+        url.searchParams.set('lobby', lobby.id);
+        SERVER_URL = info.webtransport_url;
+        SERVER_CERT_HASH = info.certificate_hash;
+        const urlInput = document.getElementById('webTransport-url') as HTMLInputElement | null;
+        const certInput = document.getElementById('webTransport-cert') as HTMLInputElement | null;
+        if (urlInput) urlInput.value = SERVER_URL;
+        if (certInput) certInput.value = SERVER_CERT_HASH;
+        if (generation !== _joinGeneration) return;
+        await _net.connect(url.toString(), info.certificate_hash);
+      } catch (error) {
+        if (generation !== _joinGeneration) return;
+        if (!fallback) throw error;
+        await _net.connect(fallback, '');
+        return; // WebSocket joins via query parameters on upgrade.
+      }
+      if (generation !== _joinGeneration) return;
+      await _net.sendJoin(null, username, faction);
+    } else if (fallback) {
+      await _net.connect(fallback, '');
+    } else {
+      throw new Error('The Go server does not advertise a transport supported by this browser.');
+    }
   } catch (error) {
     if (generation === _joinGeneration) throw error;
   }
@@ -303,13 +326,28 @@ async function _startOnlineMatch(): Promise<void> {
   _onlineBooting = true;
   const generation = _joinGeneration;
   setLocalMatch(null);
-  window._multiplayerMode = true;
-  window._currentMapKey = _selectedMap?.path || 'arena';
+  const mapLabel = _pendingLobby.map;
   _setLoadingUI(true);
   try {
+    const map = await resolveMultiplayerMap(mapLabel);
+    if (generation !== _joinGeneration) return;
+    if (!map) throw new Error(`The online map "${mapLabel}" is unavailable in this client.`);
+    window._multiplayerMode = true;
+    const mapKey = map.path || 'arena';
+    window._currentMapKey = mapKey;
+    const dota = isDotaMap(mapKey);
+    if (dota) {
+      const players = (_pendingLobby as Lobby).players;
+      const seats: LocalMatchConfig['seats'] = players.map((player, slot) => ({
+        slot, owner: player.player_id, team: player.team === 2 ? 'red' : 'blue',
+        faction: 'ig', computer: player.controller === 'computer', hero: player.hero,
+      }));
+      await Promise.all([loadDotaMatchHeroes({ mapKey, seats }), loadStartupModels(mapKey)]);
+      if (generation !== _joinGeneration) return;
+    }
     await bootGame({onProgress: _updateLoadBar});
     if (generation !== _joinGeneration) return;
-    if (_selectedMap) await selectMap(_selectedMap.path, _selectedMap.url);
+    if (map.path && map.url) await selectMap(map.path, map.url);
     else await selectDefaultArena();
     if (generation !== _joinGeneration) return;
     _lobbyOnly = false;
@@ -317,7 +355,16 @@ async function _startOnlineMatch(): Promise<void> {
     _onSnapshot(_pendingSnapshot);
     _net.sendCmd({PlayerLoaded:{}});
     const own = [...world.query('building'),...world.query('squad')].map((id: number) => (world.get(id, 'building') || world.get(id, 'squad'))).find((s: any) => s.owner === _myPlayerId);
-    if (own && window.__grimCamera) (window.__grimCamera as any).target.copy(own.position);
+    if (own && camera) camera.target.copy(own.position);
+    if (dota && camera) {
+      setInitialCameraAlpha(camera, dotaMapConfig.camera.alpha);
+      camera.beta = dotaMapConfig.camera.beta;
+      camera.radius = dotaMapConfig.camera.radius;
+      camera.lowerRadiusLimit = 15.24;
+      camera.target.y = _groundAt(camera.target.x, camera.target.z);
+      camera.fov = 60;
+      camera.updateProjectionMatrix();
+    }
   } catch (error) {
     _multiplayerLobbyUI?.status(`Cannot start: ${(error as Error).message}`);
   } finally { _setLoadingUI(false); _onlineBooting = false; }
@@ -369,6 +416,8 @@ function _onSession(info: any): void {
   _lastSnapshotTick = 0; _lastDeltaTick = 0;
   window._multiplayerMode = true;
   if (world) {
+    clearHeroEffects(world);
+    stopDoomCreeps(world);
     for (const id of world.query('mesh')) {
       const meshComponent = world.get(id, 'mesh');
       if (meshComponent) {
@@ -685,10 +734,12 @@ export function _injectConnectUI() {
     },
     connect: () => { void webTransportConnect(); },
     startLocal: (config) => { _leaveOnlineLobby(); void webTransportPlayOffline(config); },
+    openSkirmish: (card) => { _leaveOnlineLobby(); showSkirmishPanel(); _openSkirmishSlots(card); },
     joinOnline: _joinOnlineLobby,
     leaveOnline: _leaveOnlineLobby,
     startOnline: (computers, balanceMod) => { _net.sendCmd({StartGame:{computers, balanceMod}}); },
     factionOnline: (faction) => { _net.sendCmd({SetLobbyFaction:{faction}}); },
+    heroOnline: (hero) => { _net.sendCmd({SetLobbyHero:{hero}}); },
   });
   _injectSkirmishUI();
 }

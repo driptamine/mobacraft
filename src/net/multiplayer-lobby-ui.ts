@@ -1,9 +1,12 @@
-import { LOBBIES, capacityLabel, createLobby, lobbySlots, setLobbySlot, type Lobby, type LobbyPlayer } from './lobbies.js';
+import { capacityLabel, createLobby, lobbySlots, setLobbySlot, type Lobby, type LobbyPlayer } from './lobbies.js';
 import { serverIdFromPath, setServerRoute } from './server-route.js';
 import { fetchOnlineLobbies, createOnlineLobby } from './lobby-api.js';
 import { makeLocalMatch, type LocalMatchConfig } from '../core/local-match.js';
-import { skirmishMapCards, defaultSkirmishMap, listMaps, type MapCard } from '../ui/maps-menu.js';
-import { prefetchMapFiles } from '../maps/map-source.js';
+import { skirmishMapCards, type MapCard } from '../ui/maps-menu.js';
+import { listRemoteMaps, prefetchMapFiles } from '../maps/map-source.js';
+import { isDotaMap } from '../maps/dota-map-layout.js';
+import { multiplayerArena, multiplayerMapCard } from './multiplayer-maps.js';
+import { heroSlotButton } from '../ui/lobby-hero-picker.js';
 import { storedBalanceMod } from '../balance/runtime.js';
 import type { BalanceMod } from '../balance/model.js';
 
@@ -16,10 +19,12 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   select: (lobby: Lobby, map: MapCard | null) => void;
   connect: () => void;
   startLocal: (config: LocalMatchConfig) => void;
+  openSkirmish: (card: MapCard) => void;
   joinOnline: (lobby: Lobby, username: string) => Promise<void>;
   leaveOnline: () => void;
-  startOnline: (computers: Array<{faction: string; team: number; difficulty?: string}>, balanceMod?: BalanceMod) => void;
+  startOnline: (computers: Array<{faction: string; team: number; difficulty?: string; hero?: string}>, balanceMod?: BalanceMod) => void;
   factionOnline: (faction: string) => void;
+  heroOnline: (hero: string) => void;
 }): { reset: () => void; onlineLobby: (lobby: Lobby, playerId: number | null) => void; status: (message: string) => void } {
   const connection = panel.querySelector<HTMLElement>('#webTransport-connect-form')!;
   const loading = panel.querySelector<HTMLElement>('#webTransport-load-wrap')!;
@@ -48,19 +53,16 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   username.value = `Player ${Math.floor(1000 + Math.random() * 9000)}`;
   let onlinePlayerId: number | null = null;
   let screen: Screen = 'servers';
-  let selected: Lobby | null = LOBBIES[0] || null;
-  let selectedMap: MapCard | null = defaultSkirmishMap(cards) || cards[0] || null;
-  let mapPickedByUser = false;
-  // Refresh from the R2 manifest even when the built-in Dota card is present,
-  // unless the player already picked a map.
-  {
-    void listMaps().then((entries) => {
-      if (!entries.length || mapPickedByUser) return;
-      cards = skirmishMapCards(entries);
-      selectedMap = defaultSkirmishMap(cards) || cards[0] || null;
-      if (screen === 'maps') render();
-    });
-  }
+  let lobbies: Lobby[] = [];
+  let selected: Lobby | null = null;
+  let selectedMap: MapCard = multiplayerArena;
+  let onlineMaps: MapCard[] = [];
+  let gameName = 'My Game';
+  void listRemoteMaps().then(all => {
+    cards = [multiplayerArena, ...skirmishMapCards(all).filter(card => card.path)];
+    onlineMaps = all;
+    if (screen !== 'lobby') render();
+  });
   let room: Lobby | null = null;
   let hosted = false;
   const hostedRooms = new WeakSet<Lobby>();
@@ -70,7 +72,8 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   let routeRequest = 0;
   const chat: Array<{ name: string; text: string }> = [];
   const $ = (selector: string) => panel.querySelector<HTMLElement>(selector)!;
-  const mapFor = (lobby: Lobby | null): MapCard | null => cards.find(c => c.name === lobby?.map || (lobby?.map && c.name.toLowerCase().includes(lobby.map.toLowerCase()))) || null;
+  const mapFor = (lobby: Lobby | null): MapCard | null => multiplayerMapCard(lobby?.map, [...cards, ...onlineMaps]);
+  const isDotaCard = (card: MapCard | null) => isDotaMap(card?.path || '');
   const label = (card: MapCard) => card.name.replace(/^\d+p\s+/i, '');
   function button(text: string, action: () => void, disabled = false): HTMLButtonElement {
     const button = document.createElement('button');
@@ -81,32 +84,36 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   function sync(): void {
     if (room) options.select(room, mapFor(room));
   }
-  async function open(lobby: Lobby, isHost = hostedRooms.has(lobby)): void {
-    routeRequest++;
+  async function open(lobby: Lobby, isHost = hostedRooms.has(lobby)): Promise<void> {
+    const request = ++routeRequest;
+    onlinePlayerId = null;
     room = lobby; selected = lobby; hosted = isHost; ready = false; chat.length = 0;
     setServerRoute(lobby.id || null);
     screen = 'lobby'; sync(); render();
     if (lobby.id) {
       try { await options.joinOnline(lobby, username.value.trim() || 'Player'); }
-      catch (error) { $('#mp-hint').textContent = (error as Error).message; }
+      catch (error) { if (request === routeRequest) $('#mp-hint').textContent = (error as Error).message; }
     }
   }
   async function create(mode: 'auto' | 'local' = 'auto'): Promise<void> {
-    if (!selectedMap) return;
-    const name = panel.querySelector<HTMLInputElement>('#mp-game-name')?.value || 'My Game';
+    if (mode === 'local' && isDotaCard(selectedMap)) {
+      options.openSkirmish(selectedMap);
+      return;
+    }
+    const name = gameName.trim() || 'My Game';
     let lobby: Lobby;
     try {
-      lobby = mode !== 'local' ? await createOnlineLobby(name, selectedMap.name, selectedMap.players || 6)
+      lobby = mode !== 'local' ? await createOnlineLobby(name, selectedMap.path || selectedMap.name, selectedMap.players || 6)
         : createLobby({ name, map: selectedMap.name, total: selectedMap.players || 6 });
-    } catch (error) { $('#mp-hint').textContent = `Cannot create online game: ${(error as Error).message}. Start grimcraft-go on port 8080, or choose Local Game.`; return; }
+    } catch (error) { $('#mp-hint').textContent = `Cannot create online game: ${(error as Error).message}. Check the mobacraft-go server, or choose Local Game.`; return; }
     if (lobby.id) {
-      hostedRooms.add(lobby); LOBBIES.unshift(lobby); await open(lobby, true); return;
+      hostedRooms.add(lobby); lobbies.unshift(lobby); await open(lobby, true); return;
     }
     lobby.players[0].faction = 'Imperial Guard';
     lobby.players[0].controller = 'human';
     hostedRooms.add(lobby);
     localRooms.push(lobby);
-    LOBBIES.unshift(lobby); open(lobby, true);
+    lobbies.unshift(lobby); open(lobby, true);
   }
   function renderDetail(): void {
     const card = screen === 'maps' ? selectedMap : mapFor(screen === 'lobby' ? room : selected);
@@ -114,7 +121,10 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
     $('#mp-map-title').textContent = card ? `${label(card)} (${card.players || lobby?.total || 6})` : lobby?.map || 'Select a game';
     $('#mp-max-players').textContent = String(card?.players || lobby?.total || '—');
     $('#mp-map-size').textContent = card?.path && /alvarus/i.test(card.path) ? '512 × 512' : card && !card.path ? 'Arena' : '—';
-    $('#mp-map-description').textContent = card ? `${label(card)}. Secure strategic points, control resources and lead your army to victory.` : 'Select a game to view its battlefield and player capacity.';
+    $('#mp-map-description').textContent = isDotaCard(card)
+      ? 'Two players choose heroes for Radiant and Dire and fight across three creep lanes.'
+      : card ? `${label(card)}. Secure strategic points, control resources and lead your army to victory.`
+        : 'Select a game to view its battlefield and player capacity.';
     const preview = $('#mp-preview'); preview.replaceChildren();
     if (card?.previewUrl) {
       const img = document.createElement('img'); img.src = card.previewUrl; img.alt = `${label(card)} map preview`;
@@ -130,7 +140,7 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
       const span = document.createElement('span'); span.textContent = text; head.append(span);
     }
     list.append(head);
-    for (const lobby of LOBBIES) {
+    for (const lobby of lobbies) {
       const row = button('', () => {
         selected = lobby;
         list.querySelectorAll('.mp-server-row').forEach(el => el.classList.toggle('active', el === row));
@@ -152,11 +162,10 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   function renderMaps(): void {
     const list = $('#mp-list'); list.className = 'mp-inset mp-map-list';
     const nameRow = document.createElement('label'); nameRow.className = 'mp-game-name'; nameRow.textContent = 'Game name';
-    const name = document.createElement('input'); name.id = 'mp-game-name'; name.value = 'My Game'; name.maxLength = 64; nameRow.append(name); list.append(nameRow);
+    const name = document.createElement('input'); name.id = 'mp-game-name'; name.value = gameName; name.maxLength = 64; name.addEventListener('input', () => { gameName = name.value; }); nameRow.append(name); list.append(nameRow);
     for (const card of cards) {
       const row = button('', () => {
         selectedMap = card;
-        mapPickedByUser = true;
         list.querySelectorAll('.mp-map-row').forEach(el => el.classList.toggle('active', el === row));
         renderDetail();
         prefetchMapFiles(card);
@@ -166,11 +175,12 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
       const players = document.createElement('span'); players.textContent = `${card.players || 6} players`;
       row.append(title, players);
       row.addEventListener('dblclick', () => { void create(); });
-      row.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); selectedMap = card; create(); } });
+      row.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); selectedMap = card; void create(); } });
       list.append(row);
     }
-    $('#mp-actions').append(button('Back', () => { screen = 'servers'; render(); }), button('Create Game', () => { void create(); }, !selectedMap));
-    $('#mp-actions').append(button('Local Game', () => { void create('local'); }, !selectedMap));
+    const createButton = button('Create Game', () => { void create(); });
+    $('#mp-actions').append(button('Back', () => { screen = 'servers'; render(); }), createButton);
+    $('#mp-actions').append(button('Local Game', () => { void create('local'); }));
   }
   function renderPlayers(): void {
     if (!room) return;
@@ -180,6 +190,7 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
       const note = document.createElement('div');note.textContent = `Balance: ${room.balanceMod.name} v${room.balanceMod.version} · ${room.balanceHash?.slice(0, 12) || ''}`;list.append(note);
     }
     const slots = lobbySlots(room);
+    const dota = isDotaCard(mapFor(room));
     for (let i = 0; i < room.total; i++) {
       const player = slots[i];
       const row = document.createElement('div'); row.className = 'mp-player-row' + (hosted ? ' mp-host-slot' : '') + (!player ? ' mp-player-empty' : '');
@@ -194,7 +205,8 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
           if (!room) return;
           setLobbySlot(room, i, control.value === 'open' ? null : {
             username: control.value === 'computer' ? `Computer ${i + 1}` : 'HOST',
-            faction: player?.faction || 'Space Marines', team: player?.team || (i === 0 ? 1 : 2), ping: 0,
+            faction: dota ? 'ig' : player?.faction || 'Space Marines', team: player?.team || (i === 0 ? 1 : 2), ping: 0,
+            ...(dota ? { hero: player?.hero || (i === 0 ? 'axe' : 'lina') } : {}),
             controller: control.value === 'computer' ? 'computer' : 'human',
           });
           ready = false; sync(); render();
@@ -206,27 +218,43 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
         const name = document.createElement('strong'); name.textContent = player.username;
         const colour = document.createElement('span'); colour.className = 'mp-player-colour'; colour.style.background = player.team === 2 ? '#a83e32' : '#3e7295';
         identity.append(name, colour);
-        if (player.controller === 'computer') {
+        if (player.controller === 'computer' && !dota) {
           const difficulty = document.createElement('select');difficulty.setAttribute('aria-label', `AI difficulty for ${player.username}`);
           for (const level of ['easy', 'standard', 'advanced', 'hard']) { const option = document.createElement('option');option.value = level;option.textContent = level[0].toUpperCase() + level.slice(1);difficulty.append(option); }
           difficulty.value = player.difficulty || 'standard';difficulty.disabled = !hosted;
           difficulty.addEventListener('change', () => { player.difficulty = difficulty.value as LobbyPlayer['difficulty'];sync(); });
           identity.append(difficulty);
         }
-        const faction = document.createElement('select'); faction.setAttribute('aria-label', `Faction for ${player.username}`);
-        const factions = FACTIONS.includes(player.faction) ? FACTIONS : [player.faction, ...FACTIONS];
-        for (const text of factions) { const option = document.createElement('option'); option.textContent = text; option.value = text; faction.append(option); }
-        faction.value = player.faction; faction.disabled = room.id ? (player.controller === 'computer' ? !hosted : player.player_id !== onlinePlayerId) : !hosted;
-        faction.addEventListener('change', () => { player.faction = faction.value; if (room?.id && player.controller !== 'computer') options.factionOnline(player.faction); sync(); });
+        let loadout: HTMLElement;
+        if (dota) {
+          const hero = heroSlotButton(player.hero, i, player.username, selected => {
+            if (player.controller === 'computer') {
+              player.hero = selected.name;
+              sync();
+              render();
+            } else {
+              options.heroOnline(selected.name);
+            }
+          });
+          hero.disabled = !!room.started || (player.controller === 'computer' ? !hosted : player.player_id !== onlinePlayerId);
+          loadout = hero;
+        } else {
+          const factionsMenu = document.createElement('select'); factionsMenu.setAttribute('aria-label', `Faction for ${player.username}`);
+          const factions = FACTIONS.includes(player.faction) ? FACTIONS : [player.faction, ...FACTIONS];
+          for (const text of factions) { const option = document.createElement('option'); option.textContent = text; option.value = text; factionsMenu.append(option); }
+          factionsMenu.value = player.faction; factionsMenu.disabled = room.id ? (player.controller === 'computer' ? !hosted : player.player_id !== onlinePlayerId) : !hosted;
+          factionsMenu.addEventListener('change', () => { player.faction = factionsMenu.value; if (room?.id && player.controller !== 'computer') options.factionOnline(player.faction); sync(); });
+          loadout = factionsMenu;
+        }
         const team = document.createElement('select'); team.className = 'mp-team';
         team.setAttribute('aria-label', `Team for ${player.username}`); team.disabled = !!room.id || !hosted;
-        for (const n of [1, 2]) { const option = document.createElement('option'); option.value = String(n); option.textContent = `Team ${n}`; team.append(option); }
+        for (const n of [1, 2]) { const option = document.createElement('option'); option.value = String(n); option.textContent = dota ? (n === 1 ? 'Radiant' : 'Dire') : `Team ${n}`; team.append(option); }
         team.value = String(player.team);
         team.addEventListener('change', () => { player.team = Number(team.value); sync(); render(); });
         const isReady = player.controller === 'computer' || (hosted && i === 0 && ready);
         const indicator = document.createElement('span'); indicator.className = 'mp-ready' + (isReady ? ' is-ready' : '');
         indicator.textContent = isReady ? '✓' : '·'; indicator.title = isReady ? 'Ready' : 'Not ready';
-        row.append(identity, faction, team, indicator);
+        row.append(identity, loadout, team, indicator);
       } else {
         const empty = document.createElement('span'); empty.textContent = !room.slots && i < room.current ? 'Player data unavailable' : 'Open slot';
         row.append(empty);
@@ -237,7 +265,7 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
     if (hosted && slots.some(player => player && player.controller !== 'computer')) $('#mp-actions').append(button(ready ? 'Not Ready' : 'Ready', () => { ready = !ready; render(); }));
     if (hosted) {
       const savedMod = storedBalanceMod();
-      if (savedMod && room.id && !room.started) {
+      if (!dota && savedMod && room.id && !room.started) {
         const label = document.createElement('label'), checkbox = document.createElement('input');
         checkbox.type = 'checkbox';checkbox.checked = useBalanceMod;checkbox.addEventListener('change', () => { useBalanceMod = checkbox.checked; });
         label.append(checkbox, ` Balance: ${savedMod.name} v${savedMod.version}`);$('#mp-actions').append(label);
@@ -245,11 +273,11 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
       $('#mp-actions').append(button('Start Game', () => {
         if (!room) return;
         try {
-          if (room.id) options.startOnline(lobbySlots(room).filter(player => player?.controller === 'computer').map(player => ({faction: player!.faction, team: player!.team, difficulty: player!.difficulty || 'standard'})), useBalanceMod ? storedBalanceMod() ?? undefined : undefined);
+          if (room.id) options.startOnline(lobbySlots(room).filter(player => player?.controller === 'computer').map(player => ({faction: player!.faction, team: player!.team, difficulty: player!.difficulty || 'standard', hero: player!.hero })), !dota && useBalanceMod ? storedBalanceMod() ?? undefined : undefined);
           else options.startLocal(makeLocalMatch(room, mapFor(room)?.path || 'arena'));
         }
         catch (error) { $('#mp-hint').textContent = (error as Error).message; }
-      }));
+      }, !!room.id && (onlinePlayerId === null || room.started)));
     } else if (!room.id) $('#mp-actions').append(button('Connect', options.connect));
     else { const note = document.createElement('span'); note.textContent = 'Waiting for host to start…'; $('#mp-actions').append(note); }
   }
@@ -273,7 +301,7 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
     $('#mp-list-title').textContent = screen === 'servers' ? 'List of Games' : screen === 'maps' ? 'Select Battlefield' : 'Players List';
     $('#mp-list').replaceChildren(); $('#mp-actions').replaceChildren();
     if (screen === 'servers') renderServers(); else if (screen === 'maps') renderMaps(); else renderPlayers();
-    $('#mp-hint').textContent = screen === 'servers' ? 'Double-click a game to open its lobby.' : screen === 'maps' ? 'Double-click a map to create your game.' : 'Choose your army and prepare for battle.';
+    $('#mp-hint').textContent = screen === 'servers' ? 'Double-click a game to open its lobby.' : screen === 'maps' ? 'Double-click a map to create your game.' : isDotaCard(mapFor(room)) ? 'Choose your hero and prepare for battle.' : 'Choose your army and prepare for battle.';
     renderDetail(); renderChat();
   }
   $('#mp-chat-form').addEventListener('submit', e => {
@@ -284,15 +312,20 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   async function refresh(): Promise<void> {
     if (!panel.isConnected || screen !== 'servers') return;
     try {
-      const lobbies = await fetchOnlineLobbies();
+      const online = await fetchOnlineLobbies();
+      if (!panel.isConnected || screen !== 'servers') return;
       $('#mp-server-status').textContent = 'GO SERVER · ONLINE';
-      const selectedId = selected?.id;
-      LOBBIES.splice(0, LOBBIES.length, ...lobbies.sort((a,b) => (a.id || '').localeCompare(b.id || '', undefined, {numeric:true})), ...localRooms);
-      selected = LOBBIES.find(lobby => lobby.id === selectedId) || LOBBIES[0] || null;
-      if (screen === 'servers') render();
+      const previous = selected;
+      lobbies = [...online.sort((a, b) => a.name.localeCompare(b.name)), ...localRooms];
+      selected = lobbies.find(lobby => previous?.id ? lobby.id === previous.id : lobby === previous) ?? lobbies[0] ?? null;
+      render();
     } catch (error) {
+      if (!panel.isConnected || screen !== 'servers') return;
       $('#mp-server-status').textContent = 'GO SERVER · UNAVAILABLE';
-      $('#mp-hint').textContent = 'Start grimcraft-go on port 8080. Local games are still available.';
+      lobbies = [...localRooms];
+      selected = (selected && localRooms.includes(selected)) ? selected : localRooms[0] ?? null;
+      render();
+      $('#mp-hint').textContent = 'Start mobacraft-go to browse online lobbies. Local games are available.';
     }
   }
   async function restoreRoute(serverId: string, request: number): Promise<void> {

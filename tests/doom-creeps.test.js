@@ -16,6 +16,7 @@ const { doomSpiralBases, doomSpiralLanes, DOOM_LANES } = await import('../src/ma
 const { startDoomCreeps, stopDoomCreeps, systemLaneCreeps, CREEP_LANE_LIMIT } = await import('../src/systems/lane-creeps.js');
 const { systemSquad, _squadFireAll } = await import('../src/systems/squad.js');
 const { systemBullet } = await import('../src/systems/projectiles.js');
+const { buildingEngageRadius } = await import('../src/systems/combat.js');
 const { sgbPassBlockedAt } = await import('../pathfinding/avoid.js');
 const { laneCreeps } = await import('../stats/races/dota/creeps.js');
 const { _makeFactionSoldierMesh } = await import('../src/meshes/soldiers.js');
@@ -96,7 +97,7 @@ test('both teams send three melee, one ranged and one siege creep per lane every
       const squad = world.get(id, 'squad');
       const kind = squad.unitType.split('_')[1];
       assert.equal(squad.attackMode, kind === 'melee' ? 'melee' : 'ranged');
-      assert.equal(squad.projectileType, 'bullet');
+      assert.equal(squad.projectileType, kind === 'melee' ? null : 'bullet');
       assert.equal(core.canCommand(team, id), false);
       assert.equal(squad.soldiers.filter(s => s != null).length, 1);
       const soldier = world.get(squad.soldiers.find(s => s != null), 'soldier');
@@ -173,6 +174,38 @@ test('opposing creeps deal melee damage through the normal combat system', async
   for (let i = 0; i < 100; i++) world.tick(.05);
   assert.ok(soldiers.some(id => world.get(id, 'soldier').hp < 550));
   assert.equal(world.query('bullet').length, 0);
+});
+
+test('melee creeps only strike bases within reach and never fall through to a projectile', async () => {
+  const { world, bases } = fixture();
+  await startDoomCreeps(world, bases);
+  for (const team of ['blue', 'red']) {
+    const id = world.query('laneCreep').find(id => world.get(id, 'squad').team === team);
+    const squad = world.get(id, 'squad');
+    const soldier = squad.soldiers.find(sid => sid != null);
+    const target = bases.find(base => base.team !== team).id;
+    const root = world.get(soldier, 'mesh').root;
+    const center = world.get(target, 'mesh').root.position;
+    const radius = buildingEngageRadius(world, target);
+    const hp = world.get(target, 'building').hp;
+    const fired = () => world.query('bullet').some(bullet => world.get(bullet, 'bullet').ownerRef === soldier);
+    root.position.copy(center).x += radius + 7;
+    _squadFireAll(world, id, squad, [soldier], 0, { buildingEntityId: target, distance: 7, radius }, false);
+    assert.equal(world.get(target, 'building').hp, hp);
+    assert.equal(fired(), false);
+    root.position.copy(center).x += radius + 1.5;
+    _squadFireAll(world, id, squad, [soldier], 0, { buildingEntityId: target, distance: radius + 1.5, radius }, false);
+    assert.ok(world.get(target, 'building').hp < hp);
+    assert.equal(fired(), false);
+    squad.position.copy(root.position);
+    squad.forcedTarget = target;
+    squad.moveOrder = null;
+    let animation;
+    root._playAnim = name => { animation = name; };
+    systemSquad(world, .01);
+    assert.equal(animation, 'melee');
+    assert.equal(fired(), false);
+  }
 });
 
 for (const kind of ['ranged', 'siege']) test(`${kind} creeps on both teams fire and damage enemies at range`, async () => {

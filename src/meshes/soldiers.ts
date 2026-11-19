@@ -8,6 +8,7 @@ import {
   resolveFactionKey,
 } from '../factions.js';
 import { instantiateGltf, type AnimGroup, type GltfContainer } from '../render/gltf-models.js';
+import { kitFor } from '../heroes/hero-kits.js';
 import { findMeleeClip, makeMeleeFallbackClip } from '../render/melee-animation.js';
 import { getMat } from '../render/mat-cache.js';
 import { useProceduralModels } from '../render/model-source.js';
@@ -522,6 +523,11 @@ export function _makeFactionSoldierMesh(container: GltfContainer, teamKey: strin
   if (moveTrackingAnim) root._animGroups.move_tracking = moveTrackingAnim;
   if (runAnim) root._animGroups.run = runAnim;
   if (shootAnim) root._animGroups.shoot = shootAnim;
+  const castAnim = findByName(kitFor(metaPayload.unitType)?.castClip || animConfig.cast)
+    || findAnim(name => /(^|_)cast(_|$)/.test(name));
+  const stunAnim = findByName(animConfig.stun);
+  if (castAnim) root._animGroups.cast = castAnim;
+  if (stunAnim) root._animGroups.stun = stunAnim;
   if (meleeAnim) root._animGroups.melee = meleeAnim;
   const meleeSequence = [1, 2, 3].map((index) =>
     findExact(`melee_${index}`) || findExact(`melee_attack_${index}`),
@@ -613,7 +619,8 @@ export function _makeFactionSoldierMesh(container: GltfContainer, teamKey: strin
       // Exported reactions have a long neutral lead-in. Play the whole clip
       // inside the reaction window so the flinch is visible before resuming.
       const isHitReaction = ['hitL', 'hitR', 'hitBlock'].includes(resolvedName);
-      const speed = isHitReaction ? Math.max(1, ag.getDuration() / MELEE_HIT_REACTION_SEC) : 1;
+      const speed = isHitReaction ? Math.max(1, ag.getDuration() / MELEE_HIT_REACTION_SEC)
+        : ['melee', 'shoot', 'shootMove'].includes(resolvedName) ? root._itemAttackSpeed || 1 : 1;
       ag.start(resolvedLoop, speed);
       if (!resolvedLoop) {
         ag.onAnimationGroupEndObservable.addOnce(() => {

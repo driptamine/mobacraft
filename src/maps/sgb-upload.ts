@@ -1,3 +1,4 @@
+import { setInitialCameraAlpha } from '../render/camera-zoom.js';
 import * as THREE from 'three';
 import { attachGroundShadowOverlay } from '../render/ground-shadows.js';
 
@@ -276,7 +277,7 @@ function fitCameraToMap(root: THREE.Group, mapId = ''): void {
   }
   const target = cameraTargetForMap(mapId, center);
   camera.target.set(target.x, target.y, target.z);
-  camera.alpha = cameraAlphaForMap(mapId);
+  setInitialCameraAlpha(camera, cameraAlphaForMap(mapId));
   camera.radius = radius;
   camera.far = cameraFarForRadius(camera.far, radius);
   camera.updateProjectionMatrix();

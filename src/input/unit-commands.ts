@@ -1,3 +1,4 @@
+import { clearHeroAbilityTarget } from './hero-abilities.js';
 import * as THREE from 'three';
 import { world, selSquads, selBuilder, canCommand, canvas, buildMode } from '../core/scene.js';
 import { updateHUD } from '../core/hud.js';
@@ -34,6 +35,7 @@ export function setUnitCommand(command: UnitCommand): void {
   const troops = selectedTroops();
   if (!troops.length || (command === 'melee' && !troops.some(({ kind }) => kind === 'squad'))) return;
   if (buildMode) cancelBuild();
+  clearHeroAbilityTarget();
   clearBuilderCommand();
   cancelFlyTargeting();
   pendingUnitCommand = command;
@@ -120,6 +122,7 @@ export function stopSelectedTroops(): void {
   if(typeof window!=='undefined'&&window._multiplayerMode&&window._networkSchema===2){window._grimcraftSendCommand?.({StopUnits:{ids:[...selectedTroops().map(t=>t.id),...(selBuilder!=null?[selBuilder]:[])]}});return;}
   if (typeof window !== 'undefined' && window._multiplayerMode) window._grimcraftNetStop?.(selectedTroops().filter(t => t.kind === 'squad').map(t => t.id));
   clearUnitCommand();
+  clearHeroAbilityTarget();
   clearBuilderCommand();
   cancelFlyTargeting();
   if (buildMode) cancelBuild();

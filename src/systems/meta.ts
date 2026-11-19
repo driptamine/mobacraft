@@ -1,3 +1,5 @@
+import { systemHeroCombat } from '../heroes/hero-combat.js';
+import { systemHeroInventory } from '../items/inventory.js';
 import { localMatchFor } from '../core/local-match.js';
 import { updateComputerPlayers } from '../ai/controller.js';
 import {
@@ -60,6 +62,8 @@ export function systemWinCheck(world: any) {
 
 
 export function _initSystems(w: any) {
+  w.addSystem(systemHeroInventory);
+  w.addSystem(systemHeroCombat);
   w.addSystem(systemLaneCreeps);
   w.addSystem(systemSoldier);
   w.addSystem(systemSquad);

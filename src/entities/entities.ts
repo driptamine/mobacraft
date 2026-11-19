@@ -1,4 +1,8 @@
+import { kitFor } from '../heroes/hero-kits.js';
 import * as THREE from 'three';
+import { heroNames } from '../../stats/races/heroes.js';
+import { laneCreepKind } from '../../stats/races/dota/creeps.js';
+import { initHeroInventory } from '../items/inventory.js';
 import { hasAnimatedConstruction, CONSTRUCTION_DELIVERY_TIME } from '../render/construction-animation.js';
 import type { ConstructionPhases } from '../render/construction-animation.js';
 import { hasMeasuredFootprint, selectionFootprint } from '../core/structure-footprint.js';
@@ -406,7 +410,8 @@ export function createSoldierEntity(world: any, squadId: any, formIdx: number, u
     _applySuperiorVisuals(mesh);
   }
 
-  const hpBar = makeHpBar(1.2, squadComponent.team);
+  const creepKind = laneCreepKind(unitType);
+  const hpBar = makeHpBar(creepKind === 'siege' ? 2.2 : creepKind ? 1.7 : 1.2, squadComponent.team);
   hpBar.visible = false;
   let reloadBar: any = null;
   if (isGrenadier) {
@@ -421,6 +426,7 @@ export function createSquadEntity(world: any, team: any, cx: number, cz: number,
   if (unitType === 'command_squad') {
     initSize = 3 + Math.floor(Math.random() * 3);
   }
+  const heroKit = kitFor(unitType);
   const id = world.createEntity([TAG.squad]);
   const initFacing = new THREE.Vector3(0, 0, team === PLAYER ? 1 : -1);
   const factionKey = resolveFactionKey(faction, team === PLAYER ? playerFaction : enemyFaction);
@@ -466,7 +472,8 @@ export function createSquadEntity(world: any, team: any, cx: number, cz: number,
     capturingSpId: null,
     selected: false,
     autoChase: team !== PLAYER,
-    projectileType: unitType === 'dark_reaper' ? 'reaper' : (factionKey === 'tau' ? 'blaster' : (factionKey === 'necrons' ? 'lightning' : (team !== PLAYER ? 'bullet' : 'beam'))),
+    ...(heroKit ? { attackMode: heroKit.primary ? 'ranged' : 'melee' } : {}),
+    projectileType: heroKit?.primary ? 'bullet' : unitType === 'dark_reaper' ? 'reaper' : (factionKey === 'tau' ? 'blaster' : (factionKey === 'necrons' ? 'lightning' : (team !== PLAYER ? 'bullet' : 'beam'))),
     soldiers: Array(SQUAD_MAX).fill(null),
     forcedTarget: null,
     forcedSoldierId: null,
@@ -500,6 +507,7 @@ export function createSquadEntity(world: any, team: any, cx: number, cz: number,
     });
     squadComponent.soldiers[i] = soldierEntityId;
   }
+  if (heroNames.has(unitType)) initHeroInventory(world, id);
   return id;
 }
 

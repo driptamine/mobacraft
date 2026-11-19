@@ -5,12 +5,12 @@ import { doomSpiralLanes, DOOM_LANES, type DoomBase, type DoomLane, type LanePoi
 import { snapOrderToFree } from '../../pathfinding/astar-integrated.js';
 import { refreshNavigation } from './navigation.js';
 import type { TeamLaneRoutes } from '../maps/dota-map-layout.js';
+import type { LaneCreepKind } from '../../stats/races/dota/creeps.js';
 
 export const CREEP_WAVE_SECONDS = 30;
 export const CREEP_WAVE_KINDS = ['melee', 'melee', 'melee', 'ranged', 'siege'] as const;
 export const CREEPS_PER_LANE = CREEP_WAVE_KINDS.length;
 const CREEP_KINDS = ['melee', 'ranged', 'siege'] as const;
-type CreepKind = typeof CREEP_KINDS[number];
 export const CREEP_LANE_LIMIT = 24;
 export interface CreepBase extends DoomBase { id: number }
 interface LaneWalker { lane: DoomLane; team: 'blue' | 'red'; path: LanePoint[]; waypoint: number; enemyHQ: number }
@@ -23,7 +23,7 @@ interface CreepSpawner {
   teamLanes?: TeamLaneRoutes;
 }
 
-const typeFor = (team: string, kind: CreepKind) => `${team === 'blue' ? 'radiant' : 'dire'}_${kind}_creep`;
+const typeFor = (team: string, kind: LaneCreepKind) => `${team === 'blue' ? 'radiant' : 'dire'}_${kind}_creep`;
 
 export async function preloadDoomCreepModels(hooks: LoadFactionHooks = {}): Promise<void> {
   let loaded = 0;
@@ -68,7 +68,7 @@ export function spawnCreepWave(world: any, state: CreepSpawner): void {
           }
           squad.speed = 5.5;
           squad.attackMode = kind === 'melee' ? 'melee' : 'ranged';
-          squad.projectileType = 'bullet';
+          squad.projectileType = kind === 'melee' ? null : 'bullet';
           squad.attackMove = true;
           squad.autoChase = true;
           squad.detectionRange = Math.max(14, squad.attackRange + 2);

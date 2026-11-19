@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { laneCreepKind } from '../../stats/races/dota/creeps.js';
 import { makeHellgunLaserMesh } from '../fx/hellgun-laser.js';
 import { makeLasgunLaserMesh } from '../fx/lasgun-laser.js';
 import { NecronLightning } from '../fx/necron-lightning.js';
@@ -7,6 +8,10 @@ import { makeReaperBoltMesh } from '../fx/reaper-bolt.js';
 import { makePlasmaBoltMesh, makePlasmaFinalBoltMesh } from '../fx/plasma-bolt.js';
 import { setMeleeWeaponVisible } from '../render/melee-weapons.js';
 import { _setPlanterBannerVisible } from '../systems/squad.js';
+import { createHeroBase } from '../entities/hero-base.js';
+import { kitFor, type ShotStyle } from '../heroes/hero-kits.js';
+import { launchHeroShot, tickHeroEffects } from '../heroes/hero-effects.js';
+import { heroShotOrigin } from '../heroes/hero-shot-visuals.js';
 import { World } from '../core/ecs.js';
 import * as E from '../entities/entities.js';
 import * as M from '../meshes.js';
@@ -38,7 +43,9 @@ function createReplica(world: any, record: any): void {
             case 'squad': return E.createSquadEntity(world, c.team, p.x, p.z, 0, c.unitType, c.faction);
             case 'soldier': return E.createSoldierEntity(world, c.squadId, c.formIdx, c.unitType);
             case 'builder': return E.createBuilderEntity(world, p.x, p.z, c.team, c.faction);
-            case 'building': return E.createBuildingEntity(world, c.type, p, c.team, c.faction, { completed: !c.constructing });
+            case 'building':
+                return c.heroBase ? createHeroBase(world, p, c.team)
+                    : E.createBuildingEntity(world, c.type, p, c.team, c.faction, { completed: !c.constructing });
             case 'structure': return E.createStructureEntity(world, c.type, p, c.faction, c.team);
             case 'strategicPoint': return E.createStrategicPointEntity(world, p.x, p.z, c.kind);
             case 'vehicle': return E.createVehicleEntity(world, c.team, c.name, c.model, c.icon, p, c.projectileType, c.faction);
@@ -181,10 +188,27 @@ export function replicaWeapon(soldier: any, squad: any): string | undefined {
 }
 // Cosmetic tracers use authoritative shot events; they never run damage systems.
 function replicaShot(world: any, soldierId: number, soldier: any, mesh: any): void {
-    const target = world.get(soldier.targetId, 'mesh')?.root;
+    const targetId = soldier.targetId;
+    const targetMesh = world.get(targetId, 'mesh');
+    const target = targetMesh?.root;
     if (!target) return;
     const squad = world.get(soldier.squadId, 'squad');
     const projectileType = String(soldier.projectileType || squad?.projectileType || '').toLowerCase();
+    const unitType = soldier.unitType || squad?.unitType;
+    const creepKind = laneCreepKind(unitType);
+    if (creepKind === 'melee') return;
+    const kit = kitFor(unitType);
+    let shot: ShotStyle | undefined = kit?.primary ? { ...kit.primary, color: kit.color } : undefined;
+    if (creepKind) {
+        const siege = creepKind === 'siege';
+        shot = { shape: siege ? 'weight' : 'sigil', speed: siege ? 20 : 24, color: squad.team === 'blue' ? 0x69e6a3 : 0xf76c42 };
+    }
+    if (shot) {
+        const from = heroShotOrigin(mesh.root, unitType, mesh.root.position.clone().add(new THREE.Vector3(0, 1.05, 0)));
+        launchHeroShot(world, from, () => world.get(targetId, 'mesh') === targetMesh
+            ? target.position.clone().add(new THREE.Vector3(0, 1, 0)) : null, shot, () => {});
+        return;
+    }
     const weapon = replicaWeapon(soldier, squad);
     const gaussWeapon = weapon === 'gauss_flayer' || (!soldier.projectileType && squad?.faction === 'necrons');
     const usesLightning = projectileType === 'lightning' || (!soldier.projectileType && gaussWeapon);
@@ -214,6 +238,7 @@ export function initReplicaSystems(world: World): void {
     world.addSystem(systemParticle);
     world.addSystem((w: any, dt: number) => {
         _snapTerrainBegin();
+        tickHeroEffects(w, dt);
         for (const shotId of w.query('replicaShot')) {
             const shot = w.get(shotId, 'replicaShot'), mesh = w.get(shotId, 'mesh');
             shot.age += dt;

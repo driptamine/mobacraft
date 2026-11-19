@@ -1,3 +1,6 @@
+import { kitFor } from '../heroes/hero-kits.js';
+import { laneCreepKind } from '../../stats/races/dota/creeps.js';
+import { heroBonusDamage, heroCasting, heroMoveFactor, heroStunned, launchHeroAttack } from '../heroes/hero-combat.js';
 import { refreshNavigation } from './navigation.js';
 import * as THREE from 'three';
 import {
@@ -239,7 +242,13 @@ export function systemSquad(world: any, deltaTime: number) {
     if (!squadComponent || !meshComponent) {
       continue;
     }
-    const squadAttackMode = squadComponent.attackMode || attackMode;
+    const kit = kitFor(squadComponent.unitType);
+    const meleeCreep = laneCreepKind(squadComponent.unitType) === 'melee';
+    const stunned = heroStunned(world, squadEntityId);
+    const casting = heroCasting(world, squadEntityId);
+    const moveFactor = heroMoveFactor(world, squadEntityId);
+    const moveStep = squadComponent.speed * moveFactor * deltaTime;
+    const squadAttackMode = kit && !kit.primary ? 'melee' : squadComponent.attackMode || attackMode;
     const meleeMode = squadAttackMode === 'melee';
     const combatRange = meleeMode ? MELEE_RANGE : squadComponent.attackRange;
     const aliveSols = squadComponent.soldiers.filter((s: any) => s !== null && world.has(s, 'soldier'));
@@ -286,7 +295,7 @@ export function systemSquad(world: any, deltaTime: number) {
               _steerSquadFacing(squadComponent, length);
             }
             {
-              const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+              const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
               squadComponent.position.x += step[0];
               squadComponent.position.z += step[1];
             }
@@ -301,7 +310,7 @@ export function systemSquad(world: any, deltaTime: number) {
               _steerSquadFacing(squadComponent, length);
             }
             {
-              const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+              const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
               squadComponent.position.x += step[0];
               squadComponent.position.z += step[1];
             }
@@ -316,7 +325,7 @@ export function systemSquad(world: any, deltaTime: number) {
               _steerSquadFacing(squadComponent, length);
             }
             {
-              const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+              const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
               squadComponent.position.x += step[0];
               squadComponent.position.z += step[1];
             }
@@ -364,7 +373,7 @@ export function systemSquad(world: any, deltaTime: number) {
                   _steerSquadFacing(squadComponent, length);
                 }
                 {
-                  const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+                  const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
                   squadComponent.position.x += step[0];
                   squadComponent.position.z += step[1];
                 }
@@ -383,7 +392,7 @@ export function systemSquad(world: any, deltaTime: number) {
                   _steerSquadFacing(squadComponent, length);
                 }
                 {
-                  const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+                  const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
                   squadComponent.position.x += step[0];
                   squadComponent.position.z += step[1];
                 }
@@ -406,7 +415,7 @@ export function systemSquad(world: any, deltaTime: number) {
                   _steerSquadFacing(squadComponent, length);
                 }
                 {
-                  const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+                  const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
                   squadComponent.position.x += step[0];
                   squadComponent.position.z += step[1];
                 }
@@ -445,7 +454,7 @@ export function systemSquad(world: any, deltaTime: number) {
             _steerSquadFacing(squadComponent, length);
           }
           {
-            const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+            const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
             squadComponent.position.x += step[0];
             squadComponent.position.z += step[1];
           }
@@ -505,7 +514,7 @@ export function systemSquad(world: any, deltaTime: number) {
             _steerSquadFacing(squadComponent, distance);
           }
           {
-            const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+            const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
             squadComponent.position.x += step[0];
             squadComponent.position.z += step[1];
           }
@@ -526,7 +535,7 @@ export function systemSquad(world: any, deltaTime: number) {
             _steerSquadFacing(squadComponent, length);
           }
           {
-            const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * squadComponent.speed * deltaTime, squadComponent.facing.z * squadComponent.speed * deltaTime);
+            const step = clampStepToRoute(squadComponent, squadComponent.position.x, squadComponent.position.z, squadComponent.facing.x * moveStep, squadComponent.facing.z * moveStep);
             squadComponent.position.x += step[0];
             squadComponent.position.z += step[1];
           }
@@ -553,6 +562,7 @@ export function systemSquad(world: any, deltaTime: number) {
     } else {
       moving = squadComponent.speed > 0.1 && (squadComponent.moveOrder !== null || !squadComponent.stopped);
     }
+    if (stunned) moving = false;
     // Logic plane follows the rendered surface: 3D range checks stay true on hills.
     squadComponent.position.y = _groundAt(squadComponent.position.x, squadComponent.position.z);
     if (enemy && enemy.distance <= squadComponent.attackRange + (enemy.radius || 0)) {
@@ -577,7 +587,7 @@ export function systemSquad(world: any, deltaTime: number) {
           }
         }
       }
-      const holdFire = (moving && fireUnit?.stationaryFireOnly) || airborne;
+      const holdFire = stunned || casting || (moving && fireUnit?.stationaryFireOnly) || airborne;
       if (!holdFire && !window._multiplayerMode) {
         _squadFireAll(world, squadEntityId, squadComponent, aliveSols, deltaTime, enemy, moving);
       }
@@ -866,7 +876,7 @@ export function systemSquad(world: any, deltaTime: number) {
       // must approach opponents at the soldier's normal running speed.
       const pace = isPlanter ? PLANTER_SPEED_MULT
         : Math.min(soldierMeleeMode ? 1.0 : 2.0, 0.3 + distanceToSlot * 0.6);
-      const soldierRunSpeed = soldierComponent.moveSpeed * pace;
+      const soldierRunSpeed = soldierComponent.moveSpeed * pace * moveFactor;
       // Stop freezes the squad in place (DoW semantics): no formation
       // settling, idle on the same frame. Capture duty keeps walking.
       const soldierMoving = distanceToSlot > 0.04
@@ -934,18 +944,18 @@ export function systemSquad(world: any, deltaTime: number) {
       if (soldierInMelee) {
         soldierComponent.shootTimer = 0;
         soldierComponent.attackCooldown = Math.max(0, soldierComponent.attackCooldown - deltaTime);
-        if (meleeTarget && !window._multiplayerMode && (soldierComponent._flyStage || 0) === 0
+        if (meleeTarget && !stunned && !casting && !window._multiplayerMode && (soldierComponent._flyStage || 0) === 0
           && soldierMeshComponent.root.position.distanceTo(meleeTarget.position) <= MELEE_RANGE
           && soldierComponent.attackCooldown <= 0 && world.get(meleeTargetId, 'soldier')?.hp > 0) {
-          const duration = soldierMeshComponent.root._nextMeleeAttack?.()
-            || soldierMeshComponent.root._animGroups?.melee?.getDuration?.() || 0.65;
+          const duration = (soldierMeshComponent.root._nextMeleeAttack?.()
+            || soldierMeshComponent.root._animGroups?.melee?.getDuration?.() || 0.65) / (soldierComponent.itemAttackSpeedFactor || 1);
           soldierComponent.meleeTimer = duration;
           soldierComponent.meleeAttackSerial = (soldierComponent.meleeAttackSerial || 0) + 1;
           soldierComponent.attackCooldown = Math.max(1 / soldierComponent.attackRate, duration);
-          _soldierTakeDamage(world, meleeTargetId, MELEE_DAMAGE_BASE * (soldierComponent.damageMult || 1));
+          _soldierTakeDamage(world, meleeTargetId, MELEE_DAMAGE_BASE * (soldierComponent.damageMult || 1) + (soldierComponent.itemBonusDamage || 0) + heroBonusDamage(world, squadEntityId));
           triggerMeleeHitReaction(world, meleeTargetId, !!soldierMeshComponent.root._animGroups?.hitBlock);
         }
-      } else {
+      } else if (!(meleeCreep && enemy?.buildingEntityId != null)) {
         soldierComponent.meleeTimer = 0;
       }
       const isWalking = soldierMoving || moving;
@@ -991,6 +1001,11 @@ export function systemSquad(world: any, deltaTime: number) {
             flyRoot._playAnim('flyLand', false, true);
             soldierComponent._flyLanded = true;
           }
+        } else if (stunned || casting) {
+          if (stunned) {
+            const pose = soldierMeshComponent.root._animGroups?.stun ? 'stun' : 'idle';
+            soldierMeshComponent.root._playAnim(pose, true, true);
+          }
         } else if (soldierComponent.hitReactionTimer > 0 && soldierComponent.hitReactionAnim
           && soldierMeshComponent.root._animGroups?.[soldierComponent.hitReactionAnim]
           && soldierMeshComponent.root._currentAnim !== 'melee') {
@@ -1004,7 +1019,8 @@ export function systemSquad(world: any, deltaTime: number) {
             || soldierMeshComponent.root._currentAnim !== soldierComponent.hitReactionAnim;
           soldierComponent.hitReactionRestart = false;
           soldierMeshComponent.root._playAnim(soldierComponent.hitReactionAnim, false, restartHit);
-        } else if (soldierMeleeMode && (!squadComponent.stopped || soldierComponent.meleeEngaged) && soldierComponent.meleeTimer > 0) {
+        } else if (soldierMeleeMode && soldierComponent.meleeTimer > 0
+          && (!squadComponent.stopped || soldierComponent.meleeEngaged || (meleeCreep && enemy?.buildingEntityId != null))) {
           soldierMeshComponent.root._playAnim('melee', false, soldierOrderEdge);
         } else if (isShooting) {
           if (isWalking) {
@@ -1188,6 +1204,9 @@ export function systemSquad(world: any, deltaTime: number) {
 
 
 export function _squadFireAll(world: any, squadEntityId: any, squadComponent: any, aliveSols: any, deltaTime: number, enemy: any, moving = !!squadComponent.moveOrder) {
+  const kit = kitFor(squadComponent.unitType);
+  const meleeCreep = laneCreepKind(squadComponent.unitType) === 'melee';
+  const meleeOnly = meleeCreep || !!(kit && !kit.primary);
   for (const soldierId of aliveSols) {
     const soldierComponent = world.get(soldierId, 'soldier');
     if (!soldierComponent) {
@@ -1201,19 +1220,28 @@ export function _squadFireAll(world: any, squadEntityId: any, squadComponent: an
     const meleeBuildingId = enemy.buildingEntityId != null
       && (world.has(enemy.buildingEntityId, 'building') || world.has(enemy.buildingEntityId, 'structure'))
       ? enemy.buildingEntityId : null;
-    if (meleeBuildingId && squadComponent.attackMode === 'melee'
-      && (enemy.distance ?? Infinity) <= MELEE_RANGE + 2) {
+    let meleeDistance = enemy.distance ?? Infinity;
+    if (meleeCreep && meleeBuildingId != null) {
+      const target = world.get(meleeBuildingId, 'mesh')?.root?.position;
+      const from = world.get(soldierId, 'mesh')?.root?.position;
+      // Automatic targeting reports center distance, while a forced attack
+      // reports distance to the edge. A strike always measures from the creep.
+      meleeDistance = from && target ? Math.hypot(from.x - target.x, from.z - target.z) - buildingEngageRadius(world, meleeBuildingId) : Infinity;
+    }
+    if (meleeBuildingId != null && (squadComponent.attackMode === 'melee' || meleeOnly)
+      && meleeDistance <= (meleeCreep ? MELEE_RANGE : MELEE_RANGE + 2)) {
       soldierComponent.attackCooldown = Math.max(0, soldierComponent.attackCooldown - deltaTime);
       if (soldierComponent.attackCooldown <= 0) {
         const soldierMeshComponent = world.get(soldierId, 'mesh');
-        const duration = soldierMeshComponent?.root?._nextMeleeAttack?.()
-          || soldierMeshComponent?.root?._animGroups?.melee?.getDuration?.() || 0.65;
+        const duration = (soldierMeshComponent?.root?._nextMeleeAttack?.()
+          || soldierMeshComponent?.root?._animGroups?.melee?.getDuration?.() || 0.65) / (soldierComponent.itemAttackSpeedFactor || 1);
         soldierComponent.meleeTimer = duration;
         soldierComponent.attackCooldown = Math.max(1 / soldierComponent.attackRate, duration);
-        damageBuilding(world, meleeBuildingId, MELEE_DAMAGE_BASE * (soldierComponent.damageMult || 1));
+        damageBuilding(world, meleeBuildingId, MELEE_DAMAGE_BASE * (soldierComponent.damageMult || 1) + (soldierComponent.itemBonusDamage || 0) + heroBonusDamage(world, squadEntityId));
       }
       continue;
     }
+    if (meleeOnly) continue;
     const projectileType = squadComponent.projectileType === PLASMA_CLOUD_PUFF && !soldierComponent.isGrenadier
       ? PLASMA_CLOUD_PUFF : soldierComponent.projectileType || squadComponent.projectileType || 'bullet';
     const plasma = projectileType === PLASMA_CLOUD_PUFF || projectileType === 'plasma' || projectileType === 'plasma-final';
@@ -1224,7 +1252,8 @@ export function _squadFireAll(world: any, squadEntityId: any, squadComponent: an
     const tunedHellgun = isKasrkinHellgun(soldierComponent, squadComponent);
     const cadence = tunedHellgun ? soldierComponent.attackRate / kasrkinFireRate()
       : (squadComponent.projectileType === 'laser' || squadComponent.projectileType === 'beam' || squadComponent.projectileType === 'lightning' ? 2.5 : 1);
-    const interval = edited?.refire ?? (plasma ? (getWeapon('plasma_gun')?.refire ?? 1) : (1 / soldierComponent.attackRate) * cadence);
+    const interval = (edited?.refire ?? (plasma ? (getWeapon('plasma_gun')?.refire ?? 1) : (1 / soldierComponent.attackRate) * cadence))
+      / (edited || plasma ? soldierComponent.itemAttackSpeedFactor || 1 : 1);
     // A faster slider setting also shortens an already pending burst.
     if (tunedHellgun || plasma || edited) soldierComponent.attackCooldown = Math.min(soldierComponent.attackCooldown, interval);
     soldierComponent.attackCooldown = Math.max(0, soldierComponent.attackCooldown - deltaTime);
@@ -1243,10 +1272,18 @@ export function _squadFireAll(world: any, squadEntityId: any, squadComponent: an
         const weapon = getWeapon(soldierComponent.weapon);
         // Wiki weapon stats drive ordinary gunfire. Special projectile
         // upgrades (plasma, blaster, ...) keep their own damage profiles.
-        const statDamage = edited ? (Math.random() < (moving ? edited.movingAccuracy : edited.accuracy) ? (expectedHit(edited, targetArmor) ?? 0) * damageMult : 0)
+        let statDamage = edited ? (Math.random() < (moving ? edited.movingAccuracy : edited.accuracy) ? (expectedHit(edited, targetArmor) ?? 0) * damageMult : 0)
           : weapon && (projectileType === 'bullet' || projectileType === 'beam' || tunedHellgun)
           ? damagePerShot(weapon, targetArmor, cadence) * damageMult
           : null;
+        const bonusDamage = (soldierComponent.itemBonusDamage || 0) + heroBonusDamage(world, squadEntityId);
+        if (statDamage !== null && statDamage > 0) statDamage += bonusDamage * cadence;
+        const targetId = targetBuildingId ?? enemy.soldierEntityId;
+        if (launchHeroAttack(world, squadComponent, soldierId, targetId, statDamage ?? 10 * damageMult + bonusDamage)) {
+          soldierComponent.shootTimer = .4;
+          soldierComponent.attackCooldown = interval;
+          continue;
+        }
         const shotOrigin = tunedHellgun
           ? getSoldierMuzzlePos(world, soldierId, 'hellgun')
           : soldierMeshComponent.root.position;

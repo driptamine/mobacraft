@@ -194,6 +194,68 @@ it('network Necron shots use animated green lightning without applying local dam
   assert.equal(world.get(102, 'soldier').hp, 100);
 });
 
+it('a Batch 2 sniper shot serial renders a tracer and leaves damage to the server', () => {
+  const world = new World();
+  sceneMod.setWorld(world);
+  initReplicaSystems(world);
+  const state = structuredClone(snapshot);
+  const squad = state.entities[0].components.squad;
+  squad.unitType = 'sniper';
+  const shooter = state.entities[1];
+  const soldier = shooter.components.soldier;
+  Object.assign(soldier, { unitType: 'sniper', shotSerial: 0, targetId: 102, animation: 'shoot' });
+  const target = structuredClone(shooter);
+  target.id = 102;
+  Object.assign(target.components.soldier, { unitType: '', targetId: null });
+  target.transform.p = [-8, 0, -6];
+  state.entities.push(target);
+  applySkirmishSnapshot(world, state, 1);
+  world.tick(.016);
+  assert.equal(world.query('heroEffect').length, 0);
+  soldier.shotSerial++;
+  state.tick++;
+  applySkirmishSnapshot(world, state, 1);
+  world.tick(.016);
+  const [shot] = world.query('heroEffect');
+  assert.equal(world.get(shot, 'heroEffect').root.name, 'hero-shot-tracer');
+  for (let frame = 0; frame < 50; frame++) world.tick(.016);
+  assert.equal(world.query('heroEffect').length, 0);
+  assert.equal(world.get(102, 'soldier').hp, 100);
+});
+
+it('a melee creep ignores a legacy shot event while ranged and siege creeps still fire', () => {
+  for (const [unitType, shape] of [
+    ['radiant_melee_creep', null], ['dire_ranged_creep', 'sigil'], ['radiant_siege_creep', 'weight'],
+  ]) {
+    const world = new World();
+    sceneMod.setWorld(world);
+    initReplicaSystems(world);
+    const state = structuredClone(snapshot);
+    state.entities[0].components.squad.unitType = unitType;
+    const shooter = state.entities[1];
+    const soldier = shooter.components.soldier;
+    Object.assign(soldier, { unitType, shotSerial: 0, targetId: 102, animation: 'shoot' });
+    const target = structuredClone(shooter);
+    target.id = 102;
+    Object.assign(target.components.soldier, { unitType: '', targetId: null });
+    target.transform.p = [-14, 0, -6];
+    state.entities.push(target);
+    applySkirmishSnapshot(world, state, 1);
+    world.tick(.016);
+    soldier.shotSerial++;
+    soldier.hp = 42;
+    state.tick++;
+    applySkirmishSnapshot(world, state, 1);
+    world.tick(.016);
+    const effects = world.query('heroEffect');
+    assert.equal(effects.length, shape ? 1 : 0, unitType);
+    if (shape) assert.equal(world.get(effects[0], 'heroEffect').root.name, `hero-shot-${shape}`);
+    assert.equal(world.query('replicaShot').length, 0, unitType);
+    assert.equal(world.get(101, 'mesh').hpBar._fg.scale.x, .42, unitType);
+    for (let frame = 0; frame < 70; frame++) world.tick(.016);
+  }
+});
+
 
 it('uses the authoritative resource rates in the multiplayer HUD', () => {
   const world = new World();sceneMod.setWorld(world);window._multiplayerMode=true;

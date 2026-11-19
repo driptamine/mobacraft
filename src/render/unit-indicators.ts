@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { laneCreepKind } from '../../stats/races/dota/creeps.js';
 
 interface HoverMeta {
   soldierEntityId?: number;
@@ -114,6 +115,28 @@ export function createUnitHover(scene: THREE.Object3D, groundAt: (x: number, z: 
   };
 }
 
+const ringRestPose = new WeakMap<THREE.Mesh, { height: number; order: number }>();
+const ringPosition = new THREE.Vector3();
+
+export function syncSelectionRingsOnWater(world: any, waterAt: (x: number, z: number) => number | undefined): void {
+  if (!world) return;
+  for (const id of world.query('soldier', 'mesh')) {
+    const root = world.get(id, 'mesh')?.root;
+    const ring: THREE.Mesh | undefined = root?._selDisc;
+    if (!ring?.visible) continue;
+    const rest = ringRestPose.get(ring) ?? { height: ring.position.y, order: ring.renderOrder };
+    ring.position.y = rest.height;
+    ring.renderOrder = rest.order;
+    ring.getWorldPosition(ringPosition);
+    const water = waterAt(ringPosition.x, ringPosition.z);
+    if (water === undefined || water + .1 <= ringPosition.y) continue;
+    ringRestPose.set(ring, rest);
+    ringPosition.y = water + .1;
+    ring.position.y = ring.parent ? ring.parent.worldToLocal(ringPosition).y : ringPosition.y;
+    ring.renderOrder = 3;
+  }
+}
+
 interface UnitSelection {
   unitIds?: readonly number[];
   builderId?: number | null;
@@ -130,7 +153,7 @@ const healthBarCameraUp = new THREE.Vector3();
 const healthBarOrbitDirection = new THREE.Vector3();
 const healthBarUnitKinds = ['soldier', 'builder', 'apc', 'vehicle', 'jet'];
 
-/** Orbit unit bars about the torus center and face their planes toward the camera. */
+/** Face bars toward the camera, using overhead anchors for lane creeps. */
 export function faceHealthBarsToCamera(world: any, camera: THREE.Camera | null, groundAt: (x: number, z: number) => number = () => 0): void {
   if (!world || !camera) return;
   camera.getWorldQuaternion(healthBarCameraRotation);
@@ -149,7 +172,13 @@ export function faceHealthBarsToCamera(world: any, camera: THREE.Camera | null, 
     const bar = mesh?.hpBar;
     if (!bar?.visible) continue;
     const kind = healthBarUnitKinds.find((kind) => world.has(id, kind));
-    if (kind && mesh.root) {
+    const creep = kind === 'soldier' ? laneCreepKind(world.get(id, 'soldier')?.unitType) : undefined;
+    if (creep && mesh.root) {
+      mesh.hpBarAnchor ??= mesh.root.getObjectByName('head') ?? mesh.root.getObjectByName('Head_0') ?? mesh.root;
+      mesh.hpBarAnchor.getWorldPosition(bar.position);
+      bar.position.y += mesh.hpBarAnchor !== mesh.root ? (creep === 'ranged' ? 1.2 : .85) : creep === 'siege' ? 5.6 : 4.2;
+      if (bar.parent) bar.parent.worldToLocal(bar.position);
+    } else if (kind && mesh.root) {
       mesh.root.getWorldPosition(healthBarCenter);
       const radius = unitRingRadius(mesh.root, kind) * 1.12 + 0.26;
       bar.position.copy(healthBarCenter).addScaledVector(healthBarOrbitDirection, radius);
@@ -168,7 +197,7 @@ export function faceHealthBarsToCamera(world: any, camera: THREE.Camera | null, 
   }
 }
 
-/** Show selected squads and individual hovered units after simulation updates visibility. */
+/** Update unit health visibility after simulation, including unselectable lane creeps. */
 export function syncUnitHealthBars(world: any, { unitIds = [], builderId = null, enemySquadId = null, hoveredUnitId = null }: UnitSelection = {}): void {
   if (!world) return;
   const selected = new Set(unitIds);
@@ -180,7 +209,8 @@ export function syncUnitHealthBars(world: any, { unitIds = [], builderId = null,
   for (const id of world.query('soldier', 'mesh')) {
     const soldier = world.get(id, 'soldier');
     const squad = world.get(soldier.squadId, 'squad');
-    show(id, soldier.hp > 0 && (id === hoveredUnitId || selected.has(soldier.squadId) || !!squad?.selected || soldier.squadId === inspectedEnemy));
+    const creep = laneCreepKind(soldier.unitType);
+    show(id, soldier.hp > 0 && (!!creep || id === hoveredUnitId || selected.has(soldier.squadId) || !!squad?.selected || soldier.squadId === inspectedEnemy));
   }
   for (const id of world.query('builder', 'mesh')) {
     const builder = world.get(id, 'builder');

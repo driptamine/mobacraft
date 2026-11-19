@@ -6,14 +6,17 @@ import { clearSgbMap } from './sgb-upload.js';
 import { clearTerrainMesh } from './terrain-upload.js';
 import { _snapTerrainBegin } from '../systems/terrain.js';
 import { sampleDotaHeight, type DotaSurface } from './dota-surface.js';
+import { makeDotaWaterSampler } from './dota-water.js';
 
 let active: GltfContainer | null = null;
 let surface: DotaSurface | null = null;
+let waterHeightAt: ReturnType<typeof makeDotaWaterSampler> | undefined;
 let generation = 0;
 const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), point = new THREE.Vector3();
 
 export function clearDotaMap(): void {
   generation++;
+  waterHeightAt = undefined;
   if (!active) return;
   if (window.__sgbTerrainRoot === active.scene) {
     window.__sgbTerrainRoot = null;
@@ -62,13 +65,17 @@ export async function loadDotaMap(): Promise<void> {
     }
   });
   scene.add(model.scene);
-  model.scene.updateMatrixWorld(true);
+  waterHeightAt = makeDotaWaterSampler(model.scene);
   window.__sgbTerrainRoot = model.scene;
   window.__sgbSampleHeight = (x, z) => surface ? sampleDotaHeight(surface, x, z) : 0;
   window.__sgbPassGrid = surface;
   if (scene._ground) scene._ground.visible = false;
   setGridVariant(3);
   _snapTerrainBegin();
+}
+
+export function dotaWaterHeightAt(x: number, z: number): number | undefined {
+  return waterHeightAt?.(x, z);
 }
 
 export function pickDotaGround(sx: number, sy: number): THREE.Vector3 | null {

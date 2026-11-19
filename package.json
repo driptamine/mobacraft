@@ -11,6 +11,7 @@
     "heroes:build": "node scripts/build-batch1-heroes.mjs",
     "heroes:build-all": "node scripts/build-batch1-heroes.mjs && node scripts/build-hero-batches.mjs",
     "heroes:icons": "node scripts/fetch-hero-icons.mjs",
+    "particles:read": "node scripts/read-dota-particles.mjs",
     "creeps:build": "node scripts/build-melee-creeps.mjs",
     "maps:build-dota-surface": "node scripts/build-dota-surface.mjs",
     "models:r2:sync": "bash scripts/upload-models-r2.sh",
@@ -21,7 +22,9 @@
     "preview": "vite preview",
     "test": "NODE_OPTIONS=--max-old-space-size=4096 node --import ./tests/register-hooks.mjs --test tests/*.test.js",
     "test:ts": "NODE_OPTIONS=--max-old-space-size=4096 node --import tsx --test tests/*.test.ts",
-    "typecheck": "NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit"
+    "typecheck": "NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit",
+    "items:build": "node scripts/build-dota-items.mjs",
+    "items:r2:sync": "bash scripts/upload-dota-items-r2.sh"
   },
   "dependencies": {
     "@linaria/core": "^8.1.1",

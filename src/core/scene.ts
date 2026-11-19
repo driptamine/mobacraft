@@ -18,7 +18,7 @@ import {
 } from '../render/three-helpers.js';
 import { macroLinePositions, microLinePositions } from '../render/grid-helper.js';
 import { boundsFor } from '../maps/map-layout.js';
-import { MIN_ZOOM_RADIUS, MAX_ZOOM_RADIUS, DEFAULT_CAMERA_RADIUS } from '../render/camera-zoom.js';
+import { MIN_ZOOM_RADIUS, MAX_ZOOM_RADIUS, DEFAULT_CAMERA_RADIUS, setInitialCameraAlpha } from '../render/camera-zoom.js';
 import { updateFirstPersonCamera, updateThirdPersonCamera } from '../render/camera-fps.js';
 
 declare global {
@@ -825,7 +825,7 @@ export async function createScene() {
   // Debug/test handle (same pattern as window.__sgbTerrainRoot): lets
   // automation frame shots without touching the orbit rig.
   window.__grimCamera = camera;
-  camera.alpha = -Math.PI / 2;
+  setInitialCameraAlpha(camera, -Math.PI / 2);
   camera.beta = 0.9;
   camera.radius = DEFAULT_CAMERA_RADIUS;
   camera.target = new THREE.Vector3(0, 0, 0);

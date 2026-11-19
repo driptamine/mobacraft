@@ -7,10 +7,20 @@
 export const MIN_ZOOM_RADIUS = 6;
 export const MAX_ZOOM_RADIUS = 800;
 export const DEFAULT_CAMERA_RADIUS = 55;
-// Default orbit orientation, stored in radians (Backspace reset view).
+// Initial orbit orientation, stored in radians.
 export const DEFAULT_CAMERA_ALPHA = (315 * Math.PI) / 180;
 export const DEFAULT_CAMERA_BETA = (50 * Math.PI) / 180;
 const WHEEL_STEP = 1.0012;
+const initialAlpha = new WeakMap<{ alpha: number }, number>();
+
+export function setInitialCameraAlpha(camera: { alpha: number }, alpha: number): void {
+  camera.alpha = alpha;
+  initialAlpha.set(camera, alpha);
+}
+
+export function restoreInitialCameraAlpha(camera: { alpha: number }): void {
+  camera.alpha = initialAlpha.get(camera) ?? DEFAULT_CAMERA_ALPHA;
+}
 
 export function applyZoom(radius: number, deltaY: number, min: number = MIN_ZOOM_RADIUS, max: number = MAX_ZOOM_RADIUS): number {
   // Reversed: scroll down zooms in, scroll up zooms out.

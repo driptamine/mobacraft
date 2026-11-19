@@ -1,8 +1,10 @@
+import { chooseHeroAbility, clearHeroAbilityTarget, pendingHeroAbility, tryHeroAbilityClick } from './hero-abilities.js';
 import { findConstructionTarget } from './construction-target.js';
 import * as THREE from 'three';
 import { isCameraLocked } from '../render/camera-lock.js';
-import { DEFAULT_CAMERA_ALPHA, DEFAULT_CAMERA_BETA, DEFAULT_CAMERA_RADIUS, applyZoom } from '../render/camera-zoom.js';
+import { DEFAULT_CAMERA_BETA, DEFAULT_CAMERA_RADIUS, applyZoom, restoreInitialCameraAlpha } from '../render/camera-zoom.js';
 import { isDotaMap, dotaMapConfig } from '../maps/dota-map-layout.js';
+import { dotaWaterHeightAt } from '../maps/dota-map.js';
 import {
   cursorCss,
   getModalCursor,
@@ -31,7 +33,7 @@ import {
   addBeforeRender,
   removeBeforeRender,
 } from '../core/scene.js';
-import { createUnitHover, syncUnitHealthBars, faceHealthBarsToCamera } from '../render/unit-indicators.js';
+import { createUnitHover, syncUnitHealthBars, faceHealthBarsToCamera, syncSelectionRingsOnWater } from '../render/unit-indicators.js';
 import { _groundAt } from '../systems/terrain.js';
 import { isDecalHoverEnabled } from '../maps/sgb-decals.js';
 import { _apcEjectPassengers } from '../core/systems.js';
@@ -148,14 +150,15 @@ export function setupPointerEvents(): void {
   initGunPosePanel();
   if (!canvas) return;
   _unitIndicatorsCleanup?.();
-  const unitHover = createUnitHover(scene, _groundAt);
+  const unitHover = createUnitHover(scene, (x, z) => Math.max(_groundAt(x, z), dotaWaterHeightAt(x, z) ?? -Infinity));
   const clearUnitHover = (): void => {
     unitHover.clear();
     set_hoverEnemySquad(null);
   };
   let pendingHoverRefresh = false;
+  let orbitPointer: number | null = null;
   const refreshIndicators = addBeforeRender(() => {
-    if (pendingHoverRefresh && !isShooterMode() && !isSelecting && !rightDown) {
+    if (pendingHoverRefresh && !isShooterMode() && !isSelecting && !isAltOrbiting && !rightDown) {
       pendingHoverRefresh = false;
       _updateCursorCoords(_mouseX, _mouseY);
       const hit = pickMesh(_mouseX, _mouseY);
@@ -166,6 +169,7 @@ export function setupPointerEvents(): void {
     }
     if (isShooterMode()) unitHover.clear();
     else unitHover.refresh(world);
+    if (isDotaMap(window._currentMapKey || '')) syncSelectionRingsOnWater(world, dotaWaterHeightAt);
     syncUnitHealthBars(world, {
       unitIds: selSquads, builderId: selBuilder, enemySquadId: hoveredEnemySquad,
       hoveredUnitId: unitHover.hoveredUnitId,
@@ -190,6 +194,17 @@ export function setupPointerEvents(): void {
     if (event.pointerType === 'touch' && isShooterMode()) {
       return;
     }
+    if (event.altKey && event.pointerType !== 'touch' && !isShooterMode()) {
+      orbitPointer = event.pointerId;
+      setIsAltOrbiting(true);
+      setAltOrbitLast({ x: event.clientX, y: event.clientY });
+      canvas.style.cursor = 'grabbing';
+      canvas.setPointerCapture(event.pointerId);
+      event.preventDefault();
+      return;
+    }
+    orbitPointer = null;
+    if (pendingHeroAbility && (event.button === 0 || event.button === 2) && !isShooterMode()) return;
     if (event.button === 0) {
       // First person: left-click fires instead of selecting. The crosshair
       // is the aim in every case (pointer lock freezes the cursor position,
@@ -206,13 +221,6 @@ export function setupPointerEvents(): void {
         }
       }
       if (buildMode) return;
-      if (altDown && !isDotaMap(window._currentMapKey || '')) {
-        setIsAltOrbiting(true);
-        setAltOrbitLast({ x: event.clientX, y: event.clientY });
-        canvas.style.cursor = 'grabbing';
-        canvas.setPointerCapture(event.pointerId);
-        return;
-      }
       if (pendingUnitCommand) return;
       setIsSelecting(true);
       canvas.setPointerCapture(event.pointerId);
@@ -439,6 +447,18 @@ export function setupPointerEvents(): void {
     setMouseX(event.clientX);
     setMouseY(event.clientY);
     setMouseEntered(true);
+    if (event.altKey && event.pointerType !== 'touch' && !isShooterMode() && !isSelecting && !rightDown) {
+      if (isAltOrbiting) {
+        camera.alpha -= (event.clientX - altOrbitLast.x) * 0.007;
+        camera.beta = Math.max(0.15, Math.min(1.4, camera.beta + (event.clientY - altOrbitLast.y) * 0.007));
+      }
+      setIsAltOrbiting(true);
+      setAltOrbitLast({ x: event.clientX, y: event.clientY });
+      pendingHoverRefresh = false;
+      clearUnitHover();
+      return;
+    }
+    if (isAltOrbiting) setIsAltOrbiting(false);
     // Hover raycasts (coords readout + mesh hover below) run at most once
     // per frame: high-frequency mice would otherwise fire several full-scene
     // raycasts between renders. Clicks raycast synchronously, unaffected.
@@ -450,12 +470,6 @@ export function setupPointerEvents(): void {
     if (_mouseEntered && hoverDue) _updateCursorCoords(event.clientX, event.clientY);
     if (buildMode) {
       setGhostPending(event.clientX, event.clientY);
-    }
-    if (isAltOrbiting) {
-      camera.alpha -= (event.clientX - altOrbitLast.x) * 0.007;
-      camera.beta = Math.max(0.15, Math.min(1.4, camera.beta + (event.clientY - altOrbitLast.y) * 0.007));
-      setAltOrbitLast({ x: event.clientX, y: event.clientY });
-      return;
     }
     if (isSelecting) {
       setSelEnd({ x: event.clientX, y: event.clientY });
@@ -471,21 +485,32 @@ export function setupPointerEvents(): void {
       _refreshHoverState(hit);
     }
   });
+  canvas.addEventListener('pointerenter', (event) => {
+    if (event.altKey) setAltOrbitLast({ x: event.clientX, y: event.clientY });
+  });
+  canvas.addEventListener('pointercancel', (event) => {
+    if (event.pointerId !== orbitPointer) return;
+    orbitPointer = null;
+    setIsAltOrbiting(false);
+    canvas!.style.cursor = altDown ? 'grab' : '';
+  });
   canvas.addEventListener('pointerup', (event) => {
     if (!canvas) return;
     if (event.pointerId !== undefined) {
       try { canvas.releasePointerCapture(event.pointerId); } catch (_) {}
     }
+    if (event.pointerId === orbitPointer) {
+      orbitPointer = null;
+      setIsAltOrbiting(event.altKey);
+      canvas.style.cursor = event.altKey ? 'grab' : '';
+      return;
+    }
     if (isCameraLocked(camera)) {
       setIsSelecting(false);setIsAltOrbiting(false);setRightDown(false);setIsOrbiting(false);
       return;
     }
+    if ((event.button === 0 || event.button === 2) && tryHeroAbilityClick(event.clientX, event.clientY, event.button)) return;
     if (event.button === 0) {
-      if (isAltOrbiting) {
-        setIsAltOrbiting(false);
-        canvas.style.cursor = altDown ? 'grab' : '';
-        return;
-      }
       if (buildMode) {
         if (buildMode === 'listening_post') {
           placeListeningPost(event.clientX, event.clientY);
@@ -557,6 +582,7 @@ export function initInput(): void {
       event.preventDefault();
     }
     if (event.code === 'Escape') {
+      if (pendingHeroAbility) { clearHeroAbilityTarget(); event.preventDefault(); }
       if (pendingUnitCommand) {
         clearUnitCommand();
         event.preventDefault();
@@ -572,9 +598,13 @@ export function initInput(): void {
       }
     }
     if (event.code === 'AltLeft' || event.code === 'AltRight') {
+      if (!altDown && !isShooterMode() && !isSelecting && !rightDown) {
+        setIsAltOrbiting(true);
+        setAltOrbitLast({ x: _mouseX, y: _mouseY });
+      }
       setAltDown(true);
       event.preventDefault();
-      if (!buildMode) canvas!.style.cursor = 'grab';
+      if (!isShooterMode() && canvas) canvas.style.cursor = 'grab';
     }
     if (event.code === 'KeyQ') {
       stopSelectedTroops();
@@ -613,11 +643,11 @@ export function initInput(): void {
       updateHUD();
     }
     if (event.code === 'Backspace') {
-      const tag = (event.target as HTMLElement | null)?.tagName;
-      if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
+      const target = event.target as HTMLElement | null;
+      if (camera && !['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName || '') && !target?.isContentEditable) {
         const dota = isDotaMap(window._currentMapKey || '');
+        restoreInitialCameraAlpha(camera);
         camera.radius = dota ? dotaMapConfig.camera.radius : DEFAULT_CAMERA_RADIUS;
-        camera.alpha = dota ? dotaMapConfig.camera.alpha : DEFAULT_CAMERA_ALPHA;
         camera.beta = dota ? dotaMapConfig.camera.beta : DEFAULT_CAMERA_BETA;
         event.preventDefault();
       }
@@ -661,6 +691,10 @@ export function initInput(): void {
       updateHUD();
     }
     if (!typing && !(event.target as HTMLElement | null)?.isContentEditable && !event.ctrlKey && !event.metaKey && !event.altKey && !isShooterMode()) {
+      if (/^Digit[3-6]$/.test(event.code) && !event.repeat && chooseHeroAbility(Number(event.code.slice(-1)) - 3)) {
+        event.preventDefault();
+        return;
+      }
       if (event.code === 'Digit1' || event.code === 'Numpad1') {
         setSelectedAttackMode('melee');
         event.preventDefault();
@@ -696,9 +730,11 @@ export function initInput(): void {
   window.addEventListener('keyup', (event) => {
     keys[event.code] = false;
     if (event.code === 'AltLeft' || event.code === 'AltRight') {
-      setAltDown(false);
-      setIsAltOrbiting(false);
-      if (!buildMode) canvas!.style.cursor = '';
+      setAltDown(event.altKey);
+      if (!event.altKey) {
+        setIsAltOrbiting(false);
+        if (!buildMode && canvas) canvas.style.cursor = '';
+      }
     }
   });
   window.addEventListener('blur', () => {

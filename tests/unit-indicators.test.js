@@ -2,7 +2,8 @@ import { describe, it, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { World } from '../src/core/ecs.js';
-import { createUnitHover, syncUnitHealthBars, faceHealthBarsToCamera } from '../src/render/unit-indicators.js';
+import { createUnitHover, syncUnitHealthBars, faceHealthBarsToCamera, syncSelectionRingsOnWater } from '../src/render/unit-indicators.js';
+import { makeDotaWaterSampler } from '../src/maps/dota-water.js';
 
 const controllers = [];
 afterEach(() => { for (const controller of controllers.splice(0)) controller.dispose(); });
@@ -42,6 +43,37 @@ function fixture() {
 }
 
 describe('unit hover torus', () => {
+  it('lifts hover and selected rings above the rendered river and restores the land pose', () => {
+    const f = fixture();
+    const river = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), new THREE.MeshBasicMaterial());
+    river.rotateX(-Math.PI / 2);
+    river.position.y = 4;
+    river.material.userData.vmat = { Name: 'materials/water/water_generic_000.vmat' };
+    river.raycast = () => {};
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), new THREE.MeshBasicMaterial());
+    floor.rotateX(-Math.PI / 2);
+    floor.position.y = 10;
+    f.scene.add(river, floor);
+    const waterAt = makeDotaWaterSampler(f.scene);
+    const hover = createUnitHover(f.scene, (x, z) => Math.max(0, waterAt(x, z) ?? 0));
+    controllers.push(hover);
+    const { id, root } = f.add('soldier');
+    root.position.y = 1;
+    hover.update(f.world, { soldierEntityId: id, squadEntityId: f.squad().id });
+    assert.ok(f.rings().every(ring => Math.abs(ring.position.y - 4.1) < 1e-7));
+    assert.ok(f.rings().length);
+    root._selDisc.visible = true;
+    root._selDisc.position.y = .05;
+    syncSelectionRingsOnWater(f.world, waterAt);
+    assert.ok(Math.abs(root._selDisc.getWorldPosition(new THREE.Vector3()).y - 4.1) < 1e-7);
+    assert.equal(root._selDisc.renderOrder, 3);
+    root.position.x = 11;
+    assert.equal(waterAt(11, 0), undefined);
+    syncSelectionRingsOnWater(f.world, waterAt);
+    assert.equal(root._selDisc.position.y, .05);
+    assert.equal(root._selDisc.renderOrder, 0);
+  });
+
   it('appears under every member of friendly, allied, and enemy squads without revealing health bars', () => {
     const f = fixture();
     for (const [team, faction] of [['blue', 'ig'], ['blue', 'eldar'], ['red', 'chaos']]) {
@@ -246,6 +278,34 @@ describe('health bar camera alignment', () => {
 });
 
 describe('selected and hovered unit health bars', () => {
+  it('keeps lane creep bars above their heads without a selection', () => {
+    const f = fixture();
+    const camera = new THREE.PerspectiveCamera(60, 1, .1, 1000);
+    camera.position.set(4, 12, 24);
+    camera.lookAt(0, 0, 0);
+    const creeps = ['radiant_melee_creep', 'dire_ranged_creep', 'dire_siege_creep'].map(unitType => {
+      const creep = f.add('soldier');
+      creep.unit.unitType = unitType;
+      creep.root.position.set(3, 4, 5);
+      if (!unitType.includes('siege')) {
+        const head = new THREE.Object3D();
+        head.name = 'Head_0';
+        head.position.set(.1, 2.8, .3);
+        creep.root.add(head);
+      }
+      return creep;
+    });
+    syncUnitHealthBars(f.world);
+    faceHealthBarsToCamera(f.world, camera);
+    assert.ok(creeps.every(creep => creep.hpBar.visible));
+    assert.ok(creeps[0].hpBar.position.distanceTo(new THREE.Vector3(3.1, 7.65, 5.3)) < 1e-9);
+    assert.ok(creeps[1].hpBar.position.distanceTo(new THREE.Vector3(3.1, 8, 5.3)) < 1e-9);
+    assert.ok(creeps[2].hpBar.position.distanceTo(new THREE.Vector3(3, 9.6, 5)) < 1e-9);
+    creeps[0].unit.hp = 0;
+    syncUnitHealthBars(f.world);
+    assert.equal(creeps[0].hpBar.visible, false);
+  });
+
   it('shows only the hovered soldier until its squad is selected, for own, allied, and enemy squads', () => {
     const f = fixture();
     for (const [team, faction] of [['blue', 'ig'], ['blue', 'eldar'], ['red', 'chaos']]) {

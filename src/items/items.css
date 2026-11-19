@@ -1,0 +1,28 @@
+.hero-inventory { width:206px; min-width:206px; padding:8px; border-left:1px solid #50c8ff30; pointer-events:auto; display:flex; flex-direction:column; justify-content:center; gap:6px; color:#d9d9cb; font:11px 'Trebuchet MS',sans-serif; }
+.hero-inventory-heading { display:flex; justify-content:space-between; gap:6px; text-transform:capitalize; }.hero-inventory-heading span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.hero-inventory b,.dota-item-shop b { color:#e1c76f; }
+.hero-item-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+.hero-item-slots button { padding:0; aspect-ratio:4 / 3; min-width:0; overflow:hidden; position:relative; cursor:pointer; border:1px solid #758172; background:#080e11; color:#69756d; border-radius:3px; }
+.hero-item-slots img { width:100%; height:100%; object-fit:cover; display:block; }.hero-item-slots button:disabled { cursor:default; }
+.hero-shop-open { cursor:pointer; background:#293226; color:#ead794; border:1px solid #7d8874; border-radius:3px; padding:5px; font-size:10px; }
+.dota-item-shop { position:fixed; inset:0; margin:0; box-sizing:border-box; width:100vw; height:100dvh; max-width:none; max-height:none; padding:clamp(12px,2vw,26px); border:0; color:#deded0; background:linear-gradient(135deg,#151d1b,#26231f); font:14px 'Trebuchet MS',Arial,sans-serif; }
+.dota-item-shop[open] { display:flex; flex-direction:column; gap:14px; }
+.dota-item-shop header { display:flex; align-items:center; gap:18px; }.dota-item-shop h2 { flex:1; color:#e1cd84; font-size:17px; letter-spacing:.08em; margin:0; }
+.dota-item-shop button,.dota-item-shop input,.dota-item-shop select { font:inherit; color:inherit; border:1px solid #7d8874; border-radius:4px; background:#101714; }
+.dota-item-shop button { cursor:pointer; }.dota-item-shop header button { padding:7px 14px; }.dota-item-shop button:disabled { opacity:.45; cursor:default; }
+.dota-shop-filters { display:flex; gap:12px; align-items:center; }.dota-shop-filters input { flex:1; min-width:0; padding:10px; }.dota-shop-filters select { padding:10px; }.dota-shop-filters > span { color:#a5b19e; font-size:12px; min-width:100px; }
+.dota-shop-body { display:grid; grid-template-columns:minmax(0,1fr) 300px; flex:1; min-height:0; gap:18px; }
+.dota-item-catalog { display:grid; grid-template-columns:repeat(auto-fill,minmax(102px,1fr)); gap:7px; overflow-y:auto; min-height:0; align-content:start; padding:2px 6px 4px 2px; }
+.dota-item-catalog button { display:flex; flex-direction:column; gap:4px; padding:4px; min-width:0; text-align:left; }.dota-item-catalog img { width:100%; aspect-ratio:4 / 3; object-fit:cover; border-radius:2px; }
+.dota-item-catalog span { font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }.dota-item-catalog small { font-size:9px; color:#d7bc69; }.dota-item-catalog button[aria-pressed=true] { border-color:#e1cd84; box-shadow:0 0 0 1px #e1cd84; }
+.dota-item-details { display:flex; flex-direction:column; overflow-y:auto; gap:12px; min-height:0; border-left:1px solid #73806c66; padding-left:18px; }
+.dota-item-title { display:flex; align-items:center; gap:12px; }.dota-item-title img { width:82px; aspect-ratio:4 / 3; object-fit:cover; }.dota-item-title h3 { margin:0 0 8px; font-size:18px; }
+.dota-item-details dl { display:grid; grid-template-columns:1fr auto; gap:5px 8px; font-size:12px; margin:0; }.dota-item-details dd { margin:0; color:#d2dba2; }
+.dota-item-description { white-space:pre-line; line-height:1.5; font-size:13px; margin:0; }.dota-item-components { font-size:12px; color:#aebba6; }.dota-item-components p { margin:7px 0 0; }
+.dota-item-components button { width:100%; margin-top:9px; }
+.dota-item-effects-note,.dota-item-hint { font-size:11px; line-height:1.45; color:#a5b29d; margin:0; }.dota-item-error { font-size:12px; color:#ff9a86; margin:0; }
+.dota-item-shop .dota-item-buy { background:#34422c; color:#f1d882; padding:11px; }.dota-shop-inventory { margin-top:auto; padding-top:12px; }.dota-shop-inventory h4 { margin:0 0 9px; font-size:11px; color:#b9c4ad; }.dota-shop-inventory .hero-item-slots { max-width:260px; }
+.dota-item-shop .dota-item-sell { padding:8px; margin-top:8px; width:100%; color:#e9c482; }
+.dota-item-shop :focus-visible,.hero-inventory :focus-visible { outline:2px solid #e1cd84; outline-offset:2px; }
+@media(max-width:800px) { .dota-shop-body { grid-template-columns:minmax(0,1fr) 230px; gap:10px; }.dota-item-details { padding-left:10px; }.dota-item-shop h2 { font-size:13px; }.dota-shop-filters { flex-wrap:wrap; }.dota-shop-filters input { flex-basis:100%; }.hero-inventory { width:170px; min-width:170px; } }
+@media(max-width:540px) { .dota-shop-body { grid-template-columns:1fr; overflow-y:auto; }.dota-item-catalog { max-height:42dvh; overflow-y:auto; grid-template-columns:repeat(3,minmax(0,1fr)); }.dota-item-details { border:0; padding:10px 0; overflow-y:visible; }.dota-item-shop header { gap:8px; flex-wrap:wrap; }.dota-item-shop header > span { font-size:11px; }.hero-inventory { width:145px; min-width:145px; } }

@@ -489,6 +489,7 @@ function HQActions(): JSX.Element | null {
   const id = selBuildings[0];
   const building = world.get(id, 'building');
   if (!building || building.type !== 'hq') return null;
+  if (building.heroBase && window._multiplayerMode) return <ActionsGridDiv />;
 
   const factionKey = entityFaction(building);
   const faction = FACTIONS[factionKey];

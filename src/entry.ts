@@ -3,6 +3,10 @@ if (/^\/balance\/?$/.test(location.pathname)) {
   document.title = 'Balance Editor · GrimCraft';
   document.body.replaceChildren();
   void import('./balance/editor.jsx').then(module => module.mountBalanceEditor());
+} else if (/^\/projectiles\/?$/.test(location.pathname)) {
+  document.title = 'Projectiles · GrimCraft';
+  document.body.replaceChildren();
+  void import('./ui/hero-shot-preview.js').then(module => module.mountHeroShotPreview());
 } else {
   // The menu shell paints first; the HUD and the heavy game graph (models,
   // netcode, map layouts) stream in only after its DOM exists, so the HUD

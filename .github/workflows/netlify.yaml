@@ -28,6 +28,7 @@ jobs:
       - run: npm run build
         env:
           R2_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
+          VITE_MULTIPLAYER_API_URL: ${{ vars.MULTIPLAYER_API_URL }}
       # The Netlify CLI also runs the site's build command from the app
       # settings, so it needs the R2 base too — otherwise it would rebuild
       # dist/ without models and deploy that instead.
@@ -36,3 +37,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           R2_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
+          VITE_MULTIPLAYER_API_URL: ${{ vars.MULTIPLAYER_API_URL }}

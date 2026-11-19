@@ -1,5 +1,11 @@
 import type { UnitStats } from '../../types.js';
 
+export type LaneCreepKind = 'melee' | 'ranged' | 'siege';
+
+export function laneCreepKind(unitType: string | null | undefined): LaneCreepKind | undefined {
+  return /^(?:radiant|dire)_(melee|ranged|siege)_creep$/.exec(unitType ?? '')?.[1] as LaneCreepKind | undefined;
+}
+
 export const meleeCreeps: UnitStats[] = ['radiant', 'dire'].map((side) => ({
   name: `${side}_melee_creep`,
   model: `batches/creeps-lane/final/${side}-melee.glb`,

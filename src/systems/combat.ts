@@ -1,3 +1,4 @@
+import { heroDamageGuard } from '../heroes/hero-combat.js';
 import * as THREE from 'three';
 import { infantryImmortal } from '../hud/store.js';
 import {
@@ -270,7 +271,9 @@ export function _soldierTakeDamage(world: any, soldierId: any, damage: number) {
       return;
     }
   }
-  soldierComponent.hp -= damage;
+  const itemArmor = soldierComponent.itemArmor || 0;
+  if (itemArmor) damage *= 1 - .06 * itemArmor / (1 + .06 * Math.abs(itemArmor));
+  soldierComponent.hp -= damage * (1 - heroDamageGuard(world, soldierComponent.squadId));
   soldierComponent.flashTimer = .12;
   const hitMesh = world.get(soldierId, 'mesh');
   if (hitMesh && hitMesh.root && isGuardsmanMesh(hitMesh.root)) {

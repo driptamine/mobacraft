@@ -5,17 +5,33 @@ npm install
 npm run dev
 ```
 
-Multiplayer uses the adjacent `../grimcraft-go` server. In a second terminal:
+Multiplayer uses the adjacent `../mobacraft-go` server. In a second terminal:
 
 ```sh
-cd ../grimcraft-go
+cd ../mobacraft-go
 go run ./cmd/server
 ```
 
-Open Multiplayer at `http://localhost:3000`, create a game and choose a map.
+Open Multiplayer at `http://localhost:40000`, create a game and choose a map.
 Share `/server/<id>` with another browser or incognito window, or add Computer
 slots before starting. The UI discovers the local WebTransport endpoint and
-certificate automatically.
+certificate automatically and falls back to WebSocket when the server advertises
+it. For a separately hosted server, set `VITE_MULTIPLAYER_API_URL` at build time
+to its HTTP(S) origin. The Go server handles online RTS rooms and two-player
+Dota rooms with hero selection, bases and three-lane creep waves. Inventory and hero
+abilities are available in offline Skirmish. Run
+`node --import tsx scripts/sync-dota-multiplayer.mjs` after editing its map layout,
+navigation or unit data to refresh the embedded Go data.
+
+Run `npm run particles:read` to open the Batch 1 particle reference at
+`http://127.0.0.1:40003`. It reads the local Dota 2 archive with Source 2 Viewer
+CLI and shows dependencies, KV3 data and an interactive Three.js diagram of
+emitters, control points and child effects. Pass an alternate VPK path with
+`npm run particles:read -- /path/to/pak01_dir.vpk`.
+
+Open `http://localhost:40000/projectiles` to preview Batch 1 and Batch 2 attacks
+and projectile abilities with the same Three.js effects used in combat. Use
+`/projectiles?batch=2` to open Batch 2 directly.
 
 The backend runs entirely in Go, including its authoritative simulation.
 Node.js is used for frontend development and builds only.
@@ -80,3 +96,17 @@ After rebuilding heroes or creeps, run `npm run batches:r2:sync` with the
 creep models, assembled heroes from batches 1–13, and their portraits to the
 same R2 paths used in production. Git pushes do not upload these ignored files;
 the regular `models:r2:sync` command only publishes the separate `models/` tree.
+
+Dota/Doom Spiral heroes have a six-slot item inventory and an in-match shop with
+566 item definitions, including 134 recipes and neutral/special catalog entries.
+The catalog and 433 original Panorama icons are extracted from the installed
+Dota `pak01_dir.vpk`, with English names and Russian descriptions. Run
+`npm run items:build` (Source 2 Viewer CLI required; `-- --refresh` re-extracts),
+then `npm run items:r2:sync` to publish the PNGs; the JSON catalog is bundled.
+Each hero starts with 600 gold and earns 2 gold/second. Purchases use item prices
+from Dota; selling returns half the paid price. Basic health, strength, agility,
+damage, armor, attack speed, movement and regeneration bonuses affect the hero.
+Use Assemble on an item or recipe to combine components already in the inventory.
+The recipe's fee is charged only if the hero has not already bought the recipe.
+Non-purchasable drops are listed for reference. Active and unique item abilities
+are not implemented. Browsing the shop loads item icons.

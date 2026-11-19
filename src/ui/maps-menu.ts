@@ -1,6 +1,7 @@
 import { mapFileUrl, fetchMapJson } from '../maps/map-source.js';
 import { isDoomSpiral } from '../maps/doom-spiral.js';
 import { DOTA_MAP_KEY, isDotaMap } from '../maps/dota-map-layout.js';
+import { DEFAULT_CAMERA_ALPHA, setInitialCameraAlpha } from '../render/camera-zoom.js';
 
 // Temporary SGB restriction; the built-in grid arena remains available.
 export const DOOM_SPIRAL_ONLY = true;
@@ -186,6 +187,7 @@ export async function selectDefaultArena(): Promise<void> {
   sgb.clearSgbMap(true);
   terrain.clearTerrainMesh(true);
   window._currentMapKey = 'arena';
+  if (core.camera) setInitialCameraAlpha(core.camera, DEFAULT_CAMERA_ALPHA);
   core.setGridVariant(1);
   if (!core._gridVisible) core.toggleGrid();
 }

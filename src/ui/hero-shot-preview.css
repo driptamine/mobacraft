@@ -1,0 +1,62 @@
+body:has(.shot-preview) {
+  margin: 0;
+  overflow: auto;
+  color-scheme: dark;
+  background: #10151b;
+}
+
+.shot-preview {
+  max-width: 1520px;
+  margin-inline: auto;
+  padding: clamp(18px, 3.5vw, 52px);
+  color: #f1eee7;
+  font: 16px/1.5 system-ui, sans-serif;
+}
+
+.shot-preview * { box-sizing: border-box; }
+.shot-preview header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.shot-preview h1 { margin: 0; font-size: clamp(26px, 4vw, 44px); line-height: 1.08; letter-spacing: -.03em; }
+.shot-preview a { color: #add7c8; white-space: nowrap; }
+.shot-preview-layout { display: grid; grid-template-columns: minmax(190px, 234px) minmax(0, 1fr); gap: 16px; }
+.shot-preview-controls {
+  display: grid;
+  align-content: start;
+  align-self: start;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #36424c;
+  border-radius: 9px;
+  background: #1a222a;
+}
+.shot-preview-controls label { display: grid; gap: 5px; color: #c1cad0; font-size: .86rem; }
+.shot-preview select, .shot-preview button { width: 100%; padding: 8px 10px; border: 1px solid #4c5d68; border-radius: 5px; font: inherit; }
+.shot-preview select { color: #f1eee7; background: #141c23; }
+.shot-preview button { color: #0d1d1a; background: #a7cfbf; font-weight: 680; cursor: pointer; }
+.shot-preview button:hover:enabled { background: #c1e6d6; }
+.shot-preview button:disabled { opacity: .44; cursor: default; }
+.shot-preview :focus-visible { outline: 2px solid #b1e2d1; outline-offset: 3px; }
+#shot-status { min-height: 1.5em; margin: 0; color: #c1cad0; font-size: .88rem; }
+#shot-stage {
+  position: relative;
+  height: clamp(355px, 57vw, 690px);
+  margin: 0;
+  overflow: hidden;
+  background: #111921;
+  border: 1px solid #36424c;
+  border-radius: 9px;
+}
+#shot-stage canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+
+@media (max-width: 750px) {
+  .shot-preview-layout { grid-template-columns: 1fr; }
+  .shot-preview-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 12px; }
+  .shot-preview-controls button { align-self: end; }
+  #shot-status { grid-column: 1 / -1; }
+  #shot-stage { height: clamp(280px, 58vw, 440px); }
+}
