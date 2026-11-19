@@ -60,3 +60,10 @@ Run `npm run creeps:build` after replacing the exports in
 the `RADIANT-*` and `DIRE-*` directories under `batches/creeps-lane/`
 to embed their textures in `batches/creeps-lane/final/`. The standard Dire
 body is used; its overlapping cavern variant stays hidden.
+
+After rebuilding heroes or creeps, run `npm run batches:r2:sync` with the
+`R2_BUCKET_NAME`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID` and
+`R2_SECRET_ACCESS_KEY` environment variables configured. This publishes the six
+creep models, assembled heroes from batches 1–13, and their portraits to the
+same R2 paths used in production. Git pushes do not upload these ignored files;
+the regular `models:r2:sync` command only publishes the separate `models/` tree.
