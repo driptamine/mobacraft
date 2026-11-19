@@ -40,7 +40,7 @@ test('hero meshes get the wide selection torus', () => {
 test('HQ grid offers a heroes window that trains from the roster', () => {
   const src = fs.readFileSync(path.join(root, 'src/hud/components/ActionsGrid.tsx'), 'utf8');
   assert.ok(src.includes("label=\"HEROES\""), 'HQ grid has a HEROES button');
-  assert.ok(src.includes('batch1Heroes.map((hero)'), 'modal lists the batch 1 roster');
-  assert.ok(src.includes('onClick={() => { train(hero); setHeroesOpen(false); }}'), 'picking a hero queues training');
+  assert.ok(src.includes('filterHeroes(heroBatch, heroSearch).map((hero)'), 'modal lists the searchable hero roster');
+  assert.ok(src.includes('void recruitHero(hero)'), 'picking a hero loads it before recruitment');
   assert.ok(src.includes("factionKey === 'ig'"), 'heroes window is IG HQ only');
 });

@@ -928,13 +928,20 @@ export function createBulletEntity(world: any, ownerMeshPos: any, ownerTeam: any
   const dy = targetPosition.y - ownerPosition.y;
   const dz = targetPosition.z - ownerPosition.z;
   const length = Math.hypot(dx, dy, dz) || 1;
-  const speed = 28 + Math.random() * 6;
-  const mesh = mkBox('bullet', 0.04, 0.04, 0.5);
+  const unitType = world.get(ownerEntityRef, 'soldier')?.unitType || '';
+  const siege = /^(radiant|dire)_siege_creep$/.test(unitType);
+  const rangedCreep = /^(radiant|dire)_ranged_creep$/.test(unitType);
+  const speed = siege ? 20 : rangedCreep ? 24 : 28 + Math.random() * 6;
+  const mesh = siege || rangedCreep
+    ? new THREE.Mesh(new THREE.SphereGeometry(siege ? .3 : .16, 10, 8))
+    : mkBox('bullet', 0.04, 0.04, 0.5);
   mesh.position.copy(ownerPosition);
   mesh.lookAt(targetPosition);
   const bulletMaterial = new THREE.MeshStandardMaterial();
-  bulletMaterial.color = new THREE.Color(0.87, 0.67, 0);
-  bulletMaterial.emissive = new THREE.Color(0.53, 0.4, 0);
+  bulletMaterial.color = siege ? new THREE.Color(0x756754) : rangedCreep
+    ? new THREE.Color(ownerTeam === 'blue' ? 0x69e6a3 : 0xf76c42) : new THREE.Color(0.87, 0.67, 0);
+  bulletMaterial.emissive = siege ? new THREE.Color(0) : rangedCreep
+    ? bulletMaterial.color.clone().multiplyScalar(.6) : new THREE.Color(0.53, 0.4, 0);
   mesh.material = bulletMaterial;
   world.add(id, 'bullet', {
     team: ownerTeam,
@@ -944,6 +951,8 @@ export function createBulletEntity(world: any, ownerMeshPos: any, ownerTeam: any
     vy: (dy / length) * speed,
     vz: (dz / length) * speed,
     damage: damageOverride ?? (8 + Math.random() * 5) * damageMult,
+    homing: siege || rangedCreep,
+    speed,
     age: 0,
     gravity: 0,
     aimHeight: 1.05,

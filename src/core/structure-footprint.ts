@@ -3,6 +3,7 @@ import imperialGuardFootprints from '../../stats/structure-footprints.json';
 export interface GroundPoint { x: number; z: number }
 export interface StructureFootprint { minX: number; maxX: number; minZ: number; maxZ: number }
 export interface FootprintSite {
+  heroBase?: boolean;
   type?: string;
   faction?: string;
   constructing?: boolean;
@@ -27,14 +28,14 @@ function canonicalType(type = ''): string {
 }
 
 export function hasMeasuredFootprint(site: FootprintSite): boolean {
-  return site.faction === 'ig' && !!profiles[canonicalType(site.type)];
+  return !site.heroBase && site.faction === 'ig' && !!profiles[canonicalType(site.type)];
 }
 
 /** Measured from landed crates and the finished building, without exhaust or flying turbines.
  * Coordinates include the HQ model's quarter-turn and off-centre origins.
  */
 export function structureFootprint(site: FootprintSite, construction = !!(site.constructing || site.pendingWorker)): StructureFootprint {
-  const profile = site.faction === 'ig' ? profiles[canonicalType(site.type)] : null;
+  const profile = !site.heroBase && site.faction === 'ig' ? profiles[canonicalType(site.type)] : null;
   if (profile) return profile[construction ? 'construction' : 'completed'];
   const bounds: Record<string, number> = { ...BUILDING_BOUNDS, ...STRUCTURE_BOUNDS, airfield: AIRFIELD_BOUNDS };
   const halfSize = bounds[site.type || ''] ?? 3.5;
@@ -49,7 +50,7 @@ export function worldFootprint(site: FootprintSite, construction?: boolean): Str
 
 /** The visible outline follows the drop hull, while the work boundary also clears its machinery. */
 export function selectionFootprint(site: FootprintSite, construction = !!(site.constructing || site.pendingWorker)): StructureFootprint {
-  const profile = site.faction === 'ig' ? profiles[canonicalType(site.type)] : null;
+  const profile = !site.heroBase && site.faction === 'ig' ? profiles[canonicalType(site.type)] : null;
   return profile?.selection?.[construction ? 'construction' : 'completed'] || structureFootprint(site, construction);
 }
 

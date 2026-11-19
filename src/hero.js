@@ -1,10 +1,10 @@
-// Hero registry: loads showcase hero models (axe-final/axe-combined.glb is
+// Hero registry: loads showcase hero models (batches/1/final/axe-combined.glb is
 // the first of 100+) and spawns selectable, movable display instances. Not
 // ECS units — lightweight instances on the shared gltf mixer pipeline, so
 // they animate with the normal frame tick and clean up on reset.
 //
 // Register a new hero once, then use it by key everywhere:
-//   registerHero('lina', { model: 'axe-final/lina-combined.glb' });
+//   registerHero('lina', { model: 'batches/1/final/lina-combined.glb' });
 //   await loadHero('lina');
 //   spawnHero(scene, new THREE.Vector3(x, 0, z), 'lina');
 import * as THREE from 'three';
@@ -57,20 +57,20 @@ export const HERO_BATCH_1 = [
 // registered and can be loaded on demand via loadHero(key).
 export const HERO_AUTOLOAD = ['axe', 'juggernaut', 'pudge', 'drow', 'sven', 'shadow_fiend', 'crystal_maiden', 'brewmaster', 'storm_spirit', 'obsidian_destroyer', 'earth_spirit'];
 
-// Batch-1 roster. Axe ships merged from axe-final/; the rest load their main
-// body file straight from batches/1 (parts like weapons merge later).
+// Batch-1 roster uses complete bodies and wearables assembled by
+// npm run heroes:build. Both showcase and trainable heroes load these files.
 // Scales normalize bind-pose height to ~2.5 world units (axe: 4.19 -> 0.6).
 export const HEROES = {
-  axe: { title: 'Axe', model: 'axe-final/axe-combined.glb', idle: 'idle', run: 'run', scale: 0.6, speed: 7, attackName: 'attack_main', damage: 35, hp: 650, cooldown: 1.3 },
+  axe: { title: 'Axe', model: 'batches/1/final/axe-combined.glb', idle: 'idle', run: 'run', scale: 0.6, speed: 7, attackName: 'attack_main', damage: 35, hp: 650, cooldown: 1.3 },
   crystal_maiden: { title: 'Crystal Maiden', model: 'batches/1/final/crystal_maiden-combined.glb', idle: 'background_idle', run: 'run', scale: 0.55, speed: 7, attackKind: 'ranged', attackRange: 13, damage: 20, hp: 400 },
   drow: { title: 'Drow Ranger', model: 'batches/1/final/drow-combined.glb', idle: 'idle', run: '@drow_shooting_apples_run', scale: 0.63, speed: 7, attackKind: 'ranged', attackRange: 14, attackName: 'attack_fast', damage: 25, hp: 450, cooldown: 1.3 },
   juggernaut: { title: 'Juggernaut', model: 'batches/1/final/juggernaut-combined.glb', idle: 'idle', run: 'run_run', scale: 0.56, speed: 7, attackName: 'attack01_fast', damage: 30, hp: 550, cooldown: 1.2 },
   lina: { title: 'Lina', model: 'batches/1/final/lina-combined.glb', idle: 'idle', run: 'run', scale: 0.49, speed: 7, attackKind: 'ranged', attackRange: 14, attackName: 'attack1', damage: 28, hp: 450, cooldown: 1.2 },
-  lion: { title: 'Lion', model: 'batches/1/models/heroes/lion/lion.glb', idle: 'idle', run: 'run', scale: 0.51, speed: 7, attackKind: 'ranged', attackRange: 13, attackName: 'attack', damage: 22, hp: 400, cooldown: 1.3 },
+  lion: { title: 'Lion', model: 'batches/1/final/lion-combined.glb', idle: 'idle', run: 'run', scale: 0.51, speed: 7, attackKind: 'ranged', attackRange: 13, attackName: 'attack', damage: 22, hp: 400, cooldown: 1.3 },
   pudge: { title: 'Pudge', model: 'batches/1/final/pudge-combined.glb', idle: 'ftp_dendi_portrait_look', run: 'run', scale: 0.56, speed: 7, damage: 45, hp: 750, cooldown: 1.6 },
   shadow_fiend: { title: 'Shadow Fiend', model: 'batches/1/final/shadow_fiend-combined.glb', idle: 'idle_rare_anim', run: 'run_haste', scale: 0.58, speed: 7, attackKind: 'ranged', attackRange: 14, attackName: 'cast6_requiem', deathName: 'defeat', damage: 30, hp: 450, cooldown: 1.5 },
   sven: { title: 'Sven', model: 'batches/1/final/sven-combined.glb', idle: 'idle', run: 'run', scale: 0.55, speed: 7, attackName: 'attack01', damage: 35, hp: 620, cooldown: 1.3 },
-  tidehunter: { title: 'Tidehunter', model: 'batches/1/models/heroes/tidehunter/tidehunter.glb', idle: 'idle', run: 'run', scale: 0.46, speed: 7, attackName: 'attack1', damage: 30, hp: 550 },
+  tidehunter: { title: 'Tidehunter', model: 'batches/1/final/tidehunter-combined.glb', idle: 'idle', run: 'run', scale: 0.46, speed: 7, attackName: 'attack1', damage: 30, hp: 550 },
   brewmaster: { title: 'Brewmaster', model: 'batches/12/final/brewmaster-combined.glb', idle: 'idle', run: 'Run', scale: 0.48, speed: 7, attackName: 'Attack', deathName: 'die', damage: 30, hp: 560, cooldown: 1.3 },
   storm_spirit: { title: 'Storm Spirit', model: 'batches/2/final/storm_spirit-combined.glb', idle: 'idle', run: 'run', scale: 0.67, speed: 7 },
   obsidian_destroyer: { title: 'Outworld Devourer', model: 'batches/9/final/obsidian_destroyer-combined.glb', idle: 'idle', run: 'run', scale: 0.31, speed: 7, attackKind: 'ranged', attackRange: 14, attackName: 'attack', damage: 28, hp: 475, cooldown: 1.3 },

@@ -1239,7 +1239,7 @@ export function _squadFireAll(world: any, squadEntityId: any, squadComponent: an
           soldierComponent.revealTimer = 2.5;
         }
         const targetSoldier = enemy.soldierEntityId != null ? world.get(enemy.soldierEntityId, 'soldier') : null;
-        const targetArmor = (targetSoldier?.armorClass || DEFAULT_ARMOR_CLASS) as ArmorClass;
+        const targetArmor = (targetBuildingId ? 'building_med' : targetSoldier?.armorClass || DEFAULT_ARMOR_CLASS) as ArmorClass;
         const weapon = getWeapon(soldierComponent.weapon);
         // Wiki weapon stats drive ordinary gunfire. Special projectile
         // upgrades (plasma, blaster, ...) keep their own damage profiles.

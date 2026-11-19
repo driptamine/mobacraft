@@ -57,6 +57,18 @@ export function systemBullet(world: any, deltaTime: number) {
       continue;
     }
     _bulletStart.copy(meshComponent.root.position);
+    // Lane creep orbs and siege shots track their target like Dota attacks.
+    if (bulletComponent.homing) {
+      const target = world.get(bulletComponent.targetId, 'mesh')?.root;
+      if (target) {
+        target.getWorldPosition(_bulletTarget);
+        _bulletTarget.y += bulletComponent.aimHeight ?? 0;
+        _bulletTravel.copy(_bulletTarget).sub(_bulletStart).normalize().multiplyScalar(bulletComponent.speed);
+        bulletComponent.vx = _bulletTravel.x;
+        bulletComponent.vy = _bulletTravel.y;
+        bulletComponent.vz = _bulletTravel.z;
+      }
+    }
     bulletComponent.vy -= (bulletComponent.gravity ?? 6) * deltaTime;
     meshComponent.root.position.x += bulletComponent.vx * deltaTime;
     meshComponent.root.position.y += bulletComponent.vy * deltaTime;

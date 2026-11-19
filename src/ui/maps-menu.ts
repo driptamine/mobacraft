@@ -1,4 +1,12 @@
 import { mapFileUrl, fetchMapJson } from '../maps/map-source.js';
+import { isDoomSpiral } from '../maps/doom-spiral.js';
+
+// Temporary SGB restriction; the built-in grid arena remains available.
+export const DOOM_SPIRAL_ONLY = true;
+
+function visibleMaps<T extends { path: string | null }>(entries: T[]): T[] {
+  return DOOM_SPIRAL_ONLY ? entries.filter((entry) => entry.path && isDoomSpiral(entry.path)) : entries;
+}
 
 let _selectedPath: string | null = null;
 
@@ -55,16 +63,16 @@ export function listBuiltinMaps(glob: Record<string, string> = {}, previews: Rec
 // resolved through mapUrl for the bucket or the local dev server).
 export async function listMaps(fetchImpl: typeof fetch = fetch): Promise<MapEntry[]> {
   const builtin = listBuiltinMaps();
-  if (builtin.length) return builtin;
+  if (builtin.length) return visibleMaps(builtin);
   const { listRemoteMaps } = await import('../maps/map-source.js');
   const remote = await listRemoteMaps(fetchImpl);
-  return remote.map((entry) => ({
+  return visibleMaps(remote.map((entry) => ({
     path: entry.path,
     url: entry.url,
     name: entry.name || displayName(entry.path),
     players: entry.players,
     previewUrl: entry.previewUrl,
-  }));
+  })));
 }
 
 export function entryLabel({ name, players }: { name: string; players: number | null }): string {
@@ -74,11 +82,11 @@ export function entryLabel({ name, players }: { name: string; players: number | 
 export function skirmishMapCards(builtin: MapEntry[] = listBuiltinMaps()): MapCard[] {
   return [
     { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null },
-    ...builtin,
+    ...visibleMaps(builtin),
   ];
 }
 
-// Skirmish preselects 4p_doom_spiral when shipped (null = Default Arena).
+// Skirmish preselects Doom Spiral when available.
 export function defaultSkirmishMap(cards?: MapCard[] | null): MapCard | null {
   return (cards || []).find((c) => c.path && /doom.?spiral/i.test(c.path)) || null;
 }
@@ -135,28 +143,22 @@ export function buildMapsMenu(): void {
   loading.className = 'maps-empty';
   loading.textContent = 'LOADING MAPS…';
   list.appendChild(loading);
-  void listMaps().then((entries) => {
+  void listMaps().then((maps) => {
     if (!list.isConnected) return;
+    const entries = skirmishMapCards(maps);
     _entries = entries;
     list.innerHTML = '';
-    if (!entries.length) {
-      const empty = document.createElement('div');
-      empty.className = 'maps-empty';
-      empty.textContent = 'NO MAPS (check maps/manifest.json)';
-      list.appendChild(empty);
-      return;
-    }
     renderMapsMenuEntries(list, entries);
   });
 }
 
-function renderMapsMenuEntries(list: HTMLElement, entries: MapEntry[]): void {
+function renderMapsMenuEntries(list: HTMLElement, entries: MapCard[]): void {
   entries.forEach((entry) => {
     const { path, url } = entry;
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'maps-entry' + (path === _selectedPath ? ' active' : '');
-    btn.dataset.path = path;
+    btn.dataset.path = path || 'arena';
     btn.textContent = entry.name;
     btn.addEventListener('click', () => selectMap(path, url));
     list.appendChild(btn);
@@ -164,17 +166,36 @@ function renderMapsMenuEntries(list: HTMLElement, entries: MapEntry[]): void {
   renderMapPreview(_entries.find((e) => e.path === _selectedPath) || null);
 }
 
-export async function selectMap(path: string, url: string): Promise<void> {
+export async function selectDefaultArena(): Promise<void> {
+  const [sgb, terrain, core] = await Promise.all([
+    import('../maps/sgb-upload.js'),
+    import('../maps/terrain-upload.js'),
+    import('../core/scene.js'),
+  ]);
+  sgb.clearSgbMap(true);
+  terrain.clearTerrainMesh(true);
+  window._currentMapKey = 'arena';
+  core.setGridVariant(1);
+  if (!core._gridVisible) core.toggleGrid();
+}
+
+export async function selectMap(path: string | null, url: string | null): Promise<void> {
   _selectedPath = path;
-  (window as unknown as Record<string, unknown>)._currentMapKey = path;
+  (window as unknown as Record<string, unknown>)._currentMapKey = path || 'arena';
   renderMapPreview(_entries.find((e) => e.path === path) || null);
   const list = document.getElementById('maps-list');
   if (list) {
     (Array.from(list.children) as HTMLElement[]).forEach((el) => {
       if (el.classList) {
-        el.classList.toggle('active', el.dataset.path === path);
+        el.classList.toggle('active', el.dataset.path === (path || 'arena'));
       }
     });
+  }
+  if (!path || !url) {
+    await selectDefaultArena();
+    const { resetGame } = await import('../core/game.js');
+    resetGame('arena');
+    return;
   }
   try {
     const { loadSgbUrl } = await import('../maps/sgb-upload.js');

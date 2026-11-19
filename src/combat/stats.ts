@@ -13,6 +13,7 @@
  */
 
 import { LASGUN } from '../../stats/races/ig/weapons/lasgun.js';
+import { CREEP_RANGED, CREEP_SIEGE } from '../../stats/races/dota/weapons.js';
 import { BAYONET } from '../../stats/races/ig/weapons/bayonet.js';
 import { LASPISTOL } from '../../stats/races/ig/weapons/laspistol.js';
 import { GRENADE_LAUNCHER } from '../../stats/races/ig/weapons/grenade_launcher.js';
@@ -115,6 +116,8 @@ export const WEAPONS: Record<string, WeaponProfile> = {
   bayonet: BAYONET,
   laspistol: LASPISTOL,
   sword: SWORD,
+  creep_ranged: CREEP_RANGED,
+  creep_siege: CREEP_SIEGE,
   grenade_launcher: GRENADE_LAUNCHER,
   plasma_gun: PLASMA_GUN,
   hellgun: HELLGUN,

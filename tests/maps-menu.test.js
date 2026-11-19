@@ -82,15 +82,16 @@ describe('map selection menu', () => {
     assert.deepEqual(previewState(null), { kind: 'empty' });
   });
 
-  it('skirmishMapCards leads with Default Arena then builtins', () => {
-    const builtin = [{ path: '/maps/a.sgb', url: 'u', name: 'a', players: 4, previewUrl: null }];
+  it('skirmishMapCards shows Default Arena and Doom Spiral while other SGB maps stay hidden', () => {
+    const doom = { path: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', url: 'd', name: 'Doom Spiral', players: 4, previewUrl: null };
+    const builtin = [{ path: '/maps/a.sgb', url: 'u', name: 'a', players: 4, previewUrl: null }, doom];
     const cards = skirmishMapCards(builtin);
-    assert.equal(cards.length, 2);
-    assert.deepEqual(cards[0], { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null });
-    assert.equal(cards[1], builtin[0]);
+    assert.deepEqual(cards, [
+      { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null }, doom,
+    ]);
   });
 
-  it('skirmishMapCards defaults to arena alone when no maps resolve', () => {
+  it('skirmishMapCards keeps Default Arena available when Doom Spiral is unavailable', () => {
     assert.deepEqual(skirmishMapCards([]), [
       { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null },
     ]);
@@ -130,11 +131,14 @@ describe('map selection menu', () => {
     assert.deepEqual(listBuiltinMaps({}, {}), [], 'empty globs in production builds');
     const stubFetch = async (url) => {
       assert.equal(String(url), '/maps/manifest.json');
-      return { ok: true, json: async () => [{ path: '/maps/a/a.sgb', name: 'a land', players: 4, preview: '/maps/a/a_icon_custom.png' }] };
+      return { ok: true, json: async () => [
+        { path: '/maps/a/a.sgb', name: 'a land', players: 4, preview: '/maps/a/a_icon_custom.png' },
+        { path: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', name: 'Doom Spiral', players: 4, preview: '/maps/4p_doom_spiral/4p_doom_spiral_icon_custom.png' },
+      ] };
     };
     resetMapManifestForTests();
     assert.deepEqual(await listMaps(stubFetch), [{
-      path: '/maps/a/a.sgb', url: '/maps/a/a.sgb', name: 'a land', players: 4, previewUrl: '/maps/a/a_icon_custom.png',
+      path: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', url: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', name: 'Doom Spiral', players: 4, previewUrl: '/maps/4p_doom_spiral/4p_doom_spiral_icon_custom.png',
     }]);
     resetMapManifestForTests();
     assert.deepEqual(await listMaps(async () => ({ ok: false, status: 404 })), [], 'failed manifest means no maps, not a crash');

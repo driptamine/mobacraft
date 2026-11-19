@@ -13,6 +13,8 @@
 
 export interface UnitStats {
   model?: string;
+  // Keep large optional hero models out of faction boot loading.
+  lazyLoad?: boolean;
   hiddenNodes?: string[];
   // Animation JSON varies per model ({idle/run/...} vs {phases: {...}}),
   // so the field stays unknown; readers narrow per use.

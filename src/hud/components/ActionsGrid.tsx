@@ -1,11 +1,12 @@
 import { sendSkirmishCommand } from '../../net/skirmish-input.js';
 import type { JSX } from 'react';
 import React from 'react';
+import { createPortal } from 'react-dom';
 import {
   world, selBuilder, selBuildings, selSquads, selListeningPost, requisition, setRequisition, energy, setEnergy, PLAYER, COSTS, PROD_TIME, SQUAD_MAX,
   researchedTech,
 } from '../../core/scene.js';
-import { FACTIONS, getStructureConfig } from '../../factions.js';
+import { FACTIONS, getStructureConfig, loadFactionUnitModel } from '../../factions.js';
 import type { FactionAddonEntry, FactionIcons, FactionResearchEntry, FactionStructureEntry, ProductionItem } from '../../factions/types.js';
 import { startBuild, demolishBuilding, setBuilderCommand, setBuilderStance, clearBuilderCommand, buildAddon, armFlyTargeting } from '../../core/input.js';
 import { netTrainUnit, netDemolishBuilding } from '../../net/multiplayer.js';
@@ -13,7 +14,7 @@ import { updateHUD } from '../../core/hud.js';
 import { buildMenuOpen, setBuildMenuOpen } from '../store.js';
 import { getViewKind, getAliveGroups, computeSquadData, getBarracksProduction, getStructureProduction, unitTooltip, structureTooltip, addonTooltip, entityFaction, workerDisplayName } from '../data.js';
 import { ActionButton, CostGlyph, R2Img } from '../bits.jsx';
-import { batch1Heroes } from '../../../stats/races/batch1/heroes.js';
+import { filterHeroes, heroBatches, heroNames, type RecruitableHero } from '../../../stats/races/heroes.js';
 import { assetUrl } from '../../render/assets.js';
 import { ActionsGridDiv, CommandGridDiv, CommandEmptySlot } from '../primitives.jsx';
 import { UnitCommandGrid } from './UnitCommandGrid.jsx';
@@ -480,6 +481,11 @@ function SquadActions(): JSX.Element {
 function HQActions(): JSX.Element | null {
   // Hook first: the early return below must not reorder hooks between renders.
   const [heroesOpen, setHeroesOpen] = React.useState(false);
+  const [heroBatch, setHeroBatch] = React.useState<number | null>(null);
+  const [heroSearch, setHeroSearch] = React.useState('');
+  const [heroLoading, setHeroLoading] = React.useState<string | null>(null);
+  const [heroError, setHeroError] = React.useState('');
+  const heroRequest = React.useRef(false);
   const id = selBuildings[0];
   const building = world.get(id, 'building');
   if (!building || building.type !== 'hq') return null;
@@ -492,9 +498,11 @@ function HQActions(): JSX.Element | null {
   const factionIcons: FactionIcons = faction?.icons || {};
 
   const train = (item: any) => {
+    if (!item) return false;
+    if (building.heroBase && !heroNames.has(item.name)) return false;
     const cost = item.cost || COSTS[item.name as keyof typeof COSTS];
     const total = item.time || PROD_TIME[item.name as keyof typeof PROD_TIME] || 4;
-    if (building.queue.length >= 6 || building.constructing || requisition < cost) return;
+    if (building.queue.length >= 6 || building.constructing || requisition < cost) return false;
     if (window._multiplayerMode) {
       netTrainUnit(id, item.name);
     } else {
@@ -502,6 +510,27 @@ function HQActions(): JSX.Element | null {
       building.queue.push({ type: item.name, progress: 0, total });
     }
     updateHUD();
+    return true;
+  };
+
+  const recruitHero = async (hero: RecruitableHero) => {
+    if (!hero.available || heroRequest.current || building.queue.length >= 6 || building.constructing || requisition < (hero.cost || 0)) return;
+    const requestWorld = world;
+    heroRequest.current = true;
+    setHeroLoading(hero.name);
+    setHeroError('');
+    try {
+      if (hero.lazyLoad) await loadFactionUnitModel(factionKey, hero.name);
+      // A map reset or destroyed HQ during a download cancels recruitment.
+      if (world !== requestWorld || world.get(id, 'building') !== building) return;
+      if (train(hero)) setHeroesOpen(false);
+      else setHeroError('The queue or available requisition changed. Select the hero again.');
+    } catch {
+      setHeroError(`Could not load ${hero.title}. Select the hero to retry.`);
+    } finally {
+      heroRequest.current = false;
+      setHeroLoading(null);
+    }
   };
 
   const payAddon = (key: string) => {
@@ -557,70 +586,88 @@ function HQActions(): JSX.Element | null {
   };
 
   const buttons: JSX.Element[] = [];
-  buttons.push(unitBtn('guardsmen'));
-  buttons.push(unitBtn('builder'));
+  if (!building.heroBase) {
+    buttons.push(unitBtn('guardsmen'));
+    buttons.push(unitBtn('builder'));
+  }
   if (factionKey === 'ig') {
     buttons.push(
       <ActionButton
         key="heroes"
-        icon="assets/batch1/axe.jpg"
+        icon="assets/batch1/axe.png"
         label="HEROES"
         cost=""
-        tooltip="HEROES\nOpen the batch 1 hero roster and recruit one"
+        tooltip="HEROES\nChoose a hero from batches 1–13"
         disabled={building.constructing}
-        onClick={() => setHeroesOpen(true)}
+        onClick={() => { setHeroBatch(null); setHeroSearch(''); setHeroesOpen(true); }}
       />,
     );
   }
-  buttons.push(<CommandEmptySlot key="c0" />);
-  buttons.push(<CommandEmptySlot key="d0" />);
-  buttons.push(unitBtn('commissar'));
-  buttons.push(templeBtn('telepathica_temple', 'psyker'));
-  buttons.push(templeBtn('ministorum_temple', 'priest'));
-  buttons.push(templeBtn('vindicare_temple', 'vindicare'));
-  buttons.push(addonBtn('battle_command', 'BATTLE COMMAND\nTIER 2'));
-  buttons.push(<CommandEmptySlot key="b2" />);
-  buttons.push(<CommandEmptySlot key="c2" />);
-  buttons.push(addonBtn('long_range_scanner', 'LONG RANGE\nSCANNER'));
+  if (!building.heroBase) {
+    buttons.push(<CommandEmptySlot key="c0" />);
+    buttons.push(<CommandEmptySlot key="d0" />);
+    buttons.push(unitBtn('commissar'));
+    buttons.push(templeBtn('telepathica_temple', 'psyker'));
+    buttons.push(templeBtn('ministorum_temple', 'priest'));
+    buttons.push(templeBtn('vindicare_temple', 'vindicare'));
+    buttons.push(addonBtn('battle_command', 'BATTLE COMMAND\nTIER 2'));
+    buttons.push(<CommandEmptySlot key="b2" />);
+    buttons.push(<CommandEmptySlot key="c2" />);
+    buttons.push(addonBtn('long_range_scanner', 'LONG RANGE\nSCANNER'));
+  }
 
   return (
     <>
       <CommandGridDiv>{buttons}</CommandGridDiv>
-      {heroesOpen && (
+      {heroesOpen && createPortal(
         <div
-          style={{ position: 'fixed', inset: 0, zIndex: 10002, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.6)' }}
-          onClick={() => setHeroesOpen(false)}
+          style={{ position: 'fixed', inset: 0, zIndex: 10002, display: 'flex', background: '#0d1110', pointerEvents: 'auto' }}
+          onPointerDown={(e) => e.stopPropagation()}
+          onKeyDown={(e) => { e.stopPropagation(); if (e.key === 'Escape') setHeroesOpen(false); }}
         >
           <div
-            style={{ width: 'min(560px, 92vw)', maxHeight: '86vh', overflowY: 'auto', background: 'linear-gradient(135deg, #1a1d1a, #26231f)', border: '2px solid #8c9687', borderRadius: 10, padding: 16 }}
+            role="dialog"
+            aria-label="Hero roster"
+            aria-modal="true"
+            style={{ width: '100%', height: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', minHeight: 0, background: 'linear-gradient(135deg, #1a1d1a, #26231f)', padding: 'clamp(10px, 1.3vw, 24px)' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <span style={{ color: '#e1cd84', fontSize: 14, letterSpacing: '.15em' }}>BATCH 1 HEROES</span>
+              <span style={{ color: '#e1cd84', fontSize: 14, letterSpacing: '.12em' }}>HEROES · {filterHeroes(heroBatch, heroSearch).length} · BATCHES 1–13</span>
               <button type="button" style={{ cursor: 'pointer', background: '#3a3f36', color: '#deded0', border: '1px solid #7d8874', borderRadius: 4, padding: '4px 12px' }} onClick={() => setHeroesOpen(false)}>CLOSE</button>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 8 }}>
-              {batch1Heroes.map((hero) => {
+            <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+              <input autoFocus aria-label="Search heroes" placeholder="Search heroes…" value={heroSearch} onChange={(e) => setHeroSearch(e.target.value)} style={{ minWidth: 0, flex: 1, padding: 8, background: '#111411', color: '#deded0', border: '1px solid #7d8874', borderRadius: 4 }} />
+              <select aria-label="Hero batch" value={heroBatch ?? 'all'} onChange={(e) => setHeroBatch(e.target.value === 'all' ? null : Number(e.target.value))} style={{ padding: 8, background: '#111411', color: '#deded0', border: '1px solid #7d8874', borderRadius: 4 }}>
+                <option value="all">All batches</option>
+                {heroBatches.map((batch) => <option key={batch} value={batch}>Batch {batch}</option>)}
+              </select>
+            </div>
+            {heroLoading && <div role="status" style={{ color: '#e1cd84', marginBottom: 10 }}>Loading hero…</div>}
+            {heroError && <div role="alert" style={{ color: '#ff9a86', marginBottom: 10 }}>{heroError}</div>}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(72px, 5.6vw, 104px), 1fr))', gap: 6, overflowY: 'auto', flex: 1, minHeight: 0, alignContent: 'start' }}>
+              {filterHeroes(heroBatch, heroSearch).map((hero) => {
                 const cost = hero.cost || 0;
-                const blocked = building.queue.length >= 6 || building.constructing || requisition < cost;
+                const blocked = !hero.available || !!heroLoading || building.queue.length >= 6 || building.constructing || requisition < cost;
                 return (
                   <button
                     key={hero.name}
                     type="button"
-                    title={`${(hero.name || '').toUpperCase().replace(/_/g, ' ')}\nCOST ${cost}R · TIME ${hero.time || 20}s\nHP ${hero.hp}`}
+                    title={hero.available ? `${hero.title}\nCOST ${cost}R · TIME ${hero.time || 20}s\nHP ${hero.hp}` : `${hero.title}\nBase model is missing from the source assets`}
                     disabled={blocked}
-                    style={{ cursor: blocked ? 'default' : 'pointer', opacity: blocked ? 0.45 : 1, background: '#111411', border: '1px solid #7d8874', borderRadius: 6, padding: 6, color: '#deded0', fontSize: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
-                    onClick={() => { train(hero); setHeroesOpen(false); }}
+                    style={{ cursor: blocked ? 'default' : 'pointer', opacity: blocked ? 0.45 : 1, minWidth: 0, background: '#111411', border: '1px solid #7d8874', borderRadius: 6, padding: 4, color: '#deded0', fontSize: 10, lineHeight: 1.1, display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: 2 }}
+                    onClick={() => { void recruitHero(hero); }}
                   >
-                    <R2Img src={assetUrl(hero.icon || '❓')} alt="" style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 4 }} />
-                    <span>{(hero.name || '').toUpperCase().replace(/_/g, ' ')}</span>
-                    <span style={{ color: '#ffc850' }}>{`${cost}R`}</span>
+                    <R2Img src={assetUrl(hero.icon || '❓')} alt={hero.title} loading="lazy" style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: 4 }} />
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{hero.title.toUpperCase()}</span>
+                    <span style={{ color: '#a1aa9a', display: 'flex', justifyContent: 'space-between', gap: 2, fontSize: 9 }}>B{hero.batch}<span style={{ color: '#ffc850' }}>{hero.available ? `${cost}R` : 'UNAVAILABLE'}</span></span>
                   </button>
                 );
               })}
             </div>
+            {!filterHeroes(heroBatch, heroSearch).length && <div style={{ color: '#deded0', padding: 16 }}>No heroes found</div>}
           </div>
-        </div>
+        </div>, document.body,
       )}
     </>
   );

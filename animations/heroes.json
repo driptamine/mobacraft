@@ -1,0 +1,2903 @@
+{
+  "antimage": {
+    "batch": 2,
+    "title": "Anti-Mage",
+    "model": "batches/2/final/antimage-combined.glb",
+    "sourceModel": "batches/2/models/heroes/antimage/antimage.glb",
+    "parts": [
+      "antimage_arms.glb",
+      "antimage_belt.glb",
+      "antimage_chest.glb",
+      "antimage_head.glb",
+      "antimage_offhand_weapon.glb",
+      "antimage_weapon.glb"
+    ],
+    "icon": "assets/heroes/antimage.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/antimage.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn",
+      "victory": "victory_versus"
+    },
+    "clipCount": 115
+  },
+  "bristleback": {
+    "batch": 2,
+    "title": "Bristleback",
+    "model": "batches/2/final/bristleback-combined.glb",
+    "sourceModel": "batches/2/models/heroes/bristleback/bristleback.glb",
+    "parts": [
+      "bristleback_back.glb",
+      "bristleback_bracer.glb",
+      "bristleback_head.glb",
+      "bristleback_necklace.glb",
+      "bristleback_weapon.glb"
+    ],
+    "icon": "assets/heroes/bristleback.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bristleback.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 514
+  },
+  "dazzle": {
+    "batch": 2,
+    "title": "Dazzle",
+    "model": "batches/2/final/dazzle-combined.glb",
+    "sourceModel": "batches/2/models/heroes/dazzle/dazzle.glb",
+    "parts": [
+      "dazzle_dress.glb",
+      "dazzle_mohawk.glb",
+      "dazzle_shoulder.glb",
+      "dazzle_sleeve.glb",
+      "dazzle_staff.glb"
+    ],
+    "icon": "assets/heroes/dazzle.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dazzle.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_01_anim",
+      "firing": "attack_01_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 125
+  },
+  "earthshaker": {
+    "batch": 2,
+    "title": "Earthshaker",
+    "model": "batches/2/final/earthshaker-combined.glb",
+    "sourceModel": "batches/2/models/heroes/earthshaker/earthshaker.glb",
+    "parts": [
+      "belt.glb",
+      "bracers.glb",
+      "totem.glb"
+    ],
+    "icon": "assets/heroes/earthshaker.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/earthshaker.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 61
+  },
+  "kunkka": {
+    "batch": 2,
+    "title": "Kunkka",
+    "model": "batches/2/final/kunkka-combined.glb",
+    "sourceModel": "batches/2/models/heroes/kunkka/kunkka.glb",
+    "parts": [],
+    "icon": "assets/heroes/kunkka.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/kunkka.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 58
+  },
+  "phantom_assassin": {
+    "batch": 2,
+    "title": "Phantom Assassin",
+    "model": "batches/2/final/phantom_assassin-combined.glb",
+    "sourceModel": "batches/2/models/heroes/phantom_assassin/phantom_assassin.glb",
+    "parts": [
+      "phantom_assassin_cape.glb",
+      "phantom_assassin_daggers.glb",
+      "phantom_assassin_helmet.glb",
+      "phantom_assassin_shoulders.glb",
+      "phantom_assassin_weapon.glb"
+    ],
+    "icon": "assets/heroes/phantom_assassin.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phantom_assassin.png",
+    "ranged": false,
+    "actions": {
+      "idle": "phantom_assassin_idle_alt1_anim",
+      "run": "@phantom_assassin_run_anim",
+      "melee": "phantom_assassin_attack_anim",
+      "firing": "phantom_assassin_attack_anim",
+      "stun": "phantom_assassin_stun_anim",
+      "die_normal_1": "phantom_assassin_die",
+      "die_normal_2": "phantom_assassin_die",
+      "spawn": "phantom_assassin_spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 189
+  },
+  "queenofpain": {
+    "batch": 2,
+    "title": "Queen of Pain",
+    "model": "batches/2/final/queenofpain-combined.glb",
+    "sourceModel": "batches/2/models/heroes/queenofpain/queenofpain.glb",
+    "parts": [
+      "hair.glb",
+      "queenofpain_legs.glb",
+      "queenofpain_weapon.glb",
+      "shoulders.glb",
+      "wings.glb"
+    ],
+    "icon": "assets/heroes/queenofpain.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/queenofpain.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle",
+      "run": "run_anim",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 61
+  },
+  "sniper": {
+    "batch": 2,
+    "title": "Sniper",
+    "model": "batches/2/final/sniper-combined.glb",
+    "sourceModel": "batches/2/models/heroes/sniper/sniper.glb",
+    "parts": [
+      "bracer.glb",
+      "cape.glb",
+      "headitem.glb",
+      "shoulder.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/sniper.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sniper.png",
+    "ranged": true,
+    "actions": {
+      "idle": "sniper_idle_anim",
+      "run": "sniper_run_anim",
+      "melee": "sniper_attack_anim",
+      "firing": "sniper_attack_anim",
+      "stun": "sniper_stun_anim",
+      "die_normal_1": "sniper_death",
+      "die_normal_2": "sniper_death",
+      "spawn": "loadout_spawn",
+      "victory": "sniper_victory"
+    },
+    "clipCount": 126
+  },
+  "storm_spirit": {
+    "batch": 2,
+    "title": "Storm Spirit",
+    "model": "batches/2/final/storm_spirit-combined.glb",
+    "sourceModel": "batches/2/models/heroes/storm_spirit/storm_spirit.glb",
+    "parts": [
+      "storm_hat.glb",
+      "storm_shirt.glb",
+      "storm_shoulder.glb"
+    ],
+    "icon": "assets/heroes/storm_spirit.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/storm_spirit.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_1_anim",
+      "firing": "attack_1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 107
+  },
+  "vengeful": {
+    "batch": 2,
+    "title": "Vengeful Spirit",
+    "model": "batches/2/final/vengeful-combined.glb",
+    "sourceModel": "batches/2/models/heroes/vengeful/vengeful.glb",
+    "parts": [
+      "vengeful_hair.glb",
+      "vengeful_lowerbody.glb",
+      "vengeful_upperbody.glb",
+      "vengeful_weapon.glb"
+    ],
+    "icon": "assets/heroes/vengeful.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/vengefulspirit.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "runN_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 42
+  },
+  "witchdoctor": {
+    "batch": 2,
+    "title": "Witch Doctor",
+    "model": "batches/2/final/witchdoctor-combined.glb",
+    "sourceModel": "batches/2/models/heroes/witchdoctor/witchdoctor.glb",
+    "parts": [
+      "witchdoctor_bag.glb",
+      "witchdoctor_belt.glb",
+      "witchdoctor_head.glb",
+      "witchdoctor_skull.glb",
+      "witchdoctor_staff.glb"
+    ],
+    "icon": "assets/heroes/witchdoctor.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/witch_doctor.png",
+    "ranged": true,
+    "actions": {
+      "idle": "witchdoctor_idle_anim",
+      "run": "witchdoctor_run_anim",
+      "melee": "witchdoctor_attack_anim",
+      "firing": "witchdoctor_attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "witchdoctor_death",
+      "die_normal_2": "witchdoctor_death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 80
+  },
+  "batrider": {
+    "batch": 3,
+    "title": "Batrider",
+    "model": "batches/3/final/batrider-combined.glb",
+    "sourceModel": "batches/3/models/heroes/batrider/batrider.glb",
+    "parts": [
+      "batrider_belt.glb",
+      "batrider_cloak.glb",
+      "batrider_head.glb",
+      "batrider_mount.glb"
+    ],
+    "icon": "assets/heroes/batrider.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/batrider.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle",
+      "run": "run_anim",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 89
+  },
+  "chaos_knight": {
+    "batch": 3,
+    "title": "Chaos Knight",
+    "model": "batches/3/final/chaos_knight-combined.glb",
+    "sourceModel": "batches/3/models/heroes/chaos_knight/chaos_knight.glb",
+    "parts": [
+      "chaos_knight_helmet.glb",
+      "chaos_knight_horse_amour.glb",
+      "chaos_knight_horse_head.glb",
+      "chaos_knight_mace.glb",
+      "chaos_knight_mount.glb",
+      "chaos_knight_shield.glb",
+      "chaos_knight_shoulderpads.glb"
+    ],
+    "icon": "assets/heroes/chaos_knight.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/chaos_knight.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 54
+  },
+  "disruptor": {
+    "batch": 3,
+    "title": "Disruptor",
+    "model": "batches/3/final/disruptor-combined.glb",
+    "sourceModel": "batches/3/models/heroes/disruptor/disruptor.glb",
+    "parts": [
+      "back.glb",
+      "bracers.glb",
+      "hair.glb",
+      "mount.glb",
+      "shoulder.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/disruptor.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/disruptor.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 107
+  },
+  "lich": {
+    "batch": 3,
+    "title": "Lich",
+    "model": "batches/3/final/lich-combined.glb",
+    "sourceModel": "batches/3/models/heroes/lich/lich.glb",
+    "parts": [
+      "lich_bracer.glb",
+      "lich_dress.glb",
+      "lich_horns.glb",
+      "lich_neck_rock.glb"
+    ],
+    "icon": "assets/heroes/lich.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lich.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 47
+  },
+  "luna": {
+    "batch": 3,
+    "title": "Luna",
+    "model": "batches/3/final/luna-combined.glb",
+    "sourceModel": "batches/3/models/heroes/luna/luna.glb",
+    "parts": [
+      "luna_head.glb",
+      "luna_helmet.glb",
+      "luna_mount.glb",
+      "luna_shield.glb",
+      "luna_shoulder.glb",
+      "luna_weapon.glb"
+    ],
+    "icon": "assets/heroes/luna.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/luna.png",
+    "ranged": true,
+    "actions": {
+      "idle": "luna_idle_anim",
+      "run": "@luna_run_anim",
+      "melee": "luna_attack_anim",
+      "firing": "luna_attack_anim",
+      "stun": "luna_stun_anim",
+      "die_normal_1": "luna_death",
+      "die_normal_2": "luna_death",
+      "spawn": "luna_spawn_anim",
+      "victory": "luna_victory_anim"
+    },
+    "clipCount": 110
+  },
+  "mirana": {
+    "batch": 3,
+    "title": "Mirana",
+    "model": "batches/3/final/mirana-combined.glb",
+    "sourceModel": "batches/3/models/heroes/mirana/mirana.glb",
+    "parts": [
+      "bow.glb",
+      "bracers.glb",
+      "cape.glb",
+      "head_item.glb",
+      "mount.glb",
+      "quiver.glb",
+      "shoulders.glb"
+    ],
+    "icon": "assets/heroes/mirana.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mirana.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 100
+  },
+  "rubick": {
+    "batch": 3,
+    "title": "Rubick",
+    "model": "batches/3/final/rubick-combined.glb",
+    "sourceModel": "batches/3/models/heroes/rubick/rubick.glb",
+    "parts": [
+      "cape.glb",
+      "rubick_head.glb",
+      "rubick_staff.glb",
+      "shoulder.glb"
+    ],
+    "icon": "assets/heroes/rubick.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/rubick.png",
+    "ranged": true,
+    "actions": {
+      "idle": "rubick_steal_brfireflyb_idle_anim",
+      "run": "rubick_steal_sbruncharge_anim",
+      "melee": "rubick_attack_anim",
+      "firing": "rubick_attack_anim",
+      "stun": "rubick_stun",
+      "die_normal_1": "rubick_die",
+      "die_normal_2": "rubick_die",
+      "spawn": "loadout_spawn",
+      "victory": "rubick_victory_anim"
+    },
+    "clipCount": 431
+  },
+  "slardar": {
+    "batch": 3,
+    "title": "Slardar",
+    "model": "batches/3/final/slardar-combined.glb",
+    "sourceModel": "batches/3/models/heroes/slardar/slardar.glb",
+    "parts": [
+      "slardar_arms.glb",
+      "slardar_back.glb",
+      "slardar_weapon.glb"
+    ],
+    "icon": "assets/heroes/slardar.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/slardar.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death_right",
+      "die_normal_2": "death_right",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 68
+  },
+  "ursa": {
+    "batch": 3,
+    "title": "Ursa",
+    "model": "batches/3/final/ursa-combined.glb",
+    "sourceModel": "batches/3/models/heroes/ursa/ursa.glb",
+    "parts": [
+      "bracers.glb",
+      "fur.glb",
+      "helmet.glb",
+      "skirt.glb"
+    ],
+    "icon": "assets/heroes/ursa.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ursa.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack2_anim",
+      "firing": "attack2_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_temp",
+      "victory": "victory"
+    },
+    "clipCount": 70
+  },
+  "dark_seer": {
+    "batch": 4,
+    "title": "Dark Seer",
+    "model": "batches/4/final/dark_seer-combined.glb",
+    "sourceModel": "batches/4/models/heroes/dark_seer/dark_seer.glb",
+    "parts": [
+      "dark_seer_arm.glb",
+      "dark_seer_back.glb",
+      "dark_seer_head.glb",
+      "dark_seer_neck.glb",
+      "dark_seer_waist.glb"
+    ],
+    "icon": "assets/heroes/dark_seer.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dark_seer.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 114
+  },
+  "dragon_knight": {
+    "batch": 4,
+    "title": "Dragon Knight",
+    "model": "batches/4/final/dragon_knight-combined.glb",
+    "sourceModel": "batches/4/models/heroes/dragon_knight/dragon_knight.glb",
+    "parts": [
+      "bracers.glb",
+      "helmet.glb",
+      "shield.glb",
+      "shoulders.glb",
+      "skirt.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/dragon_knight.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dragon_knight.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 66
+  },
+  "life_stealer": {
+    "batch": 4,
+    "title": "Lifestealer",
+    "model": "batches/4/final/life_stealer-combined.glb",
+    "sourceModel": "batches/4/models/heroes/life_stealer/life_stealer.glb",
+    "parts": [
+      "life_stealer_chains.glb",
+      "life_stealer_loincloth.glb"
+    ],
+    "icon": "assets/heroes/life_stealer.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/life_stealer.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_loadout",
+      "victory": "victory"
+    },
+    "clipCount": 168
+  },
+  "ogre_magi": {
+    "batch": 4,
+    "title": "Ogre Magi",
+    "model": "batches/4/final/ogre_magi-combined.glb",
+    "sourceModel": "batches/4/models/heroes/ogre_magi/ogre_magi.glb",
+    "parts": [
+      "ogre_magi_belt.glb",
+      "ogre_magi_bracers.glb",
+      "ogre_magi_cape.glb",
+      "ogre_magi_hats.glb",
+      "ogre_magi_weapon.glb"
+    ],
+    "icon": "assets/heroes/ogre_magi.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ogre_magi.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "dieBack",
+      "die_normal_2": "dieBack",
+      "spawn": "spawn_anim",
+      "victory": "victory_loop_anim"
+    },
+    "clipCount": 85
+  },
+  "phantom_lancer": {
+    "batch": 4,
+    "title": "Phantom Lancer",
+    "model": "batches/4/final/phantom_lancer-combined.glb",
+    "sourceModel": "batches/4/models/heroes/phantom_lancer/phantom_lancer.glb",
+    "parts": [
+      "phantom_lancer_belt.glb",
+      "phantom_lancer_gauntlet.glb",
+      "phantom_lancer_head.glb",
+      "phantom_lancer_shoulderpad.glb",
+      "phantom_lancer_weapon.glb"
+    ],
+    "icon": "assets/heroes/phantom_lancer.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phantom_lancer.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 71
+  },
+  "puck": {
+    "batch": 4,
+    "title": "Puck",
+    "model": "batches/4/final/puck-combined.glb",
+    "sourceModel": "batches/4/models/heroes/puck/puck.glb",
+    "parts": [
+      "puck_horns.glb",
+      "puck_tail.glb",
+      "puck_wings.glb"
+    ],
+    "icon": "assets/heroes/puck.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/puck.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 198
+  },
+  "razor": {
+    "batch": 4,
+    "title": "Razor",
+    "model": "batches/4/final/razor-combined.glb",
+    "sourceModel": "batches/4/models/heroes/razor/razor.glb",
+    "parts": [
+      "razor_armor.glb",
+      "razor_bracers.glb",
+      "razor_head.glb",
+      "razor_robe.glb",
+      "razor_weapon.glb"
+    ],
+    "icon": "assets/heroes/razor.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/razor.png",
+    "ranged": true,
+    "actions": {
+      "idle": "razor_idle_anim",
+      "run": "run_anim",
+      "melee": "razor_attack_anim",
+      "firing": "razor_attack_anim",
+      "stun": "razor_stun_anim",
+      "die_normal_1": "razor_death",
+      "die_normal_2": "razor_death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 64
+  },
+  "shadowshaman": {
+    "batch": 4,
+    "title": "Shadow Shaman",
+    "model": "batches/4/final/shadowshaman-combined.glb",
+    "sourceModel": "batches/4/models/heroes/shadowshaman/shadowshaman.glb",
+    "parts": [
+      "armarmor.glb",
+      "belt.glb",
+      "head.glb",
+      "helmet.glb",
+      "weapon.glb",
+      "weapon_offhand.glb"
+    ],
+    "icon": "assets/heroes/shadowshaman.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shadow_shaman.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory_start"
+    },
+    "clipCount": 78
+  },
+  "viper": {
+    "batch": 4,
+    "title": "Viper",
+    "model": "batches/4/final/viper-combined.glb",
+    "sourceModel": "batches/4/models/heroes/viper/viper.glb",
+    "parts": [
+      "viper_back.glb"
+    ],
+    "icon": "assets/heroes/viper.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/viper.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 92
+  },
+  "windrunner": {
+    "batch": 4,
+    "title": "Windranger",
+    "model": "batches/4/final/windrunner-combined.glb",
+    "sourceModel": "batches/4/models/heroes/windrunner/windrunner.glb",
+    "parts": [
+      "windrunner_bow.glb",
+      "windrunner_cape.glb",
+      "windrunner_head.glb",
+      "windrunner_quiver.glb",
+      "windrunner_shoulderpads.glb"
+    ],
+    "icon": "assets/heroes/windrunner.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/windrunner.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "runN_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 304
+  },
+  "invoker": {
+    "batch": 5,
+    "title": "Invoker",
+    "model": "batches/5/final/invoker-combined.glb",
+    "sourceModel": "batches/5/models/heroes/invoker/invoker.glb",
+    "parts": [
+      "invoker_bracer.glb",
+      "invoker_cape.glb",
+      "invoker_dress.glb",
+      "invoker_hair.glb",
+      "invoker_head.glb",
+      "invoker_shoulder.glb"
+    ],
+    "icon": "assets/heroes/invoker.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death2",
+      "die_normal_2": "death2",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 77
+  },
+  "jakiro": {
+    "batch": 5,
+    "title": "Jakiro",
+    "model": "batches/5/final/jakiro-combined.glb",
+    "sourceModel": "batches/5/models/heroes/jakiro/jakiro.glb",
+    "parts": [
+      "jakiro_wings.glb"
+    ],
+    "icon": "assets/heroes/jakiro.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/jakiro.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle",
+      "run": "run",
+      "melee": "@attack",
+      "firing": "@attack",
+      "stun": "stun",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn_new_effigy",
+      "victory": "victory_loop_effigy"
+    },
+    "clipCount": 144
+  },
+  "lanaya": {
+    "batch": 5,
+    "title": "Templar Assassin",
+    "model": "batches/5/final/lanaya-combined.glb",
+    "sourceModel": "batches/5/models/heroes/lanaya/lanaya.glb",
+    "parts": [
+      "lanaya_bracers_skirt.glb",
+      "lanaya_cowl_shoulder.glb",
+      "lanaya_hair.glb"
+    ],
+    "icon": "assets/heroes/lanaya.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/templar_assassin.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_L_anim",
+      "firing": "attack_L_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 87
+  },
+  "legion_commander": {
+    "batch": 5,
+    "title": "Legion Commander",
+    "model": "batches/5/final/legion_commander-combined.glb",
+    "sourceModel": "batches/5/models/heroes/legion_commander/legion_commander.glb",
+    "parts": [
+      "legion_commander_arms.glb",
+      "legion_commander_back.glb",
+      "legion_commander_head.glb",
+      "legion_commander_shoulders.glb",
+      "legion_commander_weapon.glb"
+    ],
+    "icon": "assets/heroes/legion_commander.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/legion_commander.png",
+    "ranged": false,
+    "actions": {
+      "idle": "legion_commander_idle_anim",
+      "run": "@legion_commander_run_injured_anim",
+      "melee": "legion_commander_attack_anim",
+      "firing": "legion_commander_attack_anim",
+      "stun": "legion_commander_stun_anim",
+      "die_normal_1": "legion_commander_die",
+      "die_normal_2": "legion_commander_die",
+      "spawn": "lc_questidle_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 208
+  },
+  "slark": {
+    "batch": 5,
+    "title": "Slark",
+    "model": "batches/5/final/slark-combined.glb",
+    "sourceModel": "batches/5/models/heroes/slark/slark.glb",
+    "parts": [
+      "bracer.glb",
+      "cape.glb",
+      "hood.glb",
+      "shoulder.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/slark.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/slark.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 159
+  },
+  "spirit_breaker": {
+    "batch": 5,
+    "title": "Spirit Breaker",
+    "model": "batches/5/final/spirit_breaker-combined.glb",
+    "sourceModel": "batches/5/models/heroes/spirit_breaker/spirit_breaker.glb",
+    "parts": [
+      "spirit_breaker_bracers.glb",
+      "spirit_breaker_head.glb",
+      "spirit_breaker_horns.glb",
+      "spirit_breaker_lower_armor.glb",
+      "spirit_breaker_shoulders.glb",
+      "spirit_breaker_tail.glb",
+      "spirit_breaker_weapon.glb"
+    ],
+    "icon": "assets/heroes/spirit_breaker.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/spirit_breaker.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 72
+  },
+  "terrorblade": {
+    "batch": 5,
+    "title": "Terrorblade",
+    "model": "batches/5/final/terrorblade-combined.glb",
+    "sourceModel": "batches/5/models/heroes/terrorblade/terrorblade.glb",
+    "parts": [
+      "armor.glb",
+      "horns.glb",
+      "weapon.glb",
+      "wings.glb"
+    ],
+    "icon": "assets/heroes/terrorblade.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/terrorblade.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle",
+      "run": "run",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 37
+  },
+  "treant_protector": {
+    "batch": 5,
+    "title": "Treant Protector",
+    "model": "batches/5/final/treant_protector-combined.glb",
+    "sourceModel": "batches/5/models/heroes/treant_protector/treant_protector.glb",
+    "parts": [
+      "foliage.glb",
+      "hands.glb",
+      "head.glb",
+      "legs.glb"
+    ],
+    "icon": "assets/heroes/treant_protector.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/treant.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 60
+  },
+  "doom": {
+    "batch": 6,
+    "title": "Doom",
+    "model": "batches/6/final/doom-combined.glb",
+    "sourceModel": "batches/6/models/heroes/doom/doom.glb",
+    "parts": [
+      "belt.glb",
+      "bracer.glb",
+      "doom_helm.glb",
+      "doom_sword.glb",
+      "shoulders.glb",
+      "tail.glb",
+      "wings.glb"
+    ],
+    "icon": "assets/heroes/doom.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/doom_bringer.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 138
+  },
+  "ember_spirit": {
+    "batch": 6,
+    "title": "Ember Spirit",
+    "model": "batches/6/final/ember_spirit-combined.glb",
+    "sourceModel": "batches/6/models/heroes/ember_spirit/ember_spirit.glb",
+    "parts": [
+      "arm.glb",
+      "back.glb",
+      "belt.glb",
+      "head.glb",
+      "shoulder.glb",
+      "weapon1.glb",
+      "weapon2.glb"
+    ],
+    "icon": "assets/heroes/ember_spirit.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ember_spirit.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run",
+      "melee": "attack01_anim",
+      "firing": "attack01_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death02",
+      "die_normal_2": "death02",
+      "spawn": "spawn_anim",
+      "victory": "victory_start"
+    },
+    "clipCount": 96
+  },
+  "faceless_void": {
+    "batch": 6,
+    "title": "Faceless Void",
+    "model": "batches/6/final/faceless_void-combined.glb",
+    "sourceModel": "batches/6/models/heroes/faceless_void/faceless_void.glb",
+    "parts": [
+      "faceless_void_belt.glb",
+      "faceless_void_body.glb",
+      "faceless_void_bracer.glb",
+      "faceless_void_head.glb",
+      "faceless_void_shoulder.glb",
+      "faceless_void_weapon.glb"
+    ],
+    "icon": "assets/heroes/faceless_void.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/faceless_void.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 84
+  },
+  "gyro": {
+    "batch": 6,
+    "title": "Gyrocopter",
+    "model": "batches/6/final/gyro-combined.glb",
+    "sourceModel": "batches/6/models/heroes/gyro/gyro.glb",
+    "parts": [
+      "gyro_gloves.glb",
+      "gyro_goggles.glb",
+      "gyro_guns.glb",
+      "gyro_head.glb",
+      "gyro_propeller.glb"
+    ],
+    "icon": "assets/heroes/gyro.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/gyrocopter.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 147
+  },
+  "necrolyte": {
+    "batch": 6,
+    "title": "Necrophos",
+    "model": "batches/6/final/necrolyte-combined.glb",
+    "sourceModel": "batches/6/models/heroes/necrolyte/necrolyte.glb",
+    "parts": [
+      "beard.glb",
+      "hat.glb",
+      "legs.glb",
+      "necrolyte_sickle.glb",
+      "shoulders.glb"
+    ],
+    "icon": "assets/heroes/necrolyte.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/necrolyte.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 69
+  },
+  "omniknight": {
+    "batch": 6,
+    "title": "Omniknight",
+    "model": "batches/6/final/omniknight-combined.glb",
+    "sourceModel": "batches/6/models/heroes/omniknight/omniknight.glb",
+    "parts": [
+      "bracer.glb",
+      "cape.glb",
+      "hair.glb",
+      "hammer.glb",
+      "head.glb",
+      "shoulder.glb"
+    ],
+    "icon": "assets/heroes/omniknight.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/omniknight.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "loadout_idle",
+      "die_normal_1": "death_fallForward",
+      "die_normal_2": "death_fallForward",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 43
+  },
+  "sand_king": {
+    "batch": 6,
+    "title": "Sand King",
+    "model": "batches/6/final/sand_king-combined.glb",
+    "sourceModel": "batches/6/models/heroes/sand_king/sand_king.glb",
+    "parts": [
+      "sand_king_arms.glb",
+      "sand_king_head.glb",
+      "sand_king_legs.glb",
+      "sand_king_shoulder.glb",
+      "sand_king_tail.glb"
+    ],
+    "icon": "assets/heroes/sand_king.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sand_king.png",
+    "ranged": false,
+    "actions": {
+      "idle": "sand_king_idle_anim",
+      "run": "@sand_king_run_anim",
+      "melee": "sand_king_attack_anim",
+      "firing": "sand_king_attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "sand_king_die",
+      "die_normal_2": "sand_king_die",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 56
+  },
+  "shredder": {
+    "batch": 6,
+    "title": "Timbersaw",
+    "model": "batches/6/final/shredder-combined.glb",
+    "sourceModel": "batches/6/models/heroes/shredder/shredder.glb",
+    "parts": [
+      "shredder_armor.glb",
+      "shredder_blade.glb",
+      "shredder_body.glb",
+      "shredder_chainsaw.glb",
+      "shredder_driver_hat.glb",
+      "shredder_shoulders.glb"
+    ],
+    "icon": "assets/heroes/shredder.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shredder.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "Attack_1_anim",
+      "firing": "Attack_1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 81
+  },
+  "tuskarr": {
+    "batch": 6,
+    "title": "Tusk",
+    "model": "batches/6/final/tuskarr-combined.glb",
+    "sourceModel": "batches/6/models/heroes/tuskarr/tuskarr.glb",
+    "parts": [
+      "tusk_armor_glove.glb",
+      "tusk_cowl.glb",
+      "tusk_hat.glb",
+      "tusk_horns.glb",
+      "tusk_weapon.glb"
+    ],
+    "icon": "assets/heroes/tuskarr.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tusk.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 89
+  },
+  "wraith_king": {
+    "batch": 6,
+    "title": "Wraith King",
+    "model": "batches/6/final/wraith_king-combined.glb",
+    "sourceModel": "batches/6/models/heroes/wraith_king/wraith_king.glb",
+    "parts": [
+      "wraith_king_cape.glb",
+      "wraith_king_chest.glb",
+      "wraith_king_gauntlet.glb",
+      "wraith_king_head.glb",
+      "wraith_king_shoulder.glb",
+      "wraith_king_weapon.glb"
+    ],
+    "icon": "assets/heroes/wraith_king.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skeleton_king.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 96
+  },
+  "beastmaster": {
+    "batch": 7,
+    "title": "Beastmaster",
+    "model": "batches/7/final/beastmaster-combined.glb",
+    "sourceModel": "batches/7/models/heroes/beastmaster/beastmaster.glb",
+    "parts": [
+      "beastmaster_arms.glb",
+      "beastmaster_belt.glb",
+      "beastmaster_head.glb",
+      "beastmaster_shoulder.glb",
+      "beastmaster_weapon.glb"
+    ],
+    "icon": "assets/heroes/beastmaster.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/beastmaster.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "runN_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "beastmaster_spawn",
+      "victory": "beastmaster_victory"
+    },
+    "clipCount": 68
+  },
+  "earth_spirit": {
+    "batch": 7,
+    "title": "Earth Spirit",
+    "model": "batches/7/final/earth_spirit-combined.glb",
+    "sourceModel": "batches/7/models/heroes/earth_spirit/earth_spirit.glb",
+    "parts": [
+      "earth_spirit_arms.glb",
+      "earth_spirit_belt.glb",
+      "earth_spirit_head.glb",
+      "earth_spirit_staff.glb",
+      "earth_spirit_torso.glb"
+    ],
+    "icon": "assets/heroes/earth_spirit.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/earth_spirit.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_staff_anim",
+      "run": "run_anim",
+      "melee": "attack_bo_staff_two_hand_anim",
+      "firing": "attack_bo_staff_two_hand_anim",
+      "stun": "stun_disabled_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory_idle_anim"
+    },
+    "clipCount": 131
+  },
+  "elder_titan": {
+    "batch": 7,
+    "title": "Elder Titan",
+    "model": "batches/7/final/elder_titan-combined.glb",
+    "sourceModel": "batches/7/models/heroes/elder_titan/elder_titan.glb",
+    "parts": [
+      "elder_titan_bracer.glb",
+      "elder_titan_hair.glb",
+      "elder_titan_shoulder.glb",
+      "elder_titan_totem.glb"
+    ],
+    "icon": "assets/heroes/elder_titan.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/elder_titan.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_haste_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "et_victory"
+    },
+    "clipCount": 99
+  },
+  "keeper_of_the_light": {
+    "batch": 7,
+    "title": "Keeper Of The Light",
+    "model": "batches/7/final/keeper_of_the_light-combined.glb",
+    "sourceModel": "batches/7/models/heroes/keeper_of_the_light/keeper_of_the_light.glb",
+    "parts": [
+      "kotl_hood.glb",
+      "kotl_horse.glb",
+      "kotl_horse_accesories.glb",
+      "kotl_mount.glb",
+      "kotl_skirt.glb",
+      "kotl_staff.glb"
+    ],
+    "icon": "assets/heroes/keeper_of_the_light.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/keeper_of_the_light.png",
+    "ranged": true,
+    "actions": {
+      "idle": "Idle_anim",
+      "run": "Run_anim",
+      "melee": "baseAttack_anim",
+      "firing": "baseAttack_anim",
+      "stun": "Stun_anim",
+      "die_normal_1": "Death",
+      "die_normal_2": "Death",
+      "spawn": "Spawn_anim",
+      "victory": "victory_anim"
+    },
+    "clipCount": 67
+  },
+  "lone_druid": {
+    "batch": 7,
+    "title": "Lone Druid",
+    "model": "batches/7/final/lone_druid-combined.glb",
+    "sourceModel": "batches/7/models/heroes/lone_druid/lone_druid.glb",
+    "parts": [
+      "arms.glb",
+      "body.glb",
+      "head.glb",
+      "shoulder.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/lone_druid.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lone_druid.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "idle_trueform",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory_anim"
+    },
+    "clipCount": 69
+  },
+  "monkey_king": {
+    "batch": 7,
+    "title": "Monkey King",
+    "model": "batches/7/final/monkey_king-combined.glb",
+    "sourceModel": "batches/7/models/heroes/monkey_king/monkey_king.glb",
+    "parts": [
+      "monkey_king_armor.glb",
+      "monkey_king_base_weapon.glb",
+      "monkey_king_cape.glb",
+      "monkey_king_hair.glb",
+      "monkey_king_shoulders.glb"
+    ],
+    "icon": "assets/heroes/monkey_king.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/monkey_king.png",
+    "ranged": false,
+    "actions": {
+      "idle": "mk_idle_head_turn",
+      "run": "@mk_run",
+      "melee": "mk_attack_01_near",
+      "firing": "mk_attack_01_near",
+      "stun": "mk_stun",
+      "die_normal_1": "mk_death_01",
+      "die_normal_2": "mk_death_01",
+      "spawn": "mk_spawn",
+      "victory": "mk_victory_start"
+    },
+    "clipCount": 193
+  },
+  "silencer": {
+    "batch": 7,
+    "title": "Silencer",
+    "model": "batches/7/final/silencer-combined.glb",
+    "sourceModel": "batches/7/models/heroes/silencer/silencer.glb",
+    "parts": [
+      "silencer_helmet.glb",
+      "silencer_robe.glb",
+      "silencer_shield.glb",
+      "silencer_shoulder.glb",
+      "silencer_weapon.glb",
+      "silender_bracers.glb"
+    ],
+    "icon": "assets/heroes/silencer.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/silencer.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 62
+  },
+  "siren": {
+    "batch": 7,
+    "title": "Naga Siren",
+    "model": "batches/7/final/siren-combined.glb",
+    "sourceModel": "batches/7/models/heroes/siren/siren.glb",
+    "parts": [
+      "siren_armor.glb",
+      "siren_hair.glb",
+      "siren_tail.glb",
+      "siren_weapon.glb",
+      "siren_weapon_offhand.glb"
+    ],
+    "icon": "assets/heroes/siren.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/naga_siren.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "Attack_anim",
+      "firing": "Attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "Victory_anim"
+    },
+    "clipCount": 80
+  },
+  "visage": {
+    "batch": 7,
+    "title": "Visage",
+    "model": "batches/7/final/visage-combined.glb",
+    "sourceModel": "batches/7/models/heroes/visage/visage.glb",
+    "parts": [
+      "visage_armor.glb",
+      "visage_head.glb"
+    ],
+    "icon": "assets/heroes/visage.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/visage.png",
+    "ranged": true,
+    "actions": {
+      "idle": "visage_idle_anim",
+      "run": "visage_run_anim",
+      "melee": "@visage_attack",
+      "firing": "@visage_attack",
+      "stun": "visage_stun_anim",
+      "die_normal_1": "visage_death",
+      "die_normal_2": "visage_death",
+      "spawn": "visage_spawn_temp",
+      "victory": "visage_victory"
+    },
+    "clipCount": 60
+  },
+  "winterwyvern": {
+    "batch": 7,
+    "title": "Winter Wyvern",
+    "model": "batches/7/final/winterwyvern-combined.glb",
+    "sourceModel": "batches/7/models/heroes/winterwyvern/winterwyvern.glb",
+    "parts": [
+      "winterwyvern_backitem.glb",
+      "winterwyvern_crown.glb"
+    ],
+    "icon": "assets/heroes/winterwyvern.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/winter_wyvern.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_flying_low_anim",
+      "run": "@run_flying_alt_low_anim",
+      "melee": "attack_flying_low_anim",
+      "firing": "attack_flying_low_anim",
+      "stun": "stun_flying",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 116
+  },
+  "abyssal_underlord": {
+    "batch": 8,
+    "title": "Underlord",
+    "model": "batches/8/final/abyssal_underlord-combined.glb",
+    "sourceModel": "batches/8/models/heroes/abyssal_underlord/abyssal_underlord_v2.glb",
+    "parts": [],
+    "icon": "assets/heroes/abyssal_underlord.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/abyssal_underlord.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle",
+      "run": "@au_run",
+      "melee": "au_attack_01",
+      "firing": "au_attack_01",
+      "stun": "au_stun",
+      "die_normal_1": "au_death",
+      "die_normal_2": "au_death",
+      "spawn": "au_spawn",
+      "victory": "au_victory"
+    },
+    "clipCount": 122
+  },
+  "alchemist": {
+    "batch": 8,
+    "title": "Alchemist",
+    "model": "batches/8/final/alchemist-combined.glb",
+    "sourceModel": "batches/8/models/heroes/alchemist/alchemist.glb",
+    "parts": [
+      "alchemist_gauntlets.glb",
+      "alchemist_goblin_body.glb",
+      "alchemist_goblin_head.glb",
+      "alchemist_goblinhat.glb",
+      "alchemist_ogre_head.glb",
+      "alchemist_saddlehat.glb",
+      "alchemist_scabbard.glb",
+      "alchemist_shoulderbottles.glb",
+      "alchemist_sword.glb"
+    ],
+    "icon": "assets/heroes/alchemist.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/alchemist.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle",
+      "run": "injured_run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 80
+  },
+  "death_prophet": {
+    "batch": 8,
+    "title": "Death Prophet",
+    "model": "batches/8/final/death_prophet-combined.glb",
+    "sourceModel": "batches/8/models/heroes/death_prophet/death_prophet.glb",
+    "parts": [
+      "death_prophet_arm.glb",
+      "death_prophet_dress.glb",
+      "death_prophet_dresstop.glb",
+      "death_prophet_hair.glb",
+      "death_prophet_scarf.glb"
+    ],
+    "icon": "assets/heroes/death_prophet.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/death_prophet.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_01_anim",
+      "firing": "attack_01_anim",
+      "stun": "stun",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "loadout_spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 81
+  },
+  "enigma": {
+    "batch": 8,
+    "title": "Enigma",
+    "model": "batches/8/final/enigma-combined.glb",
+    "sourceModel": "batches/8/models/heroes/enigma/enigma.glb",
+    "parts": [],
+    "icon": "assets/heroes/enigma.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enigma.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "enigma_victory"
+    },
+    "clipCount": 68
+  },
+  "leshrac": {
+    "batch": 8,
+    "title": "Leshrac",
+    "model": "batches/8/final/leshrac-combined.glb",
+    "sourceModel": "batches/8/models/heroes/leshrac/leshrac.glb",
+    "parts": [
+      "leshrac_armor.glb",
+      "leshrac_arms.glb",
+      "leshrac_head.glb",
+      "leshrac_tail.glb"
+    ],
+    "icon": "assets/heroes/leshrac.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/leshrac.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 114
+  },
+  "medusa": {
+    "batch": 8,
+    "title": "Medusa",
+    "model": "batches/8/final/medusa-combined.glb",
+    "sourceModel": "batches/8/models/heroes/medusa/medusa.glb",
+    "parts": [
+      "medusa_arms.glb",
+      "medusa_bow.glb",
+      "medusa_tail.glb",
+      "medusa_torso.glb",
+      "medusa_veil.glb"
+    ],
+    "icon": "assets/heroes/medusa.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/medusa.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "medusa_death",
+      "die_normal_2": "medusa_death",
+      "spawn": "spawn",
+      "victory": "medusa_victory"
+    },
+    "clipCount": 53
+  },
+  "meepo": {
+    "batch": 8,
+    "title": "Meepo",
+    "model": "batches/8/final/meepo-combined.glb",
+    "sourceModel": "batches/8/models/heroes/meepo/meepo.glb",
+    "parts": [
+      "bracers.glb",
+      "hood.glb",
+      "meepo_weapon.glb",
+      "pack.glb",
+      "shoulders.glb",
+      "tail.glb"
+    ],
+    "icon": "assets/heroes/meepo.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/meepo.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 102
+  },
+  "nerubian_assassin": {
+    "batch": 8,
+    "title": "Nyx Assassin",
+    "model": "batches/8/final/nerubian_assassin-combined.glb",
+    "sourceModel": "batches/8/models/heroes/nerubian_assassin/nerubian_assassin.glb",
+    "parts": [
+      "nerubian_assassin_armor.glb",
+      "nerubian_assassin_helmet.glb",
+      "nerubian_assassin_weapon.glb"
+    ],
+    "icon": "assets/heroes/nerubian_assassin.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/nyx_assassin.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "burrowed_stun",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_loadout",
+      "victory": "victory"
+    },
+    "clipCount": 59
+  },
+  "oracle": {
+    "batch": 8,
+    "title": "Oracle",
+    "model": "batches/8/final/oracle-combined.glb",
+    "sourceModel": "batches/8/models/heroes/oracle/oracle.glb",
+    "parts": [
+      "armor.glb",
+      "back_item.glb",
+      "head_item.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/oracle.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/oracle.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death_dropB",
+      "die_normal_2": "death_dropB",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 89
+  },
+  "pugna": {
+    "batch": 8,
+    "title": "Pugna",
+    "model": "batches/8/final/pugna-combined.glb",
+    "sourceModel": "batches/8/models/heroes/pugna/pugna.glb",
+    "parts": [
+      "pugna_belt.glb",
+      "pugna_bracers.glb",
+      "pugna_cape.glb",
+      "pugna_head.glb",
+      "pugna_shoulder.glb",
+      "pugna_weapon.glb"
+    ],
+    "icon": "assets/heroes/pugna.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pugna.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack2_anim",
+      "firing": "attack2_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 41
+  },
+  "chen": {
+    "batch": 9,
+    "title": "Chen",
+    "model": "batches/9/final/chen-combined.glb",
+    "sourceModel": "batches/9/models/heroes/chen/chen.glb",
+    "parts": [
+      "bracers.glb",
+      "helmet.glb",
+      "mount.glb",
+      "mount_armor.glb",
+      "shoulders.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/chen.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/chen.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 61
+  },
+  "clinkz": {
+    "batch": 9,
+    "title": "Clinkz",
+    "model": "batches/9/final/clinkz-combined.glb",
+    "sourceModel": "batches/9/models/heroes/clinkz/clinkz.glb",
+    "parts": [
+      "clinkz_back.glb",
+      "clinkz_bow.glb",
+      "clinkz_gloves.glb",
+      "clinkz_head.glb",
+      "clinkz_horns.glb",
+      "clinkz_pads.glb"
+    ],
+    "icon": "assets/heroes/clinkz.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/clinkz.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "idle_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 63
+  },
+  "enchantress": {
+    "batch": 9,
+    "title": "Enchantress",
+    "model": "batches/9/final/enchantress-combined.glb",
+    "sourceModel": "batches/9/models/heroes/enchantress/enchantress.glb",
+    "parts": [
+      "enchantress_bracers.glb",
+      "enchantress_dress.glb",
+      "enchantress_flower.glb",
+      "enchantress_hair.glb",
+      "enchantress_necklace.glb",
+      "enchantress_weapon.glb"
+    ],
+    "icon": "assets/heroes/enchantress.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enchantress.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 49
+  },
+  "lycan": {
+    "batch": 9,
+    "title": "Lycan",
+    "model": "batches/9/final/lycan-combined.glb",
+    "sourceModel": "batches/9/models/heroes/lycan/lycan.glb",
+    "parts": [
+      "lycan_armor.glb",
+      "lycan_belt.glb",
+      "lycan_blades.glb",
+      "lycan_fur.glb",
+      "lycan_head.glb"
+    ],
+    "icon": "assets/heroes/lycan.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lycan.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die_backward",
+      "die_normal_2": "die_backward",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 61
+  },
+  "nightstalker": {
+    "batch": 9,
+    "title": "Night Stalker",
+    "model": "batches/9/final/nightstalker-combined.glb",
+    "sourceModel": "batches/9/models/heroes/nightstalker/nightstalker.glb",
+    "parts": [
+      "nightstalker_legarmor.glb",
+      "nightstalker_tail.glb",
+      "nightstalker_wings.glb"
+    ],
+    "icon": "assets/heroes/nightstalker.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/night_stalker.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory_anim"
+    },
+    "clipCount": 70
+  },
+  "obsidian_destroyer": {
+    "batch": 9,
+    "title": "Outworld Destroyer",
+    "model": "batches/9/final/obsidian_destroyer-combined.glb",
+    "sourceModel": "batches/9/models/heroes/obsidian_destroyer/obsidian_destroyer.glb",
+    "parts": [
+      "obsidian_destroyer_head.glb",
+      "obsidian_destroyer_horns.glb",
+      "obsidian_destroyer_rocks.glb",
+      "obsidian_destroyer_weapon.glb",
+      "obsidian_destroyer_wings.glb"
+    ],
+    "icon": "assets/heroes/obsidian_destroyer.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/obsidian_destroyer.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "idle_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 54
+  },
+  "phoenix": {
+    "batch": 9,
+    "title": "Phoenix",
+    "model": "batches/9/final/phoenix-combined.glb",
+    "sourceModel": "batches/9/models/heroes/phoenix/phoenix_bird.glb",
+    "parts": [
+      "phoenix_bird_head.glb",
+      "phoenix_wings.glb"
+    ],
+    "icon": "assets/heroes/phoenix.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phoenix.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory_anim"
+    },
+    "clipCount": 78
+  },
+  "rikimaru": {
+    "batch": 9,
+    "title": "Riki",
+    "model": "batches/9/final/rikimaru-combined.glb",
+    "sourceModel": "batches/9/models/heroes/rikimaru/rikimaru.glb",
+    "parts": [
+      "rikimaru__offhand_weapon.glb",
+      "rikimaru_gloves.glb",
+      "rikimaru_head.glb",
+      "rikimaru_shoulder.glb",
+      "rikimaru_tail.glb",
+      "rikimaru_weapon.glb"
+    ],
+    "icon": "assets/heroes/rikimaru.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/riki.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 104
+  },
+  "shadow_demon": {
+    "batch": 9,
+    "title": "Shadow Demon",
+    "model": "batches/9/final/shadow_demon-combined.glb",
+    "sourceModel": "batches/9/models/heroes/shadow_demon/shadow_demon.glb",
+    "parts": [
+      "shadow_demon_belt.glb",
+      "shadow_demon_cape.glb",
+      "shadow_demon_chain.glb",
+      "shadow_demon_tail.glb"
+    ],
+    "icon": "assets/heroes/shadow_demon.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shadow_demon.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 54
+  },
+  "spectre": {
+    "batch": 9,
+    "title": "Spectre",
+    "model": "batches/9/final/spectre-combined.glb",
+    "sourceModel": "batches/9/models/heroes/spectre/spectre.glb",
+    "parts": [
+      "spectre_dress.glb",
+      "spectre_hat.glb",
+      "spectre_weapon.glb",
+      "spectre_wings.glb"
+    ],
+    "icon": "assets/heroes/spectre.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/spectre.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "idle_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 31
+  },
+  "dark_willow": {
+    "batch": 10,
+    "title": "Dark Willow",
+    "model": "batches/10/final/dark_willow-combined.glb",
+    "sourceModel": "batches/10/models/heroes/dark_willow/dark_willow.glb",
+    "parts": [
+      "dark_willow_armor.glb",
+      "dark_willow_head.glb",
+      "dark_willow_offhand.glb",
+      "dark_willow_wings.glb"
+    ],
+    "icon": "assets/heroes/dark_willow.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dark_willow.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle",
+      "run": "run",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 204
+  },
+  "grimstroke": {
+    "batch": 10,
+    "title": "Grimstroke",
+    "model": "batches/10/final/grimstroke-combined.glb",
+    "sourceModel": "batches/10/models/heroes/grimstroke/grimstroke.glb",
+    "parts": [
+      "grimstroke_armor.glb",
+      "grimstroke_head_item.glb",
+      "grimstroke_skirt.glb",
+      "grimstroke_weapon.glb"
+    ],
+    "icon": "assets/heroes/grimstroke.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/grimstroke.png",
+    "ranged": true,
+    "actions": {
+      "idle": "gs_idle",
+      "run": "@gs_run",
+      "melee": "gs_attack",
+      "firing": "gs_attack",
+      "stun": "gs_stun",
+      "die_normal_1": "gs_death_01",
+      "die_normal_2": "gs_death_01",
+      "spawn": "gs_spawn",
+      "victory": "gs_idle_victory_start"
+    },
+    "clipCount": 100
+  },
+  "marci": {
+    "batch": 10,
+    "title": "Marci",
+    "model": null,
+    "sourceModel": "batches/10/models/heroes/marci/marci.glb",
+    "parts": [
+      "marci_back.glb",
+      "marci_head.glb",
+      "marci_shoulders.glb"
+    ],
+    "icon": "assets/heroes/marci.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/marci.png",
+    "ranged": false,
+    "actions": {
+      "idle": "",
+      "run": "",
+      "melee": "",
+      "firing": "",
+      "stun": "",
+      "die_normal_1": "",
+      "die_normal_2": "",
+      "spawn": "",
+      "victory": ""
+    },
+    "clipCount": 0
+  },
+  "mars": {
+    "batch": 10,
+    "title": "Mars",
+    "model": "batches/10/final/mars-combined.glb",
+    "sourceModel": "batches/10/models/heroes/mars/mars.glb",
+    "parts": [
+      "mars_lower.glb",
+      "mars_shield.glb",
+      "mars_spear.glb",
+      "mars_upper.glb"
+    ],
+    "icon": "assets/heroes/mars.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mars.png",
+    "ranged": false,
+    "actions": {
+      "idle": "mars_idle_rare_roar",
+      "run": "run_anim",
+      "melee": "attack_long_1_poke_superfast",
+      "firing": "attack_long_1_poke_superfast",
+      "stun": "stun",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "mars_victory"
+    },
+    "clipCount": 180
+  },
+  "morphling": {
+    "batch": 10,
+    "title": "Morphling",
+    "model": "batches/10/final/morphling-combined.glb",
+    "sourceModel": "batches/10/models/heroes/morphling/morphling.glb",
+    "parts": [],
+    "icon": "assets/heroes/morphling.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/morphling.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_new_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_new_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_temp",
+      "victory": "victory"
+    },
+    "clipCount": 49
+  },
+  "pangolier": {
+    "batch": 10,
+    "title": "Pangolier",
+    "model": "batches/10/final/pangolier-combined.glb",
+    "sourceModel": "batches/10/models/heroes/pangolier/pangolier.glb",
+    "parts": [
+      "pangolier_armor.glb",
+      "pangolier_head.glb",
+      "pangolier_weapon.glb"
+    ],
+    "icon": "assets/heroes/pangolier.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pangolier.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle",
+      "run": "@run_sword_both_arms",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun",
+      "die_normal_1": "death_01",
+      "die_normal_2": "death_01",
+      "spawn": "debut_spawn_playsound",
+      "victory": "victory"
+    },
+    "clipCount": 241
+  },
+  "void_spirit": {
+    "batch": 10,
+    "title": "Void Spirit",
+    "model": "batches/10/final/void_spirit-combined.glb",
+    "sourceModel": "batches/10/models/heroes/void_spirit/void_spirit.glb",
+    "parts": [
+      "void_spirit_armor.glb",
+      "void_spirit_belt.glb",
+      "void_spirit_head.glb",
+      "void_spirit_weapon.glb"
+    ],
+    "icon": "assets/heroes/void_spirit.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/void_spirit.png",
+    "ranged": false,
+    "actions": {
+      "idle": "vs_idle_leg",
+      "run": "vs_run",
+      "melee": "vs_attack_agg_alt",
+      "firing": "vs_attack_agg_alt",
+      "stun": "vs_idle_leg",
+      "die_normal_1": "vs_death",
+      "die_normal_2": "vs_death",
+      "spawn": "vs_spawn",
+      "victory": "vs_victory_start"
+    },
+    "clipCount": 178
+  },
+  "arc_warden": {
+    "batch": 11,
+    "title": "Arc Warden",
+    "model": "batches/11/final/arc_warden-combined.glb",
+    "sourceModel": "batches/11/models/heroes/arc_warden/arc_warden.glb",
+    "parts": [
+      "arc_warden_back.glb",
+      "arc_warden_bracers.glb",
+      "arc_warden_shoulder.glb"
+    ],
+    "icon": "assets/heroes/arc_warden.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/arc_warden.png",
+    "ranged": true,
+    "actions": {
+      "idle": "aw_idle",
+      "run": "@aw_run",
+      "melee": "aw_attack",
+      "firing": "aw_attack",
+      "stun": "aw_stun",
+      "die_normal_1": "aw_death",
+      "die_normal_2": "aw_death",
+      "spawn": "aw_spawn",
+      "victory": "aw_victory"
+    },
+    "clipCount": 105
+  },
+  "techies": {
+    "batch": 11,
+    "title": "Techies",
+    "model": "batches/11/final/techies-combined.glb",
+    "sourceModel": "batches/11/models/heroes/techies/techies.glb",
+    "parts": [
+      "techies_barrel.glb",
+      "techies_cart.glb",
+      "techies_sign.glb",
+      "techies_spleen_costume.glb",
+      "techies_spleen_weapon.glb",
+      "techies_squee_costume.glb"
+    ],
+    "icon": "assets/heroes/techies.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/techies.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "idle_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn_ingame",
+      "victory": "victory"
+    },
+    "clipCount": 134
+  },
+  "tinker": {
+    "batch": 11,
+    "title": "Tinker",
+    "model": "batches/11/final/tinker-combined.glb",
+    "sourceModel": "batches/11/models/heroes/tinker/tinker.glb",
+    "parts": [
+      "tinker_body_head.glb",
+      "tinker_cape.glb",
+      "tinker_helmet.glb",
+      "tinker_left_arm.glb",
+      "tinker_right_arm.glb",
+      "tinker_shoulders.glb"
+    ],
+    "icon": "assets/heroes/tinker.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tinker.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stunned_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 47
+  },
+  "troll_warlord": {
+    "batch": 11,
+    "title": "Troll Warlord",
+    "model": "batches/11/final/troll_warlord-combined.glb",
+    "sourceModel": "batches/11/models/heroes/troll_warlord/troll_warlord.glb",
+    "parts": [
+      "troll_warlord_head.glb",
+      "troll_warlord_shoulders.glb",
+      "troll_warlord_weapons.glb"
+    ],
+    "icon": "assets/heroes/troll_warlord.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/troll_warlord.png",
+    "ranged": true,
+    "actions": {
+      "idle": "tw_idle_melee_anim",
+      "run": "tw_run_melee_haste_anim",
+      "melee": "tw_attack_melee_anim",
+      "firing": "tw_attack_melee_anim",
+      "stun": "tw_stun_melee_anim",
+      "die_normal_1": "tw_death_melee",
+      "die_normal_2": "tw_death_melee",
+      "spawn": "loadout_spawn_melee",
+      "victory": "tw_victory_anim"
+    },
+    "clipCount": 184
+  },
+  "wisp": {
+    "batch": 11,
+    "title": "Io",
+    "model": "batches/11/final/wisp-combined.glb",
+    "sourceModel": "batches/11/models/heroes/wisp/wisp.glb",
+    "parts": [
+      "wisp_additive.glb"
+    ],
+    "icon": "assets/heroes/wisp.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/wisp.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle",
+      "run": "run",
+      "melee": "attack",
+      "firing": "attack",
+      "stun": "stun",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "idle_loadout",
+      "victory": "idle"
+    },
+    "clipCount": 15
+  },
+  "abaddon": {
+    "batch": 12,
+    "title": "Abaddon",
+    "model": "batches/12/final/abaddon-combined.glb",
+    "sourceModel": "batches/12/models/heroes/abaddon/abaddon.glb",
+    "parts": [
+      "cape.glb",
+      "helmet.glb",
+      "mount.glb",
+      "shoulders.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/abaddon.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/abaddon.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle",
+      "run": "run",
+      "melee": "attack2_tonedown_anim",
+      "firing": "attack2_tonedown_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 79
+  },
+  "bane": {
+    "batch": 12,
+    "title": "Bane",
+    "model": "batches/12/final/bane-combined.glb",
+    "sourceModel": "batches/12/models/heroes/bane/bane.glb",
+    "parts": [
+      "bane_head.glb",
+      "bane_shoulders.glb"
+    ],
+    "icon": "assets/heroes/bane.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bane.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_alt_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death_alt",
+      "die_normal_2": "death_alt",
+      "spawn": "loadout_spawn",
+      "victory": "bane_victory"
+    },
+    "clipCount": 191
+  },
+  "blood_seeker": {
+    "batch": 12,
+    "title": "Bloodseeker",
+    "model": "batches/12/final/blood_seeker-combined.glb",
+    "sourceModel": "batches/12/models/heroes/blood_seeker/blood_seeker.glb",
+    "parts": [
+      "belt.glb",
+      "bracer.glb",
+      "cape.glb",
+      "helmet.glb",
+      "neck.glb",
+      "weapon.glb",
+      "weapon_offhand.glb"
+    ],
+    "icon": "assets/heroes/blood_seeker.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bloodseeker.png",
+    "ranged": false,
+    "actions": {
+      "idle": "blood_seeker_idle_anim",
+      "run": "run_thirst_anim",
+      "melee": "attack_alt_anim",
+      "firing": "attack_alt_anim",
+      "stun": "blood_seeker_stun_anim",
+      "die_normal_1": "blood_seeker_die",
+      "die_normal_2": "blood_seeker_die",
+      "spawn": "loadout_spawn_anim",
+      "victory": "victory_anim"
+    },
+    "clipCount": 75
+  },
+  "brewmaster": {
+    "batch": 12,
+    "title": "Brewmaster",
+    "model": "batches/12/final/brewmaster-combined.glb",
+    "sourceModel": "batches/12/models/heroes/brewmaster/brewmaster.glb",
+    "parts": [
+      "back.glb",
+      "barrel.glb",
+      "bracer.glb",
+      "shoulder.glb",
+      "weapon.glb"
+    ],
+    "icon": "assets/heroes/brewmaster.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/brewmaster.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "Run_anim",
+      "melee": "Attack_anim",
+      "firing": "Attack_anim",
+      "stun": "idle_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "Spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 81
+  },
+  "huskar": {
+    "batch": 12,
+    "title": "Huskar",
+    "model": "batches/12/final/huskar-combined.glb",
+    "sourceModel": "batches/12/models/heroes/huskar/huskar.glb",
+    "parts": [
+      "huskar_bracer.glb",
+      "huskar_dagger.glb",
+      "huskar_helmet.glb",
+      "huskar_shoulder.glb",
+      "huskar_spear.glb"
+    ],
+    "icon": "assets/heroes/huskar.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/huskar.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "die",
+      "die_normal_2": "die",
+      "spawn": "spawn_anim",
+      "victory": "victory_anim"
+    },
+    "clipCount": 174
+  },
+  "magnataur": {
+    "batch": 12,
+    "title": "Magnus",
+    "model": "batches/12/final/magnataur-combined.glb",
+    "sourceModel": "batches/12/models/heroes/magnataur/magnataur.glb",
+    "parts": [
+      "magnataur_belt.glb",
+      "magnataur_bracers.glb",
+      "magnataur_hair.glb",
+      "magnataur_horn.glb",
+      "magnataur_weapon.glb"
+    ],
+    "icon": "assets/heroes/magnataur.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/magnataur.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack1_anim",
+      "firing": "attack1_anim",
+      "stun": "stunned_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory"
+    },
+    "clipCount": 57
+  },
+  "rattletrap": {
+    "batch": 12,
+    "title": "Clockwerk",
+    "model": "batches/12/final/rattletrap-combined.glb",
+    "sourceModel": "batches/12/models/heroes/rattletrap/rattletrap.glb",
+    "parts": [
+      "rattletrap_armor.glb",
+      "rattletrap_head.glb",
+      "rattletrap_weapon.glb"
+    ],
+    "icon": "assets/heroes/rattletrap.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/rattletrap.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn",
+      "victory": "victory"
+    },
+    "clipCount": 142
+  },
+  "skywrath_mage": {
+    "batch": 12,
+    "title": "Skywrath Mage",
+    "model": "batches/12/final/skywrath_mage-combined.glb",
+    "sourceModel": "batches/12/models/heroes/skywrath_mage/skywrath_mage.glb",
+    "parts": [
+      "skywrath_mage_belt.glb",
+      "skywrath_mage_bracers.glb",
+      "skywrath_mage_head.glb",
+      "skywrath_mage_shoulders.glb",
+      "skywrath_mage_staff.glb",
+      "skywrath_mage_wings.glb"
+    ],
+    "icon": "assets/heroes/skywrath_mage.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skywrath_mage.png",
+    "ranged": true,
+    "actions": {
+      "idle": "skywrath_mage_idle_aggressive_anim",
+      "run": "skywrath_mage_run_aggressive_anim",
+      "melee": "skywrath_mage_attack_anim",
+      "firing": "skywrath_mage_attack_anim",
+      "stun": "skywrath_mage_stun_anim",
+      "die_normal_1": "skywrath_mage_death",
+      "die_normal_2": "skywrath_mage_death",
+      "spawn": "skywrath_mage_spawn",
+      "victory": "skywrath_mage_victory"
+    },
+    "clipCount": 80
+  },
+  "tiny": {
+    "batch": 12,
+    "title": "Tiny",
+    "model": "batches/12/final/tiny-combined.glb",
+    "sourceModel": "batches/12/models/heroes/tiny/tiny_01/tiny_01.glb",
+    "parts": [],
+    "icon": "assets/heroes/tiny.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png",
+    "ranged": false,
+    "actions": {
+      "idle": "tiny_1_idle_tree_anim",
+      "run": "tiny_1_run_tree_anim",
+      "melee": "tiny_1_attack_tree_anim",
+      "firing": "tiny_1_attack_tree_anim",
+      "stun": "tiny_1_stun",
+      "die_normal_1": "tiny_1_death",
+      "die_normal_2": "tiny_1_death",
+      "spawn": "tiny_1_idle_tree_loadout_spawn",
+      "victory": "tiny_01_victory"
+    },
+    "clipCount": 63
+  },
+  "undying": {
+    "batch": 12,
+    "title": "Undying",
+    "model": "batches/12/final/undying-combined.glb",
+    "sourceModel": "batches/12/models/heroes/undying/undying.glb",
+    "parts": [
+      "undying_armor.glb",
+      "undying_belt.glb",
+      "undying_helmet.glb"
+    ],
+    "icon": "assets/heroes/undying.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/undying.png",
+    "ranged": false,
+    "actions": {
+      "idle": "undying_idle_anim",
+      "run": "undying_run_anim",
+      "melee": "undying_attack_anim",
+      "firing": "undying_attack_anim",
+      "stun": "undying_stun_anim",
+      "die_normal_1": "undying_death",
+      "die_normal_2": "undying_death",
+      "spawn": "loadout_spawn",
+      "victory": "undying_victory_anim"
+    },
+    "clipCount": 220
+  },
+  "ancient_apparition": {
+    "batch": 13,
+    "title": "Ancient Apparition",
+    "model": "batches/13/final/ancient_apparition-combined.glb",
+    "sourceModel": "batches/13/models/heroes/ancient_apparition/ancient_apparition.glb",
+    "parts": [
+      "ancient_apparition_shoulder.glb",
+      "ancient_apparition_tail.glb"
+    ],
+    "icon": "assets/heroes/ancient_apparition.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ancient_apparition.png",
+    "ranged": true,
+    "actions": {
+      "idle": "ancient_idle_anim",
+      "run": "@ancient_run_anim",
+      "melee": "ancient_attack1_anim",
+      "firing": "ancient_attack1_anim",
+      "stun": "ancient_stun_anim",
+      "die_normal_1": "aa_death",
+      "die_normal_2": "aa_death",
+      "spawn": "aa_spawn",
+      "victory": "aa_victory"
+    },
+    "clipCount": 58
+  },
+  "bounty_hunter": {
+    "batch": 13,
+    "title": "Bounty Hunter",
+    "model": "batches/13/final/bounty_hunter-combined.glb",
+    "sourceModel": "batches/13/models/heroes/bounty_hunter/bounty_hunter.glb",
+    "parts": [
+      "bounty_hunter_backpack.glb",
+      "bounty_hunter_bandana.glb",
+      "bounty_hunter_lweapon.glb",
+      "bounty_hunter_pads.glb",
+      "bounty_hunter_rweapon.glb"
+    ],
+    "icon": "assets/heroes/bounty_hunter.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bounty_hunter.png",
+    "ranged": false,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "spawn_anim",
+      "victory": "victory_anim"
+    },
+    "clipCount": 301
+  },
+  "broodmother": {
+    "batch": 13,
+    "title": "Broodmother",
+    "model": "batches/13/final/broodmother-combined.glb",
+    "sourceModel": "batches/13/models/heroes/broodmother/broodmother.glb",
+    "parts": [
+      "broodmother_abdomen.glb",
+      "broodmother_hair.glb",
+      "broodmother_legs.glb"
+    ],
+    "icon": "assets/heroes/broodmother.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/broodmother.png",
+    "ranged": false,
+    "actions": {
+      "idle": "broodmother_idle_rare_anim",
+      "run": "broodmother_run_anim",
+      "melee": "broodmother_attack_anim",
+      "firing": "broodmother_attack_anim",
+      "stun": "broodmother_stun_anim",
+      "die_normal_1": "broodmother_death",
+      "die_normal_2": "broodmother_death",
+      "spawn": "broodmother_cast1_spawn_spiderlings_anim",
+      "victory": "broodmother_victory"
+    },
+    "clipCount": 155
+  },
+  "venomancer": {
+    "batch": 13,
+    "title": "Venomancer",
+    "model": "batches/13/final/venomancer-combined.glb",
+    "sourceModel": "batches/13/models/heroes/venomancer/venomancer.glb",
+    "parts": [
+      "venomancer_arms.glb",
+      "venomancer_jaw.glb",
+      "venomancer_shoulder.glb",
+      "venomancer_tail.glb"
+    ],
+    "icon": "assets/heroes/venomancer.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/venomancer.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle_anim",
+      "run": "@runN_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "venomancer_spawn",
+      "victory": "venomancer_victory_anim"
+    },
+    "clipCount": 244
+  },
+  "warlock": {
+    "batch": 13,
+    "title": "Warlock",
+    "model": "batches/13/final/warlock-combined.glb",
+    "sourceModel": "batches/13/models/heroes/warlock/warlock.glb",
+    "parts": [
+      "warlock_bag.glb",
+      "warlock_bracers.glb",
+      "warlock_cape.glb",
+      "warlock_lantern.glb",
+      "warlock_robe.glb",
+      "warlock_shoulder.glb",
+      "warlock_staff.glb"
+    ],
+    "icon": "assets/heroes/warlock.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/warlock.png",
+    "ranged": true,
+    "actions": {
+      "idle": "warlock_idle_anim",
+      "run": "@warlock_run_anim",
+      "melee": "warlock_attack2_anim",
+      "firing": "warlock_attack2_anim",
+      "stun": "warlock_stun_anim",
+      "die_normal_1": "warlock_death",
+      "die_normal_2": "warlock_death",
+      "spawn": "warlock_loadout_spawn",
+      "victory": "warlockk_victory"
+    },
+    "clipCount": 99
+  },
+  "weaver": {
+    "batch": 13,
+    "title": "Weaver",
+    "model": "batches/13/final/weaver-combined.glb",
+    "sourceModel": "batches/13/models/heroes/weaver/weaver.glb",
+    "parts": [
+      "weaver_antlers.glb",
+      "weaver_arms.glb",
+      "weaver_head.glb",
+      "weaver_legs.glb"
+    ],
+    "icon": "assets/heroes/weaver.png",
+    "iconSource": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/weaver.png",
+    "ranged": true,
+    "actions": {
+      "idle": "idle1_anim",
+      "run": "run_anim",
+      "melee": "attack_anim",
+      "firing": "attack_anim",
+      "stun": "stun_anim",
+      "die_normal_1": "death",
+      "die_normal_2": "death",
+      "spawn": "loadout_spawn",
+      "victory": "victory"
+    },
+    "clipCount": 62
+  }
+}

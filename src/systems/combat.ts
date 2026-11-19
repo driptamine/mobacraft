@@ -88,7 +88,7 @@ export function buildingEngageRadius(world: any, id: number): number {
   const comp = world.get(id, 'building') || world.get(id, 'structure');
   const mesh = world.get(id, 'mesh');
   if (!comp || !mesh?.root) return 4;
-  const bounds = worldFootprint({ type: comp.type, faction: comp.faction, position: mesh.root.position, constructing: false });
+  const bounds = worldFootprint({ ...comp, position: mesh.root.position, constructing: false });
   return Math.max((bounds.maxX - bounds.minX) / 2, (bounds.maxZ - bounds.minZ) / 2, 2);
 }
 

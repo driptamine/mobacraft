@@ -1,7 +1,7 @@
 import type { UnitStats } from '../../types.js';
 import batch1Animations from '../../../animations/batches/1/animations.json';
 
-// Batch 1 heroes (Dota models under batches/1/models/heroes): 5v5 showcase
+// Batch 1 heroes (assembled models under batches/1/final): 5v5 showcase
 // roster. Models and action->clip maps come from
 // animations/batches/1/animations.json; each entry keeps the full clip list
 // for reference. Heroes are single-soldier squads, not trainable (no cost).
@@ -14,6 +14,7 @@ function hero(
   const entry = batch1Animations[name] as { model: string; actions: unknown };
   return {
     name,
+    lazyLoad: true,
     model: entry.model,
     animations: entry.actions,
     icon: `assets/batch1/${name}.png`,

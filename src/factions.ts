@@ -273,7 +273,7 @@ export function countFactionModels(config: FactionConfig | null | undefined): nu
   if (config.infantry?.[1]?.model) {
     total += 1;
   }
-  total += (config.units || []).filter((u) => u.model).length;
+  total += (config.units || []).filter((u) => u.model && !u.lazyLoad).length;
   total += (config.structures || []).filter((s) => s.model).length;
   total += _collectVehicleModels(config).size;
   return total;
@@ -282,6 +282,34 @@ export function countFactionModels(config: FactionConfig | null | undefined): nu
 export interface LoadFactionHooks {
   loadModel?: (url: string) => Promise<GltfContainer | null>;
   onProgress?: ((info: { loaded: number; total: number; label: string }) => void) | null;
+}
+
+const pendingUnitModels = new Map<string, Promise<GltfContainer>>();
+
+// Templates only: this never creates an entity or attaches anything to scene.
+// Failed requests are evicted so a later click can retry.
+export async function loadFactionUnitModel(factionKey: string, unitName: string, hooks: LoadFactionHooks = {}): Promise<GltfContainer> {
+  const bucket = factionContainers[factionKey];
+  const unit = FACTIONS[factionKey]?.units?.find((entry) => entry.name === unitName);
+  if (!bucket || !unit?.model) throw new Error(`Unknown unit: ${unitName}`);
+  const cached = bucket.units[unitName];
+  if (cached) return cached;
+  const key = `${factionKey}/${unitName}`;
+  const pending = pendingUnitModels.get(key);
+  if (pending) return pending;
+  const request = (async () => {
+    const container = await (hooks.loadModel || loadGltf)(modelUrl(unit.model!));
+    if (!container) throw new Error(`Could not load ${unitName}`);
+    if (unit.hiddenNodes) container._hiddenNodes = unit.hiddenNodes;
+    bucket.units[unitName] = container;
+    return container;
+  })();
+  pendingUnitModels.set(key, request);
+  try {
+    return await request;
+  } finally {
+    pendingUnitModels.delete(key);
+  }
 }
 
 export async function loadFactionModels(scene: unknown, factionKeys: string[] = POSITION_FACTIONS, hooks: LoadFactionHooks = {}): Promise<void> {
@@ -320,7 +348,7 @@ export async function loadFactionModels(scene: unknown, factionKeys: string[] = 
 
   async function loadUnitContainers(config: FactionConfig, target: Record<string, GltfContainer | null>, label: string | undefined): Promise<void> {
     for (const unit of config?.units || []) {
-      if (!unit.name) {
+      if (!unit.name || unit.lazyLoad) {
         continue;
       }
       target[unit.name] = maybeMergeSkinned(

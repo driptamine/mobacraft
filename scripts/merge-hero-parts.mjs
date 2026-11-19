@@ -1,12 +1,12 @@
 // Merge wearable part GLBs (weapon, armor, ...) into a hero body GLB so the
 // combined file is game-ready: parts share the master skeleton, animations
-// stay untouched. Donor skin joints map to master skin joints BY NAME, and
-// donor rest-pose differences are baked into the vertices, so parts authored
-// in another pose still land exactly where the donor rendered them.
+// stay untouched. Each wearable keeps its original inverse-bind matrices and
+// vertex data, with skin joints rebound to master skeleton nodes BY NAME.
+// This also handles weapons whose exported rest pose differs from the body.
 // Usage:
 //   node scripts/merge-hero-parts.mjs --out <combined.glb> <master.glb> <donor.glb>...
 import fs from 'node:fs';
-import * as THREE from 'three';
+import path from 'node:path';
 
 const pad4 = (n) => (n + 3) & ~3;
 
@@ -16,7 +16,21 @@ function readGlb(file) {
   const jsonLen = buf.readUInt32LE(12);
   const json = JSON.parse(buf.toString('utf8', 20, 20 + jsonLen));
   const binOff = 20 + jsonLen;
-  const bin = Buffer.from(buf.subarray(binOff + 8, binOff + 8 + buf.readUInt32LE(binOff)));
+  let bin = Buffer.from(buf.subarray(binOff + 8, binOff + 8 + buf.readUInt32LE(binOff)));
+  // Resolve textures beside each source, before moving the assembled model
+  // into final/. Relative donor URIs otherwise become broken texture URLs.
+  for (const img of json.images || []) {
+    if (!img.uri || /^(data:|https?:)/.test(img.uri)) continue;
+    const imageFile = path.resolve(path.dirname(file), decodeURIComponent(img.uri));
+    const bytes = fs.readFileSync(imageFile);
+    const offset = pad4(bin.length);
+    img.bufferView = json.bufferViews.length;
+    img.mimeType = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' }[path.extname(imageFile).toLowerCase()];
+    if (!img.mimeType) throw new Error(`unsupported image: ${imageFile}`);
+    delete img.uri;
+    json.bufferViews.push({ buffer: 0, byteOffset: offset, byteLength: bytes.length });
+    bin = Buffer.concat([bin, Buffer.alloc(offset - bin.length), bytes, Buffer.alloc(pad4(bytes.length) - bytes.length)]);
+  }
   return { json, bin };
 }
 
@@ -39,56 +53,13 @@ function writeGlb(file, json, bin) {
   fs.writeFileSync(file, out);
 }
 
-function ibmOf(parsed, skinIdx, jointPos) {
-  const { json, bin } = parsed;
-  const acc = json.accessors[json.skins[skinIdx].inverseBindMatrices];
-  const bv = json.bufferViews[acc.bufferView];
-  return new Float32Array(bin.buffer, bin.byteOffset + (bv.byteOffset || 0), acc.count * 16).slice(jointPos * 16, jointPos * 16 + 16);
-}
-
-function nodeLocalMatrix(node) {
-  if (node.matrix) return new THREE.Matrix4().fromArray(node.matrix);
-  const t = node.translation || [0, 0, 0];
-  const r = node.rotation || [0, 0, 0, 1];
-  const s = node.scale || [1, 1, 1];
-  return new THREE.Matrix4().compose(
-    new THREE.Vector3(t[0], t[1], t[2]),
-    new THREE.Quaternion(r[0], r[1], r[2], r[3]),
-    new THREE.Vector3(s[0], s[1], s[2]),
-  );
-}
-
-// Rest-pose world matrix per node index.
-function worldMatrices(json) {
-  const parent = new Map();
-  (json.nodes || []).forEach((n, i) => (n.children || []).forEach((c) => parent.set(c, i)));
-  const cache = new Map();
-  const world = (i) => {
-    if (cache.has(i)) return cache.get(i);
-    const local = nodeLocalMatrix(json.nodes[i]);
-    const m = parent.has(i) ? world(parent.get(i)).clone().multiply(local) : local;
-    cache.set(i, m);
-    return m;
-  };
-  return (json.nodes || []).map((_, i) => world(i));
-}
-
-function f32(parsed, accessorIdx, n) {
-  const { json, bin } = parsed;
-  const acc = json.accessors[accessorIdx];
-  const bv = json.bufferViews[acc.bufferView];
-  return {
-    acc,
-    arr: new Float32Array(bin.buffer, bin.byteOffset + (bv.byteOffset || 0) + (acc.byteOffset || 0), acc.count * n),
-  };
-}
-
-function usedJointIndices(parsed) {
+function usedJointIndices(parsed, skinIndex) {
   const { json, bin } = parsed;
   const used = new Set();
   const EPS = 1e-6;
-  for (const m of json.meshes || []) {
-    for (const p of m.primitives || []) {
+  for (const node of json.nodes || []) {
+    if (node.mesh === undefined || node.skin !== skinIndex) continue;
+    for (const p of json.meshes[node.mesh].primitives || []) {
       for (const [attr, ai] of Object.entries(p.attributes || {})) {
         if (!attr.startsWith('JOINTS_')) continue;
         const slot = attr.slice('JOINTS_'.length);
@@ -116,28 +87,27 @@ function usedJointIndices(parsed) {
 
 const argv = process.argv.slice(2);
 const outIdx = argv.indexOf('--out');
-if (outIdx === -1 || outIdx + 1 >= argv.length || argv.length < outIdx + 4) {
+if (outIdx === -1 || outIdx + 1 >= argv.length || argv.length < outIdx + 3) {
   console.error('usage: node scripts/merge-hero-parts.mjs --out <combined.glb> <master.glb> <donor.glb>...');
   process.exit(1);
 }
 const outFile = argv[outIdx + 1];
 const [masterFile, ...donorFiles] = [...argv.slice(0, outIdx), ...argv.slice(outIdx + 2)];
-if (!masterFile || !donorFiles.length) {
-  console.error('need a master and at least one donor');
+if (!masterFile) {
+  console.error('need a master');
   process.exit(1);
 }
 
 const base = readGlb(masterFile);
 const masterSkin = base.json.skins[0];
-const masterByName = new Map(masterSkin.joints.map((ji, si) => [base.json.nodes[ji].name, si]));
-const masterByLower = new Map(masterSkin.joints.map((ji, si) => [base.json.nodes[ji].name.toLowerCase(), si]));
+const masterJoints = [...new Set(base.json.skins.flatMap((skin) => skin.joints))];
+const masterByName = new Map(masterJoints.map((ji) => [base.json.nodes[ji].name, ji]));
+const masterByLower = new Map(masterJoints.map((ji) => [base.json.nodes[ji].name.toLowerCase(), ji]));
 const lookupJoint = (name) => {
   if (masterByName.has(name)) return { si: masterByName.get(name), alias: false };
   if (masterByLower.has(name.toLowerCase())) return { si: masterByLower.get(name.toLowerCase()), alias: true };
   return null;
 };
-const masterWorlds = worldMatrices(base.json);
-const masterIBM = masterSkin.joints.map((_, si) => ibmOf(base, 0, si));
 
 let bin = base.bin;
 let imgOff = base.json.images.length;
@@ -145,109 +115,47 @@ let texOff = base.json.textures.length;
 let samplerOff = base.json.samplers.length;
 let matOff = base.json.materials.length;
 let meshOff = base.json.meshes.length;
-let nodeOff = base.json.nodes.length;
 
 for (const donorFile of donorFiles) {
   const donor = readGlb(donorFile);
-  const donorSkin = donor.json.skins[0];
-  const djoints = donorSkin.joints.map((ji) => donor.json.nodes[ji].name);
-  const used = usedJointIndices(donor);
-  const remap = djoints.map((name, di) => {
-    const hit = lookupJoint(name);
-    if (hit) {
-      if (hit.alias) console.log(`  ${donorFile}: joint '${name}' matched case-insensitively`);
-      return hit.si;
-    }
-    if (!used.has(di)) {
-      console.warn(`  ${donorFile}: joint '${name}' missing in master but skins no verts — mapping to 0`);
-      return 0;
-    }
-    throw new Error(`${donorFile}: joint '${name}' skins verts but is missing in master`);
-  });
-
-  // Rest-pose delta per donor joint: D = IBMm^-1 * Wm^-1 * Wd * IBMd.
-  // Baking it into the verts makes the part render exactly as the donor did.
-  const donorWorlds = worldMatrices(donor.json);
-  const deltas = djoints.map((name, di) => {
-    const mi = remap[di];
-    const ibmM = new THREE.Matrix4().fromArray(masterIBM[mi]);
-    const ibmD = new THREE.Matrix4().fromArray(ibmOf(donor, 0, di));
-    return ibmM.clone().invert()
-      .multiply(new THREE.Matrix4().copy(masterWorlds[masterSkin.joints[mi]]).invert())
-      .multiply(donorWorlds[donorSkin.joints[di]])
-      .multiply(ibmD);
-  });
-  const delta3 = deltas.map((d) => new THREE.Matrix3().setFromMatrix4(d));
-
-  // Bake deltas into vertices (BIN copy), then remap JOINTS_*.
-  const dbin = Buffer.from(donor.bin);
-  const donorParsed = { json: donor.json, bin: dbin };
-  const jointBytes = (ai) => {
-    const acc = donor.json.accessors[ai];
-    const bv = donor.json.bufferViews[acc.bufferView];
-    return { acc, u16: new Uint16Array(dbin.buffer, dbin.byteOffset + (bv.byteOffset || 0) + (acc.byteOffset || 0), acc.count * 4) };
-  };
-  // mode 'point' uses the full affine delta; 'dir'/'offset' use rotation only.
-  const bakeVec3 = (ai, W, J, mode) => {
-    const { acc, arr } = f32(donorParsed, ai, 3);
-    const v = new THREE.Vector3();
-    const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
-    for (let i = 0; i < acc.count; i++) {
-      v.set(0, 0, 0);
-      for (let k = 0; k < 4; k++) {
-        const w = W[i * 4 + k];
-        if (!w) continue;
-        const src = new THREE.Vector3(arr[i * 3], arr[i * 3 + 1], arr[i * 3 + 2]);
-        v.addScaledVector(mode === 'point' ? src.applyMatrix4(deltas[J[i * 4 + k]]) : src.applyMatrix3(delta3[J[i * 4 + k]]), w);
-      }
-      if (mode === 'dir') v.normalize();
-      arr[i * 3] = v.x; arr[i * 3 + 1] = v.y; arr[i * 3 + 2] = v.z;
-      for (let k = 0; k < 3; k++) {
-        const c = k === 0 ? v.x : k === 1 ? v.y : v.z;
-        if (c < min[k]) min[k] = c;
-        if (c > max[k]) max[k] = c;
-      }
-    }
-    acc.min = min;
-    acc.max = max;
-    return acc.count;
-  };
-  let bakedVerts = 0;
-  for (const m of donor.json.meshes || []) {
-    for (const p of m.primitives || []) {
-      const jointsAttr = p.attributes.JOINTS_0;
-      const weightsAttr = p.attributes.WEIGHTS_0;
-      if (jointsAttr === undefined || weightsAttr === undefined) continue;
-      const { u16: J } = jointBytes(jointsAttr);
-      const { arr: W } = f32(donorParsed, weightsAttr, 4);
-      bakedVerts += bakeVec3(p.attributes.POSITION, W, J, 'point');
-      if (p.attributes.NORMAL !== undefined) bakeVec3(p.attributes.NORMAL, W, J, 'dir');
-      if (p.attributes.TANGENT !== undefined) {
-        const { acc, arr } = f32(donorParsed, p.attributes.TANGENT, 4);
-        const v = new THREE.Vector3();
-        for (let i = 0; i < acc.count; i++) {
-          v.set(0, 0, 0);
-          for (let k = 0; k < 4; k++) {
-            const w = W[i * 4 + k];
-            if (!w) continue;
-            v.addScaledVector(new THREE.Vector3(arr[i * 4], arr[i * 4 + 1], arr[i * 4 + 2]).applyMatrix3(delta3[J[i * 4 + k]]), w);
-          }
-          v.normalize();
-          arr[i * 4] = v.x; arr[i * 4 + 1] = v.y; arr[i * 4 + 2] = v.z;
-        }
-      }
-      for (const t of p.targets || []) {
-        if (t.POSITION !== undefined) bakeVec3(t.POSITION, W, J, 'offset');
-        if (t.NORMAL !== undefined) bakeVec3(t.NORMAL, W, J, 'dir');
-      }
-      for (const [attr, ai] of Object.entries(p.attributes || {})) {
-        if (!attr.startsWith('JOINTS_')) continue;
-        const { u16 } = jointBytes(ai);
-        for (let i = 0; i < u16.length; i++) u16[i] = remap[u16[i]];
-      }
-    }
+  for (const key of ['extensionsUsed', 'extensionsRequired']) {
+    if (donor.json[key]?.length) base.json[key] = [...new Set([...(base.json[key] || []), ...donor.json[key]])];
   }
-  console.log(`  ${donorFile}: baked ${bakedVerts} verts`);
+  const donorParents = new Map((donor.json.nodes || []).flatMap((node, i) => (node.children || []).map((child) => [child, i])));
+  const resolveDonorJoint = (index) => {
+    const node = donor.json.nodes[index];
+    const hit = lookupJoint(node.name);
+    if (hit) return hit.si;
+    const parent = donorParents.get(index);
+    if (parent === undefined) throw new Error(`${donorFile}: joint '${node.name}' has no matching skeleton ancestor`);
+    const parentIndex = resolveDonorJoint(parent);
+    // Some wearables add helper bones (shoulder pads, toes, hair). Retain
+    // their local transforms beneath the corresponding animated body bone.
+    const copy = { ...node };
+    delete copy.mesh;
+    delete copy.skin;
+    delete copy.children;
+    const mapped = base.json.nodes.push(copy) - 1;
+    (base.json.nodes[parentIndex].children ||= []).push(mapped);
+    masterByName.set(node.name, mapped);
+    masterByLower.set(node.name.toLowerCase(), mapped);
+    return mapped;
+  };
+  const skinOff = base.json.skins.length;
+  const donorSkins = (donor.json.skins || []).map((skin, skinIndex) => {
+    const used = usedJointIndices(donor, skinIndex);
+    const joints = skin.joints.map((ji, di) => {
+      const name = donor.json.nodes[ji].name;
+      const hit = lookupJoint(name);
+      if (hit) return hit.si;
+      if (!used.has(di)) return masterSkin.joints[0];
+      return resolveDonorJoint(ji);
+    });
+    const rebound = { ...skin, joints };
+    delete rebound.skeleton;
+    return rebound;
+  });
+  const dbin = donor.bin;
 
   const baseLen = pad4(bin.length);
   bin = Buffer.concat([bin, Buffer.alloc(baseLen - bin.length), dbin]);
@@ -259,6 +167,10 @@ for (const donorFile of donorFiles) {
   for (const a of donor.json.accessors) {
     const na = { ...a };
     if (na.bufferView !== undefined) na.bufferView += bvOff;
+    if (na.sparse) {
+      na.sparse.indices.bufferView += bvOff;
+      na.sparse.values.bufferView += bvOff;
+    }
     base.json.accessors.push(na);
   }
   for (const img of donor.json.images || []) {
@@ -285,19 +197,33 @@ for (const donorFile of donorFiles) {
     remapTex(nm.occlusionTexture);
     remapTex(nm.emissiveTexture);
     remapTex(nm.extensions?.KHR_materials_specular?.specularTexture);
+    remapTex(nm.extensions?.KHR_materials_specular?.specularColorTexture);
     base.json.materials.push(nm);
   }
+  for (const skin of donorSkins) {
+    if (skin.inverseBindMatrices !== undefined) skin.inverseBindMatrices += accOff;
+    base.json.skins.push(skin);
+  }
+  const donorMeshOff = meshOff;
   for (const m of donor.json.meshes || []) {
     const nm = JSON.parse(JSON.stringify(m));
     for (const p of nm.primitives) {
       for (const k of Object.keys(p.attributes)) p.attributes[k] += accOff;
+      for (const target of p.targets || []) {
+        for (const k of Object.keys(target)) target[k] += accOff;
+      }
       if (Number.isInteger(p.indices)) p.indices += accOff;
       if (Number.isInteger(p.material)) p.material += matOff;
     }
     base.json.meshes.push(nm);
-    const node = { name: m.name, mesh: meshOff++, skin: 0 };
-    base.json.nodes.push(node);
-    base.json.scenes[0].nodes.push(nodeOff++);
+    meshOff++;
+  }
+  for (const node of donor.json.nodes || []) {
+    if (node.mesh === undefined) continue;
+    if (node.skin === undefined) throw new Error(`${donorFile}: wearable mesh must be skinned`);
+    const merged = { ...node, mesh: node.mesh + donorMeshOff, skin: node.skin + skinOff };
+    delete merged.children;
+    base.json.scenes[base.json.scene || 0].nodes.push(base.json.nodes.push(merged) - 1);
   }
   if ((donor.json.animations || []).length) {
     console.log(`  ${donorFile}: ignoring ${donor.json.animations.length} donor animation(s), master drives`);
@@ -306,7 +232,7 @@ for (const donorFile of donorFiles) {
   texOff += (donor.json.textures || []).length;
   samplerOff += (donor.json.samplers || []).length;
   matOff += (donor.json.materials || []).length;
-  console.log(`merged ${donorFile}: joints remapped by name, rest pose baked`);
+  console.log(`merged ${donorFile}: skin rebound by name, original geometry and bind matrices preserved`);
 }
 
 base.json.buffers[0].byteLength = bin.length;

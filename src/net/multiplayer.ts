@@ -25,7 +25,7 @@ import { disposeMeshComponent, _initSystems, spawnParticles } from '../core/syst
 import { bootGame, resetGame } from '../core/game.js';
 import { issueRightClick, pickMesh, raycastGround } from '../core/input.js';
 import { disposeObj } from '../render/three-helpers.js';
-import { listMaps, selectMap, previewState, entryLabel, skirmishMapCards, defaultSkirmishMap, type MapCard } from '../ui/maps-menu.js';
+import { listMaps, selectMap, selectDefaultArena, previewState, entryLabel, skirmishMapCards, defaultSkirmishMap, type MapCard } from '../ui/maps-menu.js';
 import { prefetchMapFiles } from '../maps/map-source.js';
 import { mountMultiplayerLobby } from './multiplayer-lobby-ui.js';
 import { resetR2Progress, subscribeR2Progress, probeR2Cache } from './r2-progress.js';
@@ -307,6 +307,7 @@ async function _startOnlineMatch(): Promise<void> {
     await bootGame({onProgress: _updateLoadBar});
     if (generation !== _joinGeneration) return;
     if (_selectedMap) await selectMap(_selectedMap.path, _selectedMap.url);
+    else await selectDefaultArena();
     if (generation !== _joinGeneration) return;
     _lobbyOnly = false;
     _onSession(_pendingSession);
@@ -1023,21 +1024,11 @@ function _buildMapGrid(gridId = 'webTransport-map-grid', detailId = 'webTranspor
   void listMaps().then((entries) => {
     if (!grid.isConnected) return;
     grid.innerHTML = '';
-    if (!entries.length) {
-      const none = document.createElement('div');
-      none.className = 'webTransport-map-detail-empty';
-      none.textContent = 'NO MAPS (maps/manifest.json UNREACHABLE)';
-      grid.appendChild(none);
-      return;
-    }
     _buildMapGridEntries(grid, detail, skirmishMapCards(entries));
   }).catch(() => {
     if (!grid.isConnected) return;
     grid.innerHTML = '';
-    const failed = document.createElement('div');
-    failed.className = 'webTransport-map-detail-empty';
-    failed.textContent = 'MAP LIST FAILED TO LOAD';
-    grid.appendChild(failed);
+    _buildMapGridEntries(grid, detail, skirmishMapCards([]));
   });
 }
 
@@ -1452,6 +1443,8 @@ export async function webTransportPlayOffline(config: LocalMatchConfig | null = 
     if (_selectedMap) {
       _updateLoadBar({ loaded: 0, total: 0, label: `Loading map ${_selectedMap.name}` });
       await selectMap(_selectedMap.path, _selectedMap.url);
+    } else {
+      await selectDefaultArena();
     }
     resetGame();
     _setLoadingUI(false);

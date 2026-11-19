@@ -17,6 +17,7 @@ import { systemBeam, systemBlasterBullet, systemBullet, systemGrenade, systemLas
 import { systemSoldier, systemSquad } from './squad.js';
 import { systemBuilding, systemStructure, systemStructureCollision } from './structures.js';
 import { systemApc, systemVehicle } from './vehicles.js';
+import { systemLaneCreeps } from './lane-creeps.js';
 
 
 export function systemRequisitionIncome(world: any, deltaTime: number) {
@@ -59,6 +60,7 @@ export function systemWinCheck(world: any) {
 
 
 export function _initSystems(w: any) {
+  w.addSystem(systemLaneCreeps);
   w.addSystem(systemSoldier);
   w.addSystem(systemSquad);
   w.addSystem(systemMeleeCollision);

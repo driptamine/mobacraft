@@ -10,7 +10,8 @@ import { heavyWeaponsTeam } from '../../stats/races/ig/infantry/heavy_weapons_te
 import { kasrkin } from '../../stats/races/ig/infantry/kasrkin.js';
 import { ogryn } from '../../stats/races/ig/infantry/ogryn.js';
 import { commandSquad } from '../../stats/races/ig/infantry/command_squad.js';
-import { batch1Heroes } from '../../stats/races/batch1/heroes.js';
+import { recruitableHeroes } from '../../stats/races/heroes.js';
+import { laneCreeps } from '../../stats/races/dota/creeps.js';
 const structures: Record<string, unknown> = structuresJson;
 
 const STRUCTURE_HIDDEN_NODES = [
@@ -45,7 +46,8 @@ export default {
     kasrkin,
     ogryn,
     commandSquad,
-    ...batch1Heroes,
+    ...recruitableHeroes,
+    ...laneCreeps,
   ],
   structures: [
     {

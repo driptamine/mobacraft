@@ -454,7 +454,7 @@ export function spawnGateOffset(dx: number, dz: number): readonly [number, numbe
 }
 
 export function productionSpawnPoint(buildingComponent: any): THREE.Vector3 {
-  const bounds = structureFootprint({ type: buildingComponent.type, faction: buildingComponent.faction });
+  const bounds = structureFootprint(buildingComponent);
   const radius = Math.max(bounds.maxX - bounds.minX, bounds.maxZ - bounds.minZ, 4) / 2 + 3;
   const rally = buildingComponent.rallyPoint;
   if (!rally) {

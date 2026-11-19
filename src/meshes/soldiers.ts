@@ -41,14 +41,12 @@ import {
   mkTorus,
 } from '../render/three-helpers.js';
 import type { AnyGroup, MetaPayload } from './types.js';
-import { batch1BlueTeam, batch1RedTeam } from '../../stats/races/batch1/heroes.js';
-
-const _batch1Heroes = new Set([...batch1BlueTeam, ...batch1RedTeam]);
+import { heroNames } from '../../stats/races/heroes.js';
 
 // Batch 1 heroes are 2-5 units wide: their ground rings run wider than the
 // standard infantry torus so the circle reads around the model.
 export function soldierRingDiameter(unitType: unknown): number {
-  return typeof unitType === 'string' && _batch1Heroes.has(unitType) ? 4.0 : 1.5;
+  return typeof unitType === 'string' && heroNames.has(unitType) ? 4.0 : 1.5;
 }
 
 export function addTeamRing(root: AnyGroup, isPlayerTeam: boolean, unitType?: unknown): THREE.Mesh {

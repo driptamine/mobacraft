@@ -1,6 +1,6 @@
 {
   "axe": {
-    "model": "batches/1/models/heroes/axe/axe.glb",
+    "model": "batches/1/final/axe-combined.glb",
     "team": "blue",
     "actions": {
       "idle": "idle",
@@ -91,10 +91,18 @@
       "@@berserkers_call",
       "@@battle_hunger",
       "@@rampant_berserkers_call"
+    ],
+    "sourceModel": "batches/1/models/heroes/axe/axe.glb",
+    "parts": [
+      "axe_armor.glb",
+      "axe_belt.glb",
+      "axe_hair.glb",
+      "axe_ponytail.glb",
+      "axe_weapon.glb"
     ]
   },
   "crystal_maiden": {
-    "model": "batches/1/models/heroes/crystal_maiden/crystal_maiden.glb",
+    "model": "batches/1/final/crystal_maiden-combined.glb",
     "team": "red",
     "actions": {
       "idle": "cm_idle_anim",
@@ -301,10 +309,18 @@
       "@dplus_wardstaff_impatient_maiden_loadout",
       "@dplus_wardstaff_impatient_maiden_loadout_rare",
       "@@dplus_cm_run"
+    ],
+    "sourceModel": "batches/1/models/heroes/crystal_maiden/crystal_maiden.glb",
+    "parts": [
+      "crystal_maiden_cape.glb",
+      "crystal_maiden_cuffs.glb",
+      "crystal_maiden_shoulders.glb",
+      "crystal_maiden_staff.glb",
+      "head_item.glb"
     ]
   },
   "drow": {
-    "model": "batches/1/models/heroes/drow/drow_base.glb",
+    "model": "batches/1/final/drow-combined.glb",
     "team": "red",
     "actions": {
       "idle": "idle_anim",
@@ -396,10 +412,20 @@
       "taunt01_whats_that_anim",
       "turns",
       "@run_anim"
+    ],
+    "sourceModel": "batches/1/models/heroes/drow/drow_base.glb",
+    "parts": [
+      "drow_armor.glb",
+      "drow_bracer.glb",
+      "drow_cape.glb",
+      "drow_haircowl.glb",
+      "drow_legs.glb",
+      "drow_quiver.glb",
+      "drow_weapon.glb"
     ]
   },
   "juggernaut": {
-    "model": "batches/1/models/heroes/juggernaut/juggernaut.glb",
+    "model": "batches/1/final/juggernaut-combined.glb",
     "team": "blue",
     "actions": {
       "idle": "idle",
@@ -563,10 +589,18 @@
       "@run_odachi_walk",
       "@run_odachi_run",
       "@run_odachi_run_fast"
+    ],
+    "sourceModel": "batches/1/models/heroes/juggernaut/juggernaut.glb",
+    "parts": [
+      "jugg_bracers.glb",
+      "jugg_cape.glb",
+      "jugg_mask.glb",
+      "jugg_sword.glb",
+      "juggernaut_pants.glb"
     ]
   },
   "lina": {
-    "model": "batches/1/models/heroes/lina/lina.glb",
+    "model": "batches/1/final/lina-combined.glb",
     "team": "red",
     "actions": {
       "idle": "idle_anim",
@@ -649,10 +683,17 @@
       "background_idle",
       "@run_anim",
       "@run_injured_anim"
+    ],
+    "sourceModel": "batches/1/models/heroes/lina/lina.glb",
+    "parts": [
+      "lina_arms.glb",
+      "lina_belt.glb",
+      "lina_head.glb",
+      "lina_neck.glb"
     ]
   },
   "lion": {
-    "model": "batches/1/models/heroes/lion/lion.glb",
+    "model": "batches/1/final/lion-combined.glb",
     "team": "red",
     "actions": {
       "idle": "idle_anim",
@@ -751,10 +792,18 @@
       "turns",
       "@run_anim",
       "@ti8_run_anim"
+    ],
+    "sourceModel": "batches/1/models/heroes/lion/lion.glb",
+    "parts": [
+      "lion_cape.glb",
+      "lion_demonarm.glb",
+      "lion_hat.glb",
+      "lion_shoulder.glb",
+      "lion_weapon.glb"
     ]
   },
   "pudge": {
-    "model": "batches/1/models/heroes/pudge/pudge.glb",
+    "model": "batches/1/final/pudge-combined.glb",
     "team": "blue",
     "actions": {
       "idle": "pudge_idle_anim",
@@ -1065,10 +1114,20 @@
       "@pudge_ti7_immortal_hh_run_override",
       "@pudge_ti7_hh_runN_haste_override",
       "@hand_R_shrink_blend"
+    ],
+    "sourceModel": "batches/1/models/heroes/pudge/pudge.glb",
+    "parts": [
+      "back.glb",
+      "belt.glb",
+      "bracer.glb",
+      "hair.glb",
+      "leftarm.glb",
+      "leftweapon.glb",
+      "weapon.glb"
     ]
   },
   "shadow_fiend": {
-    "model": "batches/1/models/heroes/shadow_fiend/shadow_fiend.glb",
+    "model": "batches/1/final/shadow_fiend-combined.glb",
     "team": "red",
     "actions": {
       "idle": "idle_anim",
@@ -1183,10 +1242,17 @@
       "@@run_alt_fast_desolation",
       "@@run_fast_desolation_base",
       "@@run_injured_desolation"
+    ],
+    "sourceModel": "batches/1/models/heroes/shadow_fiend/shadow_fiend.glb",
+    "parts": [
+      "shadow_fiend_arms.glb",
+      "shadow_fiend_head.glb",
+      "shadow_fiend_shoulders.glb",
+      "shadow_fiend_wings.glb"
     ]
   },
   "sven": {
-    "model": "batches/1/models/heroes/sven/sven.glb",
+    "model": "batches/1/final/sven-combined.glb",
     "team": "blue",
     "actions": {
       "idle": "idle_anim",
@@ -1325,10 +1391,18 @@
       "@@shield_warcry_runN",
       "@@shield_warcry",
       "@@shield_warcry_gods_strength"
+    ],
+    "sourceModel": "batches/1/models/heroes/sven/sven.glb",
+    "parts": [
+      "sven_belt.glb",
+      "sven_gauntlet.glb",
+      "sven_mask.glb",
+      "sven_shoulder.glb",
+      "sven_sword.glb"
     ]
   },
   "tidehunter": {
-    "model": "batches/1/models/heroes/tidehunter/tidehunter.glb",
+    "model": "batches/1/final/tidehunter-combined.glb",
     "team": "blue",
     "actions": {
       "idle": "idle_anim",
@@ -1473,6 +1547,12 @@
       "tide_arcana_catch_taunt",
       "tide_arcana_catch_taunt_kunkka",
       "@@run_anim"
+    ],
+    "sourceModel": "batches/1/models/heroes/tidehunter/tidehunter.glb",
+    "parts": [
+      "tidehunter_anchor.glb",
+      "tidehunter_belt.glb",
+      "tidehunter_bracer.glb"
     ]
   }
 }

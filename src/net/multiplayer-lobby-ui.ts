@@ -49,16 +49,16 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   let onlinePlayerId: number | null = null;
   let screen: Screen = 'servers';
   let selected: Lobby | null = LOBBIES[0] || null;
-  let selectedMap: MapCard = defaultSkirmishMap(cards) || cards[0];
+  let selectedMap: MapCard | null = defaultSkirmishMap(cards) || cards[0] || null;
   let mapPickedByUser = false;
   // Production serves maps/ from R2, so the build-time glob above only has
-  // the arena card: swap in the uploaded manifest when it arrives, unless
+  // no available cards: swap in the uploaded manifest when it arrives, unless
   // the player already picked a map.
   if (cards.length <= 1) {
     void listMaps().then((entries) => {
       if (!entries.length || mapPickedByUser) return;
       cards = skirmishMapCards(entries);
-      selectedMap = defaultSkirmishMap(cards) || cards[0];
+      selectedMap = defaultSkirmishMap(cards) || cards[0] || null;
       if (screen === 'maps') render();
     });
   }
@@ -93,6 +93,7 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
     }
   }
   async function create(mode: 'auto' | 'local' = 'auto'): Promise<void> {
+    if (!selectedMap) return;
     const name = panel.querySelector<HTMLInputElement>('#mp-game-name')?.value || 'My Game';
     let lobby: Lobby;
     try {
@@ -169,8 +170,8 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
       row.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); selectedMap = card; create(); } });
       list.append(row);
     }
-    $('#mp-actions').append(button('Back', () => { screen = 'servers'; render(); }), button('Create Game', () => { void create(); }));
-    $('#mp-actions').append(button('Local Game', () => { void create('local'); }));
+    $('#mp-actions').append(button('Back', () => { screen = 'servers'; render(); }), button('Create Game', () => { void create(); }, !selectedMap));
+    $('#mp-actions').append(button('Local Game', () => { void create('local'); }, !selectedMap));
   }
   function renderPlayers(): void {
     if (!room) return;

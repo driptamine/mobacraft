@@ -20,17 +20,19 @@ import { updateMixers } from '../render/gltf-models.js';
 import { updateNecronConduits } from '../fx/necron-conduit.js';
 import { updatePlasmaGlow } from '../fx/plasma-glow.js';
 import { updatePlasmaPistolGlow } from '../fx/plasma-pistol-glow.js';
-import { preloadPlasmaBoltModel, preloadPlasmaFinalFx, updatePlasmaBoltFx } from '../fx/plasma-bolt.js';
+import { updatePlasmaBoltFx } from '../fx/plasma-bolt.js';
 import { updateBlasterBoltFx } from '../fx/blaster-bolt.js';
 import { updateReaperBoltFx } from '../fx/reaper-bolt.js';
 import { updateNecronAurora } from '../fx/necron-aurora.js';
 import { updateNecronAura } from '../fx/necron-aura.js';
 import { NecronFootDust } from '../fx/necron-foot-dust.js';
 import { _groundAt } from '../systems/terrain.js';
-import { loadFactionModels, factionContainers, ARENA_POSITION_FACTIONS, playerFaction } from '../factions.js';
-import { useProceduralModels } from '../render/model-source.js';
-import { preloadStrategicPointModel, preloadRelicModel, preloadObjectiveModel } from '../meshes.js';
-import { startPositionsFor, strategicPointsFor, factionsFor, factionBasePosition } from '../maps/map-layout.js';
+import { playerFaction, setPlayerFaction } from '../factions.js';
+import { startPositionsFor, strategicPointsFor, factionsFor, factionBasePosition, layoutFor } from '../maps/map-layout.js';
+import { doomSpiralBases } from '../maps/doom-spiral.js';
+import { startDoomCreeps, stopDoomCreeps, type CreepBase } from '../systems/lane-creeps.js';
+import { createHeroBase } from '../entities/hero-base.js';
+import { loadStartupModels } from './startup-models.js';
 import {
   updateHUD, updateTopBar, updateMinimap, updateCaptureProgressBars,
 } from './hud.js';
@@ -38,7 +40,7 @@ import { tickFps, getFps, hudDue } from '../hud/store.js';
 import { refreshSelectionHealth } from '../hud/selection-health.js';
 import { createDynamicResolution, pixelRatioForTier } from '../render/three-helpers.js';
 import { toggleNodesPanel, initNodesPanelAutoRefresh } from '../ui/nodes-panel.js';
-import { preloadLasgunViewmodel, tickFirstPerson, toggleCameraFps } from '../render/camera-fps.js';
+import { tickFirstPerson, toggleCameraFps } from '../render/camera-fps.js';
 import {
   toggleEntitiesPanel, entitiesFilter, entitiesRefresh, initEntitiesPanelAutoRefresh,
 } from '../ui/entities-panel.js';
@@ -136,6 +138,7 @@ const necronFootDust = new NecronFootDust(_groundAt);
 export function resetGame(mapKey: string = window._currentMapKey || 'arena'): void {
   necronFootDust.clear();
   if (world) {
+    stopDoomCreeps(world);
     const tags = ['squad', 'builder', 'building', 'structure', 'bullet', 'grenade', 'strategicPoint', 'apc', 'vehicle', 'laserBullet', 'plasmaBullet', 'airfield', 'jet', 'missile', 'soldier', 'replicaShot'];
     for (const tag of tags) {
       for (const id of world.query(tag)) {
@@ -156,7 +159,9 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
   grenadeCallbacks.length = 0;
 
   const localMatch = localMatchFor(mapKey);
-  const startingFaction = localMatch?.seats.find(seat => !seat.computer)?.faction || localMatch?.seats[0]?.faction || playerFaction;
+  const doomSpiral = /doom.?spiral/i.test(mapKey || '');
+  if (doomSpiral) setPlayerFaction('ig');
+  const startingFaction = doomSpiral ? playerFaction : localMatch?.seats.find(seat => !seat.computer)?.faction || localMatch?.seats[0]?.faction || playerFaction;
   const resources = startingResources(startingFaction);
   setRequisition(resources.requisition);
   setEnergy(resources.energy);
@@ -181,21 +186,39 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
   const entityWorld = new World();
   setWorld(entityWorld);
   _initSystems(entityWorld);
-  entityWorld.addSystem(systemAI);
+  if (!doomSpiral) entityWorld.addSystem(systemAI);
 
   // Per-map layout: start positions + strategic points (arena adds a
   // 4-point ring plus one relic around every HQ, no center cluster).
   const startPositions = startPositionsFor(mapKey);
   const factions = factionsFor(mapKey);
-  for (const { x, z, kind } of strategicPointsFor(mapKey)) {
-    createStrategicPointEntity(entityWorld, x, z, kind);
+  if (!doomSpiral) {
+    for (const { x, z, kind } of strategicPointsFor(mapKey)) {
+      createStrategicPointEntity(entityWorld, x, z, kind);
+    }
   }
 
   // Doom Spiral uses a straight-on camera (alpha 0, beta 50); every other map
   // keeps the diagonal defaults. The minimap mirrors per map to match.
-  const doomSpiral = /doom.?spiral/i.test(mapKey || '');
   const startAlpha = doomSpiral ? 0 : DEFAULT_CAMERA_ALPHA;
   const startBeta = doomSpiral ? (50 * Math.PI) / 180 : DEFAULT_CAMERA_BETA;
+  if (doomSpiral) {
+    const bases: CreepBase[] = [];
+    for (const base of doomSpiralBases(layoutFor(mapKey).positions)) {
+      const seat = localMatch?.seats.filter((entry) => entry.team === base.team).sort((a, b) => Number(a.computer) - Number(b.computer))[0];
+      const id = createHeroBase(entityWorld, new THREE.Vector3(base.x, 0, base.z), base.team, seat ? seat.owner ?? seat.slot + 1 : undefined);
+      bases.push({ ...base, id });
+    }
+    void startDoomCreeps(entityWorld, bases).catch((error) => console.error('Could not load lane creeps', error));
+    // Keep the starting view fixed when a recruitment square is repositioned.
+    const home = layoutFor(mapKey).positions.find((point) => point.faction === (PLAYER === 'blue' ? 'space marines' : 'ig')) || bases[0];
+    if (home) camera.target.set(home.x, 0, home.z);
+    camera.radius = DEFAULT_CAMERA_RADIUS;
+    camera.alpha = startAlpha;
+    camera.beta = startBeta;
+    updateHUD();
+    return;
+  }
   if (localMatch) {
     const matchPositions = localMatchPositions(localMatch, startPositions);
     for (const seat of localMatch.seats) {
@@ -205,7 +228,7 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
     spawnBatchHeroes(entityWorld, localMatch.seats.map((seat) => {
       const position = matchPositions.get(seat.slot);
       return position ? { x: position.x, z: position.z, team: seat.team } : null;
-    }).filter((spot): spot is { x: number; z: number; team: unknown } => spot !== null));
+    }).filter((spot): spot is NonNullable<typeof spot> => spot !== null));
     entityWorld.defaultOwner = null;
     const human = localMatch.seats.find(seat => !seat.computer) || localMatch.seats[0];
     const position = matchPositions.get(human.slot);
@@ -294,20 +317,7 @@ export async function bootGame(loadHooks: any = {}): Promise<void> {
 
   await createScene();
   initInput();
-  // Fetch the dedicated FPS lasgun in the background so first person owns
-  // its weapon file from the first ride (never blocks boot on failure).
-  preloadLasgunViewmodel();
-
-  if (useProceduralModels()) {
-    console.log('[FACTION] Procedural models enabled — skipping models/ GLB loads.');
-  } else {
-    await loadFactionModels(scene, ARENA_POSITION_FACTIONS, loadHooks);
-    await preloadStrategicPointModel();
-    await preloadRelicModel();
-    await preloadObjectiveModel();
-  }
-  await preloadPlasmaBoltModel();
-  await preloadPlasmaFinalFx();
+  await loadStartupModels(window._currentMapKey || 'arena', loadHooks);
 
   if (!window._multiplayerMode) {
     resetGame();
