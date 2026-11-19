@@ -5,6 +5,8 @@ import { world, PLAYER, camera, currentBounds } from '../../core/scene.js';
 import { issueGroundOrder, isFlyArmed, setHudHover } from '../../core/input.js';
 import { useHUDVersion } from '../useHUD.js';
 import { MinimapPanel, MinimapCanvas, MinimapLabel } from '../primitives.jsx';
+import { isDotaMap } from '../../maps/dota-map-layout.js';
+import { _groundAt } from '../../systems/terrain.js';
 
 // Doom Spiral runs a straight-on camera (alpha 0: screen-right is -Z,
 // far side is -X), so its minimap is transposed to match that view
@@ -27,10 +29,11 @@ function drawMinimap(canvasEl: HTMLCanvasElement | null): void {
   const H = canvasEl.height;
   const HALF = currentBounds();
   const doom = doomSpiralMinimap();
-  const wx = (x: number, z: number): number => doom
+  const dota = isDotaMap(window._currentMapKey || '');
+  const wx = (x: number, z: number): number => dota ? Math.round(((z + HALF) / (HALF * 2)) * W) : doom
     ? Math.round(((HALF - z) / (HALF * 2)) * W)
     : Math.round(((HALF - x) / (HALF * 2)) * W);
-  const wy = (x: number, z: number): number => doom
+  const wy = (x: number, z: number): number => dota ? Math.round(((HALF - x) / (HALF * 2)) * H) : doom
     ? Math.round(((x + HALF) / (HALF * 2)) * H)
     : Math.round(((HALF - z) / (HALF * 2)) * H);
 
@@ -169,6 +172,9 @@ export function Minimap(): JSX.Element {
     const normalizedX = (e.clientX - rect.left) / rect.width;
     const normalizedY = (e.clientY - rect.top) / rect.height;
     const HALF = currentBounds();
+    if (isDotaMap(window._currentMapKey || '')) {
+      return new THREE.Vector3(HALF - normalizedY * HALF * 2, 0, normalizedX * HALF * 2 - HALF);
+    }
     if (doomSpiralMinimap()) {
       return new THREE.Vector3(normalizedY * HALF * 2 - HALF, 0, HALF - normalizedX * HALF * 2);
     }
@@ -180,6 +186,7 @@ export function Minimap(): JSX.Element {
       return;
     }
     camera.target = minimapWorld(e);
+    if (isDotaMap(window._currentMapKey || '')) camera.target.y = _groundAt(camera.target.x, camera.target.z);
   };
 
   const handleContextMenu = (e: ReactMouseEvent) => {

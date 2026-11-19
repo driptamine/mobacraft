@@ -8,6 +8,8 @@ batches/
 !animations/batches/**
 models/
 assets/
+/maps/dotamap/
+/maps/dotamap-game/*.glb
 /maps/all_tiles/
 
 # Build output
@@ -32,6 +34,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Local Dota integration screenshots
+/artifacts/dota-*.png
 
 # Test / coverage output
 coverage/

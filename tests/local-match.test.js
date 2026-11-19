@@ -70,3 +70,31 @@ describe('Alvarus lobby start positions', () => {
     assert.equal(result.get(3),positions[3]);
   });
 });
+
+describe('Dota lobby heroes', () => {
+  const key = '/maps/dotamap-game/map.json';
+  const lobbyWithHeroes = () => {
+    const lobby = createLobby({ total: 2 });
+    setLobbySlot(lobby, 0, { username: 'You', faction: 'Space Marines', hero: 'axe', team: 2, ping: 0, controller: 'human' });
+    setLobbySlot(lobby, 1, { ...computer('Chaos', 1), hero: 'lina' });
+    return lobby;
+  };
+  it('carries each chosen hero, side and controller into a Dota match', () => {
+    assert.deepEqual(makeLocalMatch(lobbyWithHeroes(), key).seats, [
+      { slot: 0, faction: 'ig', hero: 'axe', team: 'red', computer: false },
+      { slot: 1, faction: 'ig', hero: 'lina', team: 'blue', computer: true },
+    ]);
+  });
+  it('requires an available hero in every occupied Dota slot', () => {
+    for (const hero of [undefined, 'marci', 'not-a-hero']) {
+      const lobby = lobbyWithHeroes(); lobby.players[1].hero = hero;
+      assert.throws(() => makeLocalMatch(lobby, key), /available hero/);
+    }
+  });
+  it('ignores hero picks on RTS maps and preserves their factions', () => {
+    const config = makeLocalMatch(lobbyWithHeroes(), 'arena');
+    assert.equal(config.seats[0].faction, 'space marines');
+    assert.equal(config.seats[1].faction, 'chaos');
+    assert.ok(config.seats.every(seat => !Object.hasOwn(seat, 'hero')));
+  });
+});

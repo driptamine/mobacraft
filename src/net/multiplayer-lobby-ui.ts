@@ -51,10 +51,9 @@ export function mountMultiplayerLobby(panel: HTMLElement, options: {
   let selected: Lobby | null = LOBBIES[0] || null;
   let selectedMap: MapCard | null = defaultSkirmishMap(cards) || cards[0] || null;
   let mapPickedByUser = false;
-  // Production serves maps/ from R2, so the build-time glob above only has
-  // no available cards: swap in the uploaded manifest when it arrives, unless
-  // the player already picked a map.
-  if (cards.length <= 1) {
+  // Refresh from the R2 manifest even when the built-in Dota card is present,
+  // unless the player already picked a map.
+  {
     void listMaps().then((entries) => {
       if (!entries.length || mapPickedByUser) return;
       cards = skirmishMapCards(entries);

@@ -33,5 +33,9 @@ const entries = readdirSync(MAPS, { withFileTypes: true })
     preview: previewFor(dir),
   }));
 
+if (existsSync(join(MAPS, 'dotamap-game', 'map.json'))) {
+  entries.push({ path: '/maps/dotamap-game/map.json', name: 'Dota 2', players: 2, preview: '/maps/dotamap-game/preview.png' });
+}
+
 writeFileSync(out, JSON.stringify(entries, null, 2) + '\n');
 console.log(`Wrote ${out}: ${entries.length} maps`);

@@ -40,8 +40,8 @@ export const _avoidOut = { x: 0, z: 0 };
 // Hill avoidance shared by all ground movers. Returns the shared _avoidOut
 // (straight input dir when no terrain); callers consume it immediately.
 export function _avoidDir(comp: any, x: number, z: number, dx: number, dz: number, distToGoal: number, releaseDist: number): { x: number; z: number } {
-  const sample = (_snapRoot && _snapSample) ? _snapSample : null;
   const passGrid: any = window.__sgbPassGrid || null;
+  const sample = (!passGrid?.authoritativeWalkability && _snapRoot && _snapSample) ? _snapSample : null;
   sgbAvoidUphill(_sgbToLocal, _snapRoot ? _snapRoot.position.y : 0, sample, x, z, dx, dz, distToGoal, releaseDist, comp, _avoidOut, passGrid);
   return _avoidOut;
 }

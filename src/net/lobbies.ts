@@ -5,6 +5,7 @@
 export interface LobbyPlayer {
   username: string;
   faction: string;
+  hero?: string;
   team: number;
   ping: number;
   player_id?: number;

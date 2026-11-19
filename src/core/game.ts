@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { startingResources } from './economy.js';
 import { updateSunShadowCamera } from '../render/lighting.js';
+import { spawnDotaMatchHeroes } from './match-heroes.js';
 import { spawnBatchHeroes, spawnMatchSeat } from './match-spawn.js';
 import { localMatchFor, localMatchPositions } from './local-match.js';
 
@@ -30,6 +31,8 @@ import { _groundAt } from '../systems/terrain.js';
 import { playerFaction, setPlayerFaction } from '../factions.js';
 import { startPositionsFor, strategicPointsFor, factionsFor, factionBasePosition, layoutFor } from '../maps/map-layout.js';
 import { doomSpiralBases } from '../maps/doom-spiral.js';
+import { isDotaMap, dotaMapBases, dotaMapLanes, dotaMapConfig } from '../maps/dota-map-layout.js';
+import { clearDotaMap } from '../maps/dota-map.js';
 import { startDoomCreeps, stopDoomCreeps, type CreepBase } from '../systems/lane-creeps.js';
 import { createHeroBase } from '../entities/hero-base.js';
 import { loadStartupModels } from './startup-models.js';
@@ -160,8 +163,11 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
 
   const localMatch = localMatchFor(mapKey);
   const doomSpiral = /doom.?spiral/i.test(mapKey || '');
-  if (doomSpiral) setPlayerFaction('ig');
-  const startingFaction = doomSpiral ? playerFaction : localMatch?.seats.find(seat => !seat.computer)?.faction || localMatch?.seats[0]?.faction || playerFaction;
+  const dotaMap = isDotaMap(mapKey);
+  const laneMatch = doomSpiral || dotaMap;
+  if (!dotaMap) clearDotaMap();
+  if (laneMatch) setPlayerFaction('ig');
+  const startingFaction = laneMatch ? playerFaction : localMatch?.seats.find(seat => !seat.computer)?.faction || localMatch?.seats[0]?.faction || playerFaction;
   const resources = startingResources(startingFaction);
   setRequisition(resources.requisition);
   setEnergy(resources.energy);
@@ -186,34 +192,39 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
   const entityWorld = new World();
   setWorld(entityWorld);
   _initSystems(entityWorld);
-  if (!doomSpiral) entityWorld.addSystem(systemAI);
+  if (!laneMatch) entityWorld.addSystem(systemAI);
 
   // Per-map layout: start positions + strategic points (arena adds a
   // 4-point ring plus one relic around every HQ, no center cluster).
   const startPositions = startPositionsFor(mapKey);
   const factions = factionsFor(mapKey);
-  if (!doomSpiral) {
+  if (!laneMatch) {
     for (const { x, z, kind } of strategicPointsFor(mapKey)) {
       createStrategicPointEntity(entityWorld, x, z, kind);
     }
   }
 
-  // Doom Spiral uses a straight-on camera (alpha 0, beta 50); every other map
-  // keeps the diagonal defaults. The minimap mirrors per map to match.
-  const startAlpha = doomSpiral ? 0 : DEFAULT_CAMERA_ALPHA;
-  const startBeta = doomSpiral ? (50 * Math.PI) / 180 : DEFAULT_CAMERA_BETA;
-  if (doomSpiral) {
+  // Match each map's camera and minimap orientation. Dota starts at its
+  // authored team spawn with the same angle and distance as the standalone view.
+  const startAlpha = dotaMap ? dotaMapConfig.camera.alpha : doomSpiral ? 0 : DEFAULT_CAMERA_ALPHA;
+  const startBeta = dotaMap ? dotaMapConfig.camera.beta : doomSpiral ? (50 * Math.PI) / 180 : DEFAULT_CAMERA_BETA;
+  camera.lowerRadiusLimit = dotaMap ? 15.24 : 6;
+  camera.upperRadiusLimit = dotaMap ? dotaMapConfig.camera.radius : 800;
+  camera.fov = dotaMap ? 60 : 45;
+  camera.updateProjectionMatrix?.();
+  if (laneMatch) {
     const bases: CreepBase[] = [];
-    for (const base of doomSpiralBases(layoutFor(mapKey).positions)) {
+    for (const base of dotaMap ? dotaMapBases() : doomSpiralBases(layoutFor(mapKey).positions)) {
       const seat = localMatch?.seats.filter((entry) => entry.team === base.team).sort((a, b) => Number(a.computer) - Number(b.computer))[0];
       const id = createHeroBase(entityWorld, new THREE.Vector3(base.x, 0, base.z), base.team, seat ? seat.owner ?? seat.slot + 1 : undefined);
       bases.push({ ...base, id });
     }
-    void startDoomCreeps(entityWorld, bases).catch((error) => console.error('Could not load lane creeps', error));
+    void startDoomCreeps(entityWorld, bases, {}, dotaMap ? dotaMapLanes() : undefined).catch((error) => console.error('Could not load lane creeps', error));
+    if (dotaMap) spawnDotaMatchHeroes(entityWorld, localMatch, bases);
     // Keep the starting view fixed when a recruitment square is repositioned.
-    const home = layoutFor(mapKey).positions.find((point) => point.faction === (PLAYER === 'blue' ? 'space marines' : 'ig')) || bases[0];
-    if (home) camera.target.set(home.x, 0, home.z);
-    camera.radius = DEFAULT_CAMERA_RADIUS;
+    const home = dotaMap ? bases.find(base => base.team === PLAYER) : layoutFor(mapKey).positions.find((point) => point.faction === (PLAYER === 'blue' ? 'space marines' : 'ig')) || bases[0];
+    if (home) camera.target.set(home.x, dotaMap ? _groundAt(home.x, home.z) : 0, home.z);
+    camera.radius = dotaMap ? dotaMapConfig.camera.radius : DEFAULT_CAMERA_RADIUS;
     camera.alpha = startAlpha;
     camera.beta = startBeta;
     updateHUD();

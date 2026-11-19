@@ -4,6 +4,7 @@
 // Unknown maps fall back to the default arena layout so the game always boots.
 // game.js resetGame consumes the three functions below.
 import arenaLayout from '../../maps/default_arena/default_arena.json';
+import { isDotaMap, dotaMapConfig } from './dota-map-layout.js';
 import alvarusLayout from '../../maps/6p_alvarus/6p_alvarus.json';
 import mortalisLayout from '../../maps/6p_mortalis/mortalis.json';
 import doomSpiralLayout from '../../maps/4p_doom_spiral/4p_doom_spiral.json';
@@ -99,6 +100,7 @@ const LAYOUTS: Record<string, MapLayoutData> = {
 };
 
 export function layoutFor(mapKey: string): MapLayoutData {
+  if (isDotaMap(mapKey)) return dotaMapConfig;
   if (mapKey === 'arena') {
     return LAYOUTS.arena;
   }

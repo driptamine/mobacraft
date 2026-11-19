@@ -37,8 +37,15 @@ describe('maps manifest (R2 runtime list)', () => {
     }
   });
 
+  it('includes the Dota runtime map and its oriented preview', () => {
+    const dota = manifest.filter(entry => entry.path === '/maps/dotamap-game/map.json');
+    assert.equal(dota.length, 1);
+    assert.equal(dota[0].players, 2);
+    assert.equal(dota[0].preview, '/maps/dotamap-game/preview.png');
+  });
+
   it('prefers icon_custom previews, like the menu glob order', () => {
-    for (const entry of manifest.filter((e) => e.preview)) {
+    for (const entry of manifest.filter((e) => e.preview && e.path.endsWith('.sgb'))) {
       assert.match(entry.preview, /_icon_custom\.png$|_icon\.png$|_preview\.png$/, entry.path);
     }
     const customs = manifest.filter((e) => e.preview && e.preview.endsWith('_icon_custom.png'));

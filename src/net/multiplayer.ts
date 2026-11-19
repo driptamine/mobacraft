@@ -5,6 +5,9 @@ import { setNetworkBalanceMod } from '../balance/runtime.js';
 import { fetchWebTransportConnection } from './lobby-api.js';
 import { LOBBY_FACTIONS, makeLocalMatch, setLocalMatch, type LocalMatchConfig } from '../core/local-match.js';
 import { createLobby, lobbySlots, setLobbySlot, type Lobby } from './lobbies.js';
+import { isDotaMap } from '../maps/dota-map-layout.js';
+import { heroSlotButton } from '../ui/lobby-hero-picker.js';
+import { loadDotaMatchHeroes } from '../core/match-heroes.js';
 import { layoutFor } from '../maps/map-layout.js';
 import { setPlayerFaction, playerFaction } from '../factions.js';
 import { setPlayerTeam } from '../core/scene.js';
@@ -807,6 +810,7 @@ function _skirmishStatus(message: string): void {
 // AI following the map layout (Alvarus fills all 6 slots, 3 vs 3).
 function _openSkirmishSlots(card: any): void {
   _selectedMap = card.path ? { path: card.path, url: card.url, name: card.name } : null;
+  const dota = isDotaMap(card.path || 'arena');
   const layoutPositions = layoutFor(card.path || 'arena').positions;
   const lobby = createLobby({ name: 'Skirmish', map: card.name, total: card.players || layoutPositions.length || 6 });
   const factionById: Record<string, string> = Object.fromEntries(Object.entries(LOBBY_FACTIONS).map(([name, id]) => [id, name]));
@@ -820,9 +824,9 @@ function _openSkirmishSlots(card: any): void {
     const faction = (layoutPositions[slot] as { faction?: string } | undefined)?.faction;
     return (faction && factionById[faction]) || (slotTeam(slot) === 2 ? 'Chaos' : 'Space Marines');
   };
-  setLobbySlot(lobby, 0, { username: 'You', faction: 'Imperial Guard', team: 1, ping: 0, controller: 'human' });
+  setLobbySlot(lobby, 0, { username: 'You', faction: 'Imperial Guard', team: 1, ping: 0, controller: 'human', ...(dota ? { hero: 'axe' } : {}) });
   for (let slot = 1; slot < lobby.total; slot++) {
-    setLobbySlot(lobby, slot, { username: `Computer ${slot + 1}`, faction: slotFaction(slot), team: slotTeam(slot), ping: 0, controller: 'computer', difficulty: 'standard' });
+    setLobbySlot(lobby, slot, { username: `Computer ${slot + 1}`, faction: slotFaction(slot), team: slotTeam(slot), ping: 0, controller: 'computer', difficulty: 'standard', ...(dota ? { hero: 'lina' } : {}) });
   }
   _skirmishLobby = lobby;
   _skirmishStatus('');
@@ -840,7 +844,7 @@ function _renderSkirmishMapPanel(card: any, total: number): void {
   const size = document.getElementById('skirmish-map-size');
   if (size) size.textContent = card.path && /alvarus/i.test(card.path) ? '512 × 512' : card.path ? '—' : 'ARENA';
   const description = document.getElementById('skirmish-map-description');
-  if (description) description.textContent = `${label}. Secure strategic points, control resources and lead your army to victory.`;
+  if (description) description.textContent = isDotaMap(card.path || '') ? 'Choose your hero before battle. Radiant and Dire fight across three lanes with melee, ranged and siege creep waves.' : `${label}. Secure strategic points, control resources and lead your army to victory.`;
   const preview = document.getElementById('skirmish-map-preview');
   if (preview) {
     preview.replaceChildren();
@@ -860,6 +864,7 @@ function _renderSkirmishSlots(): void {
   const panel = document.getElementById('skirmish-slot-panel');
   const lobby = _skirmishLobby;
   if (!panel || !lobby) return;
+  const dota = isDotaMap(_selectedMap?.path || 'arena');
   panel.replaceChildren();
   const slots = lobbySlots(lobby);
   for (let i = 0; i < lobby.total; i++) {
@@ -882,7 +887,8 @@ function _renderSkirmishSlots(): void {
       if (!_skirmishLobby) return;
       setLobbySlot(_skirmishLobby, i, control.value === 'open' ? null : {
         username: control.value === 'computer' ? `Computer ${i + 1}` : 'You',
-        faction: player?.faction || 'Space Marines',
+        faction: dota ? 'Imperial Guard' : player?.faction || 'Space Marines',
+        ...(dota ? { hero: player?.hero || (i === 0 ? 'axe' : 'lina') } : {}),
         team: player?.team || (i === 0 ? 1 : 2),
         ping: 0,
         controller: control.value === 'computer' ? 'computer' : 'human',
@@ -922,25 +928,33 @@ function _renderSkirmishSlots(): void {
       identity.append(difficulty);
     }
     row.append(identity);
-    const faction = document.createElement('select');
-    faction.setAttribute('aria-label', `Army for ${player.username}`);
-    for (const name of SKIRMISH_FACTIONS) {
-      const option = document.createElement('option');
-      option.textContent = name;
-      option.value = name;
-      faction.append(option);
+    if (dota) {
+      row.append(heroSlotButton(player.hero, i, player.username, hero => {
+        player.hero = hero.name;
+        _skirmishStatus('');
+        _renderSkirmishSlots();
+      }));
+    } else {
+      const faction = document.createElement('select');
+      faction.setAttribute('aria-label', `Army for ${player.username}`);
+      for (const name of SKIRMISH_FACTIONS) {
+        const option = document.createElement('option');
+        option.textContent = name;
+        option.value = name;
+        faction.append(option);
+      }
+      faction.value = SKIRMISH_FACTIONS.includes(player.faction) ? player.faction : SKIRMISH_FACTIONS[0];
+      player.faction = faction.value;
+      faction.addEventListener('change', () => { player.faction = faction.value; _skirmishStatus(''); });
+      row.append(faction);
     }
-    faction.value = SKIRMISH_FACTIONS.includes(player.faction) ? player.faction : SKIRMISH_FACTIONS[0];
-    player.faction = faction.value;
-    faction.addEventListener('change', () => { player.faction = faction.value; _skirmishStatus(''); });
-    row.append(faction);
     const team = document.createElement('select');
     team.className = 'mp-team';
     team.setAttribute('aria-label', `Team for ${player.username}`);
     for (const n of [1, 2]) {
       const option = document.createElement('option');
       option.value = String(n);
-      option.textContent = `Team ${n}`;
+      option.textContent = dota ? (n === 1 ? 'Radiant' : 'Dire') : `Team ${n}`;
       team.append(option);
     }
     team.value = String(player.team);
@@ -1439,6 +1453,7 @@ export async function webTransportPlayOffline(config: LocalMatchConfig | null = 
   showConnectOverlay('skirmish');
   _setLoadingUI(true);
   try {
+    await loadDotaMatchHeroes(config, { onProgress: _updateLoadBar });
     await bootGame({ onProgress: _updateLoadBar });
     if (_selectedMap) {
       _updateLoadBar({ loaded: 0, total: 0, label: `Loading map ${_selectedMap.name}` });

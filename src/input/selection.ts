@@ -28,10 +28,13 @@ import {
 } from '../render/three-helpers.js';
 import { _groundAt } from '../systems/terrain.js';
 import { selEnd, selStart } from './camera.js';
+import { isDotaMap } from '../maps/dota-map-layout.js';
+import { pickDotaGround } from '../maps/dota-map.js';
 
 
 export function raycastGround(sx: number, sy: number): THREE.Vector3 | null {
   if (!scene || !camera) return null;
+  if (isDotaMap(window._currentMapKey || '')) return pickDotaGround(sx, sy);
   const hit = pickAt(sx, sy, (m: THREE.Object3D) => isGroundMesh(m, scene._ground));
   if (!hit.hit || !hit.pickedPoint) return null;
   return hit.pickedPoint.clone();

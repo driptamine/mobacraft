@@ -1,3 +1,5 @@
+import { isDotaMap } from '../maps/dota-map-layout.js';
+import { recruitableHeroes } from '../../stats/races/heroes.js';
 import { lobbySlots, type Lobby } from '../net/lobbies.js';
 
 export const LOBBY_FACTIONS: Record<string, string> = {
@@ -8,6 +10,7 @@ export interface LocalMatchSeat {
   slot: number;
   owner?: number;
   faction: string;
+  hero?: string;
   team: 'blue' | 'red';
   computer: boolean;
   difficulty?: 'easy' | 'standard' | 'advanced' | 'hard';
@@ -22,13 +25,18 @@ export function isComputerOnlyMatch(mapKey: string): boolean {
   return activeMatch?.mapKey === mapKey && !!activeMatch.seats.length && activeMatch.seats.every(seat => seat.computer);
 }
 export function makeLocalMatch(lobby: Lobby, mapKey: string): LocalMatchConfig {
+  const dota = isDotaMap(mapKey);
   const seats = lobbySlots(lobby).flatMap((player, slot): LocalMatchSeat[] => player ? [{
-    slot, faction: LOBBY_FACTIONS[player.faction] || 'ig',
+    slot, faction: dota ? 'ig' : LOBBY_FACTIONS[player.faction] || 'ig',
+    ...(dota && player.hero ? { hero: player.hero } : {}),
     team: player.team === 2 ? 'red' : 'blue', computer: player.controller === 'computer',
     ...(player.difficulty ? { difficulty: player.difficulty } : {}),
   }] : []);
   if (seats.length < 2 || new Set(seats.map(s => s.team)).size < 2) {
     throw new Error('Add a Computer on the opposing team to start the game.');
+  }
+  if (dota && seats.some(seat => !recruitableHeroes.some(hero => hero.name === seat.hero))) {
+    throw new Error('Choose an available hero for every occupied slot.');
   }
   return { mapKey, seats };
 }

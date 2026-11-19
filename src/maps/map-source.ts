@@ -2,6 +2,7 @@
 // production (see mapUrl in render/assets). Build-time vite globs cannot
 // see R2, so every map load goes through here.
 import { mapUrl } from '../render/assets.js';
+import { isDotaMap } from './dota-map-layout.js';
 
 export interface RemoteMapEntry {
   path: string;
@@ -150,6 +151,11 @@ export function decalFallbackUrlForRef(mapDir: string, ref: string, primary: str
 }
 
 export function prefetchMapFiles(card: { path?: string | null } | null | undefined): void {
+  if (card?.path && isDotaMap(card.path)) {
+    // Warm the small navigation files; stream the map model only at battle start.
+    void Promise.allSettled(['map.json', 'surface.json'].map(file => fetchMapFile(mapFileUrl('dotamap-game', file))));
+    return;
+  }
   const dir = mapDirFromKey(card?.path);
   if (!dir) return;
   void (async () => {

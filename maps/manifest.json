@@ -166,5 +166,11 @@
     "name": "8p rhean jungle",
     "players": 8,
     "preview": "/maps/8p_rhean_jungle/8p_rhean_jungle_icon_custom.png"
+  },
+  {
+    "path": "/maps/dotamap-game/map.json",
+    "name": "Dota 2",
+    "players": 2,
+    "preview": "/maps/dotamap-game/preview.png"
   }
 ]

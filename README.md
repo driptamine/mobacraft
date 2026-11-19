@@ -41,7 +41,7 @@ ignored asset tree alongside the source exports.
 
 HQ → HEROES includes batches 1–13, with search and a batch filter. Additional
 heroes load on selection and enter the HQ recruitment queue only after the
-model is ready. They are never loaded or spawned by the match-start lineup.
+model is ready. Unselected heroes are never loaded or spawned by the match-start lineup.
 `animations/heroes.json` records their bodies, wearables, clips and official
 portrait URLs. Run `npm run heroes:build-all` to rebuild models and
 `npm run heroes:icons` to fetch portraits. Marci's source body is absent from
@@ -60,6 +60,19 @@ Run `npm run creeps:build` after replacing the exports in
 the `RADIANT-*` and `DIRE-*` directories under `batches/creeps-lane/`
 to embed their textures in `batches/creeps-lane/final/`. The standard Dire
 body is used; its overlapping cavern variant stays hidden.
+
+Skirmish also includes Dota 2, using an independent runtime copy in
+`maps/dotamap-game/`. It shares Doom Spiral's recruitment squares, lazy hero
+catalog and all six lane-creep models. Dota lobby slots show hero portraits and
+a searchable picker instead of RTS factions. Picks for both human and computer
+slots load at battle start and spawn at their Radiant or Dire base. Each team follows the map's authored
+three-lane waypoint chains and spawners; the original GNV grid controls movement,
+while a heightfield baked from world collision keeps units on the terrain.
+`npm run maps:build-dota-surface` regenerates that surface from the local Source 2
+export. `npm run maps:r2:sync-dota` uploads the four game runtime files and map list.
+The standalone `maps/dotamap/` viewer and its server on port 40002 are separate.
+Large generated scene exports are ignored by Git. Exported Dota resources use
+[Source 2 Viewer / ValveResourceFormat](https://s2v.app/).
 
 After rebuilding heroes or creeps, run `npm run batches:r2:sync` with the
 `R2_BUCKET_NAME`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID` and

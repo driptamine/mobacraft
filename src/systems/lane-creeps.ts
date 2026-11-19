@@ -4,6 +4,7 @@ import { factionContainers, loadFactionUnitModel, type LoadFactionHooks } from '
 import { doomSpiralLanes, DOOM_LANES, type DoomBase, type DoomLane, type LanePoint } from '../maps/doom-spiral.js';
 import { snapOrderToFree } from '../../pathfinding/astar-integrated.js';
 import { refreshNavigation } from './navigation.js';
+import type { TeamLaneRoutes } from '../maps/dota-map-layout.js';
 
 export const CREEP_WAVE_SECONDS = 30;
 export const CREEP_WAVE_KINDS = ['melee', 'melee', 'melee', 'ranged', 'siege'] as const;
@@ -19,6 +20,7 @@ interface CreepSpawner {
   remaining: number;
   bases: CreepBase[];
   lanes: Record<DoomLane, LanePoint[]>;
+  teamLanes?: TeamLaneRoutes;
 }
 
 const typeFor = (team: string, kind: CreepKind) => `${team === 'blue' ? 'radiant' : 'dire'}_${kind}_creep`;
@@ -45,7 +47,8 @@ export function spawnCreepWave(world: any, state: CreepSpawner): void {
         const walker: LaneWalker = world.get(id, 'laneCreep');
         return walker.team === base.team && walker.lane === lane && alive(world, id);
       }).length;
-      const path = base.team === 'blue' ? state.lanes[lane] : [...state.lanes[lane]].reverse();
+      const path = state.teamLanes?.[base.team][lane]
+        || (base.team === 'blue' ? state.lanes[lane] : [...state.lanes[lane]].reverse());
       const start = path[0];
       const dx = path[1].x - start.x;
       const dz = path[1].z - start.z;
@@ -79,7 +82,7 @@ export function spawnCreepWave(world: any, state: CreepSpawner): void {
   }
 }
 
-export function startDoomCreeps(world: any, bases: CreepBase[], hooks: LoadFactionHooks = {}): Promise<void> {
+export function startDoomCreeps(world: any, bases: CreepBase[], hooks: LoadFactionHooks = {}, teamLanes?: TeamLaneRoutes): Promise<void> {
   const blue = bases.find((base) => base.team === 'blue');
   const red = bases.find((base) => base.team === 'red');
   if (!blue || !red) return Promise.resolve();
@@ -87,7 +90,10 @@ export function startDoomCreeps(world: any, bases: CreepBase[], hooks: LoadFacti
   refreshNavigation(world);
   const lanes = doomSpiralLanes(blue, red);
   for (const lane of DOOM_LANES) lanes[lane] = lanes[lane].map((point) => snapOrderToFree(point.x, point.z) || point);
-  const state: CreepSpawner = { active: true, ready: false, remaining: CREEP_WAVE_SECONDS, bases, lanes };
+  if (teamLanes) for (const team of ['blue', 'red'] as const) for (const lane of DOOM_LANES) {
+    teamLanes[team][lane] = teamLanes[team][lane].map(point => snapOrderToFree(point.x, point.z) || point);
+  }
+  const state: CreepSpawner = { active: true, ready: false, remaining: CREEP_WAVE_SECONDS, bases, lanes, teamLanes };
   world.add(id, 'creepSpawner', state);
   const activate = () => {
     if (!state.active) return;

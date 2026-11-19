@@ -25,21 +25,18 @@ const keydownCode = ts.transpileModule(`(event) => {${keydownMatch[1]}\n}`, {
   compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None },
 }).outputText;
 
-/**
- * NOTE: a vm handler cannot observe its own write to a context primitive
- * within the same run, so the toggle is verified in both directions by
- * seeding the initial state, and the banner pairing by source order below.
- */
 function fixture({ multiplayer = false, paused = false } = {}) {
   const registry = new Map();
   const body = { children: [], append(child) { child.parent = body; this.children.push(child); if (child.id) registry.set(child.id, child); } };
   const calls = { setPaused: [], banner: [], hud: 0 };
   const context = vm.createContext({
     keys: {},
+    camera: null,
+    isCameraLocked: () => false,
     selBuilder: null,
     selSquads: [],
     paused,
-    setPaused: (value) => { calls.setPaused.push(value); },
+    setPaused: (value) => { calls.setPaused.push(value); context.paused = value; },
     setPausedBanner: (visible) => { calls.banner.push(visible); },
     isShooterMode: () => false,
     document: {
@@ -64,44 +61,46 @@ function fixture({ multiplayer = false, paused = false } = {}) {
   };
 }
 
-describe('shift pause', () => {
-  it('pauses on Shift and shows a banner', () => {
-    const f = fixture();
-    f.key({ code: 'ShiftLeft' });
-    assert.deepEqual(f.calls.setPaused, [true]);
-    assert.equal(f.calls.banner.length, 1, 'banner toggled with pause');
-    assert.equal(f.calls.hud, 1);
-  });
+describe('pause hotkeys', () => {
+  for (const key of ['§', '>']) {
+    it(`toggles pause and the banner together on ${key}`, () => {
+      const f = fixture();
+      const event = { key, code: key === '§' ? 'Backquote' : 'Period', shiftKey: key === '>' };
+      f.key(event);
+      f.key(event);
+      assert.deepEqual(f.calls.setPaused, [true, false]);
+      assert.deepEqual(f.calls.banner, [true, false]);
+      assert.equal(f.calls.hud, 2);
+    });
+  }
 
-  it('resumes on Shift when already paused', () => {
-    const f = fixture({ paused: true });
-    f.key({ code: 'ShiftRight' });
-    assert.deepEqual(f.calls.setPaused, [false]);
-    assert.equal(f.calls.banner.length, 1);
-  });
-
-  it('ignores key repeat and multiplayer sims', () => {
+  it('keeps both Shift keys available without toggling pause', () => {
     const f = fixture();
-    f.key({ code: 'ShiftLeft', repeat: true });
+    f.key({ key: 'Shift', code: 'ShiftLeft' });
+    f.key({ key: 'Shift', code: 'ShiftRight' });
     assert.deepEqual(f.calls.setPaused, []);
+    assert.deepEqual(f.calls.banner, []);
+  });
+
+  it('ignores repeat, multiplayer, typing and modified shortcuts', () => {
+    for (const event of [
+      { repeat: true }, { ctrlKey: true }, { metaKey: true }, { altKey: true },
+      { target: { tagName: 'INPUT' } }, { target: { tagName: 'TEXTAREA' } },
+      { target: { tagName: 'SELECT' } }, { target: { isContentEditable: true } },
+    ]) {
+      const f = fixture(); f.key({ key: '>', code: 'Period', ...event });
+      assert.deepEqual(f.calls.setPaused, []);
+      assert.deepEqual(f.calls.banner, []);
+    }
     const mp = fixture({ multiplayer: true });
-    mp.key({ code: 'ShiftLeft' });
+    mp.key({ key: '§', code: 'Backquote' });
     assert.deepEqual(mp.calls.setPaused, []);
     assert.deepEqual(mp.calls.banner, []);
   });
 
-  it('banners the just-written state, not a stale one', () => {
-    const branch = keydownMatch[1];
-    const shiftIndex = branch.indexOf("'ShiftLeft'");
-    assert.ok(shiftIndex >= 0, 'shift branch must exist');
-    const tail = branch.slice(shiftIndex);
-    assert.ok(/setPaused\(!paused\);\s*setPausedBanner\(!paused\);/.test(tail),
-      'banner must mirror the state written one line above');
-  });
-
   it('shows and removes the real banner element', () => {
     const helper = findFunction(ast, 'setPausedBanner');
-    assert.ok(helper, 'setPausedBanner must exist');
+    assert.ok(ast.statements.includes(helper), 'banner helper must be in scope for initInput');
     const code = ts.transpileModule(helper.getText(ast), {
       compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None },
     }).outputText;
@@ -119,6 +118,8 @@ describe('shift pause', () => {
     const banner = registry.get('game-paused-banner');
     assert.ok(banner, 'banner created');
     assert.ok(banner.textContent.includes('ПАУЗА'));
+    assert.ok(banner.textContent.includes('§ / >'));
+    assert.ok(!banner.textContent.includes('Shift'));
     vm.runInContext('show(true)', context);
     assert.equal(registry.size, 1, 'no duplicate banners');
     vm.runInContext('show(false)', context);

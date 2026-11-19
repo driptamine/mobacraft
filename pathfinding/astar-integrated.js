@@ -61,6 +61,9 @@ function _gridOf(opts) {
 }
 
 function _groundOf(opts) {
+  // Source 2's authored grid already decides which ramps/steps are walkable.
+  // Rendered height changes must not turn those valid stairs into new walls.
+  if (_gridOf(opts)?.authoritativeWalkability) return null;
   if (opts && typeof opts.groundAt === 'function') return opts.groundAt;
   return _groundAt;
 }

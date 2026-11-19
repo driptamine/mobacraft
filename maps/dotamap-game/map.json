@@ -1,0 +1,455 @@
+{
+  "name": "Dota 2",
+  "format": "dota-skirmish-v1",
+  "bounds": 280,
+  "model": "map.glb",
+  "surface": "surface.json",
+  "preview": "preview.png",
+  "positions": [
+    {
+      "x": -166.4208,
+      "z": -166.8272,
+      "y": 9.7536,
+      "team": "blue",
+      "faction": "ig"
+    },
+    {
+      "x": 154.6352,
+      "z": 160.3248,
+      "y": 9.7536,
+      "team": "red",
+      "faction": "ig"
+    }
+  ],
+  "strategicPoints": [],
+  "lanes": {
+    "blue": {
+      "top": [
+        {
+          "x": -103.2256,
+          "z": -167.8432,
+          "y": 8.9408,
+          "source": "[PR#]lane_top_goodguys_melee_spawner"
+        },
+        {
+          "x": -107.2896,
+          "z": -167.2336,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_1"
+        },
+        {
+          "x": 9.7536,
+          "z": -154.432,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_5"
+        },
+        {
+          "x": 40.64,
+          "z": -169.0624,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_6"
+        },
+        {
+          "x": 107.2896,
+          "z": -157.6832,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_7"
+        },
+        {
+          "x": 134.9248,
+          "z": -157.48,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2"
+        },
+        {
+          "x": 138.7856,
+          "z": -147.1168,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2b"
+        },
+        {
+          "x": 145.0848,
+          "z": -131.064,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2b2"
+        },
+        {
+          "x": 147.9296,
+          "z": -113.9952,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2b3"
+        },
+        {
+          "x": 150.5712,
+          "z": -96.1136,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2b4"
+        },
+        {
+          "x": 153.6192,
+          "z": -70.9168,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2b5"
+        },
+        {
+          "x": 155.0416,
+          "z": -47.1424,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_goodguys_2b1"
+        },
+        {
+          "x": 146.9136,
+          "z": 97.9424,
+          "y": 8.9408,
+          "source": "[PR#]lane_top_pathcorner_goodguys_3"
+        },
+        {
+          "x": 123.2408,
+          "z": 135.2042,
+          "y": 9.7536,
+          "source": "[PR#]lane_top_pathcorner_goodguys_4"
+        }
+      ],
+      "mid": [
+        {
+          "x": -110.5408,
+          "z": -123.5456,
+          "y": 8.9408,
+          "source": "[PR#]lane_mid_goodguys_melee_spawner"
+        },
+        {
+          "x": -111.1504,
+          "z": -123.3424,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_1"
+        },
+        {
+          "x": -68.434936,
+          "z": -79.955957,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_9"
+        },
+        {
+          "x": -20.9296,
+          "z": -24.7904,
+          "y": 6.5024,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_2"
+        },
+        {
+          "x": -6.5024,
+          "z": -9.144,
+          "y": 4.064,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_3"
+        },
+        {
+          "x": 3.048,
+          "z": 4.4704,
+          "y": 6.5024,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_4"
+        },
+        {
+          "x": 16.4592,
+          "z": 22.1488,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_5"
+        },
+        {
+          "x": 50.1904,
+          "z": 66.6496,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_8"
+        },
+        {
+          "x": 100.1776,
+          "z": 113.5888,
+          "y": 8.9408,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_6"
+        },
+        {
+          "x": 121.6152,
+          "z": 135.2042,
+          "y": 9.7536,
+          "source": "[PR#]lane_mid_pathcorner_goodguys_7"
+        }
+      ],
+      "bottom": [
+        {
+          "x": -155.2448,
+          "z": -92.6592,
+          "y": 8.9408,
+          "source": "[PR#]lane_bot_goodguys_melee_spawner"
+        },
+        {
+          "x": -155.2448,
+          "z": -102.2096,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_1"
+        },
+        {
+          "x": -164.010975,
+          "z": 12.192,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_6"
+        },
+        {
+          "x": -160.9344,
+          "z": 52.0192,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_8"
+        },
+        {
+          "x": -157.0736,
+          "z": 84.328,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_9"
+        },
+        {
+          "x": -155.956,
+          "z": 102.3112,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_10"
+        },
+        {
+          "x": -154.900784,
+          "z": 118.6688,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_2"
+        },
+        {
+          "x": -146.846962,
+          "z": 145.881725,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_11"
+        },
+        {
+          "x": -139.2936,
+          "z": 153.1112,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_5"
+        },
+        {
+          "x": -119.57685,
+          "z": 155.775025,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_12"
+        },
+        {
+          "x": -82.603975,
+          "z": 158.8897,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_7"
+        },
+        {
+          "x": 84.5312,
+          "z": 160.9344,
+          "y": 8.9408,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_3"
+        },
+        {
+          "x": 121.6152,
+          "z": 136.8298,
+          "y": 9.7536,
+          "source": "[PR#]lane_bot_pathcorner_goodguys_4"
+        }
+      ]
+    },
+    "red": {
+      "top": [
+        {
+          "x": 147.1168,
+          "z": 80.4672,
+          "y": 9.3472,
+          "source": "[PR#]lane_top_badguys_melee_spawner"
+        },
+        {
+          "x": 146.5072,
+          "z": 94.0816,
+          "y": 8.9408,
+          "source": "[PR#]lane_top_pathcorner_badguys_1"
+        },
+        {
+          "x": 156.0576,
+          "z": -47.5488,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_badguys_5"
+        },
+        {
+          "x": 144.6784,
+          "z": -133.2992,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_badguys_6"
+        },
+        {
+          "x": 139.0904,
+          "z": -155.93628,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_badguys_2"
+        },
+        {
+          "x": 123.7488,
+          "z": -158.3944,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_badguys_2b"
+        },
+        {
+          "x": 98.9584,
+          "z": -160.9344,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_badguys_2b1"
+        },
+        {
+          "x": -94.488,
+          "z": -167.0304,
+          "y": 8.128,
+          "source": "[PR#]lane_top_pathcorner_badguys_3"
+        },
+        {
+          "x": -127.6096,
+          "z": -142.0114,
+          "y": 9.7536,
+          "source": "[PR#]lane_top_pathcorner_badguys_4"
+        }
+      ],
+      "mid": [
+        {
+          "x": 97.536,
+          "z": 110.5408,
+          "y": 9.3472,
+          "source": "[PR#]lane_mid_badguys_melee_spawner"
+        },
+        {
+          "x": 99.568,
+          "z": 114.1984,
+          "y": 8.9408,
+          "source": "[PR#]lane_mid_pathcorner_badguys_1"
+        },
+        {
+          "x": 49.1744,
+          "z": 67.2592,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_badguys_8"
+        },
+        {
+          "x": 15.0368,
+          "z": 22.1488,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_badguys_2"
+        },
+        {
+          "x": 3.8608,
+          "z": 3.6576,
+          "y": 6.5024,
+          "source": "[PR#]lane_mid_pathcorner_badguys_3"
+        },
+        {
+          "x": -5.6896,
+          "z": -9.9568,
+          "y": 4.064,
+          "source": "[PR#]lane_mid_pathcorner_badguys_4"
+        },
+        {
+          "x": -19.304,
+          "z": -25.6032,
+          "y": 6.5024,
+          "source": "[PR#]lane_mid_pathcorner_badguys_5"
+        },
+        {
+          "x": -110.744,
+          "z": -123.7488,
+          "y": 8.128,
+          "source": "[PR#]lane_mid_pathcorner_badguys_6"
+        },
+        {
+          "x": -127.6096,
+          "z": -140.3858,
+          "y": 9.7536,
+          "source": "[PR#]lane_mid_pathcorner_badguys_7"
+        }
+      ],
+      "bottom": [
+        {
+          "x": 92.6592,
+          "z": 159.3088,
+          "y": 9.7536,
+          "source": "[PR#]lane_bot_badguys_melee_spawner"
+        },
+        {
+          "x": 97.536,
+          "z": 160.528,
+          "y": 8.9408,
+          "source": "[PR#]lane_bot_pathcorner_badguys_1"
+        },
+        {
+          "x": 8.9408,
+          "z": 154.432,
+          "y": 8.9408,
+          "source": "[PR#]lane_bot_pathcorner_badguys_2"
+        },
+        {
+          "x": -53.6448,
+          "z": 170.688,
+          "y": 7.8232,
+          "source": "[PR#]lane_bot_pathcorner_badguys_7"
+        },
+        {
+          "x": -84.293075,
+          "z": 159.9692,
+          "y": 7.8232,
+          "source": "[PR#]lane_bot_pathcorner_badguys_8"
+        },
+        {
+          "x": -102.9843,
+          "z": 160.410525,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_badguys_12"
+        },
+        {
+          "x": -134.375525,
+          "z": 154.60345,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_badguys_10"
+        },
+        {
+          "x": -146.90725,
+          "z": 145.068925,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_badguys_11"
+        },
+        {
+          "x": -155.956,
+          "z": 134.9248,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_badguys_5"
+        },
+        {
+          "x": -163.2712,
+          "z": 26.3144,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_badguys_6"
+        },
+        {
+          "x": -154.8384,
+          "z": -107.2896,
+          "y": 8.128,
+          "source": "[PR#]lane_bot_pathcorner_badguys_3"
+        },
+        {
+          "x": -129.2352,
+          "z": -140.3858,
+          "y": 9.7536,
+          "source": "[PR#]lane_bot_pathcorner_badguys_4"
+        }
+      ]
+    }
+  },
+  "camera": {
+    "alpha": 3.141592653589793,
+    "beta": 0.5235987755982988,
+    "radius": 28.8036
+  },
+  "source": {
+    "map": "game/dota/maps/dota.vpk",
+    "navigation": "maps/dota.gnv",
+    "world": "maps/dota/world.vwrld_c"
+  }
+}

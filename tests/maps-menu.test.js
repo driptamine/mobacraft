@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { displayName, playersFor, previewFor, listBuiltinMaps, entryLabel, previewState, skirmishMapCards, defaultSkirmishMap } from '../src/ui/maps-menu.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const dota = { path: '/maps/dotamap-game/map.json', url: '/maps/dotamap-game/map.json', name: 'Dota 2', players: 2, previewUrl: '/maps/dotamap-game/preview.png' };
 
 describe('map selection menu', () => {
   it('displayName uses the file base name without extension or separators', () => {
@@ -82,18 +83,18 @@ describe('map selection menu', () => {
     assert.deepEqual(previewState(null), { kind: 'empty' });
   });
 
-  it('skirmishMapCards shows Default Arena and Doom Spiral while other SGB maps stay hidden', () => {
+  it('skirmishMapCards shows Default Arena, Doom Spiral and Dota while other SGB maps stay hidden', () => {
     const doom = { path: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', url: 'd', name: 'Doom Spiral', players: 4, previewUrl: null };
     const builtin = [{ path: '/maps/a.sgb', url: 'u', name: 'a', players: 4, previewUrl: null }, doom];
     const cards = skirmishMapCards(builtin);
     assert.deepEqual(cards, [
-      { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null }, doom,
+      { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null }, doom, dota,
     ]);
   });
 
   it('skirmishMapCards keeps Default Arena available when Doom Spiral is unavailable', () => {
     assert.deepEqual(skirmishMapCards([]), [
-      { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null },
+      { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null }, dota,
     ]);
   });
 
@@ -139,9 +140,9 @@ describe('map selection menu', () => {
     resetMapManifestForTests();
     assert.deepEqual(await listMaps(stubFetch), [{
       path: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', url: '/maps/4p_doom_spiral/4p_doom_spiral.sgb', name: 'Doom Spiral', players: 4, previewUrl: '/maps/4p_doom_spiral/4p_doom_spiral_icon_custom.png',
-    }]);
+    }, dota]);
     resetMapManifestForTests();
-    assert.deepEqual(await listMaps(async () => ({ ok: false, status: 404 })), [], 'failed manifest means no maps, not a crash');
+    assert.deepEqual(await listMaps(async () => ({ ok: false, status: 404 })), [dota], 'failed manifest means no maps, not a crash');
   });
 
   it('listBuiltinMaps sorts entries and attaches meta', () => {

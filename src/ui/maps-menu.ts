@@ -1,11 +1,20 @@
 import { mapFileUrl, fetchMapJson } from '../maps/map-source.js';
 import { isDoomSpiral } from '../maps/doom-spiral.js';
+import { DOTA_MAP_KEY, isDotaMap } from '../maps/dota-map-layout.js';
 
 // Temporary SGB restriction; the built-in grid arena remains available.
 export const DOOM_SPIRAL_ONLY = true;
 
 function visibleMaps<T extends { path: string | null }>(entries: T[]): T[] {
-  return DOOM_SPIRAL_ONLY ? entries.filter((entry) => entry.path && isDoomSpiral(entry.path)) : entries;
+  return DOOM_SPIRAL_ONLY ? entries.filter((entry) => entry.path && (isDoomSpiral(entry.path) || isDotaMap(entry.path))) : entries;
+}
+
+function withDotaMap(entries: MapEntry[]): MapEntry[] {
+  if (entries.some(entry => isDotaMap(entry.path))) return entries;
+  return [...entries, {
+    path: DOTA_MAP_KEY, url: mapFileUrl('dotamap-game', 'map.json'),
+    name: 'Dota 2', players: 2, previewUrl: mapFileUrl('dotamap-game', 'preview.png'),
+  }];
 }
 
 let _selectedPath: string | null = null;
@@ -63,16 +72,16 @@ export function listBuiltinMaps(glob: Record<string, string> = {}, previews: Rec
 // resolved through mapUrl for the bucket or the local dev server).
 export async function listMaps(fetchImpl: typeof fetch = fetch): Promise<MapEntry[]> {
   const builtin = listBuiltinMaps();
-  if (builtin.length) return visibleMaps(builtin);
+  if (builtin.length) return withDotaMap(visibleMaps(builtin));
   const { listRemoteMaps } = await import('../maps/map-source.js');
   const remote = await listRemoteMaps(fetchImpl);
-  return visibleMaps(remote.map((entry) => ({
+  return withDotaMap(visibleMaps(remote.map((entry) => ({
     path: entry.path,
     url: entry.url,
     name: entry.name || displayName(entry.path),
     players: entry.players,
     previewUrl: entry.previewUrl,
-  })));
+  }))));
 }
 
 export function entryLabel({ name, players }: { name: string; players: number | null }): string {
@@ -82,7 +91,7 @@ export function entryLabel({ name, players }: { name: string; players: number | 
 export function skirmishMapCards(builtin: MapEntry[] = listBuiltinMaps()): MapCard[] {
   return [
     { path: null, url: null, name: 'Default Arena', players: null, previewUrl: null },
-    ...visibleMaps(builtin),
+    ...withDotaMap(visibleMaps(builtin)),
   ];
 }
 
@@ -167,11 +176,13 @@ function renderMapsMenuEntries(list: HTMLElement, entries: MapCard[]): void {
 }
 
 export async function selectDefaultArena(): Promise<void> {
-  const [sgb, terrain, core] = await Promise.all([
+  const [sgb, terrain, core, dota] = await Promise.all([
     import('../maps/sgb-upload.js'),
     import('../maps/terrain-upload.js'),
     import('../core/scene.js'),
+    import('../maps/dota-map.js'),
   ]);
+  dota.clearDotaMap();
   sgb.clearSgbMap(true);
   terrain.clearTerrainMesh(true);
   window._currentMapKey = 'arena';
@@ -191,12 +202,17 @@ export async function selectMap(path: string | null, url: string | null): Promis
       }
     });
   }
+  if (path && isDotaMap(path)) {
+    await (await import('../maps/dota-map.js')).loadDotaMap();
+    return;
+  }
   if (!path || !url) {
     await selectDefaultArena();
     const { resetGame } = await import('../core/game.js');
     resetGame('arena');
     return;
   }
+  (await import('../maps/dota-map.js')).clearDotaMap();
   try {
     const { loadSgbUrl } = await import('../maps/sgb-upload.js');
     await loadSgbUrl(url, displayName(path) + '.sgb', path);

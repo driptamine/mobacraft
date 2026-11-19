@@ -11,6 +11,8 @@ import {
 import { disposeObj, mkTorus } from '../render/three-helpers.js';
 import { getCameraMode } from '../render/camera-fps.js';
 import { isCameraLocked } from '../render/camera-lock.js';
+import { isDotaMap } from '../maps/dota-map-layout.js';
+import { _groundAt } from '../systems/terrain.js';
 
 
 // Hover ring around strategic points + relics (world units). Tweak freely:
@@ -195,10 +197,11 @@ export function tickCamera(deltaTime: number): void {
   }
 
   if (dx || dz) {
-    const panBound = currentBounds() / 2;
+    const dota = isDotaMap(window._currentMapKey || '');
+    const panBound = dota ? currentBounds() : currentBounds() / 2;
     camera.target.x = Math.max(-panBound, Math.min(panBound, camera.target.x + dx));
     camera.target.z = Math.max(-panBound, Math.min(panBound, camera.target.z + dz));
-    camera.target.y = 0;
+    camera.target.y = dota ? _groundAt(camera.target.x, camera.target.z) : 0;
   }
 }
 

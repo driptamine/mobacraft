@@ -2,6 +2,7 @@ import { findConstructionTarget } from './construction-target.js';
 import * as THREE from 'three';
 import { isCameraLocked } from '../render/camera-lock.js';
 import { DEFAULT_CAMERA_ALPHA, DEFAULT_CAMERA_BETA, DEFAULT_CAMERA_RADIUS, applyZoom } from '../render/camera-zoom.js';
+import { isDotaMap, dotaMapConfig } from '../maps/dota-map-layout.js';
 import {
   cursorCss,
   getModalCursor,
@@ -205,7 +206,7 @@ export function setupPointerEvents(): void {
         }
       }
       if (buildMode) return;
-      if (altDown) {
+      if (altDown && !isDotaMap(window._currentMapKey || '')) {
         setIsAltOrbiting(true);
         setAltOrbitLast({ x: event.clientX, y: event.clientY });
         canvas.style.cursor = 'grabbing';
@@ -406,19 +407,6 @@ export function setupPointerEvents(): void {
     }
     set_hoverEnemySquad(hoveredSquadId);
   }
-  // Pause indicator; the sim block in game.ts already stops on `paused`.
-  function setPausedBanner(visible: boolean): void {
-    let banner = document.getElementById('game-paused-banner');
-    if (visible && !banner) {
-      banner = document.createElement('div');
-      banner.id = 'game-paused-banner';
-      banner.textContent = '⏸ ПАУЗА — Shift чтобы продолжить';
-      banner.style.cssText = 'position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10001;padding:8px 18px;background:#101827ee;border:1px solid #879eff;color:#e4edff;font:14px sans-serif;border-radius:6px;pointer-events:none;';
-      document.body.append(banner);
-    } else if (!visible && banner) {
-      banner.remove();
-    }
-  }
   // Green flat 2D footprint rectangle on the whole hovered
   // building/structure/airfield (entity mesh root, not the hit child mesh).
   function _updateBuildingHover(hit: { mesh?: THREE.Object3D; meta?: any } | null): void {
@@ -542,6 +530,20 @@ export function setupPointerEvents(): void {
 }
 
 
+// Pause indicator; the sim block in game.ts already stops on `paused`.
+function setPausedBanner(visible: boolean): void {
+  let banner = document.getElementById('game-paused-banner');
+  if (visible && !banner) {
+    banner = document.createElement('div');
+    banner.id = 'game-paused-banner';
+    banner.textContent = '⏸ ПАУЗА — § / > чтобы продолжить';
+    banner.style.cssText = 'position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10001;padding:8px 18px;background:#101827ee;border:1px solid #879eff;color:#e4edff;font:14px sans-serif;border-radius:6px;pointer-events:none;';
+    document.body.append(banner);
+  } else if (!visible && banner) {
+    banner.remove();
+  }
+}
+
 export function initInput(): void {
   preloadCursors();
   preloadTaskbarIcons();
@@ -600,18 +602,23 @@ export function initInput(): void {
       setRangeCirclesVisible(!_rangeCirclesVisible);
       if (!_rangeCirclesVisible) _hideRangeCircles();
     }
-    if ((event.code === 'ShiftLeft' || event.code === 'ShiftRight') && !event.repeat && !window._multiplayerMode) {
-      setPaused(!paused);
-      setPausedBanner(!paused);
+    const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes((event.target as HTMLElement | null)?.tagName || '');
+    if ((event.key === '§' || event.key === '>') && !event.repeat && !window._multiplayerMode
+      && !typing && !(event.target as HTMLElement | null)?.isContentEditable
+      && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      const nextPaused = !paused;
+      setPaused(nextPaused);
+      setPausedBanner(nextPaused);
       event.preventDefault();
       updateHUD();
     }
     if (event.code === 'Backspace') {
       const tag = (event.target as HTMLElement | null)?.tagName;
       if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
-        camera.radius = DEFAULT_CAMERA_RADIUS;
-        camera.alpha = DEFAULT_CAMERA_ALPHA;
-        camera.beta = DEFAULT_CAMERA_BETA;
+        const dota = isDotaMap(window._currentMapKey || '');
+        camera.radius = dota ? dotaMapConfig.camera.radius : DEFAULT_CAMERA_RADIUS;
+        camera.alpha = dota ? dotaMapConfig.camera.alpha : DEFAULT_CAMERA_ALPHA;
+        camera.beta = dota ? dotaMapConfig.camera.beta : DEFAULT_CAMERA_BETA;
         event.preventDefault();
       }
     }
@@ -653,7 +660,6 @@ export function initInput(): void {
       }
       updateHUD();
     }
-    const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes((event.target as HTMLElement | null)?.tagName || '');
     if (!typing && !(event.target as HTMLElement | null)?.isContentEditable && !event.ctrlKey && !event.metaKey && !event.altKey && !isShooterMode()) {
       if (event.code === 'Digit1' || event.code === 'Numpad1') {
         setSelectedAttackMode('melee');

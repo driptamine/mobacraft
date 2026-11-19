@@ -26,6 +26,8 @@ aws s3 sync maps/ "s3://${R2_BUCKET_NAME}/maps/" \
   --exclude '.*' \
   --exclude '*/.*' \
   --exclude 'all_tiles/*' \
+  --exclude 'dotamap/*' \
+  --exclude 'dotamap.json' \
   --exclude '*.tga' \
   --exclude '*.dds' \
   "$@"
