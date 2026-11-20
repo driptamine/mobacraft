@@ -12,7 +12,8 @@ const write = (file, data) => fs.writeFileSync(path.join(server, 'internal/sim',
 const lanes = Object.fromEntries(Object.entries(map.lanes).map(([team, routes]) => [team,
   Object.fromEntries(Object.entries(routes).map(([name, points]) => [name, points.map(point)]))]));
 write('maps/dotamap-game.json', {
-  name: map.name, bounds: map.bounds, positions: map.positions.map(({ x, z, team }) => ({ x, z, team })), lanes,
+  name: map.name, bounds: map.bounds, positions: map.positions.map(({ x, z, team }) => ({ x, z, team })),
+  heroStarts: map.heroStarts, lanes,
 });
 write('data/dota-nav.json', { grid: surface.grid, rows: surface.rows });
 const unit = stats => ({ hp: stats.hp, range: stats.attackRange, melee: stats.weapon === 'sword', speed: 6 * stats.movementSpeedMultiplier });

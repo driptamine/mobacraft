@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 import { world } from '../../core/scene.js';
 import { kitFor } from '../../heroes/hero-kits.js';
 import { heroAbilityCooldown, heroStunned } from '../../heroes/hero-combat.js';
-import { chooseHeroAbility, heroAbilityMessage, pendingHeroAbility, selectedAbilityHero } from '../../input/hero-abilities.js';
+import { HERO_ABILITY_KEYS, chooseHeroAbility, heroAbilityMessage, pendingHeroAbility, selectedAbilityHero } from '../../input/hero-abilities.js';
 import { setHudHover } from '../../input/camera.js';
 import { useHUDVersion } from '../useHUD.js';
 
@@ -26,7 +26,7 @@ export function HeroAbilities(): JSX.Element | null {
               onClick={() => chooseHeroAbility(index)}>
               <span className="hero-ability-icon" aria-hidden="true">{ability.icon}</span>
               <span className="hero-ability-name">{ability.name}</span>
-              <kbd>{remaining > 0 ? `${remaining}s` : index + 3}</kbd>
+              <kbd>{remaining > 0 ? `${remaining}s` : HERO_ABILITY_KEYS[index]?.slice(-1)}</kbd>
             </button>
           );
         })}

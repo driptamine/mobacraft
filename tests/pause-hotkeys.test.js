@@ -28,7 +28,7 @@ const keydownCode = ts.transpileModule(`(event) => {${keydownMatch[1]}\n}`, {
 function fixture({ multiplayer = false, paused = false } = {}) {
   const registry = new Map();
   const body = { children: [], append(child) { child.parent = body; this.children.push(child); if (child.id) registry.set(child.id, child); } };
-  const calls = { setPaused: [], banner: [], hud: 0 };
+  const calls = { setPaused: [], banner: [], abilities: [], hud: 0 };
   const context = vm.createContext({
     keys: {},
     camera: null,
@@ -39,6 +39,8 @@ function fixture({ multiplayer = false, paused = false } = {}) {
     setPaused: (value) => { calls.setPaused.push(value); context.paused = value; },
     setPausedBanner: (visible) => { calls.banner.push(visible); },
     isShooterMode: () => false,
+    HERO_ABILITY_KEYS: ['Digit3', 'Digit4', 'Digit5', 'Digit7'],
+    chooseHeroAbility: index => { calls.abilities.push(index); return true; },
     document: {
       getElementById: (id) => registry.get(id) || null,
       createElement: () => ({ id: '', textContent: '', style: {}, parent: null,
@@ -73,6 +75,16 @@ describe('pause hotkeys', () => {
       assert.equal(f.calls.hud, 2);
     });
   }
+
+  it('uses 6 for pause and 7 for the fourth ability', () => {
+    const f = fixture();
+    f.key({ key: '6', code: 'Digit6' });
+    f.key({ key: '6', code: 'Numpad6' });
+    assert.deepEqual(f.calls.setPaused, [true, false]);
+    assert.deepEqual(f.calls.abilities, []);
+    f.key({ key: '7', code: 'Digit7' });
+    assert.deepEqual(f.calls.abilities, [3]);
+  });
 
   it('keeps both Shift keys available without toggling pause', () => {
     const f = fixture();
@@ -119,6 +131,7 @@ describe('pause hotkeys', () => {
     assert.ok(banner, 'banner created');
     assert.ok(banner.textContent.includes('ПАУЗА'));
     assert.ok(banner.textContent.includes('§ / >'));
+    assert.ok(banner.textContent.includes('6'));
     assert.ok(!banner.textContent.includes('Shift'));
     vm.runInContext('show(true)', context);
     assert.equal(registry.size, 1, 'no duplicate banners');

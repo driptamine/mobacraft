@@ -41,4 +41,21 @@ assert.equal(core.camera.target.x, dotaMapConfig.positions[0].x);
 assert.equal(core.camera.target.z, dotaMapConfig.positions[0].z);
 assert.ok(core.camera.target.y > 9);
 
+const { setLocalMatch } = await import('../src/core/local-match.js');
+for (const name of ['drow', 'axe']) factionContainers.ig.units[name] = { scene: new THREE.Group(), animations: [] };
+setLocalMatch({ mapKey: DOTA_MAP_KEY, seats: [
+  { slot: 0, team: 'blue', faction: 'ig', hero: 'drow', computer: false },
+  { slot: 1, team: 'red', faction: 'ig', hero: 'axe', computer: true },
+] });
+resetGame(DOTA_MAP_KEY);
+const squads = core.world.query('matchHero', 'squad').map(id => core.world.get(id, 'squad'));
+assert.equal(squads.length, 2);
+for (const { team, position } of squads) {
+  const start = dotaMapConfig.heroStarts[team];
+  assert.equal(position.x, start.x);
+  assert.equal(position.z, start.z);
+}
+assert.equal(core.camera.target.x, dotaMapConfig.heroStarts.blue.x);
+assert.equal(core.camera.target.z, dotaMapConfig.heroStarts.blue.z);
+
 process.exit(0);

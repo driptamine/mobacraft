@@ -12,6 +12,7 @@ import { createHeroBase } from '../entities/hero-base.js';
 import { kitFor, type ShotStyle } from '../heroes/hero-kits.js';
 import { launchHeroShot, tickHeroEffects } from '../heroes/hero-effects.js';
 import { heroShotOrigin } from '../heroes/hero-shot-visuals.js';
+import { heroProjectileSpeed } from '../heroes/hero-shot-timing.js';
 import { World } from '../core/ecs.js';
 import * as E from '../entities/entities.js';
 import * as M from '../meshes.js';
@@ -198,7 +199,7 @@ function replicaShot(world: any, soldierId: number, soldier: any, mesh: any): vo
     const creepKind = laneCreepKind(unitType);
     if (creepKind === 'melee') return;
     const kit = kitFor(unitType);
-    let shot: ShotStyle | undefined = kit?.primary ? { ...kit.primary, color: kit.color } : undefined;
+    let shot: ShotStyle | undefined = kit?.primary ? heroProjectileSpeed({ ...kit.primary, color: kit.color }) : undefined;
     if (creepKind) {
         const siege = creepKind === 'siege';
         shot = { shape: siege ? 'weight' : 'sigil', speed: siege ? 20 : 24, color: squad.team === 'blue' ? 0x69e6a3 : 0xf76c42 };

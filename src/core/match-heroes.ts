@@ -1,10 +1,9 @@
 import { recruitableHeroes } from '../../stats/races/heroes.js';
-import { isDotaMap } from '../maps/dota-map-layout.js';
+import { dotaMapConfig, isDotaMap } from '../maps/dota-map-layout.js';
 import { factionContainers, loadFactionUnitModel, type LoadFactionHooks } from '../factions.js';
 import { createSquadEntity } from '../entities/entities.js';
 import { snapOrderToFree } from '../../pathfinding/astar-integrated.js';
 import type { LocalMatchConfig } from './local-match.js';
-import type { CreepBase } from '../systems/lane-creeps.js';
 
 // Lobby browsing loads portraits only. Download exactly the chosen templates
 // at battle start, including when the engine was booted for an earlier match.
@@ -20,16 +19,14 @@ export async function loadDotaMatchHeroes(config: LocalMatchConfig | null, hooks
   }));
 }
 
-export function spawnDotaMatchHeroes(world: any, config: LocalMatchConfig | null, bases: CreepBase[]): void {
+export function spawnDotaMatchHeroes(world: any, config: LocalMatchConfig | null): void {
   if (!config || !isDotaMap(config.mapKey)) return;
   const previousOwner = world.defaultOwner;
   try {
     for (const seat of config.seats) {
-      const base = bases.find(base => base.team === seat.team);
-      if (!seat.hero || !base) continue;
+      if (!seat.hero) continue;
       if (!factionContainers.ig.units[seat.hero]) throw new Error(`Hero model is not loaded: ${seat.hero}`);
-      const length = Math.hypot(base.x, base.z) || 1;
-      const raw = { x: base.x - base.x / length * 9, z: base.z - base.z / length * 9 };
+      const raw = dotaMapConfig.heroStarts[seat.team];
       const point = snapOrderToFree(raw.x, raw.z) || raw;
       world.defaultOwner = seat.owner ?? seat.slot + 1;
       const id = createSquadEntity(world, seat.team, point.x, point.z, 1, seat.hero, 'ig');

@@ -224,9 +224,10 @@ export function resetGame(mapKey: string = window._currentMapKey || 'arena'): vo
       bases.push({ ...base, id });
     }
     void startDoomCreeps(entityWorld, bases, {}, dotaMap ? dotaMapLanes() : undefined).catch((error) => console.error('Could not load lane creeps', error));
-    if (dotaMap) spawnDotaMatchHeroes(entityWorld, localMatch, bases);
+    if (dotaMap) spawnDotaMatchHeroes(entityWorld, localMatch);
     // Keep the starting view fixed when a recruitment square is repositioned.
-    const home = dotaMap ? bases.find(base => base.team === PLAYER) : layoutFor(mapKey).positions.find((point) => point.faction === (PLAYER === 'blue' ? 'space marines' : 'ig')) || bases[0];
+    const home = dotaMap ? (localMatch ? dotaMapConfig.heroStarts[PLAYER === 'red' ? 'red' : 'blue'] : bases.find(base => base.team === PLAYER))
+      : layoutFor(mapKey).positions.find((point) => point.faction === (PLAYER === 'blue' ? 'space marines' : 'ig')) || bases[0];
     if (home) camera.target.set(home.x, dotaMap ? _groundAt(home.x, home.z) : 0, home.z);
     camera.radius = dotaMap ? dotaMapConfig.camera.radius : DEFAULT_CAMERA_RADIUS;
     setInitialCameraAlpha(camera, startAlpha);

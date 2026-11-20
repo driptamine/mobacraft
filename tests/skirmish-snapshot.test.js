@@ -218,7 +218,7 @@ it('a Batch 2 sniper shot serial renders a tracer and leaves damage to the serve
   world.tick(.016);
   const [shot] = world.query('heroEffect');
   assert.equal(world.get(shot, 'heroEffect').root.name, 'hero-shot-tracer');
-  for (let frame = 0; frame < 50; frame++) world.tick(.016);
+  for (let frame = 0; frame < 75; frame++) world.tick(.016);
   assert.equal(world.query('heroEffect').length, 0);
   assert.equal(world.get(102, 'soldier').hp, 100);
 });

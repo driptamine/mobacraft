@@ -21,6 +21,10 @@
       "faction": "ig"
     }
   ],
+  "heroStarts": {
+    "blue": { "x": -11, "z": -14 },
+    "red": { "x": 11, "z": 14 }
+  },
   "strategicPoints": [],
   "lanes": {
     "blue": {

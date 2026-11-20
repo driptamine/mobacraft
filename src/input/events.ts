@@ -1,4 +1,4 @@
-import { chooseHeroAbility, clearHeroAbilityTarget, pendingHeroAbility, tryHeroAbilityClick } from './hero-abilities.js';
+import { HERO_ABILITY_KEYS, chooseHeroAbility, clearHeroAbilityTarget, pendingHeroAbility, tryHeroAbilityClick } from './hero-abilities.js';
 import { findConstructionTarget } from './construction-target.js';
 import * as THREE from 'three';
 import { isCameraLocked } from '../render/camera-lock.js';
@@ -561,7 +561,7 @@ function setPausedBanner(visible: boolean): void {
   if (visible && !banner) {
     banner = document.createElement('div');
     banner.id = 'game-paused-banner';
-    banner.textContent = '⏸ ПАУЗА — § / > чтобы продолжить';
+    banner.textContent = '⏸ ПАУЗА — 6 / § / > чтобы продолжить';
     banner.style.cssText = 'position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10001;padding:8px 18px;background:#101827ee;border:1px solid #879eff;color:#e4edff;font:14px sans-serif;border-radius:6px;pointer-events:none;';
     document.body.append(banner);
   } else if (!visible && banner) {
@@ -633,7 +633,9 @@ export function initInput(): void {
       if (!_rangeCirclesVisible) _hideRangeCircles();
     }
     const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes((event.target as HTMLElement | null)?.tagName || '');
-    if ((event.key === '§' || event.key === '>') && !event.repeat && !window._multiplayerMode
+    const pauseKey = event.key === '§' || event.key === '>'
+      || (!event.shiftKey && (event.code === 'Digit6' || event.code === 'Numpad6'));
+    if (pauseKey && !event.repeat && !window._multiplayerMode
       && !typing && !(event.target as HTMLElement | null)?.isContentEditable
       && !event.ctrlKey && !event.metaKey && !event.altKey) {
       const nextPaused = !paused;
@@ -641,6 +643,7 @@ export function initInput(): void {
       setPausedBanner(nextPaused);
       event.preventDefault();
       updateHUD();
+      return;
     }
     if (event.code === 'Backspace') {
       const target = event.target as HTMLElement | null;
@@ -691,7 +694,8 @@ export function initInput(): void {
       updateHUD();
     }
     if (!typing && !(event.target as HTMLElement | null)?.isContentEditable && !event.ctrlKey && !event.metaKey && !event.altKey && !isShooterMode()) {
-      if (/^Digit[3-6]$/.test(event.code) && !event.repeat && chooseHeroAbility(Number(event.code.slice(-1)) - 3)) {
+      const abilityIndex = HERO_ABILITY_KEYS.indexOf(event.code);
+      if (abilityIndex >= 0 && !event.repeat && chooseHeroAbility(abilityIndex)) {
         event.preventDefault();
         return;
       }

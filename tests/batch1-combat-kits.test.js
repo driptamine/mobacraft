@@ -53,7 +53,9 @@ test('every Batch 1 hero has four abilities and ranged attacks use five differen
       assert.ok(shot);
       shotNames.add(shot.name);
       assert.equal(enemy.stats.hp, 600, 'damage waits for contact');
-      for (let i = 0; i < 20; i++) world.tick(.03);
+      world.tick(.3);
+      assert.equal(enemy.stats.hp, 600, 'the shot is still visible in flight');
+      for (let i = 0; i < 25; i++) world.tick(.03);
       assert.ok(enemy.stats.hp < 600);
     } else {
       assert.equal(shot, undefined);

@@ -354,7 +354,9 @@ async function _startOnlineMatch(): Promise<void> {
     _onSession(_pendingSession);
     _onSnapshot(_pendingSnapshot);
     _net.sendCmd({PlayerLoaded:{}});
-    const own = [...world.query('building'),...world.query('squad')].map((id: number) => (world.get(id, 'building') || world.get(id, 'squad'))).find((s: any) => s.owner === _myPlayerId);
+    const units = world.query('squad').map((id: number) => world.get(id, 'squad'));
+    const bases = world.query('building').map((id: number) => world.get(id, 'building'));
+    const own = (dota ? [...units, ...bases] : [...bases, ...units]).find((s: any) => s.owner === _myPlayerId);
     if (own && camera) camera.target.copy(own.position);
     if (dota && camera) {
       setInitialCameraAlpha(camera, dotaMapConfig.camera.alpha);

@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { recruitableHeroes } from '../../stats/races/heroes.js';
 import { abilityShotStyle, kitFor, type ShotStyle } from '../heroes/hero-kits.js';
 import { createHeroProjectile, createHeroShotImpact, disposeShotVisual, heroShotOrigin } from '../heroes/hero-shot-visuals.js';
+import { heroProjectileSpeed } from '../heroes/hero-shot-timing.js';
 import { modelUrl } from '../render/assets.js';
 import { loadGltf, type GltfContainer } from '../render/gltf-models.js';
 import './hero-shot-preview.css';
@@ -231,7 +232,7 @@ export function mountHeroShotPreview(): void {
       if (shot.wait <= 0) {
         const from = heroShotOrigin(actor, heroSelect.value, heroAt.clone().add(new THREE.Vector3(.64, 1.95, 0)));
         from.x += .16;
-        shot.projectile = createHeroProjectile(from, targetAt, shot.style);
+        shot.projectile = createHeroProjectile(from, targetAt, heroProjectileSpeed(shot.style));
         scene.add(shot.projectile.root);
         status.textContent = 'Снаряд в полёте';
       }

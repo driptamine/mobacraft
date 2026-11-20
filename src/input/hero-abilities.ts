@@ -7,6 +7,8 @@ import { clearBuilderCommand, cancelFlyTargeting } from './orders.js';
 import { pickMesh, raycastGround } from './selection.js';
 import { clearUnitCommand } from './unit-commands.js';
 
+export const HERO_ABILITY_KEYS: readonly string[] = ['Digit3', 'Digit4', 'Digit5', 'Digit7'];
+
 interface AbilityTarget { world: typeof world; caster: number; index: number }
 export let pendingHeroAbility: AbilityTarget | null = null;
 export let heroAbilityMessage = '';

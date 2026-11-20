@@ -6,6 +6,7 @@ import { buildingLineClear, navigationRadius } from '../../pathfinding/building-
 import { sgbPassBlockedAt } from '../../pathfinding/avoid.js';
 import { heroArc, heroBurst, launchHeroShot, tickHeroEffects } from './hero-effects.js';
 import { heroShotOrigin } from './hero-shot-visuals.js';
+import { heroProjectileSpeed } from './hero-shot-timing.js';
 import { abilityShotStyle, kitFor, type HeroAbility } from './hero-kits.js';
 
 interface TimedValue { value: number; until: number }
@@ -188,7 +189,7 @@ export function launchHeroAttack(world: any, squad: any, soldierId: number, targ
   };
   if (!from || !aim()) return false;
   const muzzle = heroShotOrigin(world.get(soldierId, 'mesh')?.root, squad.unitType, raised(from));
-  launchHeroShot(world, raised(from), aim, { ...kit.primary, color: kit.color }, () => {
+  launchHeroShot(world, raised(from), aim, heroProjectileSpeed({ ...kit.primary, color: kit.color }), () => {
     if (world.has(target, 'soldier')) _soldierTakeDamage(world, target, damage);
     else damageBuilding(world, target, damage);
   }, muzzle);
@@ -240,7 +241,7 @@ export function castHeroAbility(world: any, caster: number, index: number, point
       launchHeroShot(world, raised(origin), () => {
         const current = shootAt();
         return current ? raised(current) : null;
-      }, shotStyle, impact => {
+      }, heroProjectileSpeed(shotStyle), impact => {
         if (first) affectEnemies(world, [first], casterPosition(world, caster) ?? origin, ability);
         heroBurst(world, ground(impact.x, impact.z), kit.color, 2);
       }, heroShotOrigin(root, squad.unitType, raised(origin)));
@@ -271,7 +272,7 @@ export function castHeroAbility(world: any, caster: number, index: number, point
       launchHeroShot(world, raised(origin), () => {
         const at = liveTarget(world, targetId, team, allied);
         return at ? raised(at) : null;
-      }, shotStyle, impact, heroShotOrigin(root, squad.unitType, raised(origin)));
+      }, heroProjectileSpeed(shotStyle), impact, heroShotOrigin(root, squad.unitType, raised(origin)));
     } else {
       impact();
     }
